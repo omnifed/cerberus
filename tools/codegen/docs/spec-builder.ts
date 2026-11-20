@@ -186,8 +186,10 @@ function buildAbstraction(
 
   // `collectionGeneric` parts are a private `<Part>Styled` re-cast as a generic
   // component, so their props type references `typeof <Part>Styled`
-  const primitiveByIdentifier = new Map(
-    entry.primitives.flatMap((part) => {
+  // Element parts (`Field.StatusIndicator`) and styled Ark members
+  // (`Select.HiddenSelect`) can be inherited from too; render props can't
+  const primitiveByIdentifier = new Map([
+    ...entry.primitives.flatMap((part) => {
       const identifier = `${name}${capitalize(part)}`
       const exportKey = `${name}.${partExportKey(part)}`
       return [
@@ -195,7 +197,17 @@ function buildAbstraction(
         [`${identifier}Styled`, exportKey],
       ]
     }),
-  )
+    ...Object.keys(entry.elementParts).map((slot) => [
+      `${name}${capitalize(slot)}`,
+      `${name}.${capitalize(slot)}`,
+    ]),
+    ...entry.arkMembers
+      .filter((member) => !member.endsWith('Context'))
+      .flatMap((member) => [
+        [`${name}${member}`, `${name}.${member}`],
+        [`${name}${member}Styled`, `${name}.${member}`],
+      ]),
+  ] as [string, string][])
 
   let props: PropSpec[] = []
   const inherits = new Set<string>()

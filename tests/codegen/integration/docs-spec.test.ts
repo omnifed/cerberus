@@ -79,6 +79,10 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     expect(part('accordion', 'Accordion.ItemGroup').inherits).toEqual([
       'Accordion.Item',
     ])
+    // An element part outside the Ark anatomy can be inherited from too
+    expect(part('field', 'Field.StatusIndicatorWithIcon').inherits).toEqual([
+      'Field.StatusIndicator',
+    ])
     // A collectionGeneric Root inherits through its private `ComboboxRootStyled`
     expect(part('combobox', 'Combobox.El').inherits).toEqual(['Combobox.Root'])
     // Button.Icon renders no Cerberus primitive, so it accepts no `css`/`unstyled`

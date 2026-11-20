@@ -81,6 +81,7 @@
       "exportName": "Field.StatusIndicatorWithIcon",
       "kind": "abstraction",
       "description": "An abstraction that renders the status indicator with the Cerberus `invalid` icon when the field is invalid, else an end indicator with its `fallback`",
+      "inherits": ["Field.StatusIndicator"],
       "props": [
         {
           "name": "fallback",
