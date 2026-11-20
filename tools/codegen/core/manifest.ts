@@ -44,6 +44,9 @@ export interface ComponentEntry {
   memberSlots: Record<string, string>
   /** Recipe slots outside the anatomy, rendered as `ark.<element>` */
   elementParts: Record<string, string>
+  /** Members (`Root`, `RootProvider`…) given back Ark's collection item generic */
+  collectionGeneric: string[]
+  docsSlug: string
   description: string
   abstractions: AbstractionConfig[]
   types: string[]
@@ -206,6 +209,20 @@ export function loadManifest(
       }
     }
 
+    const collectionGeneric = config.collectionGeneric ?? []
+    const memberNames = [
+      ...parts.map(toPascalCase),
+      ...(config.arkMembers ?? []),
+    ]
+    for (const member of collectionGeneric) {
+      if (source !== 'ark' || !memberNames.includes(member)) {
+        diagnostics.error(
+          key,
+          `collectionGeneric: \`${member}\` is not an Ark part or arkMembers entry`,
+        )
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -269,6 +286,8 @@ export function loadManifest(
       providers,
       memberSlots,
       elementParts,
+      collectionGeneric,
+      docsSlug: config.docsSlug ?? key,
       anatomy: config.anatomy,
       parts,
       rootProvider,
