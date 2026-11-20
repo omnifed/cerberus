@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { indexDeclarations, type Declaration } from '../parser/declarations'
 import { blankComments } from '../parser/scan'
+import { REACT_PKG_ROOT } from '../../core/paths'
 
 interface ImportRef {
   spec: string
@@ -135,6 +136,11 @@ export class ModuleGraph {
   resolveModule(spec: string, fromFile: string): string | null {
     const fromDir = dirname(fromFile)
     if (spec.startsWith('.')) return resolveFileCandidates(join(fromDir, spec))
+    // packages/react's tsconfig path alias for Panda's generated output
+    // (`styled-system/recipes` → `packages/react/styled-system/recipes`)
+    if (spec === 'styled-system' || spec.startsWith('styled-system/')) {
+      return resolveFileCandidates(join(REACT_PKG_ROOT, spec))
+    }
 
     const segments = spec.split('/')
     const pkgName = spec.startsWith('@')
