@@ -1,0 +1,64 @@
+{
+  "name": "Group",
+  "key": "group",
+  "description": "The Group component lays out its children in a normal, attached, grown or stacked\ngroup, horizontally or vertically.\n\nUse the `layout` and `orientation` props to choose how the children are grouped.\n\n**NOTE**: This API is _slotless_ and is a single rendered layer: `<Group>` renders `Group.Root`.",
+  "variants": [
+    {
+      "name": "orientation",
+      "values": ["horizontal", "vertical"],
+      "defaultValue": "'horizontal'"
+    },
+    {
+      "name": "layout",
+      "values": ["default", "attached", "grow", "stack"],
+      "defaultValue": "'default'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "Root",
+      "exportName": "Group.Root",
+      "kind": "primitive",
+      "description": "The root container of the Group component.",
+      "dataScope": "group",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'",
+          "required": false,
+          "defaultValue": "'horizontal'",
+          "description": "PandaCSS recipe variant for orientation."
+        },
+        {
+          "name": "layout",
+          "type": "'default' | 'attached' | 'grow' | 'stack'",
+          "required": false,
+          "defaultValue": "'default'",
+          "description": "PandaCSS recipe variant for layout."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}

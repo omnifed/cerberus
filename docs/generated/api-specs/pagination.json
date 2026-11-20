@@ -38,6 +38,13 @@
       "exportName": "Pagination.ItemList",
       "kind": "abstraction",
       "description": "An abstraction that renders a Group of the previous trigger, one button per page or ellipsis, and the next trigger",
+      "inheritsExternal": [
+        {
+          "part": "Group.Root",
+          "spec": "group",
+          "docsSlug": "group"
+        }
+      ],
       "props": []
     },
     {
@@ -45,6 +52,13 @@
       "exportName": "Pagination.CompactList",
       "kind": "abstraction",
       "description": "An abstraction that renders a Group of the previous trigger, \"page of total\" text, and the next trigger",
+      "inheritsExternal": [
+        {
+          "part": "Group.Root",
+          "spec": "group",
+          "docsSlug": "group"
+        }
+      ],
       "props": []
     },
     {

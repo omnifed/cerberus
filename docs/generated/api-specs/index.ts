@@ -15,6 +15,7 @@ import dialogSpec from './dialog.json'
 import fieldSpec from './field.json'
 import fieldsetSpec from './fieldset.json'
 import file_uploadSpec from './file-upload.json'
+import groupSpec from './group.json'
 import marqueeSpec from './marquee.json'
 import menuSpec from './menu.json'
 import number_inputSpec from './number-input.json'
@@ -26,8 +27,11 @@ import radioSpec from './radio.json'
 import ratingSpec from './rating.json'
 import selectSpec from './select.json'
 import sliderSpec from './slider.json'
+import spinnerSpec from './spinner.json'
 import switchSpec from './switch.json'
+import tableSpec from './table.json'
 import tabsSpec from './tabs.json'
+import textSpec from './text.json'
 import toggleSpec from './toggle.json'
 import tooltipSpec from './tooltip.json'
 
@@ -47,6 +51,7 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   field: fieldSpec as ComponentDocSpec,
   fieldset: fieldsetSpec as ComponentDocSpec,
   'file-upload': file_uploadSpec as ComponentDocSpec,
+  group: groupSpec as ComponentDocSpec,
   marquee: marqueeSpec as ComponentDocSpec,
   menu: menuSpec as ComponentDocSpec,
   'number-input': number_inputSpec as ComponentDocSpec,
@@ -58,8 +63,11 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   rating: ratingSpec as ComponentDocSpec,
   select: selectSpec as ComponentDocSpec,
   slider: sliderSpec as ComponentDocSpec,
+  spinner: spinnerSpec as ComponentDocSpec,
   switch: switchSpec as ComponentDocSpec,
+  table: tableSpec as ComponentDocSpec,
   tabs: tabsSpec as ComponentDocSpec,
+  text: textSpec as ComponentDocSpec,
   toggle: toggleSpec as ComponentDocSpec,
   tooltip: tooltipSpec as ComponentDocSpec,
 }

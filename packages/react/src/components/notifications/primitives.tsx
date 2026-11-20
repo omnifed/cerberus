@@ -9,10 +9,8 @@ import {
   type ToastTitleProps,
 } from '@ark-ui/react/toast'
 import { toast, type ToastVariantProps } from 'styled-system/recipes'
-import {
-  createCerberusPrimitive,
-  type CerberusPrimitiveProps,
-} from '../../system/index'
+import { createCerberusPrimitive } from '../../system/index'
+import type { CerberusPrimitiveProps } from '../../system/types'
 
 /**
  * This module contains the primitives of the Notification component.

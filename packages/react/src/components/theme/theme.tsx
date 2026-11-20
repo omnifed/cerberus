@@ -1,6 +1,7 @@
 import { cx } from 'styled-system/css'
 import type { ColorModes, CustomThemes } from '../../context/theme'
-import { cerberus, CerberusProps } from '../../system'
+import { cerberus } from '../../system'
+import type { CerberusProps } from '../../system/types'
 
 export interface ThemeProps<T extends string> {
   /**
@@ -16,7 +17,7 @@ export interface ThemeProps<T extends string> {
 }
 
 export function Theme<T extends string>(
-  props: CerberusProps<'button'> & ThemeProps<T>,
+  props: CerberusProps<'div'> & ThemeProps<T>,
 ) {
   const { mode, theme, ...nativeProps } = props
   const colorMode = mode || 'light'
