@@ -22,7 +22,7 @@ import { Avatar } from '../components/avatar/api'
 import { Button } from '../components/button/index'
 import { Clipboard } from '../components/clipboard/index'
 import { Dialog, type DialogRootProps } from '../components/dialog/index'
-import { FieldLabel, FieldRoot, Input } from '../components/field/index'
+import { Field, Input } from '../components/field/index'
 import { IconButton } from '../components/icon-button/index'
 import { Show } from '../components/show/index'
 import { Text } from '../components/text/index'
@@ -221,8 +221,8 @@ export function PromptModal(
               marginBlockEnd="lg"
               w="full"
             >
-              <FieldRoot invalid={!isValid}>
-                <FieldLabel
+              <Field.Root invalid={!isValid}>
+                <Field.Label
                   className={hstack({
                     gap: 'xs',
                     justify: 'flex-start',
@@ -255,9 +255,9 @@ export function PromptModal(
                     </Clipboard.Control>
                   </Clipboard.Root>
                   to confirm
-                </FieldLabel>
+                </Field.Label>
                 <Input name="confirm" onChange={handleChange} type="text" />
-              </FieldRoot>
+              </Field.Root>
             </VStack>
 
             <HStack gap="md" justify="stretch" w="full">

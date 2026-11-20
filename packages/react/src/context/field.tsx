@@ -37,7 +37,7 @@ export interface FieldContextValue {
 const FieldContext = createContext<FieldContextValue | null>(null)
 
 /**
- * @deprecated use FieldRoot or FieldParts instead
+ * @deprecated use `Field.Root` (or `<Field>`) instead
  */
 export function FieldProvider(props: PropsWithChildren<FieldRootProps>) {
   const value = useMemo(

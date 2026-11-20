@@ -41,6 +41,21 @@ describe('Textarea', () => {
     expect(screen.getByRole('textbox')).toBeDisabled()
   })
 
+  test('should render Field.Textarea inside a Field', () => {
+    const { container } = render(
+      <Field label="Test Label">
+        <Textarea />
+      </Field>,
+    )
+    expect(screen.getByLabelText(/test label/i)).toHaveClass(
+      'cerberus-field__textarea',
+    )
+    // No extra Field.Root inside a Field
+    expect(
+      container.querySelectorAll('[data-scope="field"][data-part="root"]'),
+    ).toHaveLength(1)
+  })
+
   test('should render a textarea with placeholder', () => {
     render(
       <Field label="Test Label">
@@ -51,5 +66,14 @@ describe('Textarea', () => {
       },
     )
     expect(screen.getByRole('textbox')).toBeInTheDocument()
+  })
+
+  test('should render standalone, outside a Field, in its own Field.Root', () => {
+    render(<Textarea aria-label="Notes" />)
+    const textarea = screen.getByRole('textbox', { name: 'Notes' })
+    expect(textarea).toHaveAttribute('data-part', 'textarea')
+    expect(
+      textarea.closest('[data-scope="field"][data-part="root"]'),
+    ).not.toBeNull()
   })
 })

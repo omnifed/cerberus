@@ -35,7 +35,6 @@ export {
   useEditable,
   EditableRootProvider,
   useField,
-  FieldRootProvider,
   useFieldset,
   useFileUpload,
   FileUploadRootProvider,

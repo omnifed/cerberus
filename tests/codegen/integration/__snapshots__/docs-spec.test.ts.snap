@@ -1090,6 +1090,108 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "size",
     ],
   },
+  "field": {
+    "parts": {
+      "Field.Context": [
+        "children",
+      ],
+      "Field.El": [
+        "label",
+        "helperText",
+        "secondaryHelperText",
+        "errorText",
+        "hideLabel",
+      ],
+      "Field.EndIndicator": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.ErrorText": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.HelperText": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.Input": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.InputGroup": [
+        "size",
+        "startIcon",
+        "endIcon",
+      ],
+      "Field.InputRoot": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.Label": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.RequiredIndicator": [
+        "asChild",
+        "fallback",
+        "unstyled",
+        "css",
+      ],
+      "Field.Root": [
+        "size",
+        "id",
+        "ids",
+        "required",
+        "disabled",
+        "invalid",
+        "readOnly",
+        "target",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.RootProvider": [
+        "size",
+        "value",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.Select": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.StartIndicator": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.StatusIndicator": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Field.StatusIndicatorWithIcon": [
+        "fallback",
+      ],
+      "Field.Textarea": [
+        "asChild",
+        "autoresize",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [
+      "size",
+    ],
+  },
   "fieldset": {
     "parts": {
       "Fieldset.Context": [
@@ -3405,6 +3507,97 @@ exports[`no props lose their description compared with last time 1`] = `
   "Dialog.Trigger": [
     "value",
     "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.Context": [],
+  "Field.El": [
+    "label",
+    "helperText",
+    "secondaryHelperText",
+    "errorText",
+    "hideLabel",
+  ],
+  "Field.EndIndicator": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.ErrorText": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.HelperText": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.Input": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.InputGroup": [
+    "size",
+    "startIcon",
+    "endIcon",
+  ],
+  "Field.InputRoot": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.Label": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.RequiredIndicator": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.Root": [
+    "size",
+    "id",
+    "ids",
+    "required",
+    "disabled",
+    "invalid",
+    "readOnly",
+    "target",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.RootProvider": [
+    "size",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.Select": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.StartIndicator": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.StatusIndicator": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Field.StatusIndicatorWithIcon": [
+    "fallback",
+  ],
+  "Field.Textarea": [
+    "asChild",
+    "autoresize",
     "unstyled",
     "css",
   ],

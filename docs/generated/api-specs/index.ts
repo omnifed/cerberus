@@ -12,6 +12,7 @@ import collapsibleSpec from './collapsible.json'
 import comboboxSpec from './combobox.json'
 import date_pickerSpec from './date-picker.json'
 import dialogSpec from './dialog.json'
+import fieldSpec from './field.json'
 import fieldsetSpec from './fieldset.json'
 import marqueeSpec from './marquee.json'
 import menuSpec from './menu.json'
@@ -42,6 +43,7 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   combobox: comboboxSpec as ComponentDocSpec,
   'date-picker': date_pickerSpec as ComponentDocSpec,
   dialog: dialogSpec as ComponentDocSpec,
+  field: fieldSpec as ComponentDocSpec,
   fieldset: fieldsetSpec as ComponentDocSpec,
   marquee: marqueeSpec as ComponentDocSpec,
   menu: menuSpec as ComponentDocSpec,

@@ -41,20 +41,10 @@ You can change the size of the input wiht the `size` prop.
 
 ## Customizing
 
-You can customize the input by passing styles directly into the component. The Input is a re-export of the `FieldInput` primitive.
+You can customize the input by passing styles directly into the component. `Input` is `Field.InputGroup`: its props go to `Field.Input`, and `Field.InputRoot`, `Field.StartIndicator`, `Field.EndIndicator` or `Field.StatusIndicator` children patch those parts.
 
 <Example path="components/field" demo="custom" />
 
 ## API
 
-### Props
-
-The `Input` accepts the following props in addition to any native `input` props:
-
-| Name        | Default | Description                                           |
-| ----------- | ------- | ----------------------------------------------------- |
-| `startIcon` |         | An `ElementType` to display at the start of the input |
-| `endIcon`   |         | An `ElementType` to display at the end of the input   |
-| `size`      |         | This size variant of the input                        |
-
-The `Input` component also accepts any of the props from the [`FieldParts.Input` primitive](https://ark-ui.com/react/docs/components/field#api-reference).
+`Input` (`Field.InputGroup`) accepts `startIcon`, `endIcon` and `size` in addition to the props of `Field.Input`. See the [Field API](/docs/components/field#api) for every part.
