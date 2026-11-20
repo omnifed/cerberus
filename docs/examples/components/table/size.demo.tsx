@@ -3,7 +3,8 @@ import { HStack } from '@/styled-system/jsx'
 import { For, Table, TableRootProps } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
-const variants = data.slotRecipes.table.variants.size.values as TableRootProps['size'][]
+const variants = data.slotRecipes.table.variants.size
+  .values as TableRootProps['size'][]
 const sortedSizes = sortSizeVariants(variants)
 
 export function SizeDemo() {
@@ -11,7 +12,11 @@ export function SizeDemo() {
     <HStack w="1/2">
       <For each={sortedSizes}>
         {(size) => (
-          <Table.Root key={size} caption={`Table using the ${size} size`} size={size}>
+          <Table
+            key={size}
+            caption={`Table using the ${size} size`}
+            size={size}
+          >
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCol>{size}</Table.HeaderCol>
@@ -22,7 +27,7 @@ export function SizeDemo() {
                 <Table.Cell>{size}</Table.Cell>
               </Table.Row>
             </Table.Body>
-          </Table.Root>
+          </Table>
         )}
       </For>
     </HStack>

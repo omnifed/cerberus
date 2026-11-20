@@ -19,6 +19,7 @@
 - [Field](field.md): The Field component labels a form control and connects it to its helper text and error text, wiring the ids and ARIA attributes for you.
 - [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
 - [FileUpload](file-upload.md): The FileUpload component lets users select files with a dropzone (click, `Enter`/`Space` or drag and drop) and lists the accepted files.
+- [Group](group.md): The Group component lays out its children in a normal, attached, grown or stacked group, horizontally or vertically.
 - [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
 - [Menu](menu.md): The Menu component displays a list of actions or options that the user can choose from, opened from a trigger such as a button.
 - [NumberInput](number-input.md): The NumberInput component is used to manage numeric input fields.
@@ -30,7 +31,10 @@
 - [Rating](rating.md): The Rating component provides a way to select a value from a range of values, typically used for feedback on a scale.
 - [Select](select.md): The Select component is a dropdown list that lets users pick one or more options from a collection.
 - [Slider](slider.md): The Slider component allows users to make selections from a range of values by dragging one or more thumbs along a track.
+- [Spinner](spinner.md): The Spinner component displays an indeterminate loading indicator: an animated `<svg>` that inherits the current text color.
 - [Switch](switch.md): The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.
+- [Table](table.md): The Table component displays tabular data with native table semantics: each part renders the matching HTML table element (`<table>`, `<caption>`, `<thead>`, `<th>`, `<tbody>`, `<tr>`, `<td>`, `<tfoot>`) inside a styled container.
 - [Tabs](tabs.md): The Tabs component is used to create a tabbed interface.
+- [Text](text.md): The Text component renders typography with Panda style props such as `textStyle` and `color`.
 - [Toggle](toggle.md): The Toggle component is a two-state button that allows users to toggle between states via an action, such as pressed and not pressed.
 - [Tooltip](tooltip.md): The Tooltip component is a small pop-up box that appears when a user hovers over or focuses an element, providing additional information about it.

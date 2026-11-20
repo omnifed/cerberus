@@ -75,10 +75,25 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     expect(part(key, exportName).props.length).toBeGreaterThanOrEqual(min)
   })
 
+  test('recipe-less Cerberus parts document no variants or unstyled', () => {
+    expect(specs.get('text')?.variants ?? []).toEqual([])
+    const textRoot = part('text', 'Text.Root')
+    // Text renders no data attributes, so no selector is documented
+    expect(textRoot.dataScope).toBeUndefined()
+    expect(textRoot.props.map((p) => p.name)).not.toContain('unstyled')
+    expect(
+      part('spinner', 'Spinner.Root').props.map((p) => p.name),
+    ).not.toContain('unstyled')
+  })
+
   test('abstractions link to the primitive whose props they inherit', () => {
     expect(part('carousel', 'Carousel.El').inherits).toEqual(['Carousel.Root'])
     expect(part('accordion', 'Accordion.ItemGroup').inherits).toEqual([
       'Accordion.Item',
+    ])
+    // Another component's part is linked to its spec
+    expect(part('pagination', 'Pagination.ItemList').inheritsExternal).toEqual([
+      { part: 'Group.Root', spec: 'group', docsSlug: 'group' },
     ])
     // An element part outside the Ark anatomy can be inherited from too
     expect(part('field', 'Field.StatusIndicatorWithIcon').inherits).toEqual([

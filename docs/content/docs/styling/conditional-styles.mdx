@@ -87,7 +87,10 @@ list
   <For each={items}>
     {(item) => (
       <li key={item}>
-        <Box _first={{ color: 'danger.bg.initial' }} _last={{ color: 'red.800' }}>
+        <Box
+          _first={{ color: 'danger.bg.initial' }}
+          _last={{ color: 'red.800' }}
+        >
           {item}
         </Box>
       </li>
@@ -99,7 +102,7 @@ list
 You can also style even and odd elements using the `_even` and `_odd` modifier
 
 ```tsx
-<Table.Root>
+<Table caption="Items">
   <Table.Body>
     <For each={items}>
     {(item) => (
@@ -111,7 +114,7 @@ You can also style even and odd elements using the `_even` and `_odd` modifier
       </Table.Row>
     )}
   </Table.Body>
-</Table.Root>
+</Table>
 ```
 
 ## Pseudo Elements

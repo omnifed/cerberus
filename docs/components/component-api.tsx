@@ -54,7 +54,7 @@ function RecipeVariants({ variants, specKey, name }: RecipeVarProps) {
       </Body>
 
       <Box overflowX="auto" mt="md">
-        <Table.Root decoration="zebra">
+        <Table decoration="zebra">
           <Table.Caption>{name} recipe variants</Table.Caption>
           <Table.Header>
             <Table.Row>
@@ -82,7 +82,7 @@ function RecipeVariants({ variants, specKey, name }: RecipeVarProps) {
               )}
             </For>
           </Table.Body>
-        </Table.Root>
+        </Table>
       </Box>
     </cerberus.section>
   )
@@ -183,7 +183,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               <Show when={part.props.length > 0}>
                 {() => (
                   <Box overflowX="auto">
-                    <Table.Root decoration="zebra">
+                    <Table decoration="zebra">
                       <Table.Caption>{part.exportName} props</Table.Caption>
                       <Table.Header>
                         <Table.Row>
@@ -233,7 +233,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
                           )}
                         </For>
                       </Table.Body>
-                    </Table.Root>
+                    </Table>
                   </Box>
                 )}
               </Show>
@@ -241,7 +241,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               <Show when={(part.dataAttributes?.length ?? 0) > 0}>
                 {() => (
                   <Box overflowX="auto" mt="md">
-                    <Table.Root decoration="zebra">
+                    <Table decoration="zebra">
                       <Table.Caption>
                         {part.exportName} state data attributes
                       </Table.Caption>
@@ -267,7 +267,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
                           )}
                         </For>
                       </Table.Body>
-                    </Table.Root>
+                    </Table>
                   </Box>
                 )}
               </Show>
@@ -275,7 +275,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               <Show when={(part.cssVars?.length ?? 0) > 0}>
                 {() => (
                   <Box overflowX="auto" mt="md">
-                    <Table.Root decoration="zebra">
+                    <Table decoration="zebra">
                       <Table.Caption>
                         {part.exportName} CSS variables
                       </Table.Caption>
@@ -303,7 +303,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
                           )}
                         </For>
                       </Table.Body>
-                    </Table.Root>
+                    </Table>
                   </Box>
                 )}
               </Show>
@@ -384,7 +384,7 @@ function A11yDocs({ a11y, specKey, ...rest }: A11yProps) {
       <Show when={a11y.keyboard.length > 0}>
         {() => (
           <Box overflowX="auto" mt="md">
-            <Table.Root decoration="zebra">
+            <Table decoration="zebra">
               <Table.Caption>{rest.name} keyboard interactions</Table.Caption>
               <Table.Header>
                 <Table.Row>
@@ -406,7 +406,7 @@ function A11yDocs({ a11y, specKey, ...rest }: A11yProps) {
                   )}
                 </For>
               </Table.Body>
-            </Table.Root>
+            </Table>
           </Box>
         )}
       </Show>

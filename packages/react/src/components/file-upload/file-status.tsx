@@ -14,6 +14,7 @@ import { useCerberusContext } from '../../context/cerberus'
 import { Avatar } from '../avatar/api'
 import { Field } from '../field/index'
 import { IconButton } from '../buttons/index'
+import { Text } from '../text/index'
 import { ProgressBar, type ProgressBarProps } from '../progress/index'
 
 /**
@@ -134,11 +135,9 @@ export function FileStatus(props: FileStatusProps) {
       />
 
       <VStack alignItems="flex-start" gap="0.12rem" w="full">
-        <small
-          className={css({ color: 'page.text.initial', textStyle: 'label-sm' })}
-        >
+        <Text as="small" color="page.text.initial" textStyle="label-sm">
           {file}
-        </small>
+        </Text>
         <ProgressBar
           id={props.id}
           label="File upload status"

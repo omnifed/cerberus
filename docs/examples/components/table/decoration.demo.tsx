@@ -10,7 +10,7 @@ export function DecorationDemo() {
     <HStack w="1/2">
       <For each={variants}>
         {(decoration) => (
-          <Table.Root
+          <Table
             key={decoration}
             caption={`Table using the ${decoration} decoration`}
             decoration={decoration}
@@ -32,7 +32,7 @@ export function DecorationDemo() {
                 )}
               </For>
             </Table.Body>
-          </Table.Root>
+          </Table>
         )}
       </For>
     </HStack>

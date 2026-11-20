@@ -26,9 +26,13 @@ Also accepts all props of `Pagination.Root`.
 
 An abstraction that renders a Group of the previous trigger, one button per page or ellipsis, and the next trigger
 
+Also accepts all props of `Group.Root` (group).
+
 ### Pagination.CompactList (abstraction)
 
 An abstraction that renders a Group of the previous trigger, "page of total" text, and the next trigger
+
+Also accepts all props of `Group.Root` (group).
 
 ### Pagination.PrevTriggerWithIcon (abstraction)
 

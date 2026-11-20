@@ -1382,6 +1382,21 @@ exports[`every part resolves to the same prop names as last time 1`] = `
     },
     "variants": [],
   },
+  "group": {
+    "parts": {
+      "Group.Root": [
+        "orientation",
+        "layout",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [
+      "orientation",
+      "layout",
+    ],
+  },
   "marquee": {
     "parts": {
       "Marquee.Content": [
@@ -2467,6 +2482,18 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "direction",
     ],
   },
+  "spinner": {
+    "parts": {
+      "Spinner.El": [
+        "size",
+      ],
+      "Spinner.Root": [
+        "asChild",
+        "css",
+      ],
+    },
+    "variants": [],
+  },
   "switch": {
     "parts": {
       "Switch.Control": [
@@ -2518,6 +2545,70 @@ exports[`every part resolves to the same prop names as last time 1`] = `
     },
     "variants": [
       "size",
+    ],
+  },
+  "table": {
+    "parts": {
+      "Table.Body": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Caption": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Cell": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.El": [
+        "caption",
+        "sticky",
+      ],
+      "Table.Footer": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Header": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.HeaderCol": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Root": [
+        "size",
+        "decoration",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Row": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Table": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "Table.Trigger": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [
+      "size",
+      "decoration",
     ],
   },
   "tabs": {
@@ -2588,6 +2679,29 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "palette",
       "indicatorPlacement",
     ],
+  },
+  "text": {
+    "parts": {
+      "Text.El": [
+        "as",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "strong",
+        "em",
+        "small",
+        "span",
+        "p",
+      ],
+      "Text.Root": [
+        "asChild",
+        "css",
+      ],
+    },
+    "variants": [],
   },
   "toggle": {
     "parts": {
@@ -3915,6 +4029,13 @@ exports[`no props lose their description compared with last time 1`] = `
     "unstyled",
     "css",
   ],
+  "Group.Root": [
+    "orientation",
+    "layout",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
   "Marquee.Content": [
     "asChild",
     "unstyled",
@@ -4851,6 +4972,13 @@ exports[`no props lose their description compared with last time 1`] = `
     "unstyled",
     "css",
   ],
+  "Spinner.El": [
+    "size",
+  ],
+  "Spinner.Root": [
+    "asChild",
+    "css",
+  ],
   "Switch.Control": [
     "asChild",
     "unstyled",
@@ -4892,6 +5020,62 @@ exports[`no props lose their description compared with last time 1`] = `
     "css",
   ],
   "Switch.Thumb": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Body": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Caption": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Cell": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.El": [
+    "caption",
+    "sticky",
+  ],
+  "Table.Footer": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Header": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.HeaderCol": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Root": [
+    "size",
+    "decoration",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Row": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Table": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "Table.Trigger": [
     "asChild",
     "unstyled",
     "css",
@@ -4952,6 +5136,13 @@ exports[`no props lose their description compared with last time 1`] = `
     "disabled",
     "asChild",
     "unstyled",
+    "css",
+  ],
+  "Text.El": [
+    "as",
+  ],
+  "Text.Root": [
+    "asChild",
     "css",
   ],
   "Toggle.Context": [],
