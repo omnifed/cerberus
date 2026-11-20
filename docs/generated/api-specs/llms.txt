@@ -35,6 +35,7 @@
 - [Switch](switch.md): The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.
 - [Table](table.md): The Table component displays tabular data with native table semantics: each part renders the matching HTML table element (`<table>`, `<caption>`, `<thead>`, `<th>`, `<tbody>`, `<tr>`, `<td>`, `<tfoot>`) inside a styled container.
 - [Tabs](tabs.md): The Tabs component is used to create a tabbed interface.
+- [Tag](tag.md): The Tag component is used to display a meta description: a filled, gradient or closable label.
 - [Text](text.md): The Text component renders typography with Panda style props such as `textStyle` and `color`.
 - [Toggle](toggle.md): The Toggle component is a two-state button that allows users to toggle between states via an action, such as pressed and not pressed.
 - [Tooltip](tooltip.md): The Tooltip component is a small pop-up box that appears when a user hovers over or focuses an element, providing additional information about it.

@@ -1,37 +1,32 @@
-import { type ComponentProps } from 'react'
+import type { ComponentProps } from 'react'
 import { closableTag, gradientTag, tag } from 'styled-system/recipes'
-import { cerberus } from '../../system'
-import { type IconButtonProps } from '../buttons/index'
+import { cerberus } from '../../system/index'
 
-export const defaultProps = {
-  'data-scope': 'tag',
-  'data-part': 'root',
-}
+/**
+ * This module contains the Tag component primitives. Each one is a `<span>`
+ * styled by its own plain (non-slot) recipe; all render the same
+ * `data-scope="tag"` / `data-part="root"` attributes.
+ * @module @cerberus/react/components/tag/primitives
+ */
 
-// FilledTag -----------------------------------------------------
+const defaultProps = { 'data-scope': 'tag', 'data-part': 'root' }
 
-export type FilledTagProps = ComponentProps<typeof FilledTag> & {
-  gradient?: never
-  onClick?: never
-}
-export const FilledTag = cerberus('span', tag, { defaultProps })
+// Root (filled) --------------------------------------------
 
-// GraidentTag ---------------------------------------------------
+export type TagRootProps = ComponentProps<typeof TagRoot>
+export const TagRoot = cerberus('span', tag, { defaultProps })
 
-export type GradientTagProps = ComponentProps<typeof GradientTag> & {
-  palette?: never
-  onClick?: never
-}
-export const GradientTag = cerberus('span', gradientTag, { defaultProps })
+// Gradient -------------------------------------------------
 
-// ClosableTag ---------------------------------------------------
+export type TagGradientProps = ComponentProps<typeof TagGradient>
+export const TagGradient = cerberus('span', gradientTag, { defaultProps })
 
-export type ClosableTagProps = Omit<
-  ComponentProps<typeof ClosableTagRoot>,
-  'onClick'
-> & {
-  pending?: boolean
-  gradient?: never
-  onClick?: IconButtonProps['onClick']
-}
-export const ClosableTagRoot = cerberus('span', closableTag, { defaultProps })
+// ClosableRoot ---------------------------------------------
+
+export type TagClosableRootProps = ComponentProps<typeof TagClosableRoot>
+export const TagClosableRoot = cerberus('span', closableTag, { defaultProps })
+
+// v1 names of the primitives
+export const FilledTag = TagRoot
+export const GradientTag = TagGradient
+export const ClosableTagRoot = TagClosableRoot
