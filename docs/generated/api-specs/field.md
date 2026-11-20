@@ -48,6 +48,8 @@ Also accepts all props of `Field.Input`.
 
 An abstraction that renders the status indicator with the Cerberus `invalid` icon when the field is invalid, else an end indicator with its `fallback`
 
+Also accepts all props of `Field.StatusIndicator`.
+
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `fallback` | `ReactNode` | No | — | The content of the end indicator rendered while the field is valid. |
