@@ -31,6 +31,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     memberSlots,
     elementParts,
     collectionGeneric,
+    forwardProps,
     docsSlug,
     primitives: parts,
     rootProvider,
@@ -91,16 +92,26 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
       primitivesCode += `const { ${factories} } = createSlotRecipeContext(${recipe})\n\n`
     }
 
+    /** `{ forwardProps: [...] }` for a member that forwards CSS-named props, else '' */
+    const forwardOptions = (member: string) => {
+      const props = forwardProps[member]
+      if (!props?.length) return ''
+      return `{ forwardProps: [${props.map((p) => `'${p}'`).join(', ')}] }`
+    }
+
     /** `root` provides the recipe; other parts consume it from context */
     const styled = (member: string, slot: string, isRoot: boolean) => {
       const arkPart = `${ark}.${member}`
+      const options = forwardOptions(member)
       if (isRoot && rootProvider) {
-        return recipe ? `withRootProvider(${arkPart})` : arkPart
+        if (!recipe) return arkPart
+        return `withRootProvider(${arkPart}${options ? `, ${options}` : ''})`
       }
-      if (!recipe) return `styled(${arkPart})`
+      if (!recipe)
+        return `styled(${arkPart}${options ? `, {}, ${options}` : ''})`
       // A part listed in `providers` renders outside Root and provides the recipe itself
       const provides = isRoot || isProvider(slot) || isProvider(member)
-      return `${provides ? 'withProvider' : 'withContext'}(${arkPart}, '${slot}')`
+      return `${provides ? 'withProvider' : 'withContext'}(${arkPart}, '${slot}'${options ? `, ${options}` : ''})`
     }
 
     const members = [
@@ -121,7 +132,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
                 ? styled(member, memberSlots[member], false)
                 : member.endsWith('Context')
                   ? `${ark}.${member}`
-                  : `styled(${ark}.${member})`,
+                  : `styled(${ark}.${member}${forwardOptions(member) ? `, {}, ${forwardOptions(member)}` : ''})`,
       })),
     ]
 

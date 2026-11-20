@@ -307,6 +307,63 @@ describe('generated API', () => {
     expect(api).toContain('docs/components/select-and-combobox')
   })
 
+  test('forwardProps keeps CSS-named props on the Ark part', () => {
+    const recipeless = generate({
+      key: 'pagination',
+      anatomy: { keys: () => ['root', 'item'] },
+      recipe: false,
+      arkMembers: ['RootProvider'],
+      forwardProps: { Root: ['page'] },
+      description: 'x',
+    })
+    expect(recipeless.primitives).toContain(
+      "export const PaginationRoot = styled(ArkPagination.Root, {}, { forwardProps: ['page'] })",
+    )
+    expect(recipeless.primitives).toContain(
+      'export const PaginationItem = styled(ArkPagination.Item)\n',
+    )
+    expect(recipeless.primitives).toContain(
+      'export const PaginationRootProvider = styled(ArkPagination.RootProvider)\n',
+    )
+
+    const slotted = generate({
+      key: 'pagination',
+      anatomy: { keys: () => ['root', 'item'] },
+      forwardProps: { Root: ['page'], Item: ['order'] },
+      description: 'x',
+    })
+    expect(slotted.primitives).toContain(
+      "withProvider(ArkPagination.Root, 'root', { forwardProps: ['page'] })",
+    )
+    expect(slotted.primitives).toContain(
+      "withContext(ArkPagination.Item, 'item', { forwardProps: ['order'] })",
+    )
+  })
+
+  test('forwardProps only names styled Ark members', () => {
+    const diagnostics = new Diagnostics()
+    loadManifest(
+      [
+        defineComponent({
+          key: 'pagination',
+          anatomy: { keys: () => ['root'] },
+          arkMembers: ['Context'],
+          forwardProps: { Trigger: ['page'], Context: ['page'], Root: [] },
+          description: 'x',
+        }),
+      ],
+      diagnostics,
+    )
+    const messages = diagnostics.items.map((d) => d.message)
+    expect(messages).toContain(
+      'forwardProps: `Trigger` is not an Ark part or arkMembers entry',
+    )
+    expect(messages).toContain(
+      'forwardProps: `Context` is a render prop and is not styled',
+    )
+    expect(messages).toContain('forwardProps.Root lists no props')
+  })
+
   test('a slotted component imports styled only for parts outside the anatomy', () => {
     const { primitives } = generate({
       key: 'switch',
