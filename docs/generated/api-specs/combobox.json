@@ -15,6 +15,7 @@
       "exportName": "Combobox.El",
       "kind": "abstraction",
       "description": "An abstraction that renders the label, the control with an optional start icon, the input, the clear and open triggers, and the positioned dropdown content",
+      "inherits": ["Combobox.Root"],
       "props": [
         {
           "name": "id",

@@ -22,6 +22,8 @@ Set on `Combobox` or `Combobox.Root`; they cascade to every part.
 
 An abstraction that renders the label, the control with an optional start icon, the input, the clear and open triggers, and the positioned dropdown content
 
+Also accepts all props of `Combobox.Root`.
+
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `id` | `string` | No | — | The unique identifier of the machine. |

@@ -184,11 +184,17 @@ function buildAbstraction(
     ...(abs.isDefaultExport ? [`${name}Props`] : []),
   ]
 
+  // `collectionGeneric` parts are a private `<Part>Styled` re-cast as a generic
+  // component, so their props type references `typeof <Part>Styled`
   const primitiveByIdentifier = new Map(
-    entry.primitives.map((part) => [
-      `${name}${capitalize(part)}`,
-      `${name}.${partExportKey(part)}`,
-    ]),
+    entry.primitives.flatMap((part) => {
+      const identifier = `${name}${capitalize(part)}`
+      const exportKey = `${name}.${partExportKey(part)}`
+      return [
+        [identifier, exportKey],
+        [`${identifier}Styled`, exportKey],
+      ]
+    }),
   )
 
   let props: PropSpec[] = []
