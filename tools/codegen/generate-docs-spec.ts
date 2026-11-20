@@ -44,7 +44,28 @@ export function generateDocSpecs(configs: ComponentConfig[]): {
 } {
   const ctx = createSpecBuilderContext()
   const entries = loadManifest(configs, ctx.diagnostics, ctx.resolver.modules)
+  ctx.entries = entries
   const specs = entries.map((entry) => buildComponentDocSpec(entry, ctx))
+
+  // A part of another component must be documented by that component's spec
+  const exportNamesBySpec = new Map(
+    specs.map((spec) => [
+      spec.key,
+      new Set(spec.parts.map((p) => p.exportName)),
+    ]),
+  )
+  for (const spec of specs) {
+    for (const part of spec.parts) {
+      for (const ext of part.inheritsExternal ?? []) {
+        if (!exportNamesBySpec.get(ext.spec)?.has(ext.part)) {
+          ctx.diagnostics.error(
+            spec.key,
+            `${part.exportName} inherits ${ext.part}, which the ${ext.spec} spec doesn't document`,
+          )
+        }
+      }
+    }
+  }
 
   for (const spec of specs) {
     const result = ComponentDocSpecSchema.safeParse(spec)

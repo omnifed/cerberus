@@ -70,6 +70,16 @@ export const PartSpecSchema = z.strictObject({
     .array(z.string().min(1))
     .optional()
     .describe('Parts (by `exportName`) whose props this part also accepts'),
+  inheritsExternal: z
+    .array(
+      z.object({
+        part: z.string().min(1).describe('`exportName` of the inherited part'),
+        spec: z.string().min(1).describe('Key of the spec that documents it'),
+        docsSlug: z.string().min(1).describe('Docs page slug of that spec'),
+      }),
+    )
+    .optional()
+    .describe('Parts of other components whose props this part also accepts'),
   dataAttributes: z
     .array(DataAttributeSpecSchema)
     .optional()

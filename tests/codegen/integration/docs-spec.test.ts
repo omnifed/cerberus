@@ -50,6 +50,7 @@ const { diagnostics } = ctx
 const entries = HAS_SPEC
   ? loadManifest(await loadConfigs(), diagnostics, ctx.resolver.modules)
   : []
+ctx.entries = entries
 const specs = new Map<string, ComponentDocSpec>(
   entries.map((e) => [e.key, buildComponentDocSpec(e, ctx)]),
 )

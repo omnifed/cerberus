@@ -17,6 +17,8 @@ import type {
 export type KeyboardMapping = z.infer<typeof KeyboardMappingSchema>
 export type PropSpec = z.infer<typeof PropSpecSchema>
 export type PartSpec = z.infer<typeof PartSpecSchema>
+/** A part of another component that a part inherits props from */
+export type PartSpecExternal = NonNullable<PartSpec['inheritsExternal']>[number]
 export type CssVarSpec = z.infer<typeof CssVarSpecSchema>
 export type DataAttributeSpec = z.infer<typeof DataAttributeSpecSchema>
 export type VariantSpec = z.infer<typeof VariantSpecSchema>

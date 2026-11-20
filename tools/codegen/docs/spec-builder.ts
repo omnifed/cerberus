@@ -8,6 +8,7 @@ import { PandaVariants, variantToProp } from './panda'
 import { mergePropLists } from './resolver/prop-utils'
 import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
 import type {
+  PartSpecExternal,
   A11ySpec,
   ComponentDocSpec,
   KeyboardMapping,
@@ -57,13 +58,48 @@ export interface SpecBuilderContext {
   resolver: TypeResolver
   variants: PandaVariants
   diagnostics: Diagnostics
+  /**
+   * Every component in this run, so an abstraction can inherit another component's
+   * part (`Pagination.ItemList` over `Group.Root`). Set it before building specs.
+   */
+  entries: ComponentEntry[]
 }
 
 export function createSpecBuilderContext(
   diagnostics = new Diagnostics(),
   resolver = new TypeResolver(),
 ): SpecBuilderContext {
-  return { resolver, variants: new PandaVariants(), diagnostics }
+  return { resolver, variants: new PandaVariants(), diagnostics, entries: [] }
+}
+
+/**
+ * Identifiers of an entry's styled members, mapped to their `exportName`: anatomy
+ * primitives (and the private `<Part>Styled` of `collectionGeneric` parts), element
+ * parts (`Field.StatusIndicator`) and styled Ark members (`Select.HiddenSelect`).
+ * Render props (`*Context`) render nothing to inherit from.
+ */
+function memberIdentifiers(entry: ComponentEntry): [string, string][] {
+  const { name } = entry
+  return [
+    ...entry.primitives.flatMap((part): [string, string][] => {
+      const identifier = `${name}${capitalize(part)}`
+      const exportKey = `${name}.${partExportKey(part)}`
+      return [
+        [identifier, exportKey],
+        [`${identifier}Styled`, exportKey],
+      ]
+    }),
+    ...Object.keys(entry.elementParts).map((slot): [string, string] => [
+      `${name}${capitalize(slot)}`,
+      `${name}.${capitalize(slot)}`,
+    ]),
+    ...entry.arkMembers
+      .filter((member) => !member.endsWith('Context'))
+      .flatMap((member): [string, string][] => [
+        [`${name}${member}`, `${name}.${member}`],
+        [`${name}${member}Styled`, `${name}.${member}`],
+      ]),
+  ]
 }
 
 /**
@@ -184,41 +220,38 @@ function buildAbstraction(
     ...(abs.isDefaultExport ? [`${name}Props`] : []),
   ]
 
-  // `collectionGeneric` parts are a private `<Part>Styled` re-cast as a generic
-  // component, so their props type references `typeof <Part>Styled`
-  // Element parts (`Field.StatusIndicator`) and styled Ark members
-  // (`Select.HiddenSelect`) can be inherited from too; render props can't
-  const primitiveByIdentifier = new Map([
-    ...entry.primitives.flatMap((part) => {
-      const identifier = `${name}${capitalize(part)}`
-      const exportKey = `${name}.${partExportKey(part)}`
-      return [
-        [identifier, exportKey],
-        [`${identifier}Styled`, exportKey],
-      ]
-    }),
-    ...Object.keys(entry.elementParts).map((slot) => [
-      `${name}${capitalize(slot)}`,
-      `${name}.${capitalize(slot)}`,
-    ]),
-    ...entry.arkMembers
-      .filter((member) => !member.endsWith('Context'))
-      .flatMap((member) => [
-        [`${name}${member}`, `${name}.${member}`],
-        [`${name}${member}Styled`, `${name}.${member}`],
-      ]),
-  ] as [string, string][])
+  const primitiveByIdentifier = new Map(memberIdentifiers(entry))
+  // Parts of other components, e.g. `ComponentProps<typeof GroupRoot>`
+  const externalByIdentifier = new Map(
+    ctx.entries
+      .filter((other) => other.key !== key)
+      .flatMap((other) =>
+        memberIdentifiers(other).map(
+          ([identifier, part]): [string, PartSpecExternal] => [
+            identifier,
+            { part, spec: other.key, docsSlug: other.docsSlug },
+          ],
+        ),
+      ),
+  )
 
   let props: PropSpec[] = []
   const inherits = new Set<string>()
+  const inheritsExternal = new Map<string, PartSpecExternal>()
   const match = candidates.find((c) => resolver.lookupLocal(file, c))
   if (match) {
     props = resolver.resolveExpr(match, file)
     reportUnresolved(ctx, key, subject, (ref) => {
       const target = /typeof\s+([A-Za-z0-9_$]+)/.exec(ref.expr)?.[1]
-      const inherited = target && primitiveByIdentifier.get(target)
-      if (!inherited) return false
-      inherits.add(inherited)
+      if (!target) return false
+      const inherited = primitiveByIdentifier.get(target)
+      if (inherited) {
+        inherits.add(inherited)
+        return true
+      }
+      const external = externalByIdentifier.get(target)
+      if (!external) return false
+      inheritsExternal.set(external.part, external)
       return true
     })
   } else {
@@ -234,6 +267,9 @@ function buildAbstraction(
     kind: 'abstraction',
     description: abs.description,
     ...(inherits.size > 0 ? { inherits: [...inherits] } : {}),
+    ...(inheritsExternal.size > 0
+      ? { inheritsExternal: [...inheritsExternal.values()] }
+      : {}),
     props,
   }
 }
@@ -327,6 +363,7 @@ function applyMachineDefaults(
  */
 function partAttrs(entry: ComponentEntry, part: string) {
   const override = entry.partOverrides[part]
+  if (override?.dataScope === false) return {}
   const anatomy = entry.anatomy as {
     build?: () => Record<string, { attrs?: Record<string, string> }>
   }

@@ -119,12 +119,6 @@ export function loadManifest(
     if (config.ark !== undefined && source !== 'ark') {
       diagnostics.error(key, `ark is set, but this is not an Ark component`)
     }
-    if (config.recipe === false && source !== 'ark') {
-      diagnostics.error(
-        key,
-        `recipe: false is only for Ark components; Cerberus-only ones write their own primitives`,
-      )
-    }
 
     const parts = anatomyParts(config.anatomy)
     if (parts.length === 0) diagnostics.error(key, 'Anatomy has no parts')

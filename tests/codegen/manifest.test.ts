@@ -105,6 +105,24 @@ describe('loadManifest', () => {
     expect(messages).toContain('nope.tsx does not exist')
   })
 
+  test('a Cerberus-only component can have no recipe', () => {
+    const diagnostics = new Diagnostics()
+    const [admonition] = loadManifest(
+      [
+        defineComponent({
+          key: 'admonition',
+          anatomy: anatomy(['root']),
+          recipe: false,
+          description: 'x',
+        }),
+      ],
+      diagnostics,
+    )
+    expect(admonition.source).toBe('cerberus')
+    expect(admonition.recipe).toBeNull()
+    expect(diagnostics.items).toEqual([])
+  })
+
   test('`ark` decouples the folder key from the Ark/Zag key', () => {
     const diagnostics = new Diagnostics()
     const [radio] = loadManifest(
@@ -129,12 +147,11 @@ describe('loadManifest', () => {
     expect(diagnostics.items).toEqual([])
   })
 
-  test('rejects members, exports, overrides and recipe: false it cannot honor', () => {
+  test('rejects members, exports and overrides it cannot honor', () => {
     const diagnostics = new Diagnostics()
     const base = { anatomy: anatomy(['root', 'group']), description: 'x' }
     loadManifest(
       [
-        defineComponent({ ...base, key: 'admonition', recipe: false }),
         defineComponent({
           ...base,
           key: 'accordion',
@@ -150,7 +167,6 @@ describe('loadManifest', () => {
       diagnostics,
     )
     expect(diagnostics.items.map((d) => d.message)).toEqual([
-      'recipe: false is only for Ark components; Cerberus-only ones write their own primitives',
       'arkMembers: `item-group` must be a PascalCase member of the Ark namespace (Ark components only)',
       'arkMembers: `Root` is already an anatomy part',
       'providers: `root` must be a non-root anatomy part, or an arkMembers `<Part>Provider` whose part is in the anatomy',

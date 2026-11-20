@@ -77,11 +77,14 @@ function attributeValue(attr: DataAttributeSpec): string {
 function renderPart(part: PartSpec): string {
   const lines = [`### ${part.exportName} (${part.kind})`, '', part.description]
 
-  if (part.inherits?.length) {
-    lines.push(
-      '',
-      `Also accepts all props of ${part.inherits.map(code).join(', ')}.`,
-    )
+  const inherited = [
+    ...(part.inherits ?? []).map(code),
+    ...(part.inheritsExternal ?? []).map(
+      (ext) => `${code(ext.part)} (${ext.spec})`,
+    ),
+  ]
+  if (inherited.length) {
+    lines.push('', `Also accepts all props of ${inherited.join(', ')}.`)
   }
   if (part.dataScope && part.dataPart) {
     lines.push(
