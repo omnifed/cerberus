@@ -13,7 +13,7 @@ import {
 } from 'react'
 import { css } from 'styled-system/css'
 import { HStack, VStack } from 'styled-system/jsx'
-import { Button } from '../components/button/index'
+import { Button } from '../components/buttons/index'
 import { Show } from '../components/show/index'
 import { Avatar } from '../components/avatar/api'
 import {

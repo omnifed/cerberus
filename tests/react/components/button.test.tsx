@@ -1,6 +1,6 @@
 import { describeDXContract } from '@/test-utils/dx-harness'
 import { Corn } from '@carbon/icons-react'
-import { Button } from '@cerberus-design/react/button'
+import { Button } from '@cerberus-design/react/buttons'
 
 describeDXContract({
   name: 'Button',

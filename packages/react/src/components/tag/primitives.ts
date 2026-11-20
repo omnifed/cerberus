@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react'
 import { closableTag, gradientTag, tag } from 'styled-system/recipes'
 import { cerberus } from '../../system'
-import { type IconButtonProps } from '../icon-button'
+import { type IconButtonProps } from '../buttons/index'
 
 export const defaultProps = {
   'data-scope': 'tag',

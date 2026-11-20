@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
 import { createAbstraction } from '../../internal/factory'
 import { splitProps } from '../../utils/index'
-import { IconButtonRoot, type IconButtonRootProps } from '../button/primitives'
+import { IconButtonRoot, type IconButtonRootProps } from '../buttons/primitives'
 import { Show } from '../show/index'
 import { MatchAvatar } from './match-avatar'
 import {
@@ -58,7 +58,9 @@ export const AdmonitionEl = createAbstraction(
     return (
       <parts.root {...rootProps}>
         <parts.indicator asChild={!localProps.icon}>
-          {localProps.icon ?? <MatchAvatar palette={rootProps.palette ?? 'page'} />}
+          {localProps.icon ?? (
+            <MatchAvatar palette={rootProps.palette ?? 'page'} />
+          )}
         </parts.indicator>
 
         <parts.content>

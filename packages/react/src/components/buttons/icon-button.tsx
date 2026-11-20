@@ -25,12 +25,26 @@ type ClipboardIconButtonProps = {
 export type IconButtonProps = IconButtonRootProps &
   (NonClipboardIconButtonProps | ClipboardIconButtonProps)
 /**
- * A component that allows the user to perform actions using an icon
- * @see https://cerberus.digitalu.design/react/icon-button
+ * A square or circular button that renders only an icon. Pass an `ariaLabel`
+ * (or `clipboard` for a clipboard trigger, labelled "Copy to clipboard").
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/icon-button)
+ * @example
+ * ```tsx
+ * <IconButton ariaLabel="Add item"><Add /></IconButton>
+ * ```
  */
-export function IconButton(props: IconButtonProps) {
+export function ButtonIconButton(props: IconButtonProps) {
   const { ariaLabel, clipboard, ...rootProps } = props
   return (
-    <IconButtonRoot {...rootProps} {...(!clipboard && { 'aria-label': ariaLabel })} />
+    <IconButtonRoot
+      {...rootProps}
+      {...(!clipboard && { 'aria-label': ariaLabel })}
+    />
   )
 }
+
+/**
+ * An icon-only button; an alias of `Button.IconButton`.
+ * @see {@link ButtonIconButton}
+ */
+export const IconButton = ButtonIconButton

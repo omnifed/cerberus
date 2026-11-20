@@ -2,8 +2,8 @@ import { ark } from '@ark-ui/react/factory'
 import { css, cx } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
 import { CerberusProps } from '../../system/types'
-import { Button } from '../button/index'
-import type { ButtonProps } from '../button/button'
+import { Button } from '../buttons/index'
+import type { ButtonProps } from '../buttons/button'
 
 /**
  * This module provides the trigger item for the cta modal.

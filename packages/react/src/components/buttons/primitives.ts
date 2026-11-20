@@ -24,9 +24,15 @@ export const ButtonGroup = cerberus(
 
 // IconButton ---------------------------------------------------
 
-export type IconButtonRootProps = ComponentProps<typeof IconButtonRoot>
-export const IconButtonRoot = cerberus(
-  'div',
+export type ButtonIconButtonRootProps = ComponentProps<
+  typeof ButtonIconButtonRoot
+>
+export const ButtonIconButtonRoot = cerberus(
+  'button',
   iconButton,
-  getDefaultProps('icon-btn'),
+  getDefaultProps('icon-button'),
 )
+
+// v1 names of the icon button primitive
+export type IconButtonRootProps = ButtonIconButtonRootProps
+export const IconButtonRoot = ButtonIconButtonRoot

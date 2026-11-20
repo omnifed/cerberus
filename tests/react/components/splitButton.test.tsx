@@ -1,7 +1,12 @@
 import { describe, test, expect } from 'bun:test'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { CerberusProvider, Menu, SplitButton } from '@cerberus-design/react'
+import {
+  Button,
+  CerberusProvider,
+  Menu,
+  SplitButton,
+} from '@cerberus-design/react'
 import { makeConfig } from '@/utils'
 
 describe('SplitButton', () => {
@@ -54,6 +59,17 @@ describe('SplitButton', () => {
       </CerberusProvider>,
     )
     expect(screen.getByRole('button', { name: /action/i })).toBeDisabled()
+    // The action is a <Button>, so Button.Icon shows the pending Spinner
+    expect(
+      document.querySelector(
+        '[data-scope="button"][data-part="button-spinner"]',
+      ),
+    ).not.toBeNull()
+    expect(screen.getByRole('button', { name: /more options/i })).toBeDisabled()
+  })
+
+  test('should alias Button.SplitButton', () => {
+    expect(SplitButton).toBe(Button.SplitButton)
   })
 
   test('should accept css prop from factory', () => {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCerberusContext } from '../../context/cerberus'
-import { IconButton } from '../icon-button/index'
+import { IconButton } from '../buttons/index'
 import { DialogCloseTrigger, type DialogCloseTriggerProps } from './primitives'
 
 export type DialogCloseIconTriggerProps = DialogCloseTriggerProps
