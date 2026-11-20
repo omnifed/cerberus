@@ -2,7 +2,7 @@
 
 import { Box } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { IconButton, type IconButtonProps } from '../icon-button'
+import { IconButton, type IconButtonProps } from '../buttons/index'
 import { Show } from '../show/show'
 import { ClosableTagProps, ClosableTagRoot } from './primitives'
 

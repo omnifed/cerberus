@@ -1,6 +1,6 @@
 {
   "name": "Button",
-  "key": "button",
+  "key": "buttons",
   "description": "The Button component provides a visual indicator for a user to make an\naction of sorts, commonly used in forms, menus, and popovers.\n\nFor a customizable Button, use the Button object to access the\nindividual primitives of the Button component or style props.\n\n**NOTE**: This API is _slotless_ and is a single rendered layer abstraction.",
   "variants": [
     {
@@ -82,11 +82,59 @@
       ]
     },
     {
+      "name": "IconButton",
+      "exportName": "Button.IconButton",
+      "kind": "abstraction",
+      "description": "An icon-only button styled by the `iconButton` recipe, labelled with `ariaLabel` (or \"Copy to clipboard\" with `clipboard`)",
+      "inherits": ["Button.IconButtonRoot"],
+      "props": [
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": false,
+          "description": "The aria-label attribute for the icon button."
+        },
+        {
+          "name": "clipboard",
+          "type": "true",
+          "required": false,
+          "description": "If true, the icon button is used as a clipboard trigger. In this case, the aria-label defaults to \"Copy to clipboard\"."
+        }
+      ]
+    },
+    {
+      "name": "SplitButton",
+      "exportName": "Button.SplitButton",
+      "kind": "abstraction",
+      "description": "A primary action `<Button>` attached to an IconButton that opens a Menu of other actions; `pending` disables the action and shows a Spinner",
+      "inherits": ["Button.Root"],
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
+        },
+        {
+          "name": "actionText",
+          "type": "string",
+          "required": true,
+          "description": "The text for the primary action button."
+        },
+        {
+          "name": "size",
+          "type": "IconButtonProps['size']",
+          "required": false,
+          "description": "The size of the SplitButton."
+        }
+      ]
+    },
+    {
       "name": "Root",
       "exportName": "Button.Root",
       "kind": "primitive",
       "description": "The root container of the Button component.",
-      "dataScope": "button",
+      "dataScope": "buttons",
       "dataPart": "root",
       "props": [
         {
@@ -161,6 +209,65 @@
           "required": false,
           "defaultValue": "'sharp'",
           "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "IconButtonRoot",
+      "exportName": "Button.IconButtonRoot",
+      "kind": "primitive",
+      "description": "The icon-button-root primitive part of the Button component.",
+      "dataScope": "icon-button",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'secondaryAction' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "usage",
+          "type": "'ghost' | 'filled' | 'outlined' | 'outlined-subtle'",
+          "required": false,
+          "defaultValue": "'ghost'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "shape",
+          "type": "'square' | 'circle'",
+          "required": false,
+          "defaultValue": "'circle'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
         },
         {
           "name": "asChild",

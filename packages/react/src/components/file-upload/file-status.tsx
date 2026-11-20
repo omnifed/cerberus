@@ -13,7 +13,7 @@ import { fileStatus, type FileStatusVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import { Avatar } from '../avatar/api'
 import { Field } from '../field/index'
-import { IconButton } from '../icon-button/index'
+import { IconButton } from '../buttons/index'
 import { ProgressBar, type ProgressBarProps } from '../progress/index'
 
 /**

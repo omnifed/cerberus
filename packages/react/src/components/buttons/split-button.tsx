@@ -1,13 +1,13 @@
 'use client'
 
+import { useMemo } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
 import { splitProps } from '../../utils'
-import { Button } from '../button/index'
-import { IconButton, IconButtonProps } from '../icon-button/index'
 import { Menu } from '../menu/index'
-import type { CerberusPrimitiveProps } from '../../system/types'
-import { useMemo } from 'react'
-import type { ButtonProps } from '../button/button'
+import { ButtonEl, type ButtonProps } from './button'
+import { ButtonIcon } from './icon'
+import { IconButton, type IconButtonProps } from './icon-button'
+import { ButtonGroup } from './primitives'
 
 /**
  * This module provides an abstraction for a SplitButton component.
@@ -28,9 +28,11 @@ export interface SplitButtonProps extends Omit<ButtonProps, 'size'> {
 /**
  * A SplitButton component that combines a primary action button with a
  * dropdown menu for additional actions.
- * @definition [Cerberus docs](https://cerberus.digitalu.designdocs/components/split-button)
+ * The action button is a `<Button>`, so `pending` disables it and swaps its
+ * `Button.Icon` for a Spinner.
+ * @definition [Cerberus docs](https://cerberus.digitalu.design/docs/components/split-button)
  */
-export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
+export function ButtonSplitButton(props: SplitButtonProps) {
   const [elProps, { usage = 'filled', actionText }, actionProps] = splitProps(
     props,
     ['children'],
@@ -44,12 +46,19 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
     return actionProps.shape === 'rounded' ? 'circle' : 'square'
   }, [actionProps.shape])
 
+  // The group recipe only has `sharp`, `rounded` and `default` (the other
+  // button shapes)
+  const groupShape =
+    actionProps.shape === 'rounded' || actionProps.shape === 'sharp'
+      ? actionProps.shape
+      : 'default'
+
   return (
-    <Button.Group layout="attached" shape={actionProps.shape}>
-      <Button.Root {...actionProps} size={props.size} usage={usage}>
-        <Button.Icon />
+    <ButtonGroup layout="attached" shape={groupShape}>
+      <ButtonEl {...actionProps} size={props.size} usage={usage}>
+        <ButtonIcon />
         {actionText}
-      </Button.Root>
+      </ButtonEl>
 
       <Menu>
         <Menu.Trigger asChild>
@@ -67,6 +76,13 @@ export function SplitButton(props: CerberusPrimitiveProps<SplitButtonProps>) {
 
         <Menu.ContentGroup>{elProps.children}</Menu.ContentGroup>
       </Menu>
-    </Button.Group>
+    </ButtonGroup>
   )
 }
+
+/**
+ * A primary action button with a dropdown menu of other actions; an alias of
+ * `Button.SplitButton`.
+ * @see {@link ButtonSplitButton}
+ */
+export const SplitButton = ButtonSplitButton

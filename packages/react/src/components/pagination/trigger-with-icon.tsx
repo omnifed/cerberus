@@ -3,7 +3,7 @@
 import { iconButton, type IconButtonVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
 import type { GroupProps } from '../group/index'
-import { IconButtonRoot } from '../icon-button/index'
+import { IconButtonRoot } from '../buttons/index'
 import {
   PaginationNextTrigger,
   PaginationPrevTrigger,

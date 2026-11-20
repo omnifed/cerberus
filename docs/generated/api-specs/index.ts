@@ -3,7 +3,7 @@ import type { ComponentDocSpec } from '../../../tools/codegen/docs/types'
 import accordionSpec from './accordion.json'
 import admonitionSpec from './admonition.json'
 import avatarSpec from './avatar.json'
-import buttonSpec from './button.json'
+import buttonsSpec from './buttons.json'
 import carouselSpec from './carousel.json'
 import checkboxSpec from './checkbox.json'
 import circular_progressSpec from './circular-progress.json'
@@ -35,7 +35,7 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   accordion: accordionSpec as ComponentDocSpec,
   admonition: admonitionSpec as ComponentDocSpec,
   avatar: avatarSpec as ComponentDocSpec,
-  button: buttonSpec as ComponentDocSpec,
+  buttons: buttonsSpec as ComponentDocSpec,
   carousel: carouselSpec as ComponentDocSpec,
   checkbox: checkboxSpec as ComponentDocSpec,
   'circular-progress': circular_progressSpec as ComponentDocSpec,

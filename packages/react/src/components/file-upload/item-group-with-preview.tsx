@@ -3,7 +3,7 @@
 import { useFileUploadContext } from '@ark-ui/react/file-upload'
 import { useCerberusContext } from '../../context/cerberus'
 import { extractParts } from '../../internal/extract-parts'
-import { IconButton } from '../icon-button/index'
+import { IconButton } from '../buttons/index'
 import {
   FileUploadItem,
   FileUploadItemDeleteTrigger,

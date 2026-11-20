@@ -9,12 +9,17 @@ import { ButtonProvider } from './context'
 export type { ButtonContextValue } from './context'
 import { ButtonEl } from './button'
 export type { ButtonProps } from './button'
-import { ButtonRoot, ButtonGroup } from './primitives'
+import { ButtonIconButton } from './icon-button'
+export type { IconButtonProps } from './icon-button'
+import { ButtonSplitButton } from './split-button'
+export type { SplitButtonProps } from './split-button'
+import { ButtonRoot, ButtonGroup, ButtonIconButtonRoot } from './primitives'
 
 export type {
   ButtonRootProps,
-  IconButtonRootProps,
   ButtonGroupProps,
+  ButtonIconButtonRootProps,
+  IconButtonRootProps,
 } from './primitives'
 
 /**
@@ -36,9 +41,12 @@ export type {
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the Button component. |
  * | `Group` | Primitive | The group element of the Button component. |
+ * | `IconButtonRoot` | Primitive | The iconButtonRoot element of the Button component. |
  * | `Icon` | Abstraction | An abstraction displaying an icon that is replaced by a Spinner when `pending` is set to true |
  * | `Provider` | Abstraction | The Button context provider |
  * | `El` | Abstraction | An abstraction for using the Provider and Button.Root together |
+ * | `IconButton` | Abstraction | An icon-only button styled by the `iconButton` recipe, labelled with `ariaLabel` (or "Copy to clipboard" with `clipboard`) |
+ * | `SplitButton` | Abstraction | A primary action `<Button>` attached to an IconButton that opens a Menu of other actions; `pending` disables the action and shows a Spinner |
  *
  * @example
  * ```tsx
@@ -55,7 +63,14 @@ export type {
 export const Button = Object.assign(ButtonEl, {
   Root: ButtonRoot,
   Group: ButtonGroup,
+  IconButtonRoot: ButtonIconButtonRoot,
   Icon: ButtonIcon,
   Provider: ButtonProvider,
   El: ButtonEl,
+  IconButton: ButtonIconButton,
+  SplitButton: ButtonSplitButton,
 })
+
+export { IconButton } from './icon-button'
+export { SplitButton } from './split-button'
+export { IconButtonRoot } from './primitives'

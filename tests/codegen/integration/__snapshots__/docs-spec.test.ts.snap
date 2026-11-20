@@ -148,7 +148,7 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "shape",
     ],
   },
-  "button": {
+  "buttons": {
     "parts": {
       "Button.El": [
         "pending",
@@ -164,6 +164,19 @@ exports[`every part resolves to the same prop names as last time 1`] = `
         "children",
         "ref",
       ],
+      "Button.IconButton": [
+        "ariaLabel",
+        "clipboard",
+      ],
+      "Button.IconButtonRoot": [
+        "palette",
+        "usage",
+        "shape",
+        "size",
+        "asChild",
+        "unstyled",
+        "css",
+      ],
       "Button.Provider": [
         "pending",
       ],
@@ -175,6 +188,11 @@ exports[`every part resolves to the same prop names as last time 1`] = `
         "asChild",
         "unstyled",
         "css",
+      ],
+      "Button.SplitButton": [
+        "pending",
+        "actionText",
+        "size",
       ],
     },
     "variants": [
@@ -2808,6 +2826,19 @@ exports[`no props lose their description compared with last time 1`] = `
     "children",
     "ref",
   ],
+  "Button.IconButton": [
+    "ariaLabel",
+    "clipboard",
+  ],
+  "Button.IconButtonRoot": [
+    "palette",
+    "usage",
+    "shape",
+    "size",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
   "Button.Provider": [
     "pending",
   ],
@@ -2819,6 +2850,11 @@ exports[`no props lose their description compared with last time 1`] = `
     "asChild",
     "unstyled",
     "css",
+  ],
+  "Button.SplitButton": [
+    "pending",
+    "actionText",
+    "size",
   ],
   "Carousel.AutoplayIndicator": [
     "asChild",

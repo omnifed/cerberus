@@ -3,8 +3,8 @@
 import { css } from 'styled-system/css'
 import { useCerberusContext } from '../../context/cerberus'
 import { extractParts } from '../../internal/extract-parts'
-import { Button } from '../button/index'
-import { IconButton } from '../icon-button/index'
+import { Button } from '../buttons/index'
+import { IconButton } from '../buttons/index'
 import {
   DatePickerNextTrigger,
   DatePickerPrevTrigger,

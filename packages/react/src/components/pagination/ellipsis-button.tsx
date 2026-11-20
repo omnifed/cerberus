@@ -1,7 +1,7 @@
 'use client'
 
 import { button, type ButtonVariantProps } from 'styled-system/recipes'
-import { Button } from '../button/index'
+import { Button } from '../buttons/index'
 import { PaginationEllipsis, type PaginationEllipsisProps } from './primitives'
 
 export type PaginationEllipsisButtonProps = Omit<
