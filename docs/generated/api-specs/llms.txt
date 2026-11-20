@@ -18,6 +18,7 @@
 - [Dialog](dialog.md): The Dialog component is a modal window that appears on top of the main content.
 - [Field](field.md): The Field component labels a form control and connects it to its helper text and error text, wiring the ids and ARIA attributes for you.
 - [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
+- [FileUpload](file-upload.md): The FileUpload component lets users select files with a dropzone (click, `Enter`/`Space` or drag and drop) and lists the accepted files.
 - [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
 - [Menu](menu.md): The Menu component displays a list of actions or options that the user can choose from, opened from a trigger such as a button.
 - [NumberInput](number-input.md): The NumberInput component is used to manage numeric input fields.

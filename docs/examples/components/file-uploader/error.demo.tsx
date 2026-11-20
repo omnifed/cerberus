@@ -3,7 +3,7 @@
 import {
   createErrorMessages,
   FileUploader,
-  FileUploadParts,
+  FileUpload,
   Text,
   type UseFileUploadContext,
 } from '@cerberus-design/react'
@@ -29,20 +29,20 @@ export function ErrorHandlingDemo() {
       <div data-status="rejected">
         <Text textStyle="heading-md">❌ Rejected Files</Text>
 
-        <FileUploadParts.ItemGroup>
-          <FileUploadParts.Context>
+        <FileUpload.ItemGroup>
+          <FileUpload.Context>
             {({ rejectedFiles }: UseFileUploadContext) =>
               rejectedFiles.length === 0 ? (
                 <Text>No rejected files</Text>
               ) : (
                 rejectedFiles.map((fileRejection) => (
-                  <FileUploadParts.Item
+                  <FileUpload.Item
                     key={fileRejection.file.name}
                     file={fileRejection.file}
                     data-status="rejected"
                   >
-                    <FileUploadParts.ItemName />
-                    <FileUploadParts.ItemSizeText />
+                    <FileUpload.ItemName />
+                    <FileUpload.ItemSizeText />
                     <div>
                       <Text as="strong">Validation Errors:</Text>
                       {fileRejection.errors.map((error, index) => (
@@ -51,12 +51,12 @@ export function ErrorHandlingDemo() {
                         </div>
                       ))}
                     </div>
-                  </FileUploadParts.Item>
+                  </FileUpload.Item>
                 ))
               )
             }
-          </FileUploadParts.Context>
-        </FileUploadParts.ItemGroup>
+          </FileUpload.Context>
+        </FileUpload.ItemGroup>
       </div>
     </FileUploader>
   )
