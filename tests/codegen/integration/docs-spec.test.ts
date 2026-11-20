@@ -79,6 +79,8 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     expect(part('accordion', 'Accordion.ItemGroup').inherits).toEqual([
       'Accordion.Item',
     ])
+    // A collectionGeneric Root inherits through its private `ComboboxRootStyled`
+    expect(part('combobox', 'Combobox.El').inherits).toEqual(['Combobox.Root'])
     // Button.Icon renders no Cerberus primitive, so it accepts no `css`/`unstyled`
     expect(part('button', 'Button.Icon').props.map((p) => p.name)).toEqual([
       'children',
