@@ -126,11 +126,7 @@ describe('loadManifest', () => {
       source: 'ark',
     })
     expect(radio.arkEntry).toEndWith('.d.ts')
-    // The v1 radio folder still has its hand-written primitives and parts
-    expect(diagnostics.items.map((d) => d.message)).toEqual([
-      "src/components/radio/primitives.tsx is a v1 file; move what's still needed into an abstraction and delete it",
-      "src/components/radio/parts.ts is a v1 file; move what's still needed into an abstraction and delete it",
-    ])
+    expect(diagnostics.items).toEqual([])
   })
 
   test('rejects members, exports, overrides and recipe: false it cannot honor', () => {
@@ -280,6 +276,35 @@ describe('generated API', () => {
       "withContext(ark.div, 'header', { defaultProps: { 'data-scope': 'popover', 'data-part': 'header' } })",
     )
     expect(api).toContain('  Header: PopoverHeader,')
+  })
+
+  test('collectionGeneric restores the collection item generic on Root and RootProvider', () => {
+    const { primitives, api } = generate({
+      key: 'combobox',
+      anatomy: { keys: () => ['root', 'input'] },
+      arkMembers: ['RootProvider'],
+      collectionGeneric: ['Root', 'RootProvider'],
+      docsSlug: 'select-and-combobox',
+      description: 'x',
+    })
+    expect(primitives).toContain(
+      'type ComboboxRootBaseProps as ArkComboboxRootBaseProps',
+    )
+    expect(primitives).toContain(
+      "import type { CollectionItem } from '@ark-ui/react/collection'",
+    )
+    expect(primitives).toContain(
+      "const ComboboxRootStyled = withProvider(ArkCombobox.Root, 'root')",
+    )
+    expect(primitives).toContain(
+      'export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<ComponentProps<typeof ComboboxRootStyled>, keyof ArkComboboxRootBaseProps<CollectionItem>> & ArkComboboxRootBaseProps<T>',
+    )
+    expect(primitives).toContain(
+      'export const ComboboxRoot = ComboboxRootStyled as unknown as <T extends CollectionItem>(props: ComboboxRootProps<T>) => ReactElement',
+    )
+    expect(primitives).toContain('ComboboxRootProviderStyled')
+    expect(primitives).not.toContain('ComboboxInputStyled')
+    expect(api).toContain('docs/components/select-and-combobox')
   })
 
   test('a slotted component imports styled only for parts outside the anatomy', () => {

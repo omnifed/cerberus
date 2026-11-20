@@ -83,6 +83,14 @@ export type ComponentConfig = {
    * `withContext(ark.div, 'header')`.
    */
   elementParts?: Record<string, string>
+  /**
+   * Members whose Ark component is generic over the collection item type
+   * (`Combobox.Root`, `RootProvider`…). `withProvider` erases that generic; these get
+   * a generic signature back: `<T extends CollectionItem>(props: XRootProps<T>)`.
+   */
+  collectionGeneric?: string[]
+  /** Docs page slug when it isn't the key, e.g. `progress` for CircularProgress */
+  docsSlug?: string
   abstractions?: AbstractionConfig[]
   /** Public types re-exported from `primitives.ts` (Cerberus-only components) */
   types?: string[]

@@ -30,6 +30,8 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     providers,
     memberSlots,
     elementParts,
+    collectionGeneric,
+    docsSlug,
     primitives: parts,
     rootProvider,
     description,
@@ -44,7 +46,15 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
   if (isArkUI) {
     const ark = `Ark${arkName}`
     let primitivesCode = `${GENERATED_HEADER}'use client'\n\n`
-    primitivesCode += `import { ${arkName} as ${ark} } from '@ark-ui/react/${arkKey}'\n`
+    // Ark's base props for the generic members, aliased to avoid our own names
+    const genericBases = collectionGeneric.map(
+      (m) => `type ${arkName}${m}BaseProps as Ark${arkName}${m}BaseProps`,
+    )
+    primitivesCode += `import { ${[`${arkName} as ${ark}`, ...genericBases].join(', ')} } from '@ark-ui/react/${arkKey}'\n`
+    if (collectionGeneric.length > 0) {
+      primitivesCode += `import type { CollectionItem } from '@ark-ui/react/collection'\n`
+      primitivesCode += `import type { ReactElement } from 'react'\n`
+    }
     if (Object.keys(elementParts).length > 0) {
       primitivesCode += `import { ark } from '@ark-ui/react/factory'\n`
     }
@@ -127,6 +137,16 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
 
     for (const { exportKey, code } of members) {
       const partName = `${name}${exportKey}`
+      if (collectionGeneric.includes(exportKey)) {
+        // withProvider erases Ark's `<T extends CollectionItem>`: swap the machine props
+        // for the generic ones and restore the generic call signature
+        const base = `Ark${arkName}${exportKey}BaseProps`
+        primitivesCode += `// ${partName} -----------------------------------------------------\n\n`
+        primitivesCode += `const ${partName}Styled = ${code}\n`
+        primitivesCode += `export type ${partName}Props<T extends CollectionItem = CollectionItem> = Omit<ComponentProps<typeof ${partName}Styled>, keyof ${base}<CollectionItem>> & ${base}<T>\n`
+        primitivesCode += `export const ${partName} = ${partName}Styled as unknown as <T extends CollectionItem>(props: ${partName}Props<T>) => ReactElement\n\n`
+        continue
+      }
       primitivesCode += `// ${partName} -----------------------------------------------------\n\n`
       primitivesCode += `export type ${partName}Props = ComponentProps<typeof ${partName}>\n`
       primitivesCode += `export const ${partName} = ${code}\n\n`
@@ -190,7 +210,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
   }
 
   // --- Generate Rust-Style JSDoc (Aligned with Pure JSX Part Overrides) ---
-  const docUrl = `${REF_URL}/${key}`
+  const docUrl = `${REF_URL}/${docsSlug}`
   const formattedDesc = description
     .trim()
     .split('\n')
