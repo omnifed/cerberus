@@ -10,16 +10,19 @@ import circular_progressSpec from './circular-progress.json'
 import clipboardSpec from './clipboard.json'
 import collapsibleSpec from './collapsible.json'
 import comboboxSpec from './combobox.json'
+import date_pickerSpec from './date-picker.json'
 import dialogSpec from './dialog.json'
 import fieldsetSpec from './fieldset.json'
 import marqueeSpec from './marquee.json'
 import menuSpec from './menu.json'
 import number_inputSpec from './number-input.json'
+import paginationSpec from './pagination.json'
 import pin_inputSpec from './pin-input.json'
 import popoverSpec from './popover.json'
 import progressSpec from './progress.json'
 import radioSpec from './radio.json'
 import ratingSpec from './rating.json'
+import selectSpec from './select.json'
 import sliderSpec from './slider.json'
 import switchSpec from './switch.json'
 import tabsSpec from './tabs.json'
@@ -37,16 +40,19 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   clipboard: clipboardSpec as ComponentDocSpec,
   collapsible: collapsibleSpec as ComponentDocSpec,
   combobox: comboboxSpec as ComponentDocSpec,
+  'date-picker': date_pickerSpec as ComponentDocSpec,
   dialog: dialogSpec as ComponentDocSpec,
   fieldset: fieldsetSpec as ComponentDocSpec,
   marquee: marqueeSpec as ComponentDocSpec,
   menu: menuSpec as ComponentDocSpec,
   'number-input': number_inputSpec as ComponentDocSpec,
+  pagination: paginationSpec as ComponentDocSpec,
   'pin-input': pin_inputSpec as ComponentDocSpec,
   popover: popoverSpec as ComponentDocSpec,
   progress: progressSpec as ComponentDocSpec,
   radio: radioSpec as ComponentDocSpec,
   rating: ratingSpec as ComponentDocSpec,
+  select: selectSpec as ComponentDocSpec,
   slider: sliderSpec as ComponentDocSpec,
   switch: switchSpec as ComponentDocSpec,
   tabs: tabsSpec as ComponentDocSpec,

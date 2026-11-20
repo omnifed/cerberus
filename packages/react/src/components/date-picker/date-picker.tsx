@@ -1,20 +1,31 @@
 'use client'
 
-import { DatePickerParts } from './parts'
-import type { DatePickerRootProps } from './primitives'
+import { DatePickerRoot, type DatePickerRootProps } from './primitives'
+
+export type DatePickerProps = DatePickerRootProps
 
 /**
- * DatePicker component is an abstraction of the DatePickerRoot primitive which
- * is the context provider to the DatePicker.
+ * The DatePicker component is an abstraction of the `DatePicker.Root`
+ * primitive that places the content below the start of the control
+ * (`positioning={{ placement: 'bottom-start' }}`) unless `positioning` is set.
+ * It renders no other part: its children, primitives or abstractions such as
+ * `DatePicker.InputGroup` and `DatePicker.Calendar`, render inside the root
+ * as given.
  * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/date-picker)
+ * @description [Ark Docs](https://ark-ui.com/docs/components/date-picker)
+ * @example
+ * ```tsx
+ * <Field label="Start date">
+ *   <DatePicker name="start_date">
+ *     <DatePicker.Label>Start date</DatePicker.Label>
+ *     <DatePicker.InputGroup />
+ *     <DatePicker.Calendar />
+ *   </DatePicker>
+ * </Field>
+ * ```
  */
-export function DatePicker(props: DatePickerRootProps) {
+export function DatePickerEl(props: DatePickerProps) {
   return (
-    <DatePickerParts.Root
-      positioning={{
-        placement: 'bottom-start',
-      }}
-      {...props}
-    />
+    <DatePickerRoot positioning={{ placement: 'bottom-start' }} {...props} />
   )
 }

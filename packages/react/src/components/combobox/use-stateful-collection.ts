@@ -6,7 +6,7 @@ import {
   type ListCollection,
 } from '@ark-ui/react/collection'
 import type { ComboboxInputValueChangeDetails } from '@ark-ui/react/combobox'
-import type { SelectCollectionItem } from '../select/select'
+import type { SelectCollectionItem } from '../select/collection'
 
 /**
  * This module contains a custom hook that provides a stateful collection for
