@@ -48,7 +48,8 @@ export type ComponentConfig = {
   ark?: string
   /**
    * Panda recipe export name. Defaults to camelCase of `key` (`switchRecipe` for
-   * reserved words). `false` for an Ark component styled without a slot recipe: its
+   * reserved words). `false` for a component styled without a recipe (a Cerberus-only
+   * one documents no variants or `unstyled`; for an Ark one): its
    * parts are wrapped with Panda's `styled()` (style props, `css`; Ark handles `asChild`).
    */
   recipe?: string | false
@@ -122,7 +123,8 @@ export type ExportConfig = {
 export type PartOverride = {
   /** Recipe whose variants this part accepts */
   recipe?: string
-  dataScope?: string
+  /** `false` for a part that renders no `data-scope`/`data-part` (no selector) */
+  dataScope?: string | false
   dataPart?: string
 }
 

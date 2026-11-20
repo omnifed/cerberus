@@ -80,6 +80,32 @@
               "minLength": 1
             }
           },
+          "inheritsExternal": {
+            "description": "Parts of other components whose props this part also accepts",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "part": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "`exportName` of the inherited part"
+                },
+                "spec": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Key of the spec that documents it"
+                },
+                "docsSlug": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Docs page slug of that spec"
+                }
+              },
+              "required": ["part", "spec", "docsSlug"],
+              "additionalProperties": false
+            }
+          },
           "dataAttributes": {
             "description": "State data attributes beyond data-scope/data-part",
             "type": "array",

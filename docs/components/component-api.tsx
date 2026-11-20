@@ -119,17 +119,33 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               </cerberus.h3>
               <Body>{part.description}</Body>
 
-              <Show when={(part.inherits?.length ?? 0) > 0}>
+              <Show
+                when={
+                  (part.inherits?.length ?? 0) +
+                    (part.inheritsExternal?.length ?? 0) >
+                  0
+                }
+              >
                 {() => (
                   <Body>
                     Also accepts all props of{' '}
-                    <For each={part.inherits ?? []}>
-                      {(target, i) => (
+                    <For
+                      each={[
+                        ...(part.inherits ?? []).map((target) => ({
+                          target,
+                          href: `#${partHeadingId(specKey, parts, target)}`,
+                        })),
+                        // Parts of other components link to their API section
+                        ...(part.inheritsExternal ?? []).map((ext) => ({
+                          target: ext.part,
+                          href: `/docs/components/${ext.docsSlug}#api`,
+                        })),
+                      ]}
+                    >
+                      {({ target, href }, i) => (
                         <cerberus.span key={`inherits:${target}`}>
                           {i > 0 && ', '}
-                          <cerberus.a
-                            href={`#${partHeadingId(specKey, parts, target)}`}
-                          >
+                          <cerberus.a href={href}>
                             <Code>{target}</Code>
                           </cerberus.a>
                         </cerberus.span>
