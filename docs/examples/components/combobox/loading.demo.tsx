@@ -3,14 +3,12 @@
 import { Box, Square, VStack } from '@/styled-system/jsx'
 import { Search } from '@carbon/icons-react'
 import {
-  ComboItemText,
-  ComboItemWithIndicator,
   Combobox,
   ComboboxInputValueChangeDetails,
+  createListCollection,
   For,
   Spinner,
   Text,
-  createListCollection,
 } from '@cerberus-design/react'
 import { createQuery, useQuery } from '@cerberus-design/signals'
 import { Suspense, useState, useTransition } from 'react'
@@ -28,7 +26,8 @@ function useDeferredValue() {
 }
 
 function AsyncCombobox() {
-  const { inputValue, setInputValue, pending, startTransition } = useDeferredValue()
+  const { inputValue, setInputValue, pending, startTransition } =
+    useDeferredValue()
   const data = useQuery(queryList(inputValue))
 
   const collection = createListCollection<Character>({
@@ -72,9 +71,9 @@ function AsyncCombobox() {
         }
       >
         {(item) => (
-          <ComboItemWithIndicator key={item.name} item={item}>
-            <ComboItemText>{item.name}</ComboItemText>
-          </ComboItemWithIndicator>
+          <Combobox.ItemWithIndicator key={item.name} item={item}>
+            <Combobox.ItemText>{item.name}</Combobox.ItemText>
+          </Combobox.ItemWithIndicator>
         )}
       </For>
     </Combobox>

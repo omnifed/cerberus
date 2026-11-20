@@ -3,8 +3,6 @@
 import { Box, VStack } from '@/styled-system/jsx'
 import {
   Combobox,
-  ComboItemText,
-  ComboItemWithIndicator,
   Field,
   For,
   Text,
@@ -39,9 +37,9 @@ export function FieldDemo() {
             }
           >
             {(item) => (
-              <ComboItemWithIndicator key={item.value} item={item}>
-                <ComboItemText>{item.label}</ComboItemText>
-              </ComboItemWithIndicator>
+              <Combobox.ItemWithIndicator key={item.value} item={item}>
+                <Combobox.ItemText>{item.label}</Combobox.ItemText>
+              </Combobox.ItemWithIndicator>
             )}
           </For>
         </Combobox>

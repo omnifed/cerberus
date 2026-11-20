@@ -10,8 +10,10 @@
 - [Button](button.md): The Button component provides a visual indicator for a user to make an action of sorts, commonly used in forms, menus, and popovers.
 - [Carousel](carousel.md): The Carousel component is a versatile UI element that allows users to navigate through a slideshow style set of "pages" which contain images.
 - [Checkbox](checkbox.md): The Checkbox component allows users to select one or more options from a set.
+- [CircularProgress](circular-progress.md): The CircularProgress component displays a circular progress indicator for a task, with the value text and a label in the center of the circle.
 - [Clipboard](clipboard.md): The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback.
 - [Collapsible](collapsible.md): The Collapsible component is used to expand and collapse additional content.
+- [Combobox](combobox.md): The Combobox component is a filterable select: users type into an input to narrow a list of options and pick one or more of them.
 - [Dialog](dialog.md): The Dialog component is a modal window that appears on top of the main content.
 - [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
 - [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
@@ -20,6 +22,8 @@
 - [PinInput](pin-input.md): The PinInput component lets users enter and manage fixed-length codes, such as verification codes or PINs, one character at a time.
 - [Popover](popover.md): The Popover component is used to show detailed information inside a pop-up, anchored to a trigger or to another element.
 - [ProgressBar](progress.md): The ProgressBar component displays a linear progress indicator for a task.
+- [RadioGroup](radio.md): The Radio component allows users to select one option from a set of choices.
+- [Rating](rating.md): The Rating component provides a way to select a value from a range of values, typically used for feedback on a scale.
 - [Slider](slider.md): The Slider component allows users to make selections from a range of values by dragging one or more thumbs along a track.
 - [Switch](switch.md): The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.
 - [Tabs](tabs.md): The Tabs component is used to create a tabbed interface.

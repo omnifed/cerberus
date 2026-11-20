@@ -1,19 +1,19 @@
-import { RadioParts } from '@cerberus-design/react'
+import { RadioGroup } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
-    <RadioParts.Root>
-      <RadioParts.Item>
-        <RadioParts.ItemText textStyle="body-lg">Cerberus</RadioParts.ItemText>
-        <RadioParts.ItemControl
+    <RadioGroup.Root defaultValue="cerberus">
+      <RadioGroup.Item value="cerberus">
+        <RadioGroup.ItemText textStyle="body-lg">Cerberus</RadioGroup.ItemText>
+        <RadioGroup.ItemControl
           bgColor="info.bg.initial"
           h="8"
           w="8"
           transform="skew(-10deg)"
           _checked={{ bg: 'warning.bg.initial' }}
         />
-        <RadioParts.ItemHiddenInput />
-      </RadioParts.Item>
-    </RadioParts.Root>
+        <RadioGroup.ItemHiddenInput />
+      </RadioGroup.Item>
+    </RadioGroup.Root>
   )
 }

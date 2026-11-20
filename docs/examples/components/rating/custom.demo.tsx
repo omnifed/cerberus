@@ -2,25 +2,25 @@
 
 import { Box } from '@/styled-system/jsx'
 import { StarFilled } from '@carbon/icons-react'
-import { RatingParts, UseRatingGroupContext } from '@cerberus-design/react'
+import { Rating } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Box w="1/2">
-      <RatingParts.Root
+      <Rating.Root
         defaultValue={3}
         orientation="horizontal"
         transform="skewX(-10deg)"
       >
-        <RatingParts.Label textStyle="heading-xs" textTransform="uppercase">
+        <Rating.Label textStyle="heading-xs" textTransform="uppercase">
           This is a custom rating
-        </RatingParts.Label>
+        </Rating.Label>
 
-        <RatingParts.Control>
-          <RatingParts.Context>
-            {(context: UseRatingGroupContext) =>
+        <Rating.Control>
+          <Rating.Context>
+            {(context) =>
               context.items.map((item) => (
-                <RatingParts.Item
+                <Rating.Item
                   key={item}
                   index={item}
                   _highlighted={{
@@ -28,16 +28,16 @@ export function CustomDemo() {
                     scale: '1.2',
                   }}
                 >
-                  <RatingParts.ItemContext>
+                  <Rating.ItemContext>
                     {() => <StarFilled size={24} />}
-                  </RatingParts.ItemContext>
-                </RatingParts.Item>
+                  </Rating.ItemContext>
+                </Rating.Item>
               ))
             }
-          </RatingParts.Context>
-          <RatingParts.HiddenInput />
-        </RatingParts.Control>
-      </RatingParts.Root>
+          </Rating.Context>
+          <Rating.HiddenInput />
+        </Rating.Control>
+      </Rating.Root>
     </Box>
   )
 }

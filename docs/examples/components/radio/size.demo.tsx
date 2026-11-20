@@ -1,9 +1,15 @@
 import { HStack } from '@/styled-system/jsx'
-import { Field, For, Radio, RadioGroup, RadioProps } from '@cerberus-design/react'
+import {
+  Field,
+  For,
+  Radio,
+  RadioGroup,
+  type RadioGroupRootProps,
+} from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
 const variants = data.slotRecipes.radioGroup.variants.size
-  .values as RadioProps['size'][]
+  .values as RadioGroupRootProps['size'][]
 
 export function SizeDemo() {
   return (

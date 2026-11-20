@@ -3,9 +3,6 @@
 import { Box, VStack } from '@/styled-system/jsx'
 import {
   Combobox,
-  ComboboxContext,
-  ComboItemText,
-  ComboItemWithIndicator,
   For,
   Highlight,
   Text,
@@ -35,9 +32,9 @@ export function HighlightDemo() {
           }
         >
           {(item) => (
-            <ComboItemWithIndicator key={item.value} item={item}>
-              <ComboItemText>
-                <ComboboxContext>
+            <Combobox.ItemWithIndicator key={item.value} item={item}>
+              <Combobox.ItemText>
+                <Combobox.Context>
                   {(context) => (
                     <Highlight
                       text={item.label}
@@ -45,9 +42,9 @@ export function HighlightDemo() {
                       ignoreCase
                     />
                   )}
-                </ComboboxContext>
-              </ComboItemText>
-            </ComboItemWithIndicator>
+                </Combobox.Context>
+              </Combobox.ItemText>
+            </Combobox.ItemWithIndicator>
           )}
         </For>
       </Combobox>

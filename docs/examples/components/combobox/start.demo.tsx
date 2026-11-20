@@ -4,8 +4,6 @@ import { Box, VStack } from '@/styled-system/jsx'
 import { Search } from '@carbon/icons-react'
 import {
   Combobox,
-  ComboItemText,
-  ComboItemWithIndicator,
   For,
   Text,
   useStatefulCollection,
@@ -36,9 +34,9 @@ export function StartIconDemo() {
           }
         >
           {(item) => (
-            <ComboItemWithIndicator key={item.value} item={item}>
-              <ComboItemText>{item.label}</ComboItemText>
-            </ComboItemWithIndicator>
+            <Combobox.ItemWithIndicator key={item.value} item={item}>
+              <Combobox.ItemText>{item.label}</Combobox.ItemText>
+            </Combobox.ItemWithIndicator>
           )}
         </For>
       </Combobox>

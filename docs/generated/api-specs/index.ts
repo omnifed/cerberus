@@ -6,8 +6,10 @@ import avatarSpec from './avatar.json'
 import buttonSpec from './button.json'
 import carouselSpec from './carousel.json'
 import checkboxSpec from './checkbox.json'
+import circular_progressSpec from './circular-progress.json'
 import clipboardSpec from './clipboard.json'
 import collapsibleSpec from './collapsible.json'
+import comboboxSpec from './combobox.json'
 import dialogSpec from './dialog.json'
 import fieldsetSpec from './fieldset.json'
 import marqueeSpec from './marquee.json'
@@ -16,6 +18,8 @@ import number_inputSpec from './number-input.json'
 import pin_inputSpec from './pin-input.json'
 import popoverSpec from './popover.json'
 import progressSpec from './progress.json'
+import radioSpec from './radio.json'
+import ratingSpec from './rating.json'
 import sliderSpec from './slider.json'
 import switchSpec from './switch.json'
 import tabsSpec from './tabs.json'
@@ -29,8 +33,10 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   button: buttonSpec as ComponentDocSpec,
   carousel: carouselSpec as ComponentDocSpec,
   checkbox: checkboxSpec as ComponentDocSpec,
+  'circular-progress': circular_progressSpec as ComponentDocSpec,
   clipboard: clipboardSpec as ComponentDocSpec,
   collapsible: collapsibleSpec as ComponentDocSpec,
+  combobox: comboboxSpec as ComponentDocSpec,
   dialog: dialogSpec as ComponentDocSpec,
   fieldset: fieldsetSpec as ComponentDocSpec,
   marquee: marqueeSpec as ComponentDocSpec,
@@ -39,6 +45,8 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   'pin-input': pin_inputSpec as ComponentDocSpec,
   popover: popoverSpec as ComponentDocSpec,
   progress: progressSpec as ComponentDocSpec,
+  radio: radioSpec as ComponentDocSpec,
+  rating: ratingSpec as ComponentDocSpec,
   slider: sliderSpec as ComponentDocSpec,
   switch: switchSpec as ComponentDocSpec,
   tabs: tabsSpec as ComponentDocSpec,

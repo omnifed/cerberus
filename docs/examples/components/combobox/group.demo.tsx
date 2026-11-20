@@ -4,9 +4,6 @@ import { Box, VStack } from '@/styled-system/jsx'
 import { Search } from '@carbon/icons-react'
 import {
   Combobox,
-  ComboItemGroup,
-  ComboItemText,
-  ComboItemWithIndicator,
   For,
   Text,
   useStatefulCollection,
@@ -25,7 +22,7 @@ export function GroupedItemsDemo() {
         placeholder="Choose option"
         startIcon={<Search />}
       >
-        <ComboItemGroup label="The fam">
+        <Combobox.ItemGroupWithLabel label="The fam">
           <For
             each={collection.items}
             fallback={
@@ -37,12 +34,12 @@ export function GroupedItemsDemo() {
             }
           >
             {(item) => (
-              <ComboItemWithIndicator key={item.value} item={item}>
-                <ComboItemText>{item.label}</ComboItemText>
-              </ComboItemWithIndicator>
+              <Combobox.ItemWithIndicator key={item.value} item={item}>
+                <Combobox.ItemText>{item.label}</Combobox.ItemText>
+              </Combobox.ItemWithIndicator>
             )}
           </For>
-        </ComboItemGroup>
+        </Combobox.ItemGroupWithLabel>
       </Combobox>
     </Box>
   )
