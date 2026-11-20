@@ -16,6 +16,7 @@
 - [Combobox](combobox.md): The Combobox component is a filterable select: users type into an input to narrow a list of options and pick one or more of them.
 - [DatePicker](date-picker.md): The DatePicker component lets users enter a date, or a range of dates, by typing it in an input or picking it from a calendar.
 - [Dialog](dialog.md): The Dialog component is a modal window that appears on top of the main content.
+- [Field](field.md): The Field component labels a form control and connects it to its helper text and error text, wiring the ids and ARIA attributes for you.
 - [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
 - [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
 - [Menu](menu.md): The Menu component displays a list of actions or options that the user can choose from, opened from a trigger such as a button.

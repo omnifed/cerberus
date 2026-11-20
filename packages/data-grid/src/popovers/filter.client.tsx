@@ -133,7 +133,11 @@ function FormSection(props: FormSectionProps) {
       </Field>
 
       <Field label="Value" required>
-        <Input name="value" size="sm" defaultValue={filter?.value} />
+        <Input
+          name="value"
+          size="sm"
+          defaultValue={String(filter?.value ?? '')}
+        />
       </Field>
 
       <SubmitButton pending={props.status.pending} />
