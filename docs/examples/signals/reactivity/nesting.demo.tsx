@@ -1,7 +1,7 @@
 'use client'
 
 import { Stack } from '@/styled-system/jsx'
-import { Button, ButtonGroup } from '@cerberus-design/react'
+import { Button } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
 
 export function NestingDemo() {
@@ -21,10 +21,12 @@ export function NestingDemo() {
         <code>{JSON.stringify(final, null, 2)}</code>
       </pre>
 
-      <ButtonGroup>
+      <Button.Group>
         <Button onClick={() => setCount(count + 1)}>Increment</Button>
         <Button
-          onClick={() => setData((prev) => ({ ...prev, unique: prev.unique + 1 }))}
+          onClick={() =>
+            setData((prev) => ({ ...prev, unique: prev.unique + 1 }))
+          }
         >
           Increment Unique
         </Button>
@@ -35,7 +37,7 @@ export function NestingDemo() {
         >
           Increment Final
         </Button>
-      </ButtonGroup>
+      </Button.Group>
     </Stack>
   )
 }

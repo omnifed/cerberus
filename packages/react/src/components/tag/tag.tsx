@@ -1,35 +1,43 @@
-import { ClosableTag } from './closable'
+import { TagClosable, type ClosableTagProps } from './closable'
 import {
-  type ClosableTagProps,
-  FilledTag,
-  type FilledTagProps,
-  GradientTag,
-  type GradientTagProps,
-  baseTagAttrs,
+  TagGradient,
+  TagRoot,
+  type TagGradientProps,
+  type TagRootProps,
 } from './primitives'
+
+export type FilledTagProps = TagRootProps & {
+  gradient?: never
+  onClick?: never
+}
+
+export type GradientTagProps = TagGradientProps & {
+  palette?: never
+  onClick?: never
+}
 
 export type TagProps = FilledTagProps | GradientTagProps | ClosableTagProps
 
 /**
- * The Tag component is used to display a meta descriptions.
+ * The Tag component is used to display a meta descriptions. It renders
+ * `Tag.Closable` when `onClick` is set, `Tag.Gradient` when `gradient` is set,
+ * and `Tag.Root` otherwise.
  * @see https://cerberus.digitalu.design/docs/components/tag
  * @example
  * ```tsx
  * <Tag>Tag</Tag>
  * ```
  */
-export function Tag(props: TagProps) {
+export function TagEl(props: TagProps) {
   if (isClosableTag(props)) {
-    return <ClosableTag {...baseTagAttrs} {...props} />
+    return <TagClosable {...props} />
   }
 
   if (props.gradient) {
-    return <GradientTag {...baseTagAttrs} {...props} />
+    return <TagGradient {...props} />
   }
 
-  return (
-    <FilledTag {...baseTagAttrs} data-palette={props.palette ?? 'page'} {...props} />
-  )
+  return <TagRoot data-palette={props.palette ?? 'page'} {...props} />
 }
 
 function isClosableTag(props: TagProps): props is ClosableTagProps {

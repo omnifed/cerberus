@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'bun:test'
 import { render, screen } from '@testing-library/react'
-import { IconButton } from '@cerberus-design/react'
+import { Button, IconButton, IconButtonRoot } from '@cerberus-design/react'
 
 describe('IconButton', () => {
   test('should render a icon button element', () => {
@@ -80,5 +80,18 @@ describe('IconButton', () => {
     expect(screen.getByText(/it works/i)).toHaveClass(
       'cerberus-icon-btn--size_lg',
     )
+  })
+
+  test('should alias Button.IconButton', () => {
+    expect(IconButton).toBe(Button.IconButton)
+  })
+
+  test('should render IconButtonRoot as a focusable button', () => {
+    render(<IconButtonRoot aria-label="raw">x</IconButtonRoot>)
+    const button = screen.getByRole('button', { name: 'raw' })
+    expect(button.tagName).toBe('BUTTON')
+    expect(button).toHaveAttribute('data-scope', 'icon-button')
+    expect(button).toHaveAttribute('data-part', 'root')
+    expect(button.className).toContain('cerberus-icon-btn')
   })
 })

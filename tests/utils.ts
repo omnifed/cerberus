@@ -22,6 +22,9 @@ import {
 
 export const user = userEvent.setup()
 
+/**
+ * @deprecated we no longer need this
+ */
 export function makeConfig() {
   const icons = defineIcons({
     accordionIndicator: ChevronDown,

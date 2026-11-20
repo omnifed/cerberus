@@ -11,6 +11,7 @@ export * from './patterns'
 export * from './utilities'
 
 export * from './recipes'
+export * from './recipes/shared/anatomy'
 export * from './recipes/shared/helpers'
 export * from './recipes/shared/palettes'
 export * from './recipes/shared/states'

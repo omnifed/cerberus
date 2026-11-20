@@ -1,0 +1,232 @@
+{
+  "name": "Tag",
+  "key": "tag",
+  "description": "The Tag component is used to display a meta description: a filled, gradient or\nclosable label.\n\n`<Tag>` renders `Tag.Closable` when `onClick` is set, `Tag.Gradient` when\n`gradient` is set, and `Tag.Root` (styled by the `tag` recipe) otherwise.\n\n**NOTE**: This API is _slotless_: each part is a single rendered layer with its own recipe.",
+  "variants": [
+    {
+      "name": "palette",
+      "values": ["page", "info", "success", "warning", "danger"],
+      "defaultValue": "'page'"
+    },
+    {
+      "name": "usage",
+      "values": ["filled", "outlined"],
+      "defaultValue": "'filled'"
+    },
+    {
+      "name": "shape",
+      "values": ["pill", "square"],
+      "defaultValue": "'pill'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Tag.El",
+      "kind": "abstraction",
+      "description": "Renders `Tag.Closable` when `onClick` is set, `Tag.Gradient` when `gradient` is set, else `Tag.Root`",
+      "inherits": ["Tag.Root", "Tag.Gradient", "Tag.ClosableRoot"],
+      "props": [
+        {
+          "name": "gradient",
+          "type": "never",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onClick",
+          "type": "IconButtonProps['onClick']",
+          "required": false,
+          "description": "Called when the close button is clicked."
+        },
+        {
+          "name": "palette",
+          "type": "never",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, disables the close button and marks the content as busy."
+        }
+      ]
+    },
+    {
+      "name": "Closable",
+      "exportName": "Tag.Closable",
+      "kind": "abstraction",
+      "description": "A `Tag.ClosableRoot` with a close IconButton (labelled \"Close tag\") that calls `onClick`; `pending` disables it",
+      "inherits": ["Tag.ClosableRoot"],
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, disables the close button and marks the content as busy."
+        },
+        {
+          "name": "gradient",
+          "type": "never",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onClick",
+          "type": "IconButtonProps['onClick']",
+          "required": false,
+          "description": "Called when the close button is clicked."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Tag.Root",
+      "kind": "primitive",
+      "description": "The root container of the Tag component.",
+      "dataScope": "tag",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'page' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'page'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "usage",
+          "type": "'filled' | 'outlined'",
+          "required": false,
+          "defaultValue": "'filled'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "shape",
+          "type": "'pill' | 'square'",
+          "required": false,
+          "defaultValue": "'pill'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Gradient",
+      "exportName": "Tag.Gradient",
+      "kind": "primitive",
+      "description": "The gradient primitive part of the Tag component.",
+      "dataScope": "tag",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "gradient",
+          "type": "'amphiaraus-dark' | 'amphiaraus-light' | 'asphodel-light' | 'asphodel-dark' | 'charon-light' | 'charon-dark' | 'hades-light' | 'hades-dark' | 'nyx-light' | 'nyx-dark' | 'styx-light' | 'styx-dark' | 'thanatos-light' | 'thanatos-dark'",
+          "required": false,
+          "defaultValue": "'charon-light'",
+          "description": "PandaCSS recipe variant for gradient."
+        },
+        {
+          "name": "usage",
+          "type": "'outlined'",
+          "required": false,
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "shape",
+          "type": "'pill' | 'square'",
+          "required": false,
+          "defaultValue": "'pill'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ClosableRoot",
+      "exportName": "Tag.ClosableRoot",
+      "kind": "primitive",
+      "description": "The closable-root primitive part of the Tag component.",
+      "dataScope": "tag",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'secondaryAction' | 'danger'",
+          "required": false,
+          "defaultValue": "'secondaryAction'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "usage",
+          "type": "'filled' | 'outlined'",
+          "required": false,
+          "defaultValue": "'filled'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}

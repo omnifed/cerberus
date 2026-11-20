@@ -3,7 +3,9 @@
   "compilerOptions": {
     "types": ["bun"],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "styled-system/*": ["./styled-system/*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "codegen/fixtures"]
 }

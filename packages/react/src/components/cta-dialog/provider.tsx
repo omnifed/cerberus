@@ -12,15 +12,8 @@ import {
 } from 'react'
 import { HStack, VStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../avatar/avatar'
-import { DialogCloseIconTrigger } from '../dialog/close-icon-trigger'
-import {
-  Dialog,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogRootProps,
-} from '../dialog/index'
+import { Avatar } from '../avatar/api'
+import { Dialog, DialogRootProps } from '../dialog/index'
 import { For } from '../for/index'
 import { Show } from '../show/index'
 import {
@@ -109,20 +102,18 @@ export function CTAModal(props: PropsWithChildren<DialogRootProps>) {
     <CTAModalContext.Provider value={value}>
       {children}
 
-      <DialogProvider
+      <Dialog.Root
+        size="sm"
         lazyMount
         open={open}
-        onOpenChange={(details: DialogOpenChangeDetails) => setOpen(details.open)}
+        onOpenChange={(details: DialogOpenChangeDetails) =>
+          setOpen(details.open)
+        }
         unmountOnExit
         {...rootProps}
       >
-        <Dialog
-          size="sm"
-          style={{
-            '--dialog-content-min-h': 'auto',
-          }}
-        >
-          <DialogCloseIconTrigger />
+        <Dialog css={{ '--dialog-content-min-h': 'auto' }}>
+          <Dialog.CloseIconTrigger />
 
           <VStack gap="xl" w="full">
             <VStack alignItems="flex-start" gap="md" w="full">
@@ -130,23 +121,28 @@ export function CTAModal(props: PropsWithChildren<DialogRootProps>) {
                 <Avatar
                   gradient="charon-light"
                   fallback={
-                    <Show when={confirmIcon} fallback={<FallbackIcon size={24} />}>
+                    <Show
+                      when={confirmIcon}
+                      fallback={<FallbackIcon size={24} />}
+                    >
                       {confirmIcon}
                     </Show>
                   }
                 />
-                <DialogHeading textAlign="center">{content?.heading}</DialogHeading>
+                <Dialog.Title textAlign="center">
+                  {content?.heading}
+                </Dialog.Title>
 
                 <Show when={content?.description}>
-                  <DialogDescription textAlign="center">
+                  <Dialog.Description textAlign="center">
                     {content?.description}
-                  </DialogDescription>
+                  </Dialog.Description>
                 </Show>
 
                 <Show when={content?.content}>
-                  <DialogDescription textAlign="center">
+                  <Dialog.Description textAlign="center">
                     {content?.content}
-                  </DialogDescription>
+                  </Dialog.Description>
                 </Show>
               </VStack>
             </VStack>
@@ -157,7 +153,9 @@ export function CTAModal(props: PropsWithChildren<DialogRootProps>) {
                   <Show
                     key={index}
                     when={content?.actions?.type === 'btnAction'}
-                    fallback={<TriggerItem asChild>{action as ReactNode}</TriggerItem>}
+                    fallback={
+                      <TriggerItem asChild>{action as ReactNode}</TriggerItem>
+                    }
                   >
                     <TriggerItem data-index={index} onClick={handleActionClick}>
                       {(action as CTAButtonAction)?.text}
@@ -168,7 +166,7 @@ export function CTAModal(props: PropsWithChildren<DialogRootProps>) {
             </HStack>
           </VStack>
         </Dialog>
-      </DialogProvider>
+      </Dialog.Root>
     </CTAModalContext.Provider>
   )
 }

@@ -1,32 +1,29 @@
-import { css } from '@/styled-system/css'
-import { Text } from '@cerberus-design/react'
+import { cerberus } from '@cerberus-design/react'
 import { PropsWithChildren } from 'react'
 
 export const mdxText = {
   h1: (props: PropsWithChildren<object>) => (
-    <Text
-      as="h1"
+    <cerberus.h1
       color="page.text.initial"
-      my="lg"
+      mt="lg"
       py="lg"
       textStyle="heading-lg"
       {...props}
     />
   ),
   h2: (props: PropsWithChildren<object>) => (
-    <Text
-      as="h2"
+    <cerberus.h2
       color="page.text.initial"
-      my="lg"
+      mt="lg"
       py="lg"
       textStyle="heading-md"
       {...props}
     />
   ),
   h3: (props: PropsWithChildren<object>) => (
-    <Text
-      as="h3"
-      my="5"
+    <cerberus.h3
+      mt="lg"
+      py="lg"
       textStyle="heading-sm"
       css={{
         '& :is(a > code)': {
@@ -44,22 +41,21 @@ export const mdxText = {
     />
   ),
   h4: (props: PropsWithChildren<object>) => (
-    <Text as="h4" my="md" textStyle="heading-xs" {...props} />
+    <cerberus.h4 mt="md" py="md" textStyle="heading-xs" {...props} />
   ),
   h5: (props: PropsWithChildren<object>) => (
-    <Text as="h5" my="sm" textStyle="heading-2xs" {...props} />
+    <cerberus.h5 mt="sm" py="sm" textStyle="heading-2xs" {...props} />
   ),
   h6: (props: PropsWithChildren<object>) => (
-    <Text as="h6" my="sm" textStyle="heading-2xs" {...props} />
+    <cerberus.h6 mt="sm" py="sm" textStyle="heading-2xs" {...props} />
   ),
 
   p: (props: PropsWithChildren<object>) => (
-    <Text
+    <cerberus.p
       color="page.text.100"
       lineHeight="165%"
       pb="lg"
       textStyle="body-md"
-      textWrap="pretty"
       css={{
         '& > code:not(.code)': {
           bgColor: 'page.surface.100',
@@ -77,26 +73,24 @@ export const mdxText = {
   ),
 
   small: (props: PropsWithChildren<object>) => (
-    <Text as="small" textStyle="body-xs" {...props} />
+    <cerberus.small textStyle="body-xs" {...props} />
   ),
 
   a: (props: PropsWithChildren<object>) => (
-    <a
-      className={css({
-        display: 'inline-block',
-        rounded: 'sm',
-        textStyle: 'link',
-        _hover: {
-          color: 'action.navigation.hover',
-          textDecoration: 'underline',
-        },
-        _focusVisible: {
-          boxShadow: 'none',
-          outline: '3px solid',
-          outlineColor: 'action.border.focus',
-          outlineOffset: '2px',
-        },
-      })}
+    <cerberus.a
+      display="inline-block"
+      rounded="sm"
+      textStyle="link"
+      _hover={{
+        color: 'action.navigation.hover',
+        textDecoration: 'underline',
+      }}
+      _focusVisible={{
+        boxShadow: 'none',
+        outline: '3px solid',
+        outlineColor: 'action.border.focus',
+        outlineOffset: '2px',
+      }}
       {...props}
     />
   ),

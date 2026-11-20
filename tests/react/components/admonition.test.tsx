@@ -1,149 +1,54 @@
-import { describe, test, expect } from 'bun:test'
+import { describe, expect, test } from 'bun:test'
 import { render, screen } from '@testing-library/react'
-import { Admonition, CerberusProvider } from '@cerberus-design/react'
+import { describeDXContract } from '@/test-utils/dx-harness'
+import { Corn } from '@carbon/icons-react'
+import { Admonition } from '@cerberus-design/react/admonition'
+import { CerberusProvider } from '@cerberus-design/react'
 import { makeConfig } from '@/utils'
 
-describe('Admonition', () => {
-  const config = makeConfig()
+describeDXContract({
+  name: 'Admonition',
+  Root: Admonition,
+  defaultRootProps: {},
 
-  test('should render a admonition element', () => {
+  primitiveTestNode: (
+    <Admonition.Root>
+      <Admonition.Indicator>
+        <Corn />
+      </Admonition.Indicator>
+      <Admonition.Content data-testid="primitive-content">
+        <Admonition.Heading>Standard Heading</Admonition.Heading>
+        <Admonition.Description>Description body</Admonition.Description>
+      </Admonition.Content>
+    </Admonition.Root>
+  ),
+
+  abstractions: [
+    {
+      name: 'Admonition',
+      Component: Admonition,
+      defaultProps: { heading: 'Standard Heading' },
+      children: 'Content body',
+      testSlot: 'indicator',
+      testSlotProp: 'heading',
+    },
+  ],
+})
+
+describe('Admonition close trigger', () => {
+  test('should render a focusable close button when onClose is set', async () => {
+    const calls: number[] = []
     render(
-      <CerberusProvider config={config}>
-        <Admonition heading="When to use" palette="page">
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
+      <CerberusProvider config={makeConfig()}>
+        <Admonition heading="Heads up" onClose={() => calls.push(1)}>
+          Body
         </Admonition>
       </CerberusProvider>,
     )
-    expect(screen.getByText(/when to use/i)).toBeInTheDocument()
-    expect(
-      screen.getByText(
-        /use this component when you want to display a page-level message/i,
-      ),
-    ).toBeInTheDocument()
-  })
-
-  test('should render a admonition element with a page palette', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Admonition heading="When to use" palette="page">
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
-        </Admonition>
-        ,
-      </CerberusProvider>,
-    )
-    expect(screen.getByText(/when to use/i)).toHaveClass(
-      'cerberus-admonition__heading--palette_page',
-    )
-    expect(
-      screen.queryByRole('img', {
-        hidden: false,
-      }),
-    ).not.toBeInTheDocument()
-  })
-
-  test('should render a admonition element with a info palette', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Admonition
-          heading="When to use"
-          palette="info"
-          data-testid="admonition"
-        >
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
-        </Admonition>
-      </CerberusProvider>,
-    )
-    expect(screen.getByTestId('admonition')).toHaveClass(
-      'cerberus-admonition__root--palette_info',
-    )
-    expect(
-      screen.queryByRole('img', {
-        hidden: false,
-      }),
-    ).not.toBeInTheDocument()
-  })
-
-  test('should render a admonition element with a success palette', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Admonition
-          heading="When to use"
-          palette="success"
-          data-testid="admonition"
-        >
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
-        </Admonition>
-      </CerberusProvider>,
-    )
-    expect(screen.getByTestId('admonition')).toHaveClass(
-      'cerberus-admonition__root--palette_success',
-    )
-    expect(
-      screen.queryByRole('img', {
-        hidden: false,
-      }),
-    ).not.toBeInTheDocument()
-  })
-
-  test('should render a admonition element with a warning palette', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Admonition
-          heading="When to use"
-          palette="warning"
-          data-testid="admonition"
-        >
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
-        </Admonition>
-      </CerberusProvider>,
-    )
-    expect(screen.getByTestId('admonition')).toHaveClass(
-      'cerberus-admonition__root--palette_warning',
-    )
-    expect(
-      screen.queryByRole('img', {
-        hidden: false,
-      }),
-    ).not.toBeInTheDocument()
-  })
-
-  test('should render a admonition element with a danger palette', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Admonition
-          heading="When to use"
-          palette="danger"
-          data-testid="admonition"
-        >
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
-        </Admonition>
-      </CerberusProvider>,
-    )
-    expect(screen.getByTestId('admonition')).toHaveClass(
-      'cerberus-admonition__root--palette_danger',
-    )
-    expect(
-      screen.queryByRole('img', {
-        hidden: false,
-      }),
-    ).not.toBeInTheDocument()
-  })
-
-  test('should allow to render a custom icon', () => {
-    render(
-      <CerberusProvider config={config}>
-        <Admonition icon={<span>🚀</span>}>
-          Use this component when you want to display a page-level message.{' '}
-          <a href="#">Learn more</a>
-        </Admonition>
-      </CerberusProvider>,
-    )
-    expect(screen.getByText(/🚀/)).toBeInTheDocument()
+    const close = screen.getByRole('button', { name: 'Close admonition' })
+    expect(close.tagName).toBe('BUTTON')
+    expect(close).toHaveAttribute('data-scope', 'icon-button')
+    close.click()
+    expect(calls).toEqual([1])
   })
 })

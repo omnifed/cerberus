@@ -1,51 +1,79 @@
-import type { ReactNode } from 'react'
-import { Show } from '../show/index'
-import { AvatarParts } from './parts'
-import type { AvatarRootProps } from './primitives'
+'use client'
 
-/**
- * This module provides an abstraction of the Avatar primitives.
- * @module 'avatar'
- */
+import type { ReactNode } from 'react'
+import { createAbstraction } from '../../internal/factory'
+import { Show } from '../show/index'
+import {
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+  type AvatarRootProps,
+} from './primitives'
+import { splitProps } from '../../utils'
+
+const PARTS = {
+  root: AvatarRoot,
+  fallback: AvatarFallback,
+  image: AvatarImage,
+}
 
 export type AvatarWithoutImage = {
+  /**
+   * The alternative text for the image. Required when `src` is set.
+   */
   alt?: never
+  /**
+   * The image source URL. When omitted, only the `fallback` is rendered.
+   */
   src?: never
+  /**
+   * The content shown when there is no image or it fails to load, such as initials or an icon.
+   */
   fallback: ReactNode
 }
 
 export type AvatarWithImage = {
+  /**
+   * The alternative text for the image. Required when `src` is set.
+   */
   alt: string
+  /**
+   * The image source URL. When omitted, only the `fallback` is rendered.
+   */
   src: string
+  /**
+   * The content shown when there is no image or it fails to load, such as initials or an icon.
+   */
   fallback?: ReactNode
 }
 
 export type AvatarProps = AvatarRootProps &
   (AvatarWithoutImage | AvatarWithImage)
 
-/**
- * Avatar component is an abstraction of the primitives that displays a
- * avatar or it's fallback when the image fails to load.
- * @description [Cerberus Docs](https://cerberus.digitalu.design/react/avatar/overview)
- * @description [Ark Docs](https://ark-ui.com/react/docs/components/avatar#api-reference)
- */
-export function Avatar(props: AvatarProps) {
-  const { alt, src, fallback, children, ...rootProps } = props
-  const imgProps = { alt, src }
+export const AvatarEl = createAbstraction(
+  PARTS,
+  (props: AvatarProps, parts) => {
+    const [localProps, rootProps] = splitProps(props, [
+      'fallback',
+      'alt',
+      'src',
+      'children',
+    ])
 
-  return (
-    <AvatarParts.Root {...rootProps}>
-      <Show
-        when={children}
-        fallback={
-          <>
-            <AvatarParts.Fallback>{fallback}</AvatarParts.Fallback>
-            <AvatarParts.Image {...imgProps} />
-          </>
-        }
-      >
-        {children}
-      </Show>
-    </AvatarParts.Root>
-  )
-}
+    return (
+      <parts.root {...rootProps}>
+        <Show
+          when={localProps.children}
+          fallback={
+            <>
+              <parts.fallback>{localProps.fallback}</parts.fallback>
+              <parts.image alt={localProps.alt} src={localProps.src ?? null} />
+            </>
+          }
+        >
+          {localProps.children}
+        </Show>
+      </parts.root>
+    )
+  },
+)

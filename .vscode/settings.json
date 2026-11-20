@@ -21,6 +21,7 @@
     "nextjs",
     "nord",
     "omni",
+    "omnifed",
     "oxlint",
     "Positionals",
     "rehype",
@@ -28,6 +29,7 @@
     "shikijs",
     "Skeletor",
     "Skiki",
+    "slotless",
     "themable",
     "tseslint",
     "tsparticles",
@@ -40,8 +42,5 @@
   ],
   "oxc.fmt.configPath": ".oxfmtrc.json",
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "editor.formatOnSave": true,
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "js/ts.tsdk.path": "node_modules/typescript/lib"
+  "editor.formatOnSave": true
 }

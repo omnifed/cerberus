@@ -11,11 +11,11 @@ import { css, cx } from 'styled-system/css'
 import { hstack } from 'styled-system/patterns'
 import { fileStatus, type FileStatusVariantProps } from 'styled-system/recipes'
 import { useCerberusContext } from '../../context/cerberus'
-import { Avatar } from '../avatar/avatar'
-import { Field, FieldHelperText } from '../field/index'
-import { IconButton } from '../icon-button/index'
-import { ProgressBar, type ProgressBarProps } from '../progress/index'
+import { Avatar } from '../avatar/api'
+import { Field } from '../field/index'
+import { IconButton } from '../buttons/index'
 import { Text } from '../text/index'
+import { ProgressBar, type ProgressBarProps } from '../progress/index'
 
 /**
  * This module contains the FileStatus component.
@@ -144,16 +144,16 @@ export function FileStatus(props: FileStatusProps) {
           now={now}
           size="sm"
         />
-        <Field label="" invalid={modalIconPalette === 'hades-dark'}>
-          <FieldHelperText
+        <Field.Root invalid={modalIconPalette === 'hades-dark'}>
+          <Field.HelperText
             className={css({
               color: 'page.text.100',
             })}
             id={`help:${file}`}
           >
             <MatchFileStatusText status={status} now={now} />
-          </FieldHelperText>
-        </Field>
+          </Field.HelperText>
+        </Field.Root>
       </VStack>
 
       <IconButton

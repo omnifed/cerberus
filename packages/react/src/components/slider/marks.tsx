@@ -1,42 +1,72 @@
-import { ReactNode } from 'react'
-import { For } from '../for'
-import { SliderMarker, SliderMarkerGroup, SliderMarkerIndicator } from './primitives'
-import { SliderProps } from './slider'
+'use client'
 
-export type SliderMarksProps = {
-  direction?: SliderProps['orientation']
-  marks: Array<Marker>
+import type { ReactNode } from 'react'
+import { extractParts, type ExtractedParts } from '../../internal/extract-parts'
+import { For } from '../for/for'
+import { SliderMarkerIndicator } from './marker-indicator'
+import {
+  SliderMarker,
+  SliderMarkerGroup,
+  type SliderMarkerGroupProps,
+} from './primitives'
+
+export const MARK_PARTS = {
+  marker: SliderMarker,
+  markerIndicator: SliderMarkerIndicator,
 }
-export type Marker = number | { value: number; label: ReactNode }
+
+/** A mark value, or a value with a custom label. */
+export type SliderMark = number | { value: number; label?: ReactNode }
+
+export type SliderMarksProps = SliderMarkerGroupProps & {
+  /**
+   * The marks to render along the track. A number renders as its own label;
+   * an object renders `label` (or its `value` when no label is given).
+   */
+  marks: SliderMark[]
+}
 
 /**
- * ## SliderMarks
- *
- * An abstraction over the `SliderMarkerGroup` and `SliderMarker` slots which provides a simple way to render slider marks without needing to manually manage the `SliderMarkerGroup` and `SliderMarker` slots.
- *
- * | Prop | Type | Description |
- * | --- | --- | --- |
- * | `direction` | `'horizontal' | 'vertical'` | The direction of the slider. |
- * | `marks` | `Array<number>` | The value of the slider as an array of numbers representing the mark values. |
+ * Renders a `Slider.MarkerGroup` with one `Slider.Marker`,
+ * `Slider.MarkerIndicator` and label per mark. Direct `Slider.Marker` and
+ * `Slider.MarkerIndicator` children patch every marker and indicator (a
+ * marker's `value` and `children` are ignored).
+ * @description [Cerberus Docs] https://cerberus.digitalu.design/docs/components/slider
  */
 export function SliderMarks(props: SliderMarksProps) {
-  return (
-    <SliderMarkerGroup direction={props.direction}>
-      <For each={props.marks}>
-        {(mark, idx) => <Mark key={idx} direction={props.direction} mark={mark} />}
-      </For>
-    </SliderMarkerGroup>
-  )
+  const { marks, children, ...groupProps } = props
+  const { parts } = extractParts(children, MARK_PARTS)
+  return <MarkList {...groupProps} marks={marks} parts={parts} />
 }
 
-function Mark(props: Omit<SliderMarksProps, 'marks'> & { mark: Marker }) {
-  const { mark } = props
-  const value = typeof mark === 'number' ? mark : mark.value
-  const label = typeof mark === 'number' ? mark : (mark.label ?? mark.value)
+/** @internal Shared by `Slider.Marks` and `Slider` */
+export function MarkList(
+  props: Omit<SliderMarksProps, 'children'> & {
+    parts: ExtractedParts<typeof MARK_PARTS>
+  },
+) {
+  const { marks, parts, ...groupProps } = props
+  const {
+    value: _value,
+    children: _children,
+    ...markerOverrideProps
+  } = parts.marker ?? {}
+
   return (
-    <SliderMarker direction={props.direction} value={value}>
-      <SliderMarkerIndicator />
-      {label}
-    </SliderMarker>
+    <SliderMarkerGroup {...groupProps}>
+      <For each={marks}>
+        {(mark, idx) => {
+          const value = typeof mark === 'number' ? mark : mark.value
+          const label =
+            typeof mark === 'number' ? mark : (mark.label ?? mark.value)
+          return (
+            <SliderMarker key={idx} {...markerOverrideProps} value={value}>
+              <SliderMarkerIndicator {...parts.markerIndicator} />
+              {label}
+            </SliderMarker>
+          )
+        }}
+      </For>
+    </SliderMarkerGroup>
   )
 }

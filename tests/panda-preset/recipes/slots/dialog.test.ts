@@ -87,12 +87,7 @@ describe('dialog recipe', () => {
         textOverflow: 'ellipsis',
         w: 'full',
       },
-      closeTrigger: {
-        position: 'absolute',
-        right: 'md',
-        top: 'md',
-        zIndex: 'decorator',
-      },
+      closeTrigger: {},
     })
   })
 

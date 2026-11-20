@@ -1,39 +1,31 @@
 'use client'
 
 import { Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  cerberus,
-  Dialog,
-  DialogCloseIconTrigger,
-  DialogContext,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogTrigger,
-} from '@cerberus-design/react'
+import { Button, cerberus, Dialog } from '@cerberus-design/react'
 
 export function ContextDemo() {
   return (
-    <DialogProvider>
-      <DialogTrigger asChild>
+    <Dialog.Root size="auto">
+      <Dialog.Trigger asChild>
         <Button>open dialog</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="xs" w="20rem">
-          <DialogHeading>Status</DialogHeading>
-          <DialogDescription maxW="prose">
-            <DialogContext>
+          <Dialog.Title>Status</Dialog.Title>
+          <Dialog.Description maxW="prose">
+            <Dialog.Context>
               {(dialog) => (
-                <cerberus.p>Dialog is {dialog.open ? 'open' : 'closed'}</cerberus.p>
+                <cerberus.p>
+                  Dialog is {dialog.open ? 'open' : 'closed'}
+                </cerberus.p>
               )}
-            </DialogContext>
-          </DialogDescription>
+            </Dialog.Context>
+          </Dialog.Description>
         </Stack>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }

@@ -5,8 +5,6 @@ import { Add, MacCommand, Search as SearchIcon } from '@carbon/icons-react'
 import {
   Dialog,
   DialogOpenChangeDetails,
-  DialogProvider,
-  DialogTrigger,
   Show,
   Text,
   toaster,
@@ -44,7 +42,9 @@ export function Search() {
       if (!containerRef.current) return
 
       const items = Array.from(
-        containerRef.current.querySelectorAll<HTMLElement>('[data-search-item]'),
+        containerRef.current.querySelectorAll<HTMLElement>(
+          '[data-search-item]',
+        ),
       )
 
       const currentIndex = items.findIndex(
@@ -72,7 +72,9 @@ export function Search() {
       if (!containerRef.current) return
 
       const items = Array.from(
-        containerRef.current.querySelectorAll<HTMLElement>('[data-search-item]'),
+        containerRef.current.querySelectorAll<HTMLElement>(
+          '[data-search-item]',
+        ),
       )
       if (!items.length) return
 
@@ -117,7 +119,8 @@ export function Search() {
   }
 
   return (
-    <DialogProvider
+    <Dialog.Root
+      size="md"
       open={open}
       onOpenChange={(details: DialogOpenChangeDetails) => {
         store.setOpen(details.open)
@@ -125,7 +128,7 @@ export function Search() {
       }}
     >
       <Box maxW="27rem" w="full">
-        <DialogTrigger
+        <Dialog.Trigger
           aria-label="Search (Meta+k)"
           aria-keyshortcuts="Meta+k"
           h="2.25rem"
@@ -165,9 +168,9 @@ export function Search() {
               </HStack>
             </HStack>
           </Center>
-        </DialogTrigger>
+        </Dialog.Trigger>
 
-        <Dialog ref={containerRef} onKeyDown={handleKeyDown} p="lg" size="md">
+        <Dialog ref={containerRef} onKeyDown={handleKeyDown} p="lg">
           <SearchInput
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               store.setSearch(e.target.value)
@@ -193,13 +196,19 @@ export function Search() {
           <Footer />
         </Dialog>
       </Box>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }
 
 function SearchingText() {
   return (
-    <Text as="em" color="page.text.100" display="block" p="md" textStyle="label-sm">
+    <Text
+      as="em"
+      color="page.text.100"
+      display="block"
+      p="md"
+      textStyle="label-sm"
+    >
       Searching the Underworld...
     </Text>
   )

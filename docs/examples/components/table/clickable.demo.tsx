@@ -34,7 +34,7 @@ export function ClickableDemo() {
 
   return (
     <Box w="1/2">
-      <Table.Root caption="Clickable table">
+      <Table caption="Clickable table">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCol>Name</Table.HeaderCol>
@@ -56,7 +56,7 @@ export function ClickableDemo() {
             </Table.Row>
           ))}
         </Table.Body>
-      </Table.Root>
+      </Table>
     </Box>
   )
 }

@@ -5,9 +5,6 @@ import {
   ColorModes,
   IconButton,
   Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
   Text,
   useThemeContext,
 } from '@cerberus-design/react'
@@ -38,25 +35,25 @@ export function ModeMenu() {
 
   return (
     <Menu onSelect={handleUpdateMode}>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <IconButton ariaLabel={ariaLabel} suppressHydrationWarning>
           <MatchModeIcon mode={mode} />
         </IconButton>
-      </MenuTrigger>
+      </Menu.Trigger>
 
-      <MenuContent>
-        <MenuItem cursor="pointer" value="light">
+      <Menu.ContentGroup>
+        <Menu.Item cursor="pointer" value="light">
           <MatchModeContent mode="light" />
-        </MenuItem>
+        </Menu.Item>
 
-        <MenuItem cursor="pointer" value="dark">
+        <Menu.Item cursor="pointer" value="dark">
           <MatchModeContent mode="dark" />
-        </MenuItem>
+        </Menu.Item>
 
-        <MenuItem cursor="pointer" value="system">
+        <Menu.Item cursor="pointer" value="system">
           <MatchModeContent mode="system" />
-        </MenuItem>
-      </MenuContent>
+        </Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }

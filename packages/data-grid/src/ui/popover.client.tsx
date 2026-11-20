@@ -3,7 +3,7 @@
 import {
   IconButtonRoot,
   OpenChangeDetails,
-  PopoverParts,
+  Popover as CerberusPopover,
   PopoverRootProps,
   Portal,
   Show,
@@ -26,7 +26,7 @@ export function Popover(props: PropsWithChildren<PopoverRootProps>) {
   const key = String(featureOpen.key) as MetaKey
 
   return (
-    <PopoverParts.Root
+    <CerberusPopover.Root
       {...props}
       lazyMount
       open={open}
@@ -59,7 +59,7 @@ export function Popover(props: PropsWithChildren<PopoverRootProps>) {
 export function PopoverAnchor(
   props: PropsWithChildren<HTMLAttributes<HTMLDivElement>>,
 ) {
-  return <PopoverParts.Anchor {...props} asChild />
+  return <CerberusPopover.Anchor {...props} asChild />
 }
 
 // Content
@@ -81,31 +81,35 @@ export function PopoverContent(props: PopoverContentProps) {
 
   return (
     <Portal container={ref}>
-      <PopoverParts.Positioner>
-        <PopoverParts.Content
+      <CerberusPopover.Positioner>
+        <CerberusPopover.Content
           bgColor="page.bg.100"
           style={{ width: data?.size || '20rem' }}
         >
-          <PopoverParts.Header>
-            <PopoverParts.CloseTrigger asChild>
+          <CerberusPopover.Header>
+            <CerberusPopover.CloseTrigger asChild>
               <IconButtonRoot size="xs" usage="ghost">
                 <CloseIcon />
               </IconButtonRoot>
-            </PopoverParts.CloseTrigger>
+            </CerberusPopover.CloseTrigger>
 
             <Show when={data?.title}>
               {() => (
-                <PopoverParts.Title textStyle="label-md">
+                <CerberusPopover.Title textStyle="label-md">
                   {data?.title}
-                </PopoverParts.Title>
+                </CerberusPopover.Title>
               )}
             </Show>
-          </PopoverParts.Header>
+          </CerberusPopover.Header>
 
-          <Show when={featureOpen.key === 'filter'}>{() => <FilterForm />}</Show>
-          <Show when={featureOpen.key === 'manage'}>{() => <ManageColsPopover />}</Show>
-        </PopoverParts.Content>
-      </PopoverParts.Positioner>
+          <Show when={featureOpen.key === 'filter'}>
+            {() => <FilterForm />}
+          </Show>
+          <Show when={featureOpen.key === 'manage'}>
+            {() => <ManageColsPopover />}
+          </Show>
+        </CerberusPopover.Content>
+      </CerberusPopover.Positioner>
     </Portal>
   )
 }

@@ -10,7 +10,7 @@ order: 20
 ## Usage
 
 ```tsx title="text-field.tsx" {4-9}
-import { FieldParts, splitProps } from '@cerberus/react'
+import { Field, splitProps } from '@cerberus/react'
 
 function TextField(props: TextFieldProps) {
   const [rootProps, { size }, textFieldProps] = splitProps(
@@ -21,18 +21,16 @@ function TextField(props: TextFieldProps) {
   )
 
   return (
-    <FieldParts.Root {...rootProps} size={size}>
-      <FieldParts.Label>
+    <Field.Root {...rootProps} size={size}>
+      <Field.Label>
         {textFieldProps.label}
-        <Show when={rootProps.required}>
-          <span data-part="required-text">(required)</span>
-        </Show>
-      </FieldParts.Label>
+        <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
+      </Field.Label>
 
-      <FieldParts.Input {...props.inputProps} size={size} />
-      <FieldParts.HelperText>{textFieldProps.helperText}</FieldParts.HelperText>
-      <FieldParts.ErrorText>{textFieldProps.errorText}</FieldParts.ErrorText>
-    </FieldParts.Root>
+      <Field.Input {...props.inputProps} />
+      <Field.HelperText>{textFieldProps.helperText}</Field.HelperText>
+      <Field.ErrorText>{textFieldProps.errorText}</Field.ErrorText>
+    </Field.Root>
   )
 }
 ```

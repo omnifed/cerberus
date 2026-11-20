@@ -1,6 +1,6 @@
 'use client'
 
-import { MenuItem, useCerberusContext } from '@cerberus-design/react'
+import { Menu, useCerberusContext } from '@cerberus-design/react'
 import { type ElementType } from 'react'
 import { HStack, Square } from 'styled-system/jsx'
 import { FEATURE_VALUES } from '../const'
@@ -43,12 +43,12 @@ export function MatchSortItems(props: { sorting: SortState | undefined }) {
 
 function UnsortItem() {
   return (
-    <MenuItem value={FEATURE_VALUES.unsort}>
+    <Menu.Item value={FEATURE_VALUES.unsort}>
       <HStack gap="sm" w="full">
         <Square size="4" />
         Unsort
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }
 
@@ -57,12 +57,12 @@ function SortAsc() {
   const Icon = icons.sortAsc
 
   return (
-    <MenuItem value={FEATURE_VALUES.sortAsc}>
+    <Menu.Item value={FEATURE_VALUES.sortAsc}>
       <HStack gap="sm" w="full">
         <Icon />
         Sort ASC
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }
 
@@ -71,11 +71,11 @@ function SortDesc() {
   const Icon = icons.sortDesc
 
   return (
-    <MenuItem value={FEATURE_VALUES.sortDesc}>
+    <Menu.Item value={FEATURE_VALUES.sortDesc}>
       <HStack gap="sm" w="full">
         <Icon />
         Sort DESC
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }

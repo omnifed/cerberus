@@ -12,7 +12,7 @@ order: 14
 ## Import
 
 ```ts
-import { Field, FieldParts } from '@cerberus/react'
+import { Field, Input, Textarea } from '@cerberus/react'
 ```
 
 ## Usage
@@ -31,52 +31,10 @@ For accessibility compliance, use the `hideLabel` prop to visually hide labels w
 
 <Example path="components/field" demo="custom" />
 
-## Primitives
+## Composition
 
-You can utilize the primitive components or the `css` prop to customize the field.
-
-| Component           | Description                                   |
-| ------------------- | --------------------------------------------- |
-| `FieldRoot`         | The context provider for the Field parts      |
-| `FieldLabel`        | The label of the field                        |
-| `FieldInput`        | The input of the field                        |
-| `FieldTextarea`     | The textarea of the field                     |
-| `FieldHelperText`   | The helper text of the field                  |
-| `FieldErrorText`    | The error text of the field                   |
-| `StartIndicator`    | The start indicator of the field              |
-| `StatusIndicator`   | The status indicator or end icon of the field |
-| `RequiredIndicator` | The required indicator of the field           |
+`<Field>` renders the label (with a required indicator), your control, and the helper and error text. Pass `Field.Label`, `Field.RequiredIndicator`, `Field.HelperText` or `Field.ErrorText` as direct children to override those parts, or compose `Field.Root` with the parts yourself. `Field.InputGroup` (also exported as `Input`) adds start and end icons and the Cerberus invalid icon around `Field.Input`; `Textarea` is `Field.Textarea`. On their own, outside a `Field`, `Input` and `Textarea` wrap themselves in a `Field.Root`.
 
 ## API
 
-### Props
-
-The `Field` component is an abstraction of the primitives and accepts the following props:
-
-| Name                  | Default | Description                                                                            |
-| --------------------- | ------- | -------------------------------------------------------------------------------------- |
-| `label`               |         | The label to show above the field input.                                               |
-| `helperText`          |         | The helper text to show below the field input.                                         |
-| `secondaryHelperText` |         | The secondary helper text to show below the field input at the end of the row.         |
-| `errorText`           |         | The error text to show below the field input. It replaces the helperText when visible. |
-| `hideLabel`           | `false` | Whether to hide the label visually while keeping it accessible to screen readers.      |
-
-The `Field` component also accepts all the props of the [`FieldRoot` primitive props](https://ark-ui.com/react/docs/components/field#api-reference)
-
-### Parts
-
-The `FieldParts` API is an Object containing the full family of components.
-
-<NoteAdmonition description="It is best to only use the FieldParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
-
-| Name                | Description                                                                                                       |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `Root`              | The `FieldRoot` component which is the Provider for the family.                                                   |
-| `Label`             | The `FieldLabel` component which displays the label and "required" notice.                                        |
-| `Input`             | The `FieldInput` component which is the input field.                                                              |
-| `Textarea`          | The `FieldTextarea` component which is the textarea field.                                                        |
-| `HelperText`        | The `FieldHelperText` component which displays the helper text.                                                   |
-| `ErrorText`         | The `FieldErrorText` component which displays the error text.                                                     |
-| `StartIndicator`    | The `StartIndicator` component which displays an indicator of your choice at the start of the field.              |
-| `StatusIndicator`   | The `StatusIndicator` component which displays an indicator of your choice at the end of the field.               |
-| `RequiredIndicator` | The `RequiredIndicator` component which displays an indicator of your choice when the field is marked `required`. |
+<ComponentApi spec="field" />

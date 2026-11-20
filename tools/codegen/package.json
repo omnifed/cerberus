@@ -1,0 +1,21 @@
+{
+  "name": "codegen",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Generators for the @cerberus-design/react component APIs, doc specs and scaffolds.",
+  "type": "module",
+  "scripts": {
+    "generate:api": "bun generate-api.ts",
+    "generate:docs": "bun generate-docs-spec.ts",
+    "generate:check": "bun generate-api.ts --check && bun generate-docs-spec.ts --check",
+    "scaffold": "bun scaffold.ts",
+    "lint:ts": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@ark-ui/react": "catalog:ark",
+    "@cerberus/panda-preset": "workspace:*",
+    "@types/bun": "catalog:types",
+    "@zag-js/docs": "1.47.0",
+    "zod": "^4.6.7"
+  }
+}

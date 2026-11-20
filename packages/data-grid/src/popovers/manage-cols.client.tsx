@@ -7,13 +7,18 @@ import {
   Field,
   For,
   Input,
-  PopoverParts,
+  Popover,
   Show,
   useCerberusContext,
 } from '@cerberus-design/react'
 import { useRead, useSignal } from '@cerberus-design/signals'
 import { type ChangeEvent } from 'react'
-import { Divider, type DividerProps, Scrollable, Stack } from 'styled-system/jsx'
+import {
+  Divider,
+  type DividerProps,
+  Scrollable,
+  Stack,
+} from 'styled-system/jsx'
 import { useDataGridContext } from '../context.client'
 import { InternalColumn } from '../types'
 
@@ -23,7 +28,9 @@ export function ManageColsPopover() {
 
   const cols = useRead(store.columns)
   const filteredCols = cols.filter((col) =>
-    (col.original.header as string)?.toLowerCase().includes(filter.toLowerCase()),
+    (col.original.header as string)
+      ?.toLowerCase()
+      .includes(filter.toLowerCase()),
   )
 
   const ctx = useCerberusContext()
@@ -46,7 +53,7 @@ export function ManageColsPopover() {
       <Show when={cols.length >= 7}>
         {() => (
           <Stack gap="sm">
-            <PopoverParts.Header>
+            <Popover.Header>
               <Field label="Search column" hideLabel>
                 <Input
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -57,29 +64,29 @@ export function ManageColsPopover() {
                   startIcon={<Icon />}
                 />
               </Field>
-            </PopoverParts.Header>
+            </Popover.Header>
             <ManageDivider mb="initial" />
           </Stack>
         )}
       </Show>
 
       <Scrollable w="full" style={{ height: '13rem' }}>
-        <PopoverParts.Body>
+        <Popover.Body>
           <Stack gap="md">
             <For each={filteredCols}>
               {(col) => <ManageCheckbox key={col.id} {...col} />}
             </For>
           </Stack>
-        </PopoverParts.Body>
+        </Popover.Body>
       </Scrollable>
       <ManageDivider />
 
-      <PopoverParts.Footer justifyContent="space-between">
+      <Popover.Footer justifyContent="space-between">
         <Checkbox onCheckedChange={handleToggleAll}>Show/Hide All</Checkbox>
         <Button onClick={handleReset} size="sm" usage="ghost">
           Reset
         </Button>
-      </PopoverParts.Footer>
+      </Popover.Footer>
     </>
   )
 }

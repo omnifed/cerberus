@@ -1,0 +1,731 @@
+{
+  "name": "NumberInput",
+  "key": "number-input",
+  "description": "The NumberInput component is used to manage numeric input fields. It includes increment and decrement buttons, supports the scrubber interaction pattern for pointer-based value adjustment, and can be easily integrated with form libraries.\n\nRendered on its own, NumberInput displays the input with increment and decrement triggers using the Cerberus icons; pass `scrubber` to add the scrubber. It supports different sizes to match the design requirements of your application. To use it within a form, wrap it with the Field component.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "md", "lg"],
+      "defaultValue": "'md'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "NumberInput.El",
+      "kind": "abstraction",
+      "description": "An entry abstraction that renders the input with increment and decrement triggers and an optional scrubber",
+      "inherits": ["NumberInput.Root"],
+      "props": [
+        {
+          "name": "scrubber",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to show a scrubber for fine-tuning the value with the pointer. A direct `NumberInput.Scrubber` child also shows it."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "NumberInput.Root",
+      "kind": "primitive",
+      "description": "The root container of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"en-US\"",
+          "description": "The current locale. Based on the BCP 47 definition."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the number input. Useful for composition."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name attribute of the number input. Useful for form submission."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the input element."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the number input is disabled."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the number input is readonly"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the number input value is invalid."
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the number input is required"
+        },
+        {
+          "name": "pattern",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"-?[0-9]*(.[0-9]+)?\"",
+          "description": "The pattern used to check the <input> element's value against"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "The controlled value of the input"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"\"",
+          "description": "The initial value of the input when rendered. Use when you don't need to control the value of the input."
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "defaultValue": "Number.MIN_SAFE_INTEGER",
+          "description": "The minimum value of the number input"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "Number.MAX_SAFE_INTEGER",
+          "description": "The maximum value of the number input"
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "The amount to increment or decrement the value by"
+        },
+        {
+          "name": "largeStep",
+          "type": "number",
+          "required": false,
+          "defaultValue": "10 * step",
+          "description": "The amount to increment or decrement the value by when the `Shift` key is held."
+        },
+        {
+          "name": "smallStep",
+          "type": "number",
+          "required": false,
+          "defaultValue": "step / 10",
+          "description": "The amount to increment or decrement the value by when the `Alt` key is held."
+        },
+        {
+          "name": "allowMouseWheel",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow mouse wheel to change the value"
+        },
+        {
+          "name": "allowOverflow",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to allow the value overflow the min/max range"
+        },
+        {
+          "name": "clampValueOnBlur",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to clamp the value when the input loses focus (blur)"
+        },
+        {
+          "name": "focusInputOnChange",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to focus input when the value changes"
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "formatOptions",
+          "type": "Intl.NumberFormatOptions",
+          "required": false,
+          "description": "The options to pass to the `Intl.NumberFormat` constructor"
+        },
+        {
+          "name": "inputMode",
+          "type": "InputMode",
+          "required": false,
+          "defaultValue": "\"decimal\"",
+          "description": "Hints at the type of data that might be entered by the user. It also determines the type of keyboard shown to the user on mobile devices"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the value changes"
+        },
+        {
+          "name": "onValueInvalid",
+          "type": "((details: ValueInvalidDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the value overflows or underflows the min/max range"
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((details: FocusChangeDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the number input is focused"
+        },
+        {
+          "name": "onValueCommit",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the value is committed (when the input is blurred or the Enter key is pressed)"
+        },
+        {
+          "name": "spinOnPress",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to spin the value when the increment/decrement button is pressed"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "NumberInput.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "exportName": "NumberInput.Input",
+      "kind": "primitive",
+      "description": "The input primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "input",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "keyboard": ["ArrowUp", "ArrowDown", "Home", "End", "Enter"],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "NumberInput.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ValueText",
+      "exportName": "NumberInput.ValueText",
+      "kind": "primitive",
+      "description": "The value-text primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "value-text",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "IncrementTrigger",
+      "exportName": "NumberInput.IncrementTrigger",
+      "kind": "primitive",
+      "description": "The increment-trigger primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "increment-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "DecrementTrigger",
+      "exportName": "NumberInput.DecrementTrigger",
+      "kind": "primitive",
+      "description": "The decrement-trigger primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "decrement-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Scrubber",
+      "exportName": "NumberInput.Scrubber",
+      "kind": "primitive",
+      "description": "The scrubber primitive part of the NumberInput component.",
+      "dataScope": "number-input",
+      "dataPart": "scrubber",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "NumberInput.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the NumberInput component, driven by state created with `useNumberInput()`.",
+      "dataScope": "number-input",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-scrubbing",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseNumberInputReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "NumberInput.Context",
+      "kind": "primitive",
+      "description": "Exposes the NumberInput state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseNumberInputContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Spinbutton",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/",
+    "keyboard": [
+      {
+        "key": "ArrowUp",
+        "description": "Increments the value of the number input by a predefined step."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Decrements the value of the number input by a predefined step."
+      },
+      {
+        "key": "Shift + ArrowUp",
+        "description": "Increments the value of the number input by the `largeStep` amount."
+      },
+      {
+        "key": "Shift + ArrowDown",
+        "description": "Decrements the value of the number input by the `largeStep` amount."
+      },
+      {
+        "key": "Alt + ArrowUp",
+        "description": "Increments the value of the number input by the `smallStep` amount."
+      },
+      {
+        "key": "Alt + ArrowDown",
+        "description": "Decrements the value of the number input by the `smallStep` amount."
+      },
+      {
+        "key": "Home",
+        "description": "Sets the value of the number input to its minimum allowed value."
+      },
+      {
+        "key": "End",
+        "description": "Sets the value of the number input to its maximum allowed value."
+      },
+      {
+        "key": "Enter",
+        "description": "Submits the value entered in the number input."
+      }
+    ]
+  }
+}

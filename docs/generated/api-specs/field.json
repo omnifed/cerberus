@@ -1,0 +1,596 @@
+{
+  "name": "Field",
+  "key": "field",
+  "description": "The Field component labels a form control and connects it to its helper text and error text, wiring the ids and ARIA attributes for you. It is composed of several primitives that enable customization and flexibility in its usage.\n\nUse the default `<Field>` with a `label`, `helperText` and `errorText` around a control: `Field.InputGroup` (also available as `Input`) renders an input with optional `startIcon`/`endIcon` and the Cerberus invalid icon, and `Field.Textarea` (also available as `Textarea`) a textarea. Mark it `invalid` to swap the helper text for the error text, `required` to show the required indicator, and set the `size` on the field (or on a single `Field.InputGroup`). Compose the primitives for full structural control.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "md", "lg"],
+      "defaultValue": "'lg'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Field.El",
+      "kind": "abstraction",
+      "description": "An abstraction of the root that renders the label with its required indicator, the control, and the helper text, error text and secondary helper text",
+      "inherits": ["Field.Root"],
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The label of the field."
+        },
+        {
+          "name": "helperText",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The helper text of the field. Hidden when the field is invalid."
+        },
+        {
+          "name": "secondaryHelperText",
+          "type": "ReactNode",
+          "required": false,
+          "description": "A helper text positioned at the end of the field. Good for Textarea fields."
+        },
+        {
+          "name": "errorText",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The error text of the field. Shown when the field is invalid."
+        },
+        {
+          "name": "hideLabel",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to hide the label visually while keeping it accessible to screen readers. On a `Field.Label` primitive, use the `srOnly` style prop."
+        }
+      ]
+    },
+    {
+      "name": "InputGroup",
+      "exportName": "Field.InputGroup",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the input root with an optional start indicator, the input, and the Cerberus invalid icon or an end indicator",
+      "inherits": ["Field.Input"],
+      "props": [
+        {
+          "name": "size",
+          "type": "FieldVariantProps['size']",
+          "required": false,
+          "description": "The size of this input. Defaults to the `size` of the parent `Field`."
+        },
+        {
+          "name": "startIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "An optional icon to display at the start of the input."
+        },
+        {
+          "name": "endIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "An optional icon to display at the end of the input while the field is valid. The Cerberus `invalid` icon replaces it when the field is invalid."
+        }
+      ]
+    },
+    {
+      "name": "StatusIndicatorWithIcon",
+      "exportName": "Field.StatusIndicatorWithIcon",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the status indicator with the Cerberus `invalid` icon when the field is invalid, else an end indicator with its `fallback`",
+      "inherits": ["Field.StatusIndicator"],
+      "props": [
+        {
+          "name": "fallback",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The content of the end indicator rendered while the field is valid."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Field.Root",
+      "kind": "primitive",
+      "description": "The root container of the Field component.",
+      "dataScope": "field",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The id of the field."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the field parts."
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Indicates whether the field is required."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Indicates whether the field is disabled."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Indicates whether the field is invalid."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Indicates whether the field is read-only."
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "required": false,
+          "description": "The target field item value the label should point to."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ErrorText",
+      "exportName": "Field.ErrorText",
+      "kind": "primitive",
+      "description": "The error-text primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "error-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HelperText",
+      "exportName": "Field.HelperText",
+      "kind": "primitive",
+      "description": "The helper-text primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "helper-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "exportName": "Field.Input",
+      "kind": "primitive",
+      "description": "The input primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "input",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Field.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "label",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Select",
+      "exportName": "Field.Select",
+      "kind": "primitive",
+      "description": "The select primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "select",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Textarea",
+      "exportName": "Field.Textarea",
+      "kind": "primitive",
+      "description": "The textarea primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "textarea",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "autoresize",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether the textarea should autoresize"
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RequiredIndicator",
+      "exportName": "Field.RequiredIndicator",
+      "kind": "primitive",
+      "description": "The required-indicator primitive part of the Field component.",
+      "dataScope": "field",
+      "dataPart": "required-indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "fallback",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "InputRoot",
+      "exportName": "Field.InputRoot",
+      "kind": "primitive",
+      "description": "The input-root part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
+      "dataScope": "field",
+      "dataPart": "input-root",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "StartIndicator",
+      "exportName": "Field.StartIndicator",
+      "kind": "primitive",
+      "description": "The start-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "dataScope": "field",
+      "dataPart": "start-indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "EndIndicator",
+      "exportName": "Field.EndIndicator",
+      "kind": "primitive",
+      "description": "The end-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "dataScope": "field",
+      "dataPart": "end-indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "StatusIndicator",
+      "exportName": "Field.StatusIndicator",
+      "kind": "primitive",
+      "description": "The status-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "dataScope": "field",
+      "dataPart": "status-indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Field.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Field component, driven by state created with `useField()`.",
+      "dataScope": "field",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseFieldReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Field.Context",
+      "kind": "primitive",
+      "description": "Exposes the Field state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseFieldContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "keyboard": [],
+    "notes": [
+      "`Field.Root` renders a `role=\"group\"` element and `Field.Label` a native `label` whose `for` points at the control.",
+      "The control gets `aria-invalid` when the field is invalid, and `aria-describedby` pointing at the helper text and, when invalid, the error text.",
+      "The error text is a polite live region, and the required indicator is hidden from assistive technology since the control is marked `required`.",
+      "The start, end and status indicators of `Field.InputGroup` are decorative (`aria-hidden`); describe anything they convey in the label or helper text."
+    ]
+  }
+}

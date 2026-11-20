@@ -1,73 +1,88 @@
-import type { TablePartsValue } from './parts'
+'use client'
+
+import type { ReactNode } from 'react'
+import { extractParts } from '../../internal/extract-parts'
 import {
-  Caption,
-  TableEl,
+  TableCaption,
   TableRoot,
-  TableTrigger,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
+  TableTable,
   type TableRootProps,
 } from './primitives'
-import { Show } from '../show/index'
 
-export interface TableRootElProps extends TableRootProps {
+/**
+ * This module contains the Table abstraction.
+ * @module
+ */
+
+const PARTS = {
+  table: TableTable,
+  caption: TableCaption,
+}
+
+export type TableProps = TableRootProps & {
   /**
-   * An easy to understand description of the table. Required for accessibility.
+   * An easy to understand description of the table, rendered as its
+   * `<caption>`. Required for accessibility unless a `Table.Caption` child
+   * is given.
    */
-  caption: string
+  caption?: ReactNode
   /**
    * If true, the table header will be sticky.
-   *
    * @default false
    */
   sticky?: boolean
 }
 
 /**
- * An abstraction over the TableRoot component that adds a sticky attribute.
- * @description [Cerberus Docs](https://cerberus.digitalu.design/react/table)
- *
- * @remarks
- *
- * This component is used to create a table with an optional sticky header.
- * It is a wrapper around the TableRoot component and the TableEl primitive.
+ * The Table component renders the table container (`Table.Root`) and the
+ * `<table>` element (`Table.Table`) with its `caption`. Non-part children
+ * (`Table.Header`, `Table.Body`, `Table.Footer`…) render inside the
+ * `<table>`, after the caption. Direct `Table.Table` or `Table.Caption`
+ * children override that part; a part child with children replaces its
+ * default content (for `Table.Table`, everything inside the `<table>`).
+ * Recipe variants (`size`, `decoration`) are set here and cascade to every
+ * part.
+ * @see https://cerberus.digitalu.design/docs/components/table
+ * @example
+ * ```tsx
+ * <Table caption="Products" size="sm" decoration="zebra">
+ *   <Table.Header>
+ *     <Table.Row>
+ *       <Table.HeaderCol scope="col">Name</Table.HeaderCol>
+ *     </Table.Row>
+ *   </Table.Header>
+ *   <Table.Body>
+ *     <Table.Row>
+ *       <Table.Cell>Cerberus</Table.Cell>
+ *     </Table.Row>
+ *   </Table.Body>
+ * </Table>
+ * ```
  */
-function TableRootEl(props: TableRootElProps) {
-  const { sticky, caption, ...rootProps } = props
+export function TableEl(props: TableProps) {
+  const { caption, sticky, children, ...rootProps } = props
+
+  const { parts, content } = extractParts(children, PARTS)
+
+  const { children: tableChildren, ...tableOverrideProps } = parts.table ?? {}
+  const { children: captionChildren, ...captionOverrideProps } =
+    parts.caption ?? {}
+  const captionContent = captionChildren ?? caption
+
   return (
     <TableRoot {...rootProps} data-sticky={sticky ?? false}>
-      <TableEl>
-        <Show when={caption}>
-          <Caption>{caption}</Caption>
-        </Show>
-
-        {rootProps.children}
-      </TableEl>
+      <TableTable {...tableOverrideProps}>
+        {tableChildren ?? (
+          <>
+            {captionContent != null && captionContent !== '' && (
+              <TableCaption {...captionOverrideProps}>
+                {captionContent}
+              </TableCaption>
+            )}
+            {content}
+          </>
+        )}
+      </TableTable>
     </TableRoot>
   )
-}
-
-/**
- * An Object containing the parts of the Table component. For users that
- * prefer Object component syntax.
- *
- * @remarks
- *
- * When using object component syntax, you import the TableParts object and
- * the entire family of components vs. only what you use.
- */
-export const Table: Omit<TablePartsValue, 'Table'> = {
-  Root: TableRootEl,
-  Caption: Caption,
-  Header: Thead,
-  HeaderCol: Th,
-  Body: Tbody,
-  Row: Tr,
-  Cell: Td,
-  Footer: Tfoot,
-  Trigger: TableTrigger,
 }

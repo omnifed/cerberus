@@ -3,7 +3,7 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [["@cerberus/*"], ["@cerberus-design/*"]],
-  "ignore": ["bench", "docs", "styled-system", "tests", "scripts"],
+  "ignore": ["bench", "docs", "styled-system", "tests", "scripts", "codegen"],
   "linked": [],
   "access": "public",
   "baseBranch": "main",

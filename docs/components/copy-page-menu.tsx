@@ -2,7 +2,7 @@
 
 import { HStack, Square, Stack } from '@/styled-system/jsx'
 import { DocumentBlank } from '@carbon/icons-react'
-import { MenuItem, SplitButton, Text } from '@cerberus-design/react'
+import { Menu, SplitButton, Text } from '@cerberus-design/react'
 import { useSignal } from '@cerberus-design/signals'
 
 interface CopyPageProps {
@@ -56,7 +56,7 @@ export function CopyPageMenu({ endpoint }: CopyPageProps) {
       onClick={handleCopy}
       usage="outlined"
     >
-      <MenuItem value="view_raw" onClick={handleOpenRaw}>
+      <Menu.Item value="view_raw" onClick={handleOpenRaw}>
         <Stack>
           <HStack w="full">
             <DocumentBlank />
@@ -66,9 +66,9 @@ export function CopyPageMenu({ endpoint }: CopyPageProps) {
             Open this page in Markdown
           </Text>
         </Stack>
-      </MenuItem>
+      </Menu.Item>
 
-      <MenuItem
+      <Menu.Item
         value="open_claude"
         onClick={() => handleOpenTool('https://claude.ai/editor')}
       >
@@ -83,9 +83,9 @@ export function CopyPageMenu({ endpoint }: CopyPageProps) {
             Ask questions about this page
           </Text>
         </Stack>
-      </MenuItem>
+      </Menu.Item>
 
-      <MenuItem
+      <Menu.Item
         value="open_gpt"
         onClick={() => handleOpenTool('https://chat.openai.com/')}
       >
@@ -100,7 +100,7 @@ export function CopyPageMenu({ endpoint }: CopyPageProps) {
             Ask questions about this page
           </Text>
         </Stack>
-      </MenuItem>
+      </Menu.Item>
     </SplitButton>
   )
 }

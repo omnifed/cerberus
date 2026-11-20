@@ -1,14 +1,7 @@
 'use client'
 
 import { Box } from '@/styled-system/jsx'
-import {
-  DatePicker,
-  DatePickerCalendar,
-  DatePickerLabel,
-  Field,
-  parseDate,
-  RangePickerInput,
-} from '@cerberus-design/react'
+import { DatePicker, Field, parseDate } from '@cerberus-design/react'
 
 export function RangeDefaultValueDemo() {
   const defaultValue = parseDate(['2025-01-01', '2025-01-15'])
@@ -21,9 +14,9 @@ export function RangeDefaultValueDemo() {
           name="range_dates_dv"
           selectionMode="range"
         >
-          <DatePickerLabel>Search range</DatePickerLabel>
-          <RangePickerInput />
-          <DatePickerCalendar />
+          <DatePicker.Label>Search range</DatePicker.Label>
+          <DatePicker.RangeInputGroup />
+          <DatePicker.Calendar />
         </DatePicker>
       </Field>
     </Box>

@@ -5,9 +5,6 @@ import {
   Button,
   For,
   Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
   Text,
   useThemeContext,
 } from '@cerberus-design/react'
@@ -17,7 +14,12 @@ import { type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/dog'
 import { FireIcon } from '../icons/fire'
 
-const supportedThemes: RawThemes[] = ['cerberus', 'acheron', 'elysium', 'oceanus']
+const supportedThemes: RawThemes[] = [
+  'cerberus',
+  'acheron',
+  'elysium',
+  'oceanus',
+]
 
 const icons: Record<RawThemes, ElementType> = {
   cerberus: DogIcon,
@@ -36,7 +38,7 @@ export function ThemeMenu() {
 
   return (
     <Menu onSelect={handleUpdateTheme}>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button
           bgColor="page.bg.100"
           border="1px solid"
@@ -53,17 +55,17 @@ export function ThemeMenu() {
         >
           <MatchThemeContent theme={theme} />
         </Button>
-      </MenuTrigger>
+      </Menu.Trigger>
 
-      <MenuContent>
+      <Menu.ContentGroup>
         <For each={supportedThemes}>
           {(theme) => (
-            <MenuItem key={theme} cursor="pointer" value={theme}>
+            <Menu.Item key={theme} cursor="pointer" value={theme}>
               <MatchThemeContent theme={theme} />
-            </MenuItem>
+            </Menu.Item>
           )}
         </For>
-      </MenuContent>
+      </Menu.ContentGroup>
     </Menu>
   )
 }
@@ -77,7 +79,12 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
   return (
     <>
       <Icon suppressHydrationWarning />
-      <Text display="inline" ps="sm" textStyle="body-sm" textTransform="capitalize">
+      <Text
+        display="inline"
+        ps="sm"
+        textStyle="body-sm"
+        textTransform="capitalize"
+      >
         {theme}
       </Text>
     </>

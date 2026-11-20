@@ -1,20 +1,14 @@
 import { Box } from '@/styled-system/jsx'
-import {
-  DatePicker,
-  DatePickerCalendar,
-  DatePickerInput,
-  DatePickerLabel,
-  Field,
-} from '@cerberus-design/react'
+import { DatePicker, Field } from '@cerberus-design/react'
 
 export function BasicDemo() {
   return (
     <Box w="2/3">
       <Field>
         <DatePicker>
-          <DatePickerLabel>Start date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
+          <DatePicker.Label>Start date</DatePicker.Label>
+          <DatePicker.InputGroup />
+          <DatePicker.Calendar />
         </DatePicker>
       </Field>
     </Box>

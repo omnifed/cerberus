@@ -1,0 +1,736 @@
+{
+  "name": "Carousel",
+  "key": "carousel",
+  "description": "The Carousel component is a versatile UI element that allows users to navigate through a slideshow style set of \"pages\" which contain images.\n\nThe Carousel component can be used in various contexts, mostly pertaining to marketing sites. It is uncommon for application development but is not restricted to for a UX pattern.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Carousel.El",
+      "kind": "abstraction",
+      "description": "An abstraction for rendering all the content-related primitives",
+      "inherits": ["Carousel.Root"],
+      "props": [
+        {
+          "name": "showIndicators",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to show the carousel indicators (dot list)."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Carousel.Root",
+      "kind": "primitive",
+      "description": "The root container of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the carousel."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--slides-per-page",
+          "description": "The number of slides visible per page."
+        },
+        {
+          "name": "--slide-spacing",
+          "description": "The spacing between slides."
+        },
+        {
+          "name": "--slide-item-size",
+          "description": "The calculated size of each slide item."
+        }
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "defaultValue": "\"horizontal\"",
+          "description": "The orientation of the element."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the carousel. Useful for composition."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "The localized messages to use."
+        },
+        {
+          "name": "slidesPerPage",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "The number of slides to show at a time."
+        },
+        {
+          "name": "autoSize",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable variable width slides."
+        },
+        {
+          "name": "slidesPerMove",
+          "type": "number | \"auto\"",
+          "required": false,
+          "defaultValue": "\"auto\"",
+          "description": "The number of slides to scroll at a time. When set to `auto`, the number of slides to scroll is determined by the `slidesPerPage` property."
+        },
+        {
+          "name": "autoplay",
+          "type": "boolean | { delay: number; }",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to scroll automatically. The default delay is 4000ms."
+        },
+        {
+          "name": "allowMouseDrag",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow scrolling via dragging with mouse"
+        },
+        {
+          "name": "loop",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether the carousel should loop around."
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "required": false,
+          "description": "The controlled page of the carousel."
+        },
+        {
+          "name": "defaultPage",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The initial page to scroll to when rendered. Use when you don't need to control the page of the carousel."
+        },
+        {
+          "name": "spacing",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"0px\"",
+          "description": "The amount of space between items."
+        },
+        {
+          "name": "padding",
+          "type": "string",
+          "required": false,
+          "description": "Defines the extra space added around the scrollable area, enabling nearby items to remain partially in view."
+        },
+        {
+          "name": "onPageChange",
+          "type": "((details: PageChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the page changes."
+        },
+        {
+          "name": "inViewThreshold",
+          "type": "number | number[]",
+          "required": false,
+          "defaultValue": "0.6",
+          "description": "The threshold for determining if an item is in view."
+        },
+        {
+          "name": "snapType",
+          "type": "\"proximity\" | \"mandatory\"",
+          "required": false,
+          "defaultValue": "\"mandatory\"",
+          "description": "The snap type of the item."
+        },
+        {
+          "name": "slideCount",
+          "type": "number",
+          "required": true,
+          "description": "The total number of slides. Useful for SSR to render the initial ating the snap points."
+        },
+        {
+          "name": "onDragStatusChange",
+          "type": "((details: DragStatusDetails) => void)",
+          "required": false,
+          "description": "Function called when the drag status changes."
+        },
+        {
+          "name": "onAutoplayStatusChange",
+          "type": "((details: AutoplayStatusDetails) => void)",
+          "required": false,
+          "description": "Function called when the autoplay status changes."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroup",
+      "exportName": "Carousel.ItemGroup",
+      "kind": "primitive",
+      "description": "The item-group primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "item-group",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the item."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Carousel.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-index",
+          "reflects": "index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-inview",
+          "presence": true,
+          "description": "Present when in viewport."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true,
+          "description": "The index of the item."
+        },
+        {
+          "name": "snapAlign",
+          "type": "\"start\" | \"end\" | \"center\"",
+          "required": false,
+          "defaultValue": "\"start\"",
+          "description": "The snap alignment of the item."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Carousel.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the control."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "NextTrigger",
+      "exportName": "Carousel.NextTrigger",
+      "kind": "primitive",
+      "description": "The next-trigger primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "next-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the next trigger."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "PrevTrigger",
+      "exportName": "Carousel.PrevTrigger",
+      "kind": "primitive",
+      "description": "The prev-trigger primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "prev-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the prev trigger."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "IndicatorGroup",
+      "exportName": "Carousel.IndicatorGroup",
+      "kind": "primitive",
+      "description": "The indicator-group primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "indicator-group",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the indicator group."
+        }
+      ],
+      "keyboard": [
+        "ArrowDown",
+        "ArrowUp",
+        "ArrowRight",
+        "ArrowLeft",
+        "Home",
+        "End"
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Carousel.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the indicator."
+        },
+        {
+          "name": "data-index",
+          "reflects": "index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-current",
+          "presence": true,
+          "description": "Present when current."
+        }
+      ],
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true,
+          "description": "The index of the indicator."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether the indicator is read only."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "AutoplayTrigger",
+      "exportName": "Carousel.AutoplayTrigger",
+      "kind": "primitive",
+      "description": "The autoplay-trigger primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "autoplay-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the autoplay trigger."
+        },
+        {
+          "name": "data-pressed",
+          "presence": true,
+          "description": "Present when pressed."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ProgressText",
+      "exportName": "Carousel.ProgressText",
+      "kind": "primitive",
+      "description": "The progress-text primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "progress-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "AutoplayIndicator",
+      "exportName": "Carousel.AutoplayIndicator",
+      "kind": "primitive",
+      "description": "The autoplay-indicator primitive part of the Carousel component.",
+      "dataScope": "carousel",
+      "dataPart": "autoplay-indicator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "fallback",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": "The fallback content to render when autoplay is paused."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Carousel.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Carousel component, driven by state created with `useCarousel()`.",
+      "dataScope": "carousel",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the carousel."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--slides-per-page",
+          "description": "The number of slides visible per page."
+        },
+        {
+          "name": "--slide-spacing",
+          "description": "The spacing between slides."
+        },
+        {
+          "name": "--slide-item-size",
+          "description": "The calculated size of each slide item."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "UseCarouselReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Carousel",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/carousel/",
+    "keyboard": [
+      {
+        "key": "ArrowRight",
+        "description": "When focus is on an indicator and orientation is horizontal, moves to the next page."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "When focus is on an indicator and orientation is horizontal, moves to the previous page."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "When focus is on an indicator and orientation is vertical, moves to the next page."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "When focus is on an indicator and orientation is vertical, moves to the previous page."
+      },
+      {
+        "key": "Home",
+        "description": "When focus is on an indicator, moves to the first page."
+      },
+      {
+        "key": "End",
+        "description": "When focus is on an indicator, moves to the last page."
+      }
+    ]
+  }
+}

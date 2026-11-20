@@ -1,3 +1,6 @@
+'use client'
+
+import { createAbstraction } from '../../internal/factory'
 import {
   ProgressBarBar,
   ProgressBarRoot,
@@ -5,9 +8,14 @@ import {
 } from './primitives'
 
 /**
- * This module contains the ProgressBar component.
+ * This module contains the ProgressBar abstraction.
  * @module
  */
+
+const PARTS = {
+  root: ProgressBarRoot,
+  bar: ProgressBarBar,
+}
 
 export type NonIndeterminateProgressBarProps = {
   /**
@@ -50,31 +58,34 @@ export type ProgressBarProps = ProgressBarRootProps &
 
 /**
  * The ProgressBar component is used to display the progress of a task.
- * @see https://cerberus.digitalu.design/react/progress-indicators
+ * @see https://cerberus.digitalu.design/docs/components/progress
  * @example
  * ```tsx
- * <ProgressBar value={75} />
+ * <ProgressBar id="upload" label="Uploading" now={75} />
  * ```
  */
-export function ProgressBar(props: ProgressBarProps) {
-  const { indeterminate, now, label, ...nativeProps } = props
+export const ProgressBarEl = createAbstraction(
+  PARTS,
+  (props: ProgressBarProps, parts) => {
+    const { indeterminate, now, label, ...rootProps } = props
 
-  const nowClamped = Math.min(100, Math.max(0, now || 0))
-  const width = {
-    width: indeterminate ? '50%' : `${nowClamped}%`,
-  }
+    const nowClamped = Math.min(100, Math.max(0, now || 0))
+    const width = {
+      width: indeterminate ? '50%' : `${nowClamped}%`,
+    }
 
-  return (
-    <ProgressBarRoot
-      {...nativeProps}
-      aria-label={label}
-      aria-valuenow={indeterminate ? 0 : nowClamped}
-    >
-      <ProgressBarBar
-        {...(indeterminate && { 'data-state': 'indeterminate' })}
-        data-complete={nowClamped === 100}
-        style={width}
-      />
-    </ProgressBarRoot>
-  )
-}
+    return (
+      <parts.root
+        {...rootProps}
+        aria-label={label}
+        aria-valuenow={indeterminate ? 0 : nowClamped}
+      >
+        <parts.bar
+          {...(indeterminate && { 'data-state': 'indeterminate' })}
+          data-complete={nowClamped === 100}
+          style={width}
+        />
+      </parts.root>
+    )
+  },
+)

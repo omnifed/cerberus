@@ -5,11 +5,20 @@ import { ArrowDownRight } from '@carbon/icons-react'
 
 export function IconDemo() {
   return (
-    <Button>
-      With icon
-      <Button.Icon>
-        <ArrowDownRight />
-      </Button.Icon>
-    </Button>
+    <Button.Group>
+      <Button>
+        With icon
+        <Button.Icon>
+          <ArrowDownRight />
+        </Button.Icon>
+      </Button>
+
+      <Button pending>
+        <Button.Icon>
+          <ArrowDownRight />
+        </Button.Icon>
+        Pending
+      </Button>
+    </Button.Group>
   )
 }

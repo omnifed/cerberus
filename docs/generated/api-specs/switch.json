@@ -1,0 +1,505 @@
+{
+  "name": "Switch",
+  "key": "switch",
+  "description": "The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.\n\nUse the default `<Switch>` for a labeled switch with the Cerberus check indicator, or compose the primitives for full structural control. To use it within a form, wrap it with the Field component.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "lg"],
+      "defaultValue": "'sm'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Switch.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders a labeled switch with the Cerberus check indicator in the thumb",
+      "inherits": ["Switch.Root"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Switch.Root",
+      "kind": "primitive",
+      "description": "The root container of the Switch component.",
+      "dataScope": "switch",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'lg'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the switch. Useful for composition."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"switch\"",
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the switch is disabled."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the switch is marked as invalid."
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the switch input is marked as required,"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the switch is read-only"
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((details: CheckedChangeDetails) => void)",
+          "required": false,
+          "description": "Function to call when the switch is clicked."
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled checked state of the switch"
+        },
+        {
+          "name": "defaultChecked",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "The initial checked state of the switch when rendered. Use when you don't need to control the checked state of the switch."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the input field in a switch (Useful for form submission)."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The id of the form that the switch belongs to"
+        },
+        {
+          "name": "value",
+          "type": "string | number",
+          "required": false,
+          "defaultValue": "\"on\"",
+          "description": "The value of switch input. Useful for form submission."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Switch.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Switch component.",
+      "dataScope": "switch",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Switch.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Switch component.",
+      "dataScope": "switch",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Thumb",
+      "exportName": "Switch.Thumb",
+      "kind": "primitive",
+      "description": "The thumb primitive part of the Switch component.",
+      "dataScope": "switch",
+      "dataPart": "thumb",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HiddenInput",
+      "exportName": "Switch.HiddenInput",
+      "kind": "primitive",
+      "description": "The hidden-input primitive part of the Switch component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Switch.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Switch component, driven by state created with `useSwitch()`.",
+      "dataScope": "switch",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'lg'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseSwitchReturn",
+          "required": true,
+          "defaultValue": "\"on\"",
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Switch",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/",
+    "keyboard": [
+      {
+        "key": "Space",
+        "description": "Toggle the switch."
+      },
+      {
+        "key": "Enter",
+        "description": "Toggle the switch."
+      }
+    ]
+  }
+}

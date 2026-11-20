@@ -1,23 +1,25 @@
 'use client'
 
-import { PopoverParts } from '@cerberus-design/react'
+import { Popover } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
-    <PopoverParts.Root size="lg">
-      <PopoverParts.Trigger>Custom Trigger</PopoverParts.Trigger>
+    <Popover.Root size="lg">
+      <Popover.Trigger>Custom Trigger</Popover.Trigger>
 
-      <PopoverParts.Positioner>
-        <PopoverParts.Content bgColor="page.bg.100" border="2px solid" rounded="none">
-          <PopoverParts.Header pb="lg">This is a custom popover</PopoverParts.Header>
-          <PopoverParts.Body bgColor="page.bg.200">
+      <Popover.Positioner>
+        <Popover.Content
+          bgColor="page.bg.100"
+          border="2px solid"
+          rounded="none"
+        >
+          <Popover.Header pb="lg">This is a custom popover</Popover.Header>
+          <Popover.Body bgColor="page.bg.200">
             That is fully built from scratch
-          </PopoverParts.Body>
-          <PopoverParts.Footer textStyle="heading-2xs">
-            Footer sturf
-          </PopoverParts.Footer>
-        </PopoverParts.Content>
-      </PopoverParts.Positioner>
-    </PopoverParts.Root>
+          </Popover.Body>
+          <Popover.Footer textStyle="heading-2xs">Footer sturf</Popover.Footer>
+        </Popover.Content>
+      </Popover.Positioner>
+    </Popover.Root>
   )
 }

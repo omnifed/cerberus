@@ -5,14 +5,14 @@ export function SecondaryDemo() {
   return (
     <Box w="1/2">
       <Tabs.Root defaultValue="overview-1" palette="secondaryAction">
-        <Tabs.List>
-          <Tabs.Tab value="overview-1">Overview</Tabs.Tab>
-          <Tabs.Tab value="features-1">Features</Tabs.Tab>
-          <Tabs.Tab value="pricing-1">Pricing</Tabs.Tab>
-        </Tabs.List>
-        <Tabs.Panel value="overview-1">Overview content</Tabs.Panel>
-        <Tabs.Panel value="features-1">Features content</Tabs.Panel>
-        <Tabs.Panel value="pricing-1">Pricing content</Tabs.Panel>
+        <Tabs.ListGroup>
+          <Tabs.Trigger value="overview-1">Overview</Tabs.Trigger>
+          <Tabs.Trigger value="features-1">Features</Tabs.Trigger>
+          <Tabs.Trigger value="pricing-1">Pricing</Tabs.Trigger>
+        </Tabs.ListGroup>
+        <Tabs.Content value="overview-1">Overview content</Tabs.Content>
+        <Tabs.Content value="features-1">Features content</Tabs.Content>
+        <Tabs.Content value="pricing-1">Pricing content</Tabs.Content>
       </Tabs.Root>
     </Box>
   )
