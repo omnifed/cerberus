@@ -59,9 +59,7 @@ Use the `pauseOnInteraction` prop to pause the marquee when users hover or focus
 
 ## Context
 
-Access the combobox's state with `ComboboxContext` or the `useComboboxContext` hook—useful for displaying the selected value or building custom UI.
-
-<NoteAdmonition description="Since combobox is an abstracted API, you'll need to build your own to obtain the context as we do in the example below." />
+Control the marquee from outside with the `useMarquee` hook and `Marquee.RootProvider`, for example to pause and resume it from your own buttons. Inside a marquee, `Marquee.Context` exposes the same state to a render function.
 
 <Example path="components/marquee" demo="store" />
 

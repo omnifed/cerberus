@@ -1,0 +1,541 @@
+{
+  "name": "CircularProgress",
+  "key": "circular-progress",
+  "description": "The CircularProgress component displays a circular progress indicator for a task, with the value text and a label in the center of the circle. It scales with its `size` variant.\n\nUse the default `<CircularProgress>` with a `value` (or `defaultValue`) and a `label` to render the circle, its track and range, and the info group for you, or compose the primitives for full structural control. Set `hideValueText` to only show the label, and `usage=\"transparent\"` to remove the fill of the center circle.",
+  "variants": [
+    {
+      "name": "usage",
+      "values": ["filled", "transparent"],
+      "defaultValue": "'filled'"
+    },
+    {
+      "name": "size",
+      "values": ["xs", "sm", "md", "lg"],
+      "defaultValue": "'xs'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "CircularProgress.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the circle with its track and range, and an info group with the value text and a label",
+      "inherits": ["CircularProgress.Root"],
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": "'Done'",
+          "description": "The text rendered below the value text, in the center of the circle."
+        },
+        {
+          "name": "hideValueText",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to hide the value text in the center of the circle, leaving only the label."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "CircularProgress.Root",
+      "kind": "primitive",
+      "description": "The root container of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-max"
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-state"
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the progress."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--percent",
+          "description": "The percent value for the root."
+        },
+        {
+          "name": "--radius",
+          "description": "The border radius value."
+        },
+        {
+          "name": "--circumference",
+          "description": "The circumference value for the root."
+        },
+        {
+          "name": "--offset",
+          "description": "The offset position of the element."
+        }
+      ],
+      "props": [
+        {
+          "name": "usage",
+          "type": "'filled' | 'transparent'",
+          "required": false,
+          "defaultValue": "'filled'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'xs'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "defaultValue": "\"horizontal\"",
+          "description": "The orientation of the element."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the progress bar. Useful for composition."
+        },
+        {
+          "name": "value",
+          "type": "number | null",
+          "required": false,
+          "description": "The controlled value of the progress bar."
+        },
+        {
+          "name": "defaultValue",
+          "type": "number | null",
+          "required": false,
+          "defaultValue": "50",
+          "description": "The initial value of the progress bar when rendered. Use when you don't need to control the value of the progress bar."
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The minimum allowed value of the progress bar."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100",
+          "description": "The maximum allowed value of the progress bar."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "The localized messages to use."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Callback fired when the value changes."
+        },
+        {
+          "name": "formatOptions",
+          "type": "Intl.NumberFormatOptions",
+          "required": false,
+          "defaultValue": "{ style: \"percent\" }",
+          "description": "The options to use for formatting the value.",
+          "see": [
+            "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat"
+          ]
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"en-US\"",
+          "description": "The locale to use for formatting the value."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "CircularProgress.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the label."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ValueText",
+      "exportName": "CircularProgress.ValueText",
+      "kind": "primitive",
+      "description": "The value-text primitive part of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "value-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "View",
+      "exportName": "CircularProgress.View",
+      "kind": "primitive",
+      "description": "The view primitive part of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "view",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "reflects": "state"
+        }
+      ],
+      "props": [
+        {
+          "name": "state",
+          "type": "ProgressState",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Circle",
+      "exportName": "CircularProgress.Circle",
+      "kind": "primitive",
+      "description": "The circle primitive part of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "circle",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "CircleTrack",
+      "exportName": "CircularProgress.CircleTrack",
+      "kind": "primitive",
+      "description": "The circle-track primitive part of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "circle-track",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the circle track."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "CircleRange",
+      "exportName": "CircularProgress.CircleRange",
+      "kind": "primitive",
+      "description": "The circle-range primitive part of the CircularProgress component.",
+      "dataScope": "circular-progress",
+      "dataPart": "circle-range",
+      "dataAttributes": [
+        {
+          "name": "data-state"
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "InfoGroup",
+      "exportName": "CircularProgress.InfoGroup",
+      "kind": "primitive",
+      "description": "The info-group part of the CircularProgress component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
+      "dataScope": "progress",
+      "dataPart": "info-group",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "CircularProgress.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the CircularProgress component, driven by state created with `useProgress()`.",
+      "dataScope": "circular-progress",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-max"
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-state"
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the progress."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--percent",
+          "description": "The percent value for the root."
+        },
+        {
+          "name": "--radius",
+          "description": "The border radius value."
+        },
+        {
+          "name": "--circumference",
+          "description": "The circumference value for the root."
+        },
+        {
+          "name": "--offset",
+          "description": "The offset position of the element."
+        }
+      ],
+      "props": [
+        {
+          "name": "usage",
+          "type": "'filled' | 'transparent'",
+          "required": false,
+          "defaultValue": "'filled'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'xs'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseProgressReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "CircularProgress.Context",
+      "kind": "primitive",
+      "description": "Exposes the CircularProgress state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseProgressContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

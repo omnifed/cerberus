@@ -3,9 +3,7 @@
 import { Stack, VStack } from '@/styled-system/jsx'
 import { ChevronDown, Close } from '@carbon/icons-react'
 import {
-  ComboboxParts,
-  ComboItemText,
-  ComboItemWithIndicator,
+  Combobox,
   For,
   Text,
   UseComboboxContext,
@@ -18,32 +16,32 @@ export function ContextDemo() {
 
   return (
     <Stack w="1/2">
-      <ComboboxParts.Root
+      <Combobox.Root
         collection={collection}
         onInputValueChange={handleInputChange}
         placeholder="Choose option"
       >
-        <ComboboxParts.Context>
+        <Combobox.Context>
           {(context: UseComboboxContext<(typeof collection.items)[number]>) => (
             <Text mb="md">Selected: {context.valueAsString || 'None'}</Text>
           )}
-        </ComboboxParts.Context>
+        </Combobox.Context>
 
-        <ComboboxParts.Label>Select Relative</ComboboxParts.Label>
+        <Combobox.Label>Select Relative</Combobox.Label>
 
-        <ComboboxParts.Control>
-          <ComboboxParts.Input />
+        <Combobox.Control>
+          <Combobox.Input />
 
-          <ComboboxParts.ClearTrigger>
+          <Combobox.ClearTrigger>
             <Close />
-          </ComboboxParts.ClearTrigger>
-          <ComboboxParts.Trigger>
+          </Combobox.ClearTrigger>
+          <Combobox.Trigger>
             <ChevronDown />
-          </ComboboxParts.Trigger>
-        </ComboboxParts.Control>
+          </Combobox.Trigger>
+        </Combobox.Control>
 
-        <ComboboxParts.Positioner>
-          <ComboboxParts.Content>
+        <Combobox.Positioner>
+          <Combobox.Content>
             <For
               each={collection.items}
               fallback={
@@ -55,14 +53,14 @@ export function ContextDemo() {
               }
             >
               {(item) => (
-                <ComboItemWithIndicator key={item.value} item={item}>
-                  <ComboItemText>{item.label}</ComboItemText>
-                </ComboItemWithIndicator>
+                <Combobox.ItemWithIndicator key={item.value} item={item}>
+                  <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                </Combobox.ItemWithIndicator>
               )}
             </For>
-          </ComboboxParts.Content>
-        </ComboboxParts.Positioner>
-      </ComboboxParts.Root>
+          </Combobox.Content>
+        </Combobox.Positioner>
+      </Combobox.Root>
     </Stack>
   )
 }

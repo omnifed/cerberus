@@ -7,8 +7,6 @@ import {
   ComboboxInputValueChangeDetails,
   ComboboxOpenChangeDetails,
   ComboboxValueChangeDetails,
-  ComboItemText,
-  ComboItemWithIndicator,
   For,
   Show,
   Tag,
@@ -45,20 +43,22 @@ export function CreatableDemo() {
   const [inputValue, setInputValue] = useSignal('')
 
   const { contains } = useFilter({ sensitivity: 'base' })
-  const { collection, filter, upsert, update, remove } = useListCollection<Item>({
-    initialItems: [
-      { label: 'Bug', value: 'bug' },
-      { label: 'Feature', value: 'feature' },
-      { label: 'Enhancement', value: 'enhancement' },
-      { label: 'Documentation', value: 'docs' },
-    ],
-    filter: contains,
-  })
+  const { collection, filter, upsert, update, remove } =
+    useListCollection<Item>({
+      initialItems: [
+        { label: 'Bug', value: 'bug' },
+        { label: 'Feature', value: 'feature' },
+        { label: 'Enhancement', value: 'enhancement' },
+        { label: 'Documentation', value: 'docs' },
+      ],
+      filter: contains,
+    })
 
   const isValidNewOption = (inputValue: string) => {
     const exactOptionMatch =
-      collection.filter((item) => item.toLowerCase() === inputValue.toLowerCase())
-        .size > 0
+      collection.filter(
+        (item) => item.toLowerCase() === inputValue.toLowerCase(),
+      ).size > 0
     return !exactOptionMatch && inputValue.trim().length > 0
   }
 
@@ -116,15 +116,15 @@ export function CreatableDemo() {
           }
         >
           {(item) => (
-            <ComboItemWithIndicator key={item.value} item={item}>
+            <Combobox.ItemWithIndicator key={item.value} item={item}>
               <Show
                 when={api.isNew(item.value)}
-                fallback={<ComboItemText>{item.label}</ComboItemText>}
+                fallback={<Combobox.ItemText>{item.label}</Combobox.ItemText>}
               >
                 {() => (
-                  <ComboItemText textStyle="label-sm">
+                  <Combobox.ItemText textStyle="label-sm">
                     + Create &quot;{item.label}&quot;
-                  </ComboItemText>
+                  </Combobox.ItemText>
                 )}
               </Show>
 
@@ -135,7 +135,7 @@ export function CreatableDemo() {
                   </Tag>
                 )}
               </Show>
-            </ComboItemWithIndicator>
+            </Combobox.ItemWithIndicator>
           )}
         </For>
       </Combobox>
