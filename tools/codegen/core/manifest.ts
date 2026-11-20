@@ -46,6 +46,8 @@ export interface ComponentEntry {
   elementParts: Record<string, string>
   /** Members (`Root`, `RootProvider`…) given back Ark's collection item generic */
   collectionGeneric: string[]
+  /** Members' props forwarded to Ark despite sharing a CSS property's name */
+  forwardProps: Record<string, string[]>
   docsSlug: string
   description: string
   abstractions: AbstractionConfig[]
@@ -223,6 +225,25 @@ export function loadManifest(
       }
     }
 
+    const forwardProps = config.forwardProps ?? {}
+    for (const [member, props] of Object.entries(forwardProps)) {
+      if (source !== 'ark' || !memberNames.includes(member)) {
+        diagnostics.error(
+          key,
+          `forwardProps: \`${member}\` is not an Ark part or arkMembers entry`,
+        )
+      }
+      if (member.endsWith('Context')) {
+        diagnostics.error(
+          key,
+          `forwardProps: \`${member}\` is a render prop and is not styled`,
+        )
+      }
+      if (props.length === 0) {
+        diagnostics.error(key, `forwardProps.${member} lists no props`)
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -287,6 +308,7 @@ export function loadManifest(
       memberSlots,
       elementParts,
       collectionGeneric,
+      forwardProps,
       docsSlug: config.docsSlug ?? key,
       anatomy: config.anatomy,
       parts,

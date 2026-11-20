@@ -89,6 +89,12 @@ export type ComponentConfig = {
    * a generic signature back: `<T extends CollectionItem>(props: XRootProps<T>)`.
    */
   collectionGeneric?: string[]
+  /**
+   * Props a member forwards to its Ark component although Panda would read them as
+   * style props, because they share a CSS property's name: `{ Root: ['page'] }`
+   * keeps Pagination's controlled `page` from becoming a `page` style.
+   */
+  forwardProps?: Record<string, string[]>
   /** Docs page slug when it isn't the key, e.g. `progress` for CircularProgress */
   docsSlug?: string
   abstractions?: AbstractionConfig[]
