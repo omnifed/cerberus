@@ -1,77 +1,99 @@
 'use client'
 
-import type { DatePicker, UseDatePickerContext } from '@ark-ui/react/date-picker'
-import { DatePickerParts } from './parts'
-import type { DatePickerViewProps } from './primitives'
+import type { DateValue } from '@ark-ui/react/date-picker'
+import { getLocalTimeZone, isSameDay, today } from '@internationalized/date'
+import { extractParts } from '../../internal/extract-parts'
+import {
+  DatePickerContext,
+  DatePickerTable,
+  DatePickerTableBody,
+  DatePickerTableCell,
+  DatePickerTableCellTrigger,
+  DatePickerTableHead,
+  DatePickerTableHeader,
+  DatePickerTableRow,
+  DatePickerView,
+  type DatePickerViewProps,
+} from './primitives'
 import { DatePickerViewControlGroup } from './view-control-group'
 
-/**
- * This private module contains an abstraction of the DayView component.
- * @module 'date-picker/day-view'
- */
-
-export type DateValue = DatePicker.DateValue
+const PARTS = {
+  viewControlGroup: DatePickerViewControlGroup,
+  table: DatePickerTable,
+}
 
 /**
- * An abstraction of the DatePickerDayView that renders the day view of the
- * DatePicker.
- * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
+ * `today`, `past` or `future` (in the user's time zone), set as `data-date` on
+ * each day trigger
  */
-export function DatePickerDayView(props: Omit<DatePickerViewProps, 'view'>) {
-  function isToday(date: DateValue): boolean {
-    const today = () => new Date()
-    const formatted = today().toISOString().split('T')[0]
-    const arkDate = `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`
-    return formatted === arkDate
-  }
+function getDayValue(date: DateValue): 'today' | 'past' | 'future' {
+  const now = today(getLocalTimeZone())
+  if (isSameDay(date, now)) return 'today'
+  return date.compare(now) < 0 ? 'past' : 'future'
+}
 
-  function isPastDay(date: DateValue): boolean {
-    const today = () => new Date()
-    const arkDate = `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}`
-    return new Date(arkDate) < today()
-  }
+export type DatePickerDayViewProps = Omit<DatePickerViewProps, 'view'>
 
-  function getDayValue(date: DateValue): 'today' | 'past' | 'future' {
-    if (isToday(date)) return 'today'
-    if (isPastDay(date)) return 'past'
-    return 'future'
-  }
+/**
+ * The DayView component is an abstraction of the `DatePicker.View` primitive
+ * for the `day` view. It renders a `DatePicker.ViewControlGroup` and a table
+ * with a header row of narrow week day names and one row per week. Each day
+ * trigger is marked `data-date="today"`, `"past"` or `"future"`. A direct
+ * `DatePicker.ViewControlGroup` or `DatePicker.Table` child patches that
+ * part's props. Other children render after the table.
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/date-picker)
+ * @description [Ark Docs](https://ark-ui.com/docs/components/date-picker)
+ * @example
+ * ```tsx
+ * <DatePicker.ContentGroup>
+ *   <DatePicker.DayView />
+ * </DatePicker.ContentGroup>
+ * ```
+ */
+export function DatePickerDayView(props: DatePickerDayViewProps) {
+  const { children, ...viewProps } = props
+  const { parts, content } = extractParts(children, PARTS)
+  const { children: _tableChildren, ...tableProps } = parts.table ?? {}
 
   return (
-    <DatePickerParts.View {...props} view="day">
-      <DatePickerParts.Context>
-        {(datePickerData: UseDatePickerContext) => (
+    <DatePickerView {...viewProps} view="day">
+      <DatePickerContext>
+        {(datePicker) => (
           <>
-            <DatePickerViewControlGroup />
+            <DatePickerViewControlGroup {...parts.viewControlGroup} />
 
-            <DatePickerParts.Table>
-              <DatePickerParts.TableHead>
-                <DatePickerParts.TableRow>
-                  {datePickerData.weekDays.map((weekDay, id) => (
-                    <DatePickerParts.TableHeader key={id}>
+            <DatePickerTable {...tableProps}>
+              <DatePickerTableHead>
+                <DatePickerTableRow>
+                  {datePicker.weekDays.map((weekDay, id) => (
+                    <DatePickerTableHeader key={id}>
                       {weekDay.narrow}
-                    </DatePickerParts.TableHeader>
+                    </DatePickerTableHeader>
                   ))}
-                </DatePickerParts.TableRow>
-              </DatePickerParts.TableHead>
+                </DatePickerTableRow>
+              </DatePickerTableHead>
 
-              <DatePickerParts.TableBody>
-                {datePickerData.weeks.map((week, id) => (
-                  <DatePickerParts.TableRow key={id}>
+              <DatePickerTableBody>
+                {datePicker.weeks.map((week, id) => (
+                  <DatePickerTableRow key={id}>
                     {week.map((day, id) => (
-                      <DatePickerParts.TableCell key={id} value={day}>
-                        <DatePickerParts.TableCellTrigger data-date={getDayValue(day)}>
+                      <DatePickerTableCell key={id} value={day}>
+                        <DatePickerTableCellTrigger
+                          data-date={getDayValue(day)}
+                        >
                           {day.day}
-                        </DatePickerParts.TableCellTrigger>
-                      </DatePickerParts.TableCell>
+                        </DatePickerTableCellTrigger>
+                      </DatePickerTableCell>
                     ))}
-                  </DatePickerParts.TableRow>
+                  </DatePickerTableRow>
                 ))}
-              </DatePickerParts.TableBody>
-            </DatePickerParts.Table>
+              </DatePickerTableBody>
+            </DatePickerTable>
+
+            {content}
           </>
         )}
-      </DatePickerParts.Context>
-    </DatePickerParts.View>
+      </DatePickerContext>
+    </DatePickerView>
   )
 }

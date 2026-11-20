@@ -1,0 +1,556 @@
+{
+  "name": "Pagination",
+  "key": "pagination",
+  "description": "The Pagination component lets users navigate between the pages of a data set.\n\nUse the default `<Pagination>` to render the previous and next triggers around one button per page (with ellipses), or pass `compact` to show \"page of total\" text between the triggers instead. Non-part children render inside the root, where `usePaginationContext()` reads the state, e.g. to `slice()` your data. Compose `Pagination.ItemList`, `Pagination.CompactList`, `Pagination.PrevTriggerWithIcon`, `Pagination.NextTriggerWithIcon`, `Pagination.ItemButton` and `Pagination.EllipsisButton` for custom layouts, or the unstyled primitives for full structural control: every part accepts Panda style props, `css` and `asChild`.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Pagination.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the previous and next triggers around the page items and ellipses, or \"page of total\" text with `compact`",
+      "inherits": ["Pagination.Root"],
+      "props": [
+        {
+          "name": "page",
+          "type": "ArkPaginationRootProps['page']",
+          "required": false,
+          "description": "The controlled active page."
+        },
+        {
+          "name": "compact",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Display a compact layout of only text information and triggers."
+        },
+        {
+          "name": "layout",
+          "type": "GroupProps['layout']",
+          "required": false,
+          "defaultValue": "'default'",
+          "description": "The layout of the button group."
+        }
+      ]
+    },
+    {
+      "name": "ItemList",
+      "exportName": "Pagination.ItemList",
+      "kind": "abstraction",
+      "description": "An abstraction that renders a Group of the previous trigger, one button per page or ellipsis, and the next trigger",
+      "props": []
+    },
+    {
+      "name": "CompactList",
+      "exportName": "Pagination.CompactList",
+      "kind": "abstraction",
+      "description": "An abstraction that renders a Group of the previous trigger, \"page of total\" text, and the next trigger",
+      "props": []
+    },
+    {
+      "name": "PrevTriggerWithIcon",
+      "exportName": "Pagination.PrevTriggerWithIcon",
+      "kind": "abstraction",
+      "description": "An abstraction of the previous trigger rendered as a square IconButton with the Cerberus `calendarPrev` icon",
+      "inherits": ["Pagination.PrevTrigger"],
+      "props": [
+        {
+          "name": "palette",
+          "type": "\"action\" | \"secondaryAction\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usage",
+          "type": "\"ghost\" | \"filled\" | \"outlined\" | \"outlined-subtle\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shape",
+          "type": "\"square\" | \"circle\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"sm\" | \"md\" | \"lg\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "layout",
+          "type": "GroupProps['layout']",
+          "required": false,
+          "defaultValue": "'default'",
+          "description": "The layout of the Group the trigger renders in. `attached` renders an `outlined-subtle` IconButton so it matches the attached items."
+        }
+      ]
+    },
+    {
+      "name": "NextTriggerWithIcon",
+      "exportName": "Pagination.NextTriggerWithIcon",
+      "kind": "abstraction",
+      "description": "An abstraction of the next trigger rendered as a square IconButton with the Cerberus `calendarNext` icon",
+      "inherits": ["Pagination.NextTrigger"],
+      "props": [
+        {
+          "name": "palette",
+          "type": "\"action\" | \"secondaryAction\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usage",
+          "type": "\"ghost\" | \"filled\" | \"outlined\" | \"outlined-subtle\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shape",
+          "type": "\"square\" | \"circle\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"sm\" | \"md\" | \"lg\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "layout",
+          "type": "GroupProps['layout']",
+          "required": false,
+          "defaultValue": "'default'",
+          "description": "The layout of the Group the trigger renders in. `attached` renders an `outlined-subtle` IconButton so it matches the attached items."
+        }
+      ]
+    },
+    {
+      "name": "ItemButton",
+      "exportName": "Pagination.ItemButton",
+      "kind": "abstraction",
+      "description": "An abstraction of the item rendered as an outlined-subtle Button that shows its page number",
+      "inherits": ["Pagination.Item"],
+      "props": [
+        {
+          "name": "palette",
+          "type": "\"action\" | \"secondaryAction\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usage",
+          "type": "\"ghost\" | \"outlined\" | \"outlined-subtle\" | \"filled\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shape",
+          "type": "\"hard\" | \"squared\" | \"sharp\" | \"rounded\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "EllipsisButton",
+      "exportName": "Pagination.EllipsisButton",
+      "kind": "abstraction",
+      "description": "An abstraction of the ellipsis rendered as an outlined-subtle Button that shows \"…\"",
+      "inherits": ["Pagination.Ellipsis"],
+      "props": [
+        {
+          "name": "palette",
+          "type": "\"action\" | \"secondaryAction\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "usage",
+          "type": "\"ghost\" | \"outlined\" | \"outlined-subtle\" | \"filled\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "shape",
+          "type": "\"hard\" | \"squared\" | \"sharp\" | \"rounded\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\"",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Pagination.Root",
+      "kind": "primitive",
+      "description": "The root container of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the accordion. Useful for composition."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Total number of data items"
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "required": false,
+          "description": "The controlled number of data items per page"
+        },
+        {
+          "name": "defaultPageSize",
+          "type": "number",
+          "required": false,
+          "defaultValue": "10",
+          "description": "The initial number of data items per page when rendered. Use when you don't need to control the page size of the pagination."
+        },
+        {
+          "name": "siblingCount",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Number of pages to show beside active page"
+        },
+        {
+          "name": "boundaryCount",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Number of pages to show at the beginning and end"
+        },
+        {
+          "name": "page",
+          "type": "number",
+          "required": false,
+          "description": "The controlled active page"
+        },
+        {
+          "name": "defaultPage",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "The initial active page when rendered. Use when you don't need to control the active page of the pagination."
+        },
+        {
+          "name": "onPageChange",
+          "type": "((details: PageChangeDetails) => void)",
+          "required": false,
+          "description": "Called when the page number is changed"
+        },
+        {
+          "name": "onPageSizeChange",
+          "type": "((details: PageSizeChangeDetails) => void)",
+          "required": false,
+          "description": "Called when the page size is changed"
+        },
+        {
+          "name": "type",
+          "type": "\"button\" | \"link\"",
+          "required": false,
+          "defaultValue": "\"button\"",
+          "description": "The type of the trigger element"
+        },
+        {
+          "name": "getPageUrl",
+          "type": "((details: PageUrlDetails) => string)",
+          "required": false,
+          "description": "Function to generate href attributes for pagination links. Only used when `type` is set to \"link\"."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Pagination.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-selected",
+          "presence": true,
+          "description": "Present when selected."
+        }
+      ],
+      "props": [
+        {
+          "name": "type",
+          "type": "\"page\"",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Ellipsis",
+      "exportName": "Pagination.Ellipsis",
+      "kind": "primitive",
+      "description": "The ellipsis primitive part of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "ellipsis",
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "FirstTrigger",
+      "exportName": "Pagination.FirstTrigger",
+      "kind": "primitive",
+      "description": "The first-trigger primitive part of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "first-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "PrevTrigger",
+      "exportName": "Pagination.PrevTrigger",
+      "kind": "primitive",
+      "description": "The prev-trigger primitive part of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "prev-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "NextTrigger",
+      "exportName": "Pagination.NextTrigger",
+      "kind": "primitive",
+      "description": "The next-trigger primitive part of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "next-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "LastTrigger",
+      "exportName": "Pagination.LastTrigger",
+      "kind": "primitive",
+      "description": "The last-trigger primitive part of the Pagination component.",
+      "dataScope": "pagination",
+      "dataPart": "last-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Pagination.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Pagination component, driven by state created with `usePagination()`.",
+      "dataScope": "pagination",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "value",
+          "type": "UsePaginationReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Pagination.Context",
+      "kind": "primitive",
+      "description": "Exposes the Pagination state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UsePaginationContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

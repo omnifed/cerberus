@@ -5,9 +5,6 @@ import {
   createSelectCollection,
   Field,
   For,
-  Option,
-  OptionGroup,
-  OptionGroupLabel,
   Select,
 } from '@cerberus-design/react'
 
@@ -24,12 +21,13 @@ export function GroupedDemo() {
     <Box w="1/2">
       <Field label="Select Relative">
         <Select collection={collection} placeholder="Choose option">
-          <OptionGroup>
-            <OptionGroupLabel>The fam</OptionGroupLabel>
+          <Select.ItemGroupWithLabel label="The fam">
             <For each={collection.items}>
-              {(item) => <Option key={item.value} item={item} />}
+              {(item) => (
+                <Select.ItemWithIndicator key={item.value} item={item} />
+              )}
             </For>
-          </OptionGroup>
+          </Select.ItemGroupWithLabel>
         </Select>
       </Field>
     </Box>

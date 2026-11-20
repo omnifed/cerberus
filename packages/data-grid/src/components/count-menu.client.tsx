@@ -5,7 +5,7 @@ import {
   Field,
   For,
   Option,
-  SelectParts,
+  Select,
   SelectRootProps,
   useCerberusContext,
 } from '@cerberus-design/react'
@@ -36,37 +36,31 @@ export function CountMenu(props: CountMenuProps) {
   return (
     <Box>
       <Field label="Select a page size" hideLabel flexDirection="row">
-        <SelectParts.Root
+        <Select.Root
           {...props}
           collection={collection}
           defaultValue={[String(pageSize)]}
           size="sm"
         >
-          <SelectParts.Control>
-            <SelectParts.Trigger
-              border="none"
-              minW="initial"
-              gap="xs"
-              ps="0"
-              pe="0"
-            >
-              <SelectParts.ValueText />
+          <Select.Control>
+            <Select.Trigger border="none" minW="initial" gap="xs" ps="0" pe="0">
+              <Select.ValueText />
               <HStack>
-                <SelectParts.Indicator>
+                <Select.Indicator>
                   <Icon />
-                </SelectParts.Indicator>
+                </Select.Indicator>
               </HStack>
-            </SelectParts.Trigger>
-          </SelectParts.Control>
+            </Select.Trigger>
+          </Select.Control>
 
-          <SelectParts.Positioner>
-            <SelectParts.Content minW="7rem">
+          <Select.Positioner>
+            <Select.Content minW="7rem">
               <For each={collection.items}>
                 {(item) => <Option key={item.value} item={item} />}
               </For>
-            </SelectParts.Content>
-          </SelectParts.Positioner>
-        </SelectParts.Root>
+            </Select.Content>
+          </Select.Positioner>
+        </Select.Root>
       </Field>
     </Box>
   )

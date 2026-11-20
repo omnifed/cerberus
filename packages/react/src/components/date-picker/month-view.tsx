@@ -1,49 +1,75 @@
 'use client'
 
-import type { UseDatePickerContext } from '@ark-ui/react/date-picker'
-import { DatePickerParts } from './parts'
+import { extractParts } from '../../internal/extract-parts'
+import {
+  DatePickerContext,
+  DatePickerTable,
+  DatePickerTableBody,
+  DatePickerTableCell,
+  DatePickerTableCellTrigger,
+  DatePickerTableRow,
+  DatePickerView,
+  type DatePickerViewProps,
+} from './primitives'
 import { DatePickerViewControlGroup } from './view-control-group'
-import type { DatePickerViewProps } from './primitives'
+
+const PARTS = {
+  viewControlGroup: DatePickerViewControlGroup,
+  table: DatePickerTable,
+}
+
+export type DatePickerMonthViewProps = Omit<DatePickerViewProps, 'view'>
 
 /**
- * This private module contains an abstraction of the DatePickerMonthView
- * component.
- * @module 'date-picker/month-view'
+ * The MonthView component is an abstraction of the `DatePicker.View`
+ * primitive for the `month` view. It renders a `DatePicker.ViewControlGroup`
+ * and a table of short month names, four per row. A direct
+ * `DatePicker.ViewControlGroup` or `DatePicker.Table` child patches that
+ * part's props. Other children render after the table.
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/date-picker)
+ * @description [Ark Docs](https://ark-ui.com/docs/components/date-picker)
+ * @example
+ * ```tsx
+ * <DatePicker.ContentGroup>
+ *   <DatePicker.DayView />
+ *   <DatePicker.MonthView />
+ * </DatePicker.ContentGroup>
+ * ```
  */
+export function DatePickerMonthView(props: DatePickerMonthViewProps) {
+  const { children, ...viewProps } = props
+  const { parts, content } = extractParts(children, PARTS)
+  const { children: _tableChildren, ...tableProps } = parts.table ?? {}
 
-/**
- * An abstraction of the DatePickerMonthView that renders the month view of the
- * DatePicker.
- * @definition [datePicker docs](https://cerberus.digitalu.design/react/date-picker)
- */
-export function DatePickerMonthView(props: DatePickerViewProps) {
   return (
-    <DatePickerParts.View {...props} view="month">
-      <DatePickerParts.Context>
-        {(datePicker: UseDatePickerContext) => (
+    <DatePickerView {...viewProps} view="month">
+      <DatePickerContext>
+        {(datePicker) => (
           <>
-            <DatePickerViewControlGroup />
+            <DatePickerViewControlGroup {...parts.viewControlGroup} />
 
-            <DatePickerParts.Table>
-              <DatePickerParts.TableBody>
+            <DatePickerTable {...tableProps}>
+              <DatePickerTableBody>
                 {datePicker
                   .getMonthsGrid({ columns: 4, format: 'short' })
                   .map((months, id) => (
-                    <DatePickerParts.TableRow key={id}>
+                    <DatePickerTableRow key={id}>
                       {months.map((month, id) => (
-                        <DatePickerParts.TableCell key={id} value={month.value}>
-                          <DatePickerParts.TableCellTrigger>
+                        <DatePickerTableCell key={id} value={month.value}>
+                          <DatePickerTableCellTrigger>
                             {month.label}
-                          </DatePickerParts.TableCellTrigger>
-                        </DatePickerParts.TableCell>
+                          </DatePickerTableCellTrigger>
+                        </DatePickerTableCell>
                       ))}
-                    </DatePickerParts.TableRow>
+                    </DatePickerTableRow>
                   ))}
-              </DatePickerParts.TableBody>
-            </DatePickerParts.Table>
+              </DatePickerTableBody>
+            </DatePickerTable>
+
+            {content}
           </>
         )}
-      </DatePickerParts.Context>
-    </DatePickerParts.View>
+      </DatePickerContext>
+    </DatePickerView>
   )
 }

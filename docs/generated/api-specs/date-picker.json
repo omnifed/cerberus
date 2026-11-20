@@ -1,0 +1,1807 @@
+{
+  "name": "DatePicker",
+  "key": "date-picker",
+  "description": "The DatePicker component lets users enter a date, or a range of dates, by typing it in an input or picking it from a calendar.\n\nUse the default `<DatePicker>` as the root (its content is placed below the input by default) with `DatePicker.Label`, `DatePicker.InputGroup` (or `DatePicker.RangeInputGroup` with `selectionMode=\"range\"`) and `DatePicker.Calendar` to render the input with its calendar trigger and the day, month and year views for you, or compose the primitives for full structural control. `DatePicker.DayView`, `DatePicker.MonthView`, `DatePicker.YearView` and `DatePicker.ViewControlGroup` build a custom calendar inside `DatePicker.ContentGroup`. To use it within a form, wrap it with the Field component.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "DatePicker.El",
+      "kind": "abstraction",
+      "description": "An abstraction of the root that places the calendar content below the start of the input by default",
+      "inherits": ["DatePicker.Root"],
+      "props": []
+    },
+    {
+      "name": "InputGroup",
+      "exportName": "DatePicker.InputGroup",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the control with the calendar trigger and the input",
+      "inherits": ["DatePicker.Input"],
+      "props": []
+    },
+    {
+      "name": "RangeInputGroup",
+      "exportName": "DatePicker.RangeInputGroup",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the control with the calendar trigger and the start and end inputs of a range",
+      "inherits": ["DatePicker.Input"],
+      "props": []
+    },
+    {
+      "name": "IconTrigger",
+      "exportName": "DatePicker.IconTrigger",
+      "kind": "abstraction",
+      "description": "An abstraction of the trigger that renders a ghost IconButton with the Cerberus calendar icon",
+      "inherits": ["DatePicker.Trigger"],
+      "props": [
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "'Open calendar'",
+          "description": "The accessible label of the trigger."
+        }
+      ]
+    },
+    {
+      "name": "Calendar",
+      "exportName": "DatePicker.Calendar",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the positioned content with the day, month and year views",
+      "inherits": ["DatePicker.Content"],
+      "props": [
+        {
+          "name": "withModal",
+          "type": "boolean",
+          "required": false,
+          "description": "",
+          "deprecated": "this is no longer needed."
+        }
+      ]
+    },
+    {
+      "name": "ContentGroup",
+      "exportName": "DatePicker.ContentGroup",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the content inside its positioner",
+      "inherits": ["DatePicker.Content"],
+      "props": []
+    },
+    {
+      "name": "DayView",
+      "exportName": "DatePicker.DayView",
+      "kind": "abstraction",
+      "description": "An abstraction of the day view that renders the view control and the table of week days and days",
+      "inherits": ["DatePicker.View"],
+      "props": []
+    },
+    {
+      "name": "MonthView",
+      "exportName": "DatePicker.MonthView",
+      "kind": "abstraction",
+      "description": "An abstraction of the month view that renders the view control and a table of months",
+      "inherits": ["DatePicker.View"],
+      "props": []
+    },
+    {
+      "name": "YearView",
+      "exportName": "DatePicker.YearView",
+      "kind": "abstraction",
+      "description": "An abstraction of the year view that renders the view control and a table of years",
+      "inherits": ["DatePicker.View"],
+      "props": []
+    },
+    {
+      "name": "ViewControlGroup",
+      "exportName": "DatePicker.ViewControlGroup",
+      "kind": "abstraction",
+      "description": "An abstraction of the view control that renders the previous and next IconButtons and a view trigger Button showing the range text",
+      "inherits": ["DatePicker.ViewControl"],
+      "props": []
+    },
+    {
+      "name": "ClearTrigger",
+      "exportName": "DatePicker.ClearTrigger",
+      "kind": "primitive",
+      "description": "The clear-trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "clear-trigger",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "DatePicker.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-placement",
+          "description": "The placement of the content."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the content is positioned on."
+        },
+        {
+          "name": "data-inline",
+          "presence": true,
+          "description": "Present when the content is inline."
+        },
+        {
+          "name": "data-nested",
+          "description": "popover."
+        },
+        {
+          "name": "data-has-nested",
+          "description": "popover."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--layer-index",
+          "description": "The index of the dismissable in the layer stack."
+        },
+        {
+          "name": "--nested-layer-count",
+          "description": "The number of nested date-pickers."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "DatePicker.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-placeholder-shown",
+          "presence": true,
+          "description": "Present when placeholder is shown."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "exportName": "DatePicker.Input",
+      "kind": "primitive",
+      "description": "The input primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "input",
+      "dataAttributes": [
+        {
+          "name": "data-index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-placeholder-shown",
+          "presence": true,
+          "description": "Present when placeholder is shown."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "keyboard": ["Enter"],
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": false,
+          "description": "The index of the input to focus."
+        },
+        {
+          "name": "fixOnBlur",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to fix the input value on blur."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "DatePicker.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "MonthSelect",
+      "exportName": "DatePicker.MonthSelect",
+      "kind": "primitive",
+      "description": "The month-select primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "month-select",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "NextTrigger",
+      "exportName": "DatePicker.NextTrigger",
+      "kind": "primitive",
+      "description": "The next-trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "next-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Positioner",
+      "exportName": "DatePicker.Positioner",
+      "kind": "primitive",
+      "description": "The positioner primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "positioner",
+      "cssVars": [
+        {
+          "name": "--reference-width",
+          "description": "The width of the reference element."
+        },
+        {
+          "name": "--reference-height",
+          "description": "The height of the root."
+        },
+        {
+          "name": "--available-width",
+          "description": "The available width in viewport."
+        },
+        {
+          "name": "--available-height",
+          "description": "The available height in viewport."
+        },
+        {
+          "name": "--x",
+          "description": "The x position for transform."
+        },
+        {
+          "name": "--y",
+          "description": "The y position for transform."
+        },
+        {
+          "name": "--z-index",
+          "description": "The z-index value."
+        },
+        {
+          "name": "--transform-origin",
+          "description": "The transform origin for animations."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "PresetTrigger",
+      "exportName": "DatePicker.PresetTrigger",
+      "kind": "primitive",
+      "description": "The preset-trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "preset-trigger",
+      "props": [
+        {
+          "name": "value",
+          "type": "PresetTriggerValue",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "PrevTrigger",
+      "exportName": "DatePicker.PrevTrigger",
+      "kind": "primitive",
+      "description": "The prev-trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "prev-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RangeText",
+      "exportName": "DatePicker.RangeText",
+      "kind": "primitive",
+      "description": "The range-text primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "range-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "DatePicker.Root",
+      "kind": "primitive",
+      "description": "The root container of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-empty",
+          "presence": true,
+          "description": "Present when the content is empty."
+        }
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"en-US\"",
+          "description": "The locale (BCP 47 language tag) to use when formatting the date."
+        },
+        {
+          "name": "createCalendar",
+          "type": "((identifier: CalendarIdentifier) => Calendar)",
+          "required": false,
+          "description": "A function that creates a Calendar object for a given calendar identifier. Enables non-Gregorian calendar support (Persian, Buddhist, Islamic, etc.) without bundling all calendars by default."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "The localized messages to use."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the date picker. Useful for composition."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The `name` attribute of the input element."
+        },
+        {
+          "name": "timeZone",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"UTC\"",
+          "description": "The time zone to use"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the calendar is disabled."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the calendar is read-only."
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the date picker is required"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the date picker is invalid"
+        },
+        {
+          "name": "outsideDaySelectable",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether day outside the visible range can be selected."
+        },
+        {
+          "name": "min",
+          "type": "DateValue",
+          "required": false,
+          "description": "The minimum date that can be selected."
+        },
+        {
+          "name": "max",
+          "type": "DateValue",
+          "required": false,
+          "description": "The maximum date that can be selected."
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the calendar should close after the date selection is complete. This is ignored when the selection mode is `multiple`."
+        },
+        {
+          "name": "openOnClick",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to open the calendar when the input is clicked."
+        },
+        {
+          "name": "value",
+          "type": "DateValue[]",
+          "required": false,
+          "description": "The controlled selected date(s)."
+        },
+        {
+          "name": "defaultValue",
+          "type": "DateValue[]",
+          "required": false,
+          "description": "The initial selected date(s) when rendered. Use when you don't need to control the selected date(s) of the date picker."
+        },
+        {
+          "name": "focusedValue",
+          "type": "DateValue",
+          "required": false,
+          "description": "The controlled focused date."
+        },
+        {
+          "name": "defaultFocusedValue",
+          "type": "DateValue",
+          "required": false,
+          "description": "The initial focused date when rendered. Use when you don't need to control the focused date of the date picker."
+        },
+        {
+          "name": "numOfMonths",
+          "type": "number",
+          "required": false,
+          "description": "The number of months to display."
+        },
+        {
+          "name": "startOfWeek",
+          "type": "number",
+          "required": false,
+          "description": "The first day of the week. `0` - Sunday `1` - Monday `2` - Tuesday `3` - Wednesday `4` - Thursday `5` - Friday `6` - Saturday"
+        },
+        {
+          "name": "fixedWeeks",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the calendar should have a fixed number of weeks. This renders the calendar with 6 weeks instead of 5 or 6."
+        },
+        {
+          "name": "showWeekNumbers",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to show the week number column in the day view."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the value changes."
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((details: FocusChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the focused date changes."
+        },
+        {
+          "name": "onViewChange",
+          "type": "((details: ViewChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the view changes."
+        },
+        {
+          "name": "onVisibleRangeChange",
+          "type": "((details: VisibleRangeChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the visible range changes."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the calendar opens or closes."
+        },
+        {
+          "name": "isDateUnavailable",
+          "type": "((date: DateValue, locale: string) => boolean)",
+          "required": false,
+          "description": "Returns whether a date of the calendar is available."
+        },
+        {
+          "name": "selectionMode",
+          "type": "SelectionMode",
+          "required": false,
+          "defaultValue": "\"single\"",
+          "description": "The selection mode of the calendar. - `single` - only one date can be selected - `multiple` - multiple dates can be selected - `range` - a range of dates can be selected"
+        },
+        {
+          "name": "maxSelectedDates",
+          "type": "number",
+          "required": false,
+          "description": "The maximum number of dates that can be selected. This is only applicable when `selectionMode` is `multiple`."
+        },
+        {
+          "name": "format",
+          "type": "((date: DateValue, details: LocaleDetails) => string)",
+          "required": false,
+          "description": "The format of the date to display in the input."
+        },
+        {
+          "name": "parse",
+          "type": "((value: string, details: LocaleDetails) => DateValue | undefined)",
+          "required": false,
+          "description": "Function to parse the date from the input back to a DateValue."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "The placeholder text to display in the input."
+        },
+        {
+          "name": "view",
+          "type": "DateView",
+          "required": false,
+          "description": "The view of the calendar"
+        },
+        {
+          "name": "defaultView",
+          "type": "DateView",
+          "required": false,
+          "defaultValue": "\"day\"",
+          "description": "The default view of the calendar"
+        },
+        {
+          "name": "minView",
+          "type": "DateView",
+          "required": false,
+          "defaultValue": "\"day\"",
+          "description": "The minimum view of the calendar"
+        },
+        {
+          "name": "maxView",
+          "type": "DateView",
+          "required": false,
+          "defaultValue": "\"year\"",
+          "description": "The maximum view of the calendar"
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "description": "The user provided options used to position the date picker content"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the date picker"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "The initial open state of the date picker when rendered. Use when you don't need to control the open state of the date picker."
+        },
+        {
+          "name": "inline",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to render the date picker inline"
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "exportName": "DatePicker.Table",
+      "kind": "primitive",
+      "description": "The table primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table",
+      "dataAttributes": [
+        {
+          "name": "data-columns"
+        },
+        {
+          "name": "data-view",
+          "description": "The view of the table."
+        }
+      ],
+      "keyboard": [
+        "Enter",
+        "Space",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End"
+      ],
+      "props": [
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TableBody",
+      "exportName": "DatePicker.TableBody",
+      "kind": "primitive",
+      "description": "The table-body primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table-body",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the table body."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TableCell",
+      "exportName": "DatePicker.TableCell",
+      "kind": "primitive",
+      "description": "The table-cell primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table-cell",
+      "props": [
+        {
+          "name": "value",
+          "type": "number | DateValue",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "visibleRange",
+          "type": "VisibleRange",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "columns",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TableCellTrigger",
+      "exportName": "DatePicker.TableCellTrigger",
+      "kind": "primitive",
+      "description": "The table-cell-trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table-cell-trigger",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TableHead",
+      "exportName": "DatePicker.TableHead",
+      "kind": "primitive",
+      "description": "The table-head primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table-head",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the table head."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TableHeader",
+      "exportName": "DatePicker.TableHeader",
+      "kind": "primitive",
+      "description": "The table-header primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table-header",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the table header."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TableRow",
+      "exportName": "DatePicker.TableRow",
+      "kind": "primitive",
+      "description": "The table-row primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "table-row",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-view",
+          "description": "The view of the table row."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "DatePicker.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-placement",
+          "description": "The placement of the trigger."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the trigger is positioned on."
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-placeholder-shown",
+          "presence": true,
+          "description": "Present when placeholder is shown."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "View",
+      "exportName": "DatePicker.View",
+      "kind": "primitive",
+      "description": "The view primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "view",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the view."
+        }
+      ],
+      "props": [
+        {
+          "name": "view",
+          "type": "DateView",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ViewControl",
+      "exportName": "DatePicker.ViewControl",
+      "kind": "primitive",
+      "description": "The view-control primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "view-control",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the view control."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ViewTrigger",
+      "exportName": "DatePicker.ViewTrigger",
+      "kind": "primitive",
+      "description": "The view-trigger primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "view-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the view trigger."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "YearSelect",
+      "exportName": "DatePicker.YearSelect",
+      "kind": "primitive",
+      "description": "The year-select primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "year-select",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ValueText",
+      "exportName": "DatePicker.ValueText",
+      "kind": "primitive",
+      "description": "The value-text primitive part of the DatePicker component.",
+      "dataScope": "date-picker",
+      "dataPart": "value-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "Text to display when no date is selected."
+        },
+        {
+          "name": "children",
+          "type": "((props: DatePickerValueTextRenderProps) => React.ReactNode)",
+          "required": false,
+          "description": "A function to render each selected date value. When provided, each date in the selection will be rendered using this function."
+        },
+        {
+          "name": "separator",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\", \"",
+          "description": "The separator to use between multiple date values when using default rendering."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "DatePicker.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the DatePicker component, driven by state created with `useDatePicker()`.",
+      "dataScope": "date-picker",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-empty",
+          "presence": true,
+          "description": "Present when the content is empty."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "UseDatePickerReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "DatePicker.Context",
+      "kind": "primitive",
+      "description": "Exposes the DatePicker state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseDatePickerContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "WeekNumberCell",
+      "exportName": "DatePicker.WeekNumberCell",
+      "kind": "primitive",
+      "description": "The week-number-cell primitive part of the DatePicker component, styled with the `tableCell` slot.",
+      "dataScope": "date-picker",
+      "dataPart": "table-cell",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "weekIndex",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "week",
+          "type": "DateValue[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "WeekNumberHeaderCell",
+      "exportName": "DatePicker.WeekNumberHeaderCell",
+      "kind": "primitive",
+      "description": "The week-number-header-cell primitive part of the DatePicker component, styled with the `tableHeader` slot.",
+      "dataScope": "date-picker",
+      "dataPart": "table-header",
+      "dataAttributes": [
+        {
+          "name": "data-view",
+          "description": "The view of the table header."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Date Picker Dialog",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/",
+    "keyboard": [
+      {
+        "key": "ArrowLeft",
+        "description": "Moves focus to the previous day within the current week."
+      },
+      {
+        "key": "ArrowRight",
+        "description": "Moves focus to the next day within the current week."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Moves focus to the same day of the week in the previous week."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Moves focus to the same day of the week in the next week."
+      },
+      {
+        "key": "Home",
+        "description": "Moves focus to the first day of the current month."
+      },
+      {
+        "key": "End",
+        "description": "Moves focus to the last day of the current month."
+      },
+      {
+        "key": "PageUp",
+        "description": "Moves focus to the same day of the month in the previous month."
+      },
+      {
+        "key": "PageDown",
+        "description": "Moves focus to the same day of the month in the next month."
+      },
+      {
+        "key": "Enter",
+        "description": "Selects the focused date and closes the date picker."
+      },
+      {
+        "key": "Escape",
+        "description": "Closes the date picker without selecting any date."
+      },
+      {
+        "key": "Space",
+        "description": "Selects the focused date, like `Enter`."
+      }
+    ]
+  }
+}

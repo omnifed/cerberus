@@ -1,4 +1,7 @@
-import { PaginationParts, type PaginationContextDetails } from '@cerberus-design/react'
+import {
+  Pagination,
+  type PaginationContextDetails,
+} from '@cerberus-design/react'
 import {
   Pagination as ArkPagination,
   PaginationRootProps,
@@ -9,18 +12,29 @@ import { expect, test } from 'bun:test'
 import { useState, type ElementType } from 'react'
 
 type Variant = 'cerb-page-only' | 'cerb-both' | 'ark-page-only' | 'ark-both'
-const VARIANTS: Variant[] = ['cerb-page-only', 'cerb-both', 'ark-page-only', 'ark-both']
+const VARIANTS: Variant[] = [
+  'cerb-page-only',
+  'cerb-both',
+  'ark-page-only',
+  'ark-both',
+]
 
-function Harness(props: { variant: Variant; onPageChange: (page: number) => void }) {
+function Harness(props: {
+  variant: Variant
+  onPageChange: (page: number) => void
+}) {
   const [page, setPage] = useState(3)
   const isArk = props.variant.startsWith('ark')
-  const Root: ElementType = isArk ? ArkPagination.Root : PaginationParts.Root
-  const Context: ElementType = isArk ? ArkPagination.Context : PaginationParts.Context
+  const Root: ElementType = isArk ? ArkPagination.Root : Pagination.Root
+  const Context: ElementType = isArk
+    ? ArkPagination.Context
+    : Pagination.Context
   const rootProps: PaginationRootProps = {
     count: 100,
     pageSize: 25,
     page,
-    onPageChange: (details: { page: number }) => props.onPageChange(details.page),
+    onPageChange: (details: { page: number }) =>
+      props.onPageChange(details.page),
     ...(props.variant.endsWith('both') ? { defaultPage: 3 } : {}),
   }
 
