@@ -38,6 +38,10 @@ const INDEXED_ACCESS =
   /^(?:([A-Za-z0-9_$]+)\.)?([A-Za-z0-9_$]+)\[['"]([A-Za-z0-9_$]+)['"]\]$/
 const GENERIC = /^([A-Za-z0-9_$.]+)<([\s\S]+)>$/
 const TYPE_REF = /^(?:([A-Za-z0-9_$]+)\.)?([A-Za-z0-9_$]+)$/
+// A homomorphic mapped type, `{ [K in keyof X]?: X[K] | undefined }` (Panda's
+// `<Recipe>VariantProps`): X's props, all optional when marked `?`
+const HOMOMORPHIC_MAPPED =
+  /^\{\s*\[\s*([A-Za-z_$][\w$]*)\s+in\s+keyof\s+([A-Za-z0-9_$.]+)\s*\](\??)\s*:\s*\2\[\s*\1\s*\](?:\s*\|\s*undefined)?\s*;?\s*\}$/
 
 /**
  * Turns type expressions from Ark UI, Zag.js and Cerberus sources into prop lists.
@@ -120,6 +124,13 @@ export class TypeResolver {
         (acc, term) => mergePropLists(acc, recurse(term)),
         [],
       )
+    }
+
+    const mapped = HOMOMORPHIC_MAPPED.exec(expr)
+    if (mapped) {
+      const [, , source, optional] = mapped
+      const props = recurse(source)
+      return optional ? props.map((p) => ({ ...p, required: false })) : props
     }
 
     if (expr.startsWith('{') && expr.endsWith('}')) {

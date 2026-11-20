@@ -158,6 +158,32 @@ describe('utility types', () => {
     expect(drainUnresolved()).toEqual([])
   })
 
+  test('homomorphic mapped types keep the source props', () => {
+    const optional = resolvePropsFromExpr(
+      '{ [K in keyof Picked]?: Picked[K] | undefined }',
+      ARK_ROOT,
+    )
+    expect(names(optional)).toEqual(['multiple', 'id'])
+    expect(optional.every((p) => !p.required)).toBe(true)
+    const same = resolvePropsFromExpr(
+      '{ [P in keyof Picked]: Picked[P] }',
+      ARK_ROOT,
+    )
+    expect(names(same)).toEqual(['multiple', 'id'])
+    expect(drainUnresolved()).toEqual([])
+  })
+
+  test("Panda's `styled-system/*` path alias resolves to packages/react", () => {
+    const props = resolvePropsFromExpr(
+      'ButtonVariantProps',
+      join(FIXTURES, 'styled-alias.ts'),
+    )
+    expect(names(props)).toEqual(['palette', 'usage', 'shape', 'size'])
+    expect(props.every((p) => !p.required)).toBe(true)
+    expect(byName(props, 'usage')?.type).toContain('"outlined-subtle"')
+    expect(drainUnresolved()).toEqual([])
+  })
+
   test('Pick, Partial and Required', () => {
     expect(names(resolvePropsFromExpr('Picked', ARK_ROOT))).toEqual([
       'multiple',
