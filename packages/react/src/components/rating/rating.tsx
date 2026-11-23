@@ -1,8 +1,8 @@
 'use client'
 
 import type { UseRatingGroupItemContext } from '@ark-ui/react/rating-group'
-import { StarFilled, StarHalf } from '@carbon/icons-react'
 import type { ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
 import { extractParts } from '../../internal/extract-parts'
 import {
   RatingContext,
@@ -41,20 +41,17 @@ export interface RatingProps extends Omit<RatingRootProps, 'children'> {
    * (`highlighted`, `half`, `checked`), or direct `Rating.Label`,
    * `Rating.Control`, `Rating.Item`, `Rating.ItemContext` and
    * `Rating.HiddenInput` children that override those parts. Without a render
-   * function, each item shows a Cerberus star (a half star when `half`).
+   * function, each item shows the Cerberus `rating` icon (the `ratingHalf`
+   * icon when `half`).
    */
   children?: RatingItemRenderer | ReactNode
-}
-
-function defaultItemRenderer(item: UseRatingGroupItemContext) {
-  if (item.half) return <StarHalf size={24} />
-  return <StarFilled size={24} />
 }
 
 /**
  * The Rating component is an abstraction of the primitives that renders an
  * optional label and one item per `count` (5 by default). Each item shows the
- * content returned by the render function child, or a Cerberus star. Direct
+ * content returned by the render function child, or the Cerberus `rating` icon
+ * (`ratingHalf` when `half`), configurable via the `CerberusProvider`. Direct
  * `Rating.Label`, `Rating.Control`, `Rating.Item`, `Rating.ItemContext` or
  * `Rating.HiddenInput` children override that part; a `Rating.Item` child
  * patches every item (its `index` is ignored) and a `Rating.ItemContext`
@@ -70,6 +67,11 @@ function defaultItemRenderer(item: UseRatingGroupItemContext) {
  */
 export function RatingEl(props: RatingProps) {
   const { children, label, ...rootProps } = props
+  const { icons } = useCerberusContext()
+  const { rating: RatingIcon, ratingHalf: RatingHalfIcon } = icons
+
+  const defaultItemRenderer: RatingItemRenderer = (item) =>
+    item.half ? <RatingHalfIcon /> : <RatingIcon />
 
   const isRenderer = typeof children === 'function'
   const { parts } = extractParts(

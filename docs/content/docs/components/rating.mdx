@@ -21,6 +21,24 @@ The `Rating` component is an abstracted `client` component that provides a way t
 
 <Example path="components/rating" demo="basic" />
 
+## Icons
+
+By default, each item renders the Cerberus `rating` icon, or the `ratingHalf` icon when the item is half selected (`allowHalf`). To change them for your whole application, register your own icons for the `rating` and `ratingHalf` keys with the [Cerberus Context Provider](/docs/components/cerberus-context). The icons are rendered without props, so set their size in the component you register (the default stars are 24px):
+
+```tsx
+import { defineIcons, makeSystemConfig } from '@cerberus-design/react'
+import { FavoriteFilled, FavoriteHalf } from '@carbon/icons-react'
+
+const config = makeSystemConfig({
+  icons: defineIcons({
+    rating: () => <FavoriteFilled size={24} />,
+    ratingHalf: () => <FavoriteHalf size={24} />,
+  }),
+})
+```
+
+To change the icons of a single `Rating`, pass a render function child that returns each item's content from its state (`highlighted`, `half`, `checked`), as in the read-only example below.
+
 ## Readonly State
 
 To render the `Rating` component in a read-only state, you can use the `readOnly` prop.

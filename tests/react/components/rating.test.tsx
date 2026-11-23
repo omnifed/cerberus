@@ -2,12 +2,14 @@ import { describe, test, expect } from 'bun:test'
 import { render, screen } from '@testing-library/react'
 import {
   CerberusProvider,
+  defineIcons,
+  makeSystemConfig,
   Rating,
   useRatingGroup,
   type UseRatingGroupContext,
   type UseRatingGroupItemContext,
 } from '@cerberus-design/react'
-import { StarFilled } from '@carbon/icons-react'
+import { StarFilled, StarHalf } from '@carbon/icons-react'
 import { makeConfig } from '@/utils'
 
 describe('Rating', () => {
@@ -75,6 +77,48 @@ describe('Rating', () => {
     )
     const items = container.querySelectorAll('[data-part="item"]')
     items.forEach((item) => expect(item.querySelector('svg')).not.toBeNull())
+  })
+
+  test('should render the default rating and ratingHalf icons', () => {
+    const { container } = render(
+      <CerberusProvider config={config}>
+        <Rating count={3} defaultValue={1.5} allowHalf />
+      </CerberusProvider>,
+    )
+    const full = render(<StarFilled size={24} />).container.innerHTML
+    const half = render(<StarHalf size={24} />).container.innerHTML
+    const items = container.querySelectorAll('[data-part="item"]')
+    expect(items[0].innerHTML).toBe(full)
+    expect(items[1].innerHTML).toBe(half)
+    expect(items[2].innerHTML).toBe(full)
+  })
+
+  test('should render the rating icons registered with the provider', () => {
+    function CustomRating() {
+      return <span data-testid="custom-rating" />
+    }
+    function CustomRatingHalf() {
+      return <span data-testid="custom-rating-half" />
+    }
+    const customConfig = makeSystemConfig({
+      icons: defineIcons({
+        rating: CustomRating,
+        ratingHalf: CustomRatingHalf,
+      }),
+    })
+    const { container } = render(
+      <CerberusProvider config={customConfig}>
+        <Rating count={4} defaultValue={2.5} allowHalf />
+      </CerberusProvider>,
+    )
+    // Empty items keep the full icon; only the half item uses ratingHalf
+    expect(screen.getAllByTestId('custom-rating')).toHaveLength(3)
+    expect(screen.getAllByTestId('custom-rating-half')).toHaveLength(1)
+    const items = container.querySelectorAll('[data-part="item"]')
+    expect(
+      items[2].querySelector('[data-testid="custom-rating-half"]'),
+    ).not.toBeNull()
+    expect(container.querySelector('svg')).toBeNull()
   })
 
   test('should render a label and readOnly state', () => {

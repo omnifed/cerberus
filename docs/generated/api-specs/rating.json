@@ -37,7 +37,7 @@
           "name": "children",
           "type": "RatingItemRenderer | ReactNode",
           "required": false,
-          "description": "A render function that returns each item's content from its state (`highlighted`, `half`, `checked`), or direct `Rating.Label`, `Rating.Control`, `Rating.Item`, `Rating.ItemContext` and `Rating.HiddenInput` children that override those parts. Without a render function, each item shows a Cerberus star (a half star when `half`)."
+          "description": "A render function that returns each item's content from its state (`highlighted`, `half`, `checked`), or direct `Rating.Label`, `Rating.Control`, `Rating.Item`, `Rating.ItemContext` and `Rating.HiddenInput` children that override those parts. Without a render function, each item shows the Cerberus `rating` icon (the `ratingHalf` icon when `half`)."
         }
       ]
     },

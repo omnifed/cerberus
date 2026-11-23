@@ -29,7 +29,7 @@ Also accepts all props of `Rating.Root`.
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `label` | `ReactNode` | No | — | The label of the rating, rendered in `Rating.Label`. A `Rating.Label` child with children replaces it. |
-| `children` | `RatingItemRenderer \| ReactNode` | No | — | A render function that returns each item's content from its state (`highlighted`, `half`, `checked`), or direct `Rating.Label`, `Rating.Control`, `Rating.Item`, `Rating.ItemContext` and `Rating.HiddenInput` children that override those parts. Without a render function, each item shows a Cerberus star (a half star when `half`). |
+| `children` | `RatingItemRenderer \| ReactNode` | No | — | A render function that returns each item's content from its state (`highlighted`, `half`, `checked`), or direct `Rating.Label`, `Rating.Control`, `Rating.Item`, `Rating.ItemContext` and `Rating.HiddenInput` children that override those parts. Without a render function, each item shows the Cerberus `rating` icon (the `ratingHalf` icon when `half`). |
 
 ### Rating.Root (primitive)
 
