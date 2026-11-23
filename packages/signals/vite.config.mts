@@ -1,6 +1,6 @@
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
-import { copyFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vite'
@@ -20,8 +20,15 @@ export default defineConfig({
       staticImport: true,
       exclude: [],
       afterBuild: () => {
+        // `node16`/`nodenext` consumers need explicit extensions on relative
+        // specifiers in declaration files: `.js` for `.d.ts`, `.cjs` for `.d.cts`.
         globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
-          copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
+          const source = readFileSync(file, 'utf8')
+          writeFileSync(file, withExplicitExtensions(source, file, '.js'))
+          writeFileSync(
+            file.replace(/\.d\.ts$/, '.d.cts'),
+            withExplicitExtensions(source, file, '.cjs'),
+          )
         })
       },
     }),
@@ -71,6 +78,30 @@ export default defineConfig({
     conditions: ['source'],
   },
 })
+
+/**
+ * Add an explicit extension to the relative specifiers of a declaration file
+ * (`from './core'`, `import('./x')`). A specifier that names a directory gets
+ * `/index<ext>`; a specifier with no matching `.d.ts` file is left as it is.
+ */
+const withExplicitExtensions = (
+  source: string,
+  file: string,
+  extension: '.js' | '.cjs',
+) =>
+  source.replace(
+    /(\bfrom\s*|\bimport\s*\(\s*|\bimport\s+)(['"])(\.{1,2}\/[^'"]*)\2/g,
+    (match, prefix: string, quote: string, specifier: string) => {
+      const target = path.resolve(path.dirname(file), specifier)
+      if (existsSync(`${target}.d.ts`)) {
+        return `${prefix}${quote}${specifier}${extension}${quote}`
+      }
+      if (existsSync(path.join(target, 'index.d.ts'))) {
+        return `${prefix}${quote}${specifier}/index${extension}${quote}`
+      }
+      return match
+    },
+  )
 
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
