@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react'
 import { useCerberusContext } from '../../context/cerberus'
-import { createAbstraction } from '../../internal/factory'
+import { extractParts } from '../../internal/extract-parts'
 import { splitProps } from '../../utils/index'
 import { IconButtonRoot, type IconButtonRootProps } from '../buttons/primitives'
 import { Show } from '../show/index'
@@ -17,12 +17,10 @@ import {
 } from './primitives'
 
 const PARTS = {
-  root: AdmonitionRoot,
   indicator: AdmonitionIndicator,
   content: AdmonitionContent,
   heading: AdmonitionHeading,
   description: AdmonitionDescription,
-  closeTrigger: IconButtonRoot,
 }
 
 export type AdmonitionProps = AdmonitionRootProps & {
@@ -37,51 +35,96 @@ export type AdmonitionProps = AdmonitionRootProps & {
    */
   onClose?: IconButtonRootProps['onClick']
   /**
-   * @deprecated - **THIS WILL BE REMOVED IN v3**. Use `slots` instead.
+   * @deprecated - **THIS WILL BE REMOVED IN v3**. Pass an
+   * `<Admonition.Indicator>` child with your icon instead.
    */
   icon?: ReactNode
 }
 
-export const AdmonitionEl = createAbstraction(
-  PARTS,
-  (props: AdmonitionProps, parts) => {
-    const [localProps, rootProps] = splitProps(props, [
-      'heading',
-      'icon',
-      'onClose',
-      'children',
-    ])
+/**
+ * The Admonition component is an abstraction of the primitives that displays
+ * an indicator avatar matching the `palette`, an optional `heading`, and its
+ * children as the description. When `onClose` is set, it also renders a close
+ * IconButton (labelled "Close admonition"). Direct `Admonition.Indicator`,
+ * `Admonition.Content`, `Admonition.Heading` or `Admonition.Description`
+ * children override that part. A part child with children replaces its default
+ * content.
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/admonition)
+ * @example
+ * ```tsx
+ * <Admonition palette="info" heading="Heads up">
+ *   Something worth knowing.
+ * </Admonition>
+ * ```
+ */
+export function AdmonitionEl(props: AdmonitionProps) {
+  const [localProps, rootProps] = splitProps(props, [
+    'heading',
+    'icon',
+    'onClose',
+    'children',
+  ])
 
-    const { icons } = useCerberusContext()
-    const { close: CloseIcon } = icons
+  const { icons } = useCerberusContext()
+  const { close: CloseIcon } = icons
 
-    return (
-      <parts.root {...rootProps}>
-        <parts.indicator asChild={!localProps.icon}>
-          {localProps.icon ?? (
-            <MatchAvatar palette={rootProps.palette ?? 'page'} />
-          )}
-        </parts.indicator>
+  const { parts, content } = extractParts(localProps.children, PARTS)
 
-        <parts.content>
-          <Show when={localProps.heading}>
-            <parts.heading>{localProps.heading}</parts.heading>
-          </Show>
+  const { children: indicatorChildren, ...indicatorOverrideProps } =
+    parts.indicator ?? {}
+  const { children: contentChildren, ...contentOverrideProps } =
+    parts.content ?? {}
+  const { children: headingChildren, ...headingOverrideProps } =
+    parts.heading ?? {}
+  const { children: descriptionChildren, ...descriptionOverrideProps } =
+    parts.description ?? {}
 
-          <parts.description>{localProps.children}</parts.description>
-        </parts.content>
+  const indicatorContent = indicatorChildren ?? localProps.icon
+  const heading = headingChildren ?? localProps.heading
 
-        <Show when={localProps.onClose}>
-          <parts.closeTrigger
-            aria-label="Close admonition"
-            onClick={props.onClose}
-            palette={rootProps.palette ?? 'action'}
-            size="xs"
-          >
-            <CloseIcon />
-          </parts.closeTrigger>
-        </Show>
-      </parts.root>
-    )
-  },
-)
+  return (
+    <AdmonitionRoot {...rootProps}>
+      {/* The default avatar takes the indicator's place via asChild */}
+      <AdmonitionIndicator
+        asChild={indicatorContent == null}
+        {...indicatorOverrideProps}
+      >
+        {indicatorContent ?? (
+          <MatchAvatar palette={rootProps.palette ?? 'page'} />
+        )}
+      </AdmonitionIndicator>
+
+      <AdmonitionContent {...contentOverrideProps}>
+        {contentChildren ?? (
+          <>
+            <Show when={heading}>
+              <AdmonitionHeading {...headingOverrideProps}>
+                {heading}
+              </AdmonitionHeading>
+            </Show>
+
+            <AdmonitionDescription {...descriptionOverrideProps}>
+              {descriptionChildren ?? content}
+            </AdmonitionDescription>
+          </>
+        )}
+      </AdmonitionContent>
+
+      <Show when={localProps.onClose}>
+        <IconButtonRoot
+          aria-label="Close admonition"
+          onClick={localProps.onClose}
+          // IconButton has no `page` palette: fall back to its `action` default
+          palette={
+            !rootProps.palette || rootProps.palette === 'page'
+              ? 'action'
+              : rootProps.palette
+          }
+          size="xs"
+        >
+          <CloseIcon />
+        </IconButtonRoot>
+      </Show>
+    </AdmonitionRoot>
+  )
+}

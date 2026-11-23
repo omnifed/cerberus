@@ -35,7 +35,7 @@ export type {
  * | `Image` | Primitive | The image element of the Avatar component. |
  * | `Fallback` | Primitive | The fallback element of the Avatar component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useAvatar()`. |
- * | `El` | Abstraction | An entry abstraction for rendering all the content-related primitives |
+ * | `El` | Abstraction | Renders the image at `src` with the `fallback`; direct `Avatar.Fallback`/`Avatar.Image` children override that part, other children replace both |
  *
  * @example
  * ```tsx

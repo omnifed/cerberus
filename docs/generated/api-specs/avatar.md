@@ -22,7 +22,7 @@ Set on `Avatar` or `Avatar.Root`; they cascade to every part.
 
 ### Avatar.El (abstraction)
 
-An entry abstraction for rendering all the content-related primitives
+Renders the image at `src` with the `fallback`; direct `Avatar.Fallback`/`Avatar.Image` children override that part, other children replace both
 
 Also accepts all props of `Avatar.Root`.
 

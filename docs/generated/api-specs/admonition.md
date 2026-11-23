@@ -21,7 +21,7 @@ Set on `Admonition` or `Admonition.Root`; they cascade to every part.
 
 ### Admonition.El (abstraction)
 
-An abstraction for rendering all the primitive slots
+Renders the palette-matched indicator avatar, an optional `heading`, the children as the description and, with `onClose`, a close IconButton; direct part children override that part
 
 Also accepts all props of `Admonition.Root`.
 
@@ -29,7 +29,7 @@ Also accepts all props of `Admonition.Root`.
 | --- | --- | --- | --- | --- |
 | `heading` | `string` | No | — | The heading title for the Admonition. |
 | `onClose` | `IconButtonRootProps['onClick']` | No | — | When provided displays a `IconButton` using the `icons.close` icon at the end of the `Admonition`. This event is called when the user clicks the button. |
-| `icon` | `ReactNode` | No | — | **Deprecated.** **THIS WILL BE REMOVED IN v3**. Use `slots` instead. |
+| `icon` | `ReactNode` | No | — | **Deprecated.** **THIS WILL BE REMOVED IN v3**. Pass an `<Admonition.Indicator>` child with your icon instead. |
 
 ### Admonition.Root (primitive)
 

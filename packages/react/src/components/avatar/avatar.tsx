@@ -1,18 +1,16 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { createAbstraction } from '../../internal/factory'
-import { Show } from '../show/index'
+import { extractParts } from '../../internal/extract-parts'
+import { splitProps } from '../../utils/index'
 import {
   AvatarFallback,
   AvatarImage,
   AvatarRoot,
   type AvatarRootProps,
 } from './primitives'
-import { splitProps } from '../../utils'
 
 const PARTS = {
-  root: AvatarRoot,
   fallback: AvatarFallback,
   image: AvatarImage,
 }
@@ -50,30 +48,46 @@ export type AvatarWithImage = {
 export type AvatarProps = AvatarRootProps &
   (AvatarWithoutImage | AvatarWithImage)
 
-export const AvatarEl = createAbstraction(
-  PARTS,
-  (props: AvatarProps, parts) => {
-    const [localProps, rootProps] = splitProps(props, [
-      'fallback',
-      'alt',
-      'src',
-      'children',
-    ])
+/**
+ * The Avatar component is an abstraction of the primitives that displays the
+ * image at `src`, or the `fallback` while it loads or when it fails. Direct
+ * `Avatar.Fallback` or `Avatar.Image` children override that part. A part
+ * child with children replaces its default content. Any other children
+ * replace the fallback and image entirely.
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/avatar)
+ * @description [Ark Docs](https://ark-ui.com/docs/components/avatar)
+ * @example
+ * ```tsx
+ * <Avatar alt="Cerberus" src="/logo.svg" fallback="CB" />
+ * ```
+ */
+export function AvatarEl(props: AvatarProps) {
+  const [localProps, rootProps] = splitProps(props, [
+    'fallback',
+    'alt',
+    'src',
+    'children',
+  ])
 
-    return (
-      <parts.root {...rootProps}>
-        <Show
-          when={localProps.children}
-          fallback={
-            <>
-              <parts.fallback>{localProps.fallback}</parts.fallback>
-              <parts.image alt={localProps.alt} src={localProps.src ?? null} />
-            </>
-          }
-        >
-          {localProps.children}
-        </Show>
-      </parts.root>
-    )
-  },
-)
+  const { parts, content } = extractParts(localProps.children, PARTS)
+
+  const { children: fallbackChildren, ...fallbackOverrideProps } =
+    parts.fallback ?? {}
+
+  return (
+    <AvatarRoot {...rootProps}>
+      {content ?? (
+        <>
+          <AvatarFallback {...fallbackOverrideProps}>
+            {fallbackChildren ?? localProps.fallback}
+          </AvatarFallback>
+          <AvatarImage
+            alt={localProps.alt}
+            src={localProps.src}
+            {...parts.image}
+          />
+        </>
+      )}
+    </AvatarRoot>
+  )
+}

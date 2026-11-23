@@ -14,7 +14,7 @@ The Avatar component can be used in various contexts, such as profiles, App Bars
       name: 'El',
       file: 'avatar',
       description:
-        'An entry abstraction for rendering all the content-related primitives',
+        'Renders the image at `src` with the `fallback`; direct `Avatar.Fallback`/`Avatar.Image` children override that part, other children replace both',
       isDefaultExport: true,
     },
   ],

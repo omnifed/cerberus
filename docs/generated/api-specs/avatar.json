@@ -40,7 +40,7 @@
       "name": "El",
       "exportName": "Avatar.El",
       "kind": "abstraction",
-      "description": "An entry abstraction for rendering all the content-related primitives",
+      "description": "Renders the image at `src` with the `fallback`; direct `Avatar.Fallback`/`Avatar.Image` children override that part, other children replace both",
       "inherits": ["Avatar.Root"],
       "props": [
         {

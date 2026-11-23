@@ -20,7 +20,8 @@ The Admonition component can be used in various contexts, such as displaying ale
     {
       name: 'El',
       file: 'admonition',
-      description: 'An abstraction for rendering all the primitive slots',
+      description:
+        'Renders the palette-matched indicator avatar, an optional `heading`, the children as the description and, with `onClose`, a close IconButton; direct part children override that part',
       types: ['AdmonitionProps'],
       isDefaultExport: true,
     },

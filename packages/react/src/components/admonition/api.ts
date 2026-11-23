@@ -39,7 +39,7 @@ export type {
  * | `Heading` | Primitive | The heading element of the Admonition component. |
  * | `Description` | Primitive | The description element of the Admonition component. |
  * | `Content` | Primitive | The content element of the Admonition component. |
- * | `El` | Abstraction | An abstraction for rendering all the primitive slots |
+ * | `El` | Abstraction | Renders the palette-matched indicator avatar, an optional `heading`, the children as the description and, with `onClose`, a close IconButton; direct part children override that part |
  *
  * @example
  * ```tsx

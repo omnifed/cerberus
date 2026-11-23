@@ -9,35 +9,18 @@ describe('accordion recipe', () => {
   })
 
   test('should have a base style', () => {
-    expect(accordion.base?.root).toMatchObject({
+    expect(accordion.base?.root).toEqual({
       display: 'flex',
       flexDirection: 'column',
       w: 'full',
-      _smSize: {
-        '& :is([data-part=item-trigger])': {
-          textStyle: 'heading-xs',
-        },
-        '& :is([data-part=item-content])': {
-          textStyle: 'body-sm',
-        },
-        '& :is([data-part=item-indicator] > svg)': {
-          h: '16px',
-          w: '16px',
-        },
-      },
-      _lgSize: {
-        '& :is([data-part=item-trigger])': {
-          textStyle: 'heading-sm',
-        },
-        '& :is([data-part=item-content])': {
-          textStyle: 'body-md',
-        },
-        '& :is([data-part=item-indicator] > svg)': {
-          h: '24px',
-          w: '24px',
-        },
-      },
     })
+  })
+
+  test('should set the per-size text styles in the size variants, not base conditions', () => {
+    // The `_smSize`/`_lgSize` root conditions moved into `variants.size`
+    // (asserted below) so `size` set on Root reaches every part
+    expect(accordion.base?.root).not.toHaveProperty('_smSize')
+    expect(accordion.base?.root).not.toHaveProperty('_lgSize')
   })
 
   test('should have an item style', () => {
