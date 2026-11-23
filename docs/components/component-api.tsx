@@ -2,8 +2,12 @@ import { API_SPECS } from '@/generated/api-specs'
 import { cerberus, For, Show, Table } from '@cerberus-design/react'
 import { Admonition } from '@cerberus-design/react/admonition'
 import type { PropsWithChildren } from 'react'
-import { Box, Stack } from 'styled-system/jsx'
+import { Box, HStack, Stack } from 'styled-system/jsx'
 import type { ComponentDocSpec } from '../../tools/codegen/docs/types'
+import type {
+  CerberusOptions,
+  CerberusProps,
+} from '../../packages/react/src/system/types'
 
 interface ComponentApiProps {
   spec: string
@@ -108,12 +112,15 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               key={`parts:${part.exportName}:${idx}`}
               aria-labelledby={`${specKey}-${part.name}-heading`}
             >
-              <Heading id={`${specKey}-${part.name}-heading`}>
-                <Code>{part.exportName}</Code>{' '}
-                <Body>
-                  ({part.kind === 'abstraction' ? 'Abstraction' : 'Primitive'})
-                </Body>
-              </Heading>
+              <HStack gap="md">
+                <Heading>
+                  <Code fontSize="1.5rem">{part.exportName}</Code>
+                  <cerberus.span>
+                    ({part.kind === 'abstraction' ? 'Abstraction' : 'Primitive'}
+                    )
+                  </cerberus.span>
+                </Heading>
+              </HStack>
               <Body>{part.description}</Body>
 
               <Show
@@ -485,7 +492,7 @@ function CellText(props: PropsWithChildren<object>) {
   return <cerberus.small textStyle="body-sm" {...props} />
 }
 
-function Code(props: PropsWithChildren<object>) {
+function Code(props: PropsWithChildren<CerberusProps<'code'>>) {
   return (
     <cerberus.code
       bgColor="var(--shiki-background)"
