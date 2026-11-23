@@ -170,7 +170,7 @@ Selector: `[data-scope="combobox"][data-part="root"]`
 
 ### Combobox.ClearTrigger (primitive)
 
-The clear-trigger primitive part of the Combobox component.
+The clear trigger primitive part of the Combobox component.
 
 Selector: `[data-scope="combobox"][data-part="clear-trigger"]`
 
@@ -271,7 +271,7 @@ Selector: `[data-scope="combobox"][data-part="item"]`
 
 ### Combobox.ItemGroup (primitive)
 
-The item-group primitive part of the Combobox component.
+The item group primitive part of the Combobox component.
 
 Selector: `[data-scope="combobox"][data-part="item-group"]`
 
@@ -287,7 +287,7 @@ Selector: `[data-scope="combobox"][data-part="item-group"]`
 
 ### Combobox.ItemGroupLabel (primitive)
 
-The item-group-label primitive part of the Combobox component.
+The item group label primitive part of the Combobox component.
 
 Selector: `[data-scope="combobox"][data-part="item-group-label"]`
 
@@ -299,7 +299,7 @@ Selector: `[data-scope="combobox"][data-part="item-group-label"]`
 
 ### Combobox.ItemIndicator (primitive)
 
-The item-indicator primitive part of the Combobox component.
+The item indicator primitive part of the Combobox component.
 
 Selector: `[data-scope="combobox"][data-part="item-indicator"]`
 
@@ -315,7 +315,7 @@ Selector: `[data-scope="combobox"][data-part="item-indicator"]`
 
 ### Combobox.ItemText (primitive)
 
-The item-text primitive part of the Combobox component.
+The item text primitive part of the Combobox component.
 
 Selector: `[data-scope="combobox"][data-part="item-text"]`
 
@@ -428,7 +428,7 @@ Selector: `[data-scope="combobox"][data-part="empty"]`
 
 ### Combobox.StartIcon (primitive)
 
-The start-icon part of the Combobox component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
+The start icon part of the Combobox component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
 
 Selector: `[data-scope="combobox"][data-part="start-icon"]`
 

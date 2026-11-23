@@ -109,7 +109,7 @@ Selector: `[data-scope="file-upload"][data-part="item"]`
 
 ### FileUpload.ItemDeleteTrigger (primitive)
 
-The item-delete-trigger primitive part of the FileUpload component.
+The item delete trigger primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="item-delete-trigger"]`
 
@@ -127,7 +127,7 @@ Selector: `[data-scope="file-upload"][data-part="item-delete-trigger"]`
 
 ### FileUpload.ItemGroup (primitive)
 
-The item-group primitive part of the FileUpload component.
+The item group primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="item-group"]`
 
@@ -145,7 +145,7 @@ Selector: `[data-scope="file-upload"][data-part="item-group"]`
 
 ### FileUpload.ItemName (primitive)
 
-The item-name primitive part of the FileUpload component.
+The item name primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="item-name"]`
 
@@ -162,7 +162,7 @@ Selector: `[data-scope="file-upload"][data-part="item-name"]`
 
 ### FileUpload.ItemPreview (primitive)
 
-The item-preview primitive part of the FileUpload component.
+The item preview primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="item-preview"]`
 
@@ -180,7 +180,7 @@ Selector: `[data-scope="file-upload"][data-part="item-preview"]`
 
 ### FileUpload.ItemPreviewImage (primitive)
 
-The item-preview-image primitive part of the FileUpload component.
+The item preview image primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="item-preview-image"]`
 
@@ -197,7 +197,7 @@ Selector: `[data-scope="file-upload"][data-part="item-preview-image"]`
 
 ### FileUpload.ItemSizeText (primitive)
 
-The item-size-text primitive part of the FileUpload component.
+The item size text primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="item-size-text"]`
 
@@ -250,7 +250,7 @@ Selector: `[data-scope="file-upload"][data-part="trigger"]`
 
 ### FileUpload.ClearTrigger (primitive)
 
-The clear-trigger primitive part of the FileUpload component.
+The clear trigger primitive part of the FileUpload component.
 
 Selector: `[data-scope="file-upload"][data-part="clear-trigger"]`
 
@@ -303,7 +303,7 @@ Selector: `[data-scope="file-upload"][data-part="description"]`
 
 ### FileUpload.HiddenInput (primitive)
 
-The hidden-input primitive part of the FileUpload component. It has no recipe slot, so it is unstyled.
+The hidden input primitive part of the FileUpload component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

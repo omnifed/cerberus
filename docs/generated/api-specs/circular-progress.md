@@ -87,7 +87,7 @@ Selector: `[data-scope="circular-progress"][data-part="label"]`
 
 ### CircularProgress.ValueText (primitive)
 
-The value-text primitive part of the CircularProgress component.
+The value text primitive part of the CircularProgress component.
 
 Selector: `[data-scope="circular-progress"][data-part="value-text"]`
 
@@ -128,7 +128,7 @@ Selector: `[data-scope="circular-progress"][data-part="circle"]`
 
 ### CircularProgress.CircleTrack (primitive)
 
-The circle-track primitive part of the CircularProgress component.
+The circle track primitive part of the CircularProgress component.
 
 Selector: `[data-scope="circular-progress"][data-part="circle-track"]`
 
@@ -144,7 +144,7 @@ Selector: `[data-scope="circular-progress"][data-part="circle-track"]`
 
 ### CircularProgress.CircleRange (primitive)
 
-The circle-range primitive part of the CircularProgress component.
+The circle range primitive part of the CircularProgress component.
 
 Selector: `[data-scope="circular-progress"][data-part="circle-range"]`
 
@@ -160,7 +160,7 @@ Selector: `[data-scope="circular-progress"][data-part="circle-range"]`
 
 ### CircularProgress.InfoGroup (primitive)
 
-The info-group part of the CircularProgress component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.
+The info group part of the CircularProgress component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.
 
 Selector: `[data-scope="progress"][data-part="info-group"]`
 

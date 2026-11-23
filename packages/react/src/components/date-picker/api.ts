@@ -100,31 +100,31 @@ export type {
  *
  * | Part | Kind | Description |
  * |------|------|-------------|
- * | `ClearTrigger` | Primitive | The clearTrigger element of the DatePicker component. |
+ * | `ClearTrigger` | Primitive | The clear trigger element of the DatePicker component. |
  * | `Content` | Primitive | The content element of the DatePicker component. |
  * | `Control` | Primitive | The control element of the DatePicker component. |
  * | `Input` | Primitive | The input element of the DatePicker component. |
  * | `Label` | Primitive | The label element of the DatePicker component. |
- * | `MonthSelect` | Primitive | The monthSelect element of the DatePicker component. |
- * | `NextTrigger` | Primitive | The nextTrigger element of the DatePicker component. |
+ * | `MonthSelect` | Primitive | The month select element of the DatePicker component. |
+ * | `NextTrigger` | Primitive | The next trigger element of the DatePicker component. |
  * | `Positioner` | Primitive | The positioner element of the DatePicker component. |
- * | `PresetTrigger` | Primitive | The presetTrigger element of the DatePicker component. |
- * | `PrevTrigger` | Primitive | The prevTrigger element of the DatePicker component. |
- * | `RangeText` | Primitive | The rangeText element of the DatePicker component. |
+ * | `PresetTrigger` | Primitive | The preset trigger element of the DatePicker component. |
+ * | `PrevTrigger` | Primitive | The prev trigger element of the DatePicker component. |
+ * | `RangeText` | Primitive | The range text element of the DatePicker component. |
  * | `Root` | Primitive | The root element of the DatePicker component. |
  * | `Table` | Primitive | The table element of the DatePicker component. |
- * | `TableBody` | Primitive | The tableBody element of the DatePicker component. |
- * | `TableCell` | Primitive | The tableCell element of the DatePicker component. |
- * | `TableCellTrigger` | Primitive | The tableCellTrigger element of the DatePicker component. |
- * | `TableHead` | Primitive | The tableHead element of the DatePicker component. |
- * | `TableHeader` | Primitive | The tableHeader element of the DatePicker component. |
- * | `TableRow` | Primitive | The tableRow element of the DatePicker component. |
+ * | `TableBody` | Primitive | The table body element of the DatePicker component. |
+ * | `TableCell` | Primitive | The table cell element of the DatePicker component. |
+ * | `TableCellTrigger` | Primitive | The table cell trigger element of the DatePicker component. |
+ * | `TableHead` | Primitive | The table head element of the DatePicker component. |
+ * | `TableHeader` | Primitive | The table header element of the DatePicker component. |
+ * | `TableRow` | Primitive | The table row element of the DatePicker component. |
  * | `Trigger` | Primitive | The trigger element of the DatePicker component. |
  * | `View` | Primitive | The view element of the DatePicker component. |
- * | `ViewControl` | Primitive | The viewControl element of the DatePicker component. |
- * | `ViewTrigger` | Primitive | The viewTrigger element of the DatePicker component. |
- * | `YearSelect` | Primitive | The yearSelect element of the DatePicker component. |
- * | `ValueText` | Primitive | The valueText element of the DatePicker component. |
+ * | `ViewControl` | Primitive | The view control element of the DatePicker component. |
+ * | `ViewTrigger` | Primitive | The view trigger element of the DatePicker component. |
+ * | `YearSelect` | Primitive | The year select element of the DatePicker component. |
+ * | `ValueText` | Primitive | The value text element of the DatePicker component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useDatePicker()`. |
  * | `Context` | Primitive | Exposes the DatePicker state to a render function. |
  * | `WeekNumberCell` | Primitive | The week number cell element of the DatePicker component, styled with the `tableCell` slot. |

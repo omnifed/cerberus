@@ -233,7 +233,7 @@
       "name": "ValueText",
       "exportName": "CircularProgress.ValueText",
       "kind": "primitive",
-      "description": "The value-text primitive part of the CircularProgress component.",
+      "description": "The value text primitive part of the CircularProgress component.",
       "dataScope": "circular-progress",
       "dataPart": "value-text",
       "props": [
@@ -338,7 +338,7 @@
       "name": "CircleTrack",
       "exportName": "CircularProgress.CircleTrack",
       "kind": "primitive",
-      "description": "The circle-track primitive part of the CircularProgress component.",
+      "description": "The circle track primitive part of the CircularProgress component.",
       "dataScope": "circular-progress",
       "dataPart": "circle-track",
       "dataAttributes": [
@@ -375,7 +375,7 @@
       "name": "CircleRange",
       "exportName": "CircularProgress.CircleRange",
       "kind": "primitive",
-      "description": "The circle-range primitive part of the CircularProgress component.",
+      "description": "The circle range primitive part of the CircularProgress component.",
       "dataScope": "circular-progress",
       "dataPart": "circle-range",
       "dataAttributes": [
@@ -411,7 +411,7 @@
       "name": "InfoGroup",
       "exportName": "CircularProgress.InfoGroup",
       "kind": "primitive",
-      "description": "The info-group part of the CircularProgress component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
+      "description": "The info group part of the CircularProgress component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
       "dataScope": "progress",
       "dataPart": "info-group",
       "props": [

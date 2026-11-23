@@ -138,7 +138,7 @@ Selector: `[data-scope="number-input"][data-part="control"]`
 
 ### NumberInput.ValueText (primitive)
 
-The value-text primitive part of the NumberInput component.
+The value text primitive part of the NumberInput component.
 
 Selector: `[data-scope="number-input"][data-part="value-text"]`
 
@@ -157,7 +157,7 @@ Selector: `[data-scope="number-input"][data-part="value-text"]`
 
 ### NumberInput.IncrementTrigger (primitive)
 
-The increment-trigger primitive part of the NumberInput component.
+The increment trigger primitive part of the NumberInput component.
 
 Selector: `[data-scope="number-input"][data-part="increment-trigger"]`
 
@@ -174,7 +174,7 @@ Selector: `[data-scope="number-input"][data-part="increment-trigger"]`
 
 ### NumberInput.DecrementTrigger (primitive)
 
-The decrement-trigger primitive part of the NumberInput component.
+The decrement trigger primitive part of the NumberInput component.
 
 Selector: `[data-scope="number-input"][data-part="decrement-trigger"]`
 

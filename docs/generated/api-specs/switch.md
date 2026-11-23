@@ -136,7 +136,7 @@ Selector: `[data-scope="switch"][data-part="thumb"]`
 
 ### Switch.HiddenInput (primitive)
 
-The hidden-input primitive part of the Switch component. It has no recipe slot, so it is unstyled.
+The hidden input primitive part of the Switch component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

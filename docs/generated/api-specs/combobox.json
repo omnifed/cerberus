@@ -769,7 +769,7 @@
       "name": "ClearTrigger",
       "exportName": "Combobox.ClearTrigger",
       "kind": "primitive",
-      "description": "The clear-trigger primitive part of the Combobox component.",
+      "description": "The clear trigger primitive part of the Combobox component.",
       "dataScope": "combobox",
       "dataPart": "clear-trigger",
       "dataAttributes": [
@@ -1041,7 +1041,7 @@
       "name": "ItemGroup",
       "exportName": "Combobox.ItemGroup",
       "kind": "primitive",
-      "description": "The item-group primitive part of the Combobox component.",
+      "description": "The item group primitive part of the Combobox component.",
       "dataScope": "combobox",
       "dataPart": "item-group",
       "dataAttributes": [
@@ -1079,7 +1079,7 @@
       "name": "ItemGroupLabel",
       "exportName": "Combobox.ItemGroupLabel",
       "kind": "primitive",
-      "description": "The item-group-label primitive part of the Combobox component.",
+      "description": "The item group label primitive part of the Combobox component.",
       "dataScope": "combobox",
       "dataPart": "item-group-label",
       "props": [
@@ -1110,7 +1110,7 @@
       "name": "ItemIndicator",
       "exportName": "Combobox.ItemIndicator",
       "kind": "primitive",
-      "description": "The item-indicator primitive part of the Combobox component.",
+      "description": "The item indicator primitive part of the Combobox component.",
       "dataScope": "combobox",
       "dataPart": "item-indicator",
       "dataAttributes": [
@@ -1147,7 +1147,7 @@
       "name": "ItemText",
       "exportName": "Combobox.ItemText",
       "kind": "primitive",
-      "description": "The item-text primitive part of the Combobox component.",
+      "description": "The item text primitive part of the Combobox component.",
       "dataScope": "combobox",
       "dataPart": "item-text",
       "dataAttributes": [
@@ -1454,7 +1454,7 @@
       "name": "StartIcon",
       "exportName": "Combobox.StartIcon",
       "kind": "primitive",
-      "description": "The start-icon part of the Combobox component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "description": "The start icon part of the Combobox component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
       "dataScope": "combobox",
       "dataPart": "start-icon",
       "props": [

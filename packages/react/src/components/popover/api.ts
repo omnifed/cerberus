@@ -58,7 +58,7 @@ export type {
  * |------|------|-------------|
  * | `Root` | Primitive | Provides the Popover context to its parts; renders no element. |
  * | `Arrow` | Primitive | The arrow element of the Popover component. |
- * | `ArrowTip` | Primitive | The arrowTip element of the Popover component. |
+ * | `ArrowTip` | Primitive | The arrow tip element of the Popover component. |
  * | `Anchor` | Primitive | The anchor element of the Popover component. |
  * | `Trigger` | Primitive | The trigger element of the Popover component. |
  * | `Indicator` | Primitive | The indicator element of the Popover component. |
@@ -66,7 +66,7 @@ export type {
  * | `Content` | Primitive | The content element of the Popover component. |
  * | `Title` | Primitive | The title element of the Popover component. |
  * | `Description` | Primitive | The description element of the Popover component. |
- * | `CloseTrigger` | Primitive | The closeTrigger element of the Popover component. |
+ * | `CloseTrigger` | Primitive | The close trigger element of the Popover component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `usePopover()`. |
  * | `Context` | Primitive | Exposes the Popover state to a render function. |
  * | `Header` | Primitive | The header element of the Popover component (a Cerberus recipe slot outside the Ark anatomy). |

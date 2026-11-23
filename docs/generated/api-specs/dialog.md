@@ -171,7 +171,7 @@ Selector: `[data-scope="dialog"][data-part="description"]`
 
 ### Dialog.CloseTrigger (primitive)
 
-The close-trigger primitive part of the Dialog component.
+The close trigger primitive part of the Dialog component.
 
 Selector: `[data-scope="dialog"][data-part="close-trigger"]`
 

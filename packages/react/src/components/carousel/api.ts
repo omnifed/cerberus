@@ -49,16 +49,16 @@ export type {
  * | Part | Kind | Description |
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the Carousel component. |
- * | `ItemGroup` | Primitive | The itemGroup element of the Carousel component. |
+ * | `ItemGroup` | Primitive | The item group element of the Carousel component. |
  * | `Item` | Primitive | The item element of the Carousel component. |
  * | `Control` | Primitive | The control element of the Carousel component. |
- * | `NextTrigger` | Primitive | The nextTrigger element of the Carousel component. |
- * | `PrevTrigger` | Primitive | The prevTrigger element of the Carousel component. |
- * | `IndicatorGroup` | Primitive | The indicatorGroup element of the Carousel component. |
+ * | `NextTrigger` | Primitive | The next trigger element of the Carousel component. |
+ * | `PrevTrigger` | Primitive | The prev trigger element of the Carousel component. |
+ * | `IndicatorGroup` | Primitive | The indicator group element of the Carousel component. |
  * | `Indicator` | Primitive | The indicator element of the Carousel component. |
- * | `AutoplayTrigger` | Primitive | The autoplayTrigger element of the Carousel component. |
- * | `ProgressText` | Primitive | The progressText element of the Carousel component. |
- * | `AutoplayIndicator` | Primitive | The autoplayIndicator element of the Carousel component. |
+ * | `AutoplayTrigger` | Primitive | The autoplay trigger element of the Carousel component. |
+ * | `ProgressText` | Primitive | The progress text element of the Carousel component. |
+ * | `AutoplayIndicator` | Primitive | The autoplay indicator element of the Carousel component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useCarousel()`. |
  * | `El` | Abstraction | An abstraction for rendering all the content-related primitives |
  *

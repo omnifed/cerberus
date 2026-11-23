@@ -159,7 +159,7 @@ Keyboard: `ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `PageUp`, `PageDown
 
 ### Slider.ValueText (primitive)
 
-The value-text primitive part of the Slider component.
+The value text primitive part of the Slider component.
 
 Selector: `[data-scope="slider"][data-part="value-text"]`
 
@@ -238,7 +238,7 @@ Selector: `[data-scope="slider"][data-part="control"]`
 
 ### Slider.MarkerGroup (primitive)
 
-The marker-group primitive part of the Slider component.
+The marker group primitive part of the Slider component.
 
 Selector: `[data-scope="slider"][data-part="marker-group"]`
 
@@ -274,7 +274,7 @@ Selector: `[data-scope="slider"][data-part="marker"]`
 
 ### Slider.DraggingIndicator (primitive)
 
-The dragging-indicator primitive part of the Slider component.
+The dragging indicator primitive part of the Slider component.
 
 Selector: `[data-scope="slider"][data-part="dragging-indicator"]`
 
@@ -326,7 +326,7 @@ Selector: `[data-scope="slider"][data-part="root"]`
 
 ### Slider.HiddenInput (primitive)
 
-The hidden-input primitive part of the Slider component. It has no recipe slot, so it is unstyled.
+The hidden input primitive part of the Slider component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

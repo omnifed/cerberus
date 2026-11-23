@@ -288,8 +288,26 @@ export function loadManifest(
 
     const partOverrides = config.parts ?? {}
     for (const [part, override] of Object.entries(partOverrides)) {
-      if (!parts.includes(part)) {
-        diagnostics.error(key, `parts.${part}: not an anatomy part`)
+      const isPart = parts.includes(part)
+      const isMember = part in elementParts || arkMembers.includes(part)
+      if (!isPart && !isMember) {
+        diagnostics.error(
+          key,
+          `parts.${part}: not an anatomy part, elementParts slot or arkMembers entry`,
+        )
+      } else if (
+        !isPart &&
+        (override.recipe !== undefined ||
+          override.dataScope !== undefined ||
+          override.dataPart !== undefined)
+      ) {
+        diagnostics.error(
+          key,
+          `parts.${part}: only \`description\` applies outside the anatomy`,
+        )
+      }
+      if (override.description !== undefined && !override.description.trim()) {
+        diagnostics.error(key, `parts.${part}.description is empty`)
       }
       if (override.recipe && source === 'ark') {
         diagnostics.error(

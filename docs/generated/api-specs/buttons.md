@@ -77,7 +77,7 @@ Also accepts all props of `Button.Root`.
 
 ### Button.Root (primitive)
 
-The root container of the Button component.
+A `<button>` styled by the `button` recipe.
 
 Selector: `[data-scope="buttons"][data-part="root"]`
 
@@ -93,7 +93,7 @@ Selector: `[data-scope="buttons"][data-part="root"]`
 
 ### Button.Group (primitive)
 
-The group primitive part of the Button component.
+Lays out related buttons together, styled by the `buttonGroup` recipe.
 
 Selector: `[data-scope="button-group"][data-part="root"]`
 
@@ -107,7 +107,7 @@ Selector: `[data-scope="button-group"][data-part="root"]`
 
 ### Button.IconButtonRoot (primitive)
 
-The icon-button-root primitive part of the Button component.
+The bare icon `<button>` styled by the `iconButton` recipe; `IconButton` wraps it and requires an `ariaLabel`.
 
 Selector: `[data-scope="icon-button"][data-part="root"]`
 

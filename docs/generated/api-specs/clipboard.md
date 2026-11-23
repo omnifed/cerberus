@@ -150,7 +150,7 @@ Exposes the Clipboard state to a render function. Renders no element.
 
 ### Clipboard.ValueText (primitive)
 
-The value-text primitive part of the Clipboard component. It has no recipe slot, so it is unstyled.
+The value text primitive part of the Clipboard component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

@@ -544,7 +544,7 @@
       "name": "ClearTrigger",
       "exportName": "Select.ClearTrigger",
       "kind": "primitive",
-      "description": "The clear-trigger primitive part of the Select component.",
+      "description": "The clear trigger primitive part of the Select component.",
       "dataScope": "select",
       "dataPart": "clear-trigger",
       "dataAttributes": [
@@ -645,7 +645,7 @@
       "name": "ItemText",
       "exportName": "Select.ItemText",
       "kind": "primitive",
-      "description": "The item-text primitive part of the Select component.",
+      "description": "The item text primitive part of the Select component.",
       "dataScope": "select",
       "dataPart": "item-text",
       "dataAttributes": [
@@ -692,7 +692,7 @@
       "name": "ItemIndicator",
       "exportName": "Select.ItemIndicator",
       "kind": "primitive",
-      "description": "The item-indicator primitive part of the Select component.",
+      "description": "The item indicator primitive part of the Select component.",
       "dataScope": "select",
       "dataPart": "item-indicator",
       "dataAttributes": [
@@ -729,7 +729,7 @@
       "name": "ItemGroup",
       "exportName": "Select.ItemGroup",
       "kind": "primitive",
-      "description": "The item-group primitive part of the Select component.",
+      "description": "The item group primitive part of the Select component.",
       "dataScope": "select",
       "dataPart": "item-group",
       "dataAttributes": [
@@ -767,7 +767,7 @@
       "name": "ItemGroupLabel",
       "exportName": "Select.ItemGroupLabel",
       "kind": "primitive",
-      "description": "The item-group-label primitive part of the Select component.",
+      "description": "The item group label primitive part of the Select component.",
       "dataScope": "select",
       "dataPart": "item-group-label",
       "props": [
@@ -1241,7 +1241,7 @@
       "name": "ValueText",
       "exportName": "Select.ValueText",
       "kind": "primitive",
-      "description": "The value-text primitive part of the Select component.",
+      "description": "The value text primitive part of the Select component.",
       "dataScope": "select",
       "dataPart": "value-text",
       "dataAttributes": [
@@ -1295,7 +1295,7 @@
       "name": "HiddenSelect",
       "exportName": "Select.HiddenSelect",
       "kind": "primitive",
-      "description": "The hidden-select primitive part of the Select component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden select primitive part of the Select component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

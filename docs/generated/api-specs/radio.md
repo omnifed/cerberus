@@ -97,7 +97,7 @@ Selector: `[data-scope="radio-group"][data-part="item"]`
 
 ### RadioGroup.ItemText (primitive)
 
-The item-text primitive part of the RadioGroup component.
+The item text primitive part of the RadioGroup component.
 
 Selector: `[data-scope="radio-group"][data-part="item-text"]`
 
@@ -109,7 +109,7 @@ Selector: `[data-scope="radio-group"][data-part="item-text"]`
 
 ### RadioGroup.ItemControl (primitive)
 
-The item-control primitive part of the RadioGroup component.
+The item control primitive part of the RadioGroup component.
 
 Selector: `[data-scope="radio-group"][data-part="item-control"]`
 
@@ -150,7 +150,7 @@ Selector: `[data-scope="radio-group"][data-part="indicator"]`
 
 ### RadioGroup.ItemHiddenInput (primitive)
 
-The item-hidden-input primitive part of the RadioGroup component. It has no recipe slot, so it is unstyled.
+The item hidden input primitive part of the RadioGroup component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

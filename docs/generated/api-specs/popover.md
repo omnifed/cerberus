@@ -91,7 +91,7 @@ Selector: `[data-scope="popover"][data-part="arrow"]`
 
 ### Popover.ArrowTip (primitive)
 
-The arrow-tip primitive part of the Popover component.
+The arrow tip primitive part of the Popover component.
 
 Selector: `[data-scope="popover"][data-part="arrow-tip"]`
 
@@ -226,7 +226,7 @@ Selector: `[data-scope="popover"][data-part="description"]`
 
 ### Popover.CloseTrigger (primitive)
 
-The close-trigger primitive part of the Popover component.
+The close trigger primitive part of the Popover component.
 
 Selector: `[data-scope="popover"][data-part="close-trigger"]`
 

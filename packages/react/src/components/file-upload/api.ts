@@ -65,15 +65,15 @@ export type {
  * | `Root` | Primitive | The root element of the FileUpload component. |
  * | `Dropzone` | Primitive | The dropzone element of the FileUpload component. |
  * | `Item` | Primitive | The item element of the FileUpload component. |
- * | `ItemDeleteTrigger` | Primitive | The itemDeleteTrigger element of the FileUpload component. |
- * | `ItemGroup` | Primitive | The itemGroup element of the FileUpload component. |
- * | `ItemName` | Primitive | The itemName element of the FileUpload component. |
- * | `ItemPreview` | Primitive | The itemPreview element of the FileUpload component. |
- * | `ItemPreviewImage` | Primitive | The itemPreviewImage element of the FileUpload component. |
- * | `ItemSizeText` | Primitive | The itemSizeText element of the FileUpload component. |
+ * | `ItemDeleteTrigger` | Primitive | The item delete trigger element of the FileUpload component. |
+ * | `ItemGroup` | Primitive | The item group element of the FileUpload component. |
+ * | `ItemName` | Primitive | The item name element of the FileUpload component. |
+ * | `ItemPreview` | Primitive | The item preview element of the FileUpload component. |
+ * | `ItemPreviewImage` | Primitive | The item preview image element of the FileUpload component. |
+ * | `ItemSizeText` | Primitive | The item size text element of the FileUpload component. |
  * | `Label` | Primitive | The label element of the FileUpload component. |
  * | `Trigger` | Primitive | The trigger element of the FileUpload component. |
- * | `ClearTrigger` | Primitive | The clearTrigger element of the FileUpload component. |
+ * | `ClearTrigger` | Primitive | The clear trigger element of the FileUpload component. |
  * | `HiddenInput` | Primitive | The hidden input element of the FileUpload component. It has no recipe slot. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useFileUpload()`. |
  * | `Context` | Primitive | Exposes the FileUpload state to a render function. |

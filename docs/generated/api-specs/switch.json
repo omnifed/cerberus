@@ -386,7 +386,7 @@
       "name": "HiddenInput",
       "exportName": "Switch.HiddenInput",
       "kind": "primitive",
-      "description": "The hidden-input primitive part of the Switch component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden input primitive part of the Switch component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

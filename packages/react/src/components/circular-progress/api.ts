@@ -46,11 +46,11 @@ export type {
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the CircularProgress component. |
  * | `Label` | Primitive | The label element of the CircularProgress component. |
- * | `ValueText` | Primitive | The valueText element of the CircularProgress component. |
+ * | `ValueText` | Primitive | The value text element of the CircularProgress component. |
  * | `View` | Primitive | The view element of the CircularProgress component. |
  * | `Circle` | Primitive | The circle element of the CircularProgress component. |
- * | `CircleTrack` | Primitive | The circleTrack element of the CircularProgress component. |
- * | `CircleRange` | Primitive | The circleRange element of the CircularProgress component. |
+ * | `CircleTrack` | Primitive | The circle track element of the CircularProgress component. |
+ * | `CircleRange` | Primitive | The circle range element of the CircularProgress component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useProgress()`. |
  * | `Context` | Primitive | Exposes the CircularProgress state to a render function. |
  * | `InfoGroup` | Primitive | The info group element of the CircularProgress component (a Cerberus recipe slot outside the Ark anatomy). |

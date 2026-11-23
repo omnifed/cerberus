@@ -497,7 +497,7 @@
       "name": "ValueText",
       "exportName": "Slider.ValueText",
       "kind": "primitive",
-      "description": "The value-text primitive part of the Slider component.",
+      "description": "The value text primitive part of the Slider component.",
       "dataScope": "slider",
       "dataPart": "value-text",
       "dataAttributes": [
@@ -724,7 +724,7 @@
       "name": "MarkerGroup",
       "exportName": "Slider.MarkerGroup",
       "kind": "primitive",
-      "description": "The marker-group primitive part of the Slider component.",
+      "description": "The marker group primitive part of the Slider component.",
       "dataScope": "slider",
       "dataPart": "marker-group",
       "dataAttributes": [
@@ -819,7 +819,7 @@
       "name": "DraggingIndicator",
       "exportName": "Slider.DraggingIndicator",
       "kind": "primitive",
-      "description": "The dragging-indicator primitive part of the Slider component.",
+      "description": "The dragging indicator primitive part of the Slider component.",
       "dataScope": "slider",
       "dataPart": "dragging-indicator",
       "dataAttributes": [
@@ -983,7 +983,7 @@
       "name": "HiddenInput",
       "exportName": "Slider.HiddenInput",
       "kind": "primitive",
-      "description": "The hidden-input primitive part of the Slider component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden input primitive part of the Slider component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

@@ -279,7 +279,7 @@
       "name": "ArrowTip",
       "exportName": "Menu.ArrowTip",
       "kind": "primitive",
-      "description": "The arrow-tip primitive part of the Menu component.",
+      "description": "The arrow tip primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "arrow-tip",
       "props": [
@@ -383,7 +383,7 @@
       "name": "ContextTrigger",
       "exportName": "Menu.ContextTrigger",
       "kind": "primitive",
-      "description": "The context-trigger primitive part of the Menu component.",
+      "description": "The context trigger primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "context-trigger",
       "dataAttributes": [
@@ -556,7 +556,7 @@
       "name": "ItemGroup",
       "exportName": "Menu.ItemGroup",
       "kind": "primitive",
-      "description": "The item-group primitive part of the Menu component.",
+      "description": "The item group primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "item-group",
       "props": [
@@ -593,7 +593,7 @@
       "name": "ItemGroupLabel",
       "exportName": "Menu.ItemGroupLabel",
       "kind": "primitive",
-      "description": "The item-group-label primitive part of the Menu component.",
+      "description": "The item group label primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "item-group-label",
       "props": [
@@ -624,7 +624,7 @@
       "name": "ItemIndicator",
       "exportName": "Menu.ItemIndicator",
       "kind": "primitive",
-      "description": "The item-indicator primitive part of the Menu component.",
+      "description": "The item indicator primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "item-indicator",
       "dataAttributes": [
@@ -671,7 +671,7 @@
       "name": "ItemText",
       "exportName": "Menu.ItemText",
       "kind": "primitive",
-      "description": "The item-text primitive part of the Menu component.",
+      "description": "The item text primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "item-text",
       "dataAttributes": [
@@ -881,7 +881,7 @@
       "name": "TriggerItem",
       "exportName": "Menu.TriggerItem",
       "kind": "primitive",
-      "description": "The trigger-item primitive part of the Menu component.",
+      "description": "The trigger item primitive part of the Menu component.",
       "dataScope": "menu",
       "dataPart": "trigger-item",
       "props": [
@@ -912,7 +912,7 @@
       "name": "CheckboxItem",
       "exportName": "Menu.CheckboxItem",
       "kind": "primitive",
-      "description": "The checkbox-item primitive part of the Menu component, styled with the `item` slot.",
+      "description": "The checkbox item primitive part of the Menu component, styled with the `item` slot.",
       "dataScope": "menu",
       "dataPart": "item",
       "dataAttributes": [
@@ -1005,7 +1005,7 @@
       "name": "RadioItemGroup",
       "exportName": "Menu.RadioItemGroup",
       "kind": "primitive",
-      "description": "The radio-item-group primitive part of the Menu component, styled with the `itemGroup` slot.",
+      "description": "The radio item group primitive part of the Menu component, styled with the `itemGroup` slot.",
       "dataScope": "menu",
       "dataPart": "item-group",
       "props": [
@@ -1054,7 +1054,7 @@
       "name": "RadioItem",
       "exportName": "Menu.RadioItem",
       "kind": "primitive",
-      "description": "The radio-item primitive part of the Menu component, styled with the `item` slot.",
+      "description": "The radio item primitive part of the Menu component, styled with the `item` slot.",
       "dataScope": "menu",
       "dataPart": "item",
       "dataAttributes": [

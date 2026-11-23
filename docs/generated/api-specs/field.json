@@ -175,7 +175,7 @@
       "name": "ErrorText",
       "exportName": "Field.ErrorText",
       "kind": "primitive",
-      "description": "The error-text primitive part of the Field component.",
+      "description": "The error text primitive part of the Field component.",
       "dataScope": "field",
       "dataPart": "error-text",
       "props": [
@@ -206,7 +206,7 @@
       "name": "HelperText",
       "exportName": "Field.HelperText",
       "kind": "primitive",
-      "description": "The helper-text primitive part of the Field component.",
+      "description": "The helper text primitive part of the Field component.",
       "dataScope": "field",
       "dataPart": "helper-text",
       "props": [
@@ -368,7 +368,7 @@
       "name": "RequiredIndicator",
       "exportName": "Field.RequiredIndicator",
       "kind": "primitive",
-      "description": "The required-indicator primitive part of the Field component.",
+      "description": "The required indicator primitive part of the Field component.",
       "dataScope": "field",
       "dataPart": "required-indicator",
       "props": [
@@ -405,7 +405,7 @@
       "name": "InputRoot",
       "exportName": "Field.InputRoot",
       "kind": "primitive",
-      "description": "The input-root part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
+      "description": "The input root part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.",
       "dataScope": "field",
       "dataPart": "input-root",
       "props": [
@@ -436,7 +436,7 @@
       "name": "StartIndicator",
       "exportName": "Field.StartIndicator",
       "kind": "primitive",
-      "description": "The start-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "description": "The start indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
       "dataScope": "field",
       "dataPart": "start-indicator",
       "props": [
@@ -467,7 +467,7 @@
       "name": "EndIndicator",
       "exportName": "Field.EndIndicator",
       "kind": "primitive",
-      "description": "The end-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "description": "The end indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
       "dataScope": "field",
       "dataPart": "end-indicator",
       "props": [
@@ -498,7 +498,7 @@
       "name": "StatusIndicator",
       "exportName": "Field.StatusIndicator",
       "kind": "primitive",
-      "description": "The status-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "description": "The status indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
       "dataScope": "field",
       "dataPart": "status-indicator",
       "props": [

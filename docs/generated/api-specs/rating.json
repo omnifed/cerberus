@@ -434,7 +434,7 @@
       "name": "HiddenInput",
       "exportName": "Rating.HiddenInput",
       "kind": "primitive",
-      "description": "The hidden-input primitive part of the Rating component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden input primitive part of the Rating component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

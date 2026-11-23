@@ -432,7 +432,7 @@
       "name": "ValueText",
       "exportName": "NumberInput.ValueText",
       "kind": "primitive",
-      "description": "The value-text primitive part of the NumberInput component.",
+      "description": "The value text primitive part of the NumberInput component.",
       "dataScope": "number-input",
       "dataPart": "value-text",
       "dataAttributes": [
@@ -484,7 +484,7 @@
       "name": "IncrementTrigger",
       "exportName": "NumberInput.IncrementTrigger",
       "kind": "primitive",
-      "description": "The increment-trigger primitive part of the NumberInput component.",
+      "description": "The increment trigger primitive part of the NumberInput component.",
       "dataScope": "number-input",
       "dataPart": "increment-trigger",
       "dataAttributes": [
@@ -526,7 +526,7 @@
       "name": "DecrementTrigger",
       "exportName": "NumberInput.DecrementTrigger",
       "kind": "primitive",
-      "description": "The decrement-trigger primitive part of the NumberInput component.",
+      "description": "The decrement trigger primitive part of the NumberInput component.",
       "dataScope": "number-input",
       "dataPart": "decrement-trigger",
       "dataAttributes": [

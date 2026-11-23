@@ -41,7 +41,7 @@
       "name": "Root",
       "exportName": "Table.Root",
       "kind": "primitive",
-      "description": "The root container of the Table component.",
+      "description": "The bordered `<div>` around the table; provides the recipe variants to every part.",
       "dataScope": "table",
       "dataPart": "root",
       "props": [
@@ -86,7 +86,7 @@
       "name": "Table",
       "exportName": "Table.Table",
       "kind": "primitive",
-      "description": "The table primitive part of the Table component.",
+      "description": "The `<table>` element.",
       "dataScope": "table",
       "dataPart": "table",
       "props": [
@@ -117,7 +117,7 @@
       "name": "Caption",
       "exportName": "Table.Caption",
       "kind": "primitive",
-      "description": "The caption primitive part of the Table component.",
+      "description": "The `<caption>` element.",
       "dataScope": "table",
       "dataPart": "caption",
       "props": [
@@ -148,7 +148,7 @@
       "name": "Header",
       "exportName": "Table.Header",
       "kind": "primitive",
-      "description": "The header primitive part of the Table component.",
+      "description": "The `<thead>` element.",
       "dataScope": "table",
       "dataPart": "header",
       "props": [
@@ -179,7 +179,7 @@
       "name": "HeaderCol",
       "exportName": "Table.HeaderCol",
       "kind": "primitive",
-      "description": "The header-col primitive part of the Table component.",
+      "description": "A `<th>` header cell.",
       "dataScope": "table",
       "dataPart": "header-col",
       "props": [
@@ -210,7 +210,7 @@
       "name": "Body",
       "exportName": "Table.Body",
       "kind": "primitive",
-      "description": "The body primitive part of the Table component.",
+      "description": "The `<tbody>` element.",
       "dataScope": "table",
       "dataPart": "body",
       "props": [
@@ -241,7 +241,7 @@
       "name": "Row",
       "exportName": "Table.Row",
       "kind": "primitive",
-      "description": "The row primitive part of the Table component.",
+      "description": "A `<tr>` row.",
       "dataScope": "table",
       "dataPart": "row",
       "props": [
@@ -272,7 +272,7 @@
       "name": "Cell",
       "exportName": "Table.Cell",
       "kind": "primitive",
-      "description": "The cell primitive part of the Table component.",
+      "description": "A `<td>` data cell.",
       "dataScope": "table",
       "dataPart": "cell",
       "props": [
@@ -303,7 +303,7 @@
       "name": "Footer",
       "exportName": "Table.Footer",
       "kind": "primitive",
-      "description": "The footer primitive part of the Table component.",
+      "description": "The `<tfoot>` element.",
       "dataScope": "table",
       "dataPart": "footer",
       "props": [
@@ -334,7 +334,7 @@
       "name": "Trigger",
       "exportName": "Table.Trigger",
       "kind": "primitive",
-      "description": "The trigger primitive part of the Table component.",
+      "description": "A `<button>` for interactive header cells, e.g. a sortable column.",
       "dataScope": "table",
       "dataPart": "trigger",
       "props": [

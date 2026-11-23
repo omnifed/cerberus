@@ -53,7 +53,7 @@ export type {
  * | `Content` | Primitive | The content element of the Dialog component. |
  * | `Title` | Primitive | The title element of the Dialog component. |
  * | `Description` | Primitive | The description element of the Dialog component. |
- * | `CloseTrigger` | Primitive | The closeTrigger element of the Dialog component. |
+ * | `CloseTrigger` | Primitive | The close trigger element of the Dialog component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useDialog()`. |
  * | `Context` | Primitive | Exposes the Dialog state to a render function. |
  * | `El` | Abstraction | An abstraction that renders the dialog content inside a Portal with the backdrop and positioner |

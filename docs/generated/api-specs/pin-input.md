@@ -127,7 +127,7 @@ Selector: `[data-scope="pin-input"][data-part="control"]`
 
 ### PinInput.HiddenInput (primitive)
 
-The hidden-input primitive part of the PinInput component. It has no recipe slot, so it is unstyled.
+The hidden input primitive part of the PinInput component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

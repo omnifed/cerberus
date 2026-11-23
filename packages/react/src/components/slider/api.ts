@@ -57,13 +57,13 @@ export type {
  * | `Root` | Primitive | The root element of the Slider component. |
  * | `Label` | Primitive | The label element of the Slider component. |
  * | `Thumb` | Primitive | The thumb element of the Slider component. |
- * | `ValueText` | Primitive | The valueText element of the Slider component. |
+ * | `ValueText` | Primitive | The value text element of the Slider component. |
  * | `Track` | Primitive | The track element of the Slider component. |
  * | `Range` | Primitive | The range element of the Slider component. |
  * | `Control` | Primitive | The control element of the Slider component. |
- * | `MarkerGroup` | Primitive | The markerGroup element of the Slider component. |
+ * | `MarkerGroup` | Primitive | The marker group element of the Slider component. |
  * | `Marker` | Primitive | The marker element of the Slider component. |
- * | `DraggingIndicator` | Primitive | The draggingIndicator element of the Slider component. |
+ * | `DraggingIndicator` | Primitive | The dragging indicator element of the Slider component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useSlider()`. |
  * | `HiddenInput` | Primitive | The hidden input element of the Slider component. It has no recipe slot. |
  * | `El` | Abstraction | An entry abstraction that renders a header from its children, the control, track, range, one thumb per value and optional marks |

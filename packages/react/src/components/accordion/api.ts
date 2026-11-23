@@ -38,9 +38,9 @@ export type {
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the Accordion component. |
  * | `Item` | Primitive | The item element of the Accordion component. |
- * | `ItemTrigger` | Primitive | The itemTrigger element of the Accordion component. |
- * | `ItemContent` | Primitive | The itemContent element of the Accordion component. |
- * | `ItemIndicator` | Primitive | The itemIndicator element of the Accordion component. |
+ * | `ItemTrigger` | Primitive | The item trigger element of the Accordion component. |
+ * | `ItemContent` | Primitive | The item content element of the Accordion component. |
+ * | `ItemIndicator` | Primitive | The item indicator element of the Accordion component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useAccordion()`. |
  * | `ItemGroup` | Abstraction | An abstraction for rendering all the content-related primitives. |
  *

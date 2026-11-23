@@ -37,8 +37,8 @@ export type {
  * | Part | Kind | Description |
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the Fieldset component. |
- * | `ErrorText` | Primitive | The errorText element of the Fieldset component. |
- * | `HelperText` | Primitive | The helperText element of the Fieldset component. |
+ * | `ErrorText` | Primitive | The error text element of the Fieldset component. |
+ * | `HelperText` | Primitive | The helper text element of the Fieldset component. |
  * | `Legend` | Primitive | The legend element of the Fieldset component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useFieldset()`. |
  * | `Context` | Primitive | Exposes the Fieldset state to a render function. |

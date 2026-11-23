@@ -47,8 +47,8 @@ export type {
  * | `Root` | Primitive | The root element of the RadioGroup component. |
  * | `Label` | Primitive | The label element of the RadioGroup component. |
  * | `Item` | Primitive | The item element of the RadioGroup component. |
- * | `ItemText` | Primitive | The itemText element of the RadioGroup component. |
- * | `ItemControl` | Primitive | The itemControl element of the RadioGroup component. |
+ * | `ItemText` | Primitive | The item text element of the RadioGroup component. |
+ * | `ItemControl` | Primitive | The item control element of the RadioGroup component. |
  * | `Indicator` | Primitive | The indicator element of the RadioGroup component. |
  * | `ItemHiddenInput` | Primitive | The item hidden input element of the RadioGroup component. It has no recipe slot. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useRadioGroup()`. |

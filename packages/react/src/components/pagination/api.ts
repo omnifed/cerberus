@@ -61,10 +61,10 @@ export type {
  * | `Root` | Primitive | The root element of the Pagination component. |
  * | `Item` | Primitive | The item element of the Pagination component. |
  * | `Ellipsis` | Primitive | The ellipsis element of the Pagination component. |
- * | `FirstTrigger` | Primitive | The firstTrigger element of the Pagination component. |
- * | `PrevTrigger` | Primitive | The prevTrigger element of the Pagination component. |
- * | `NextTrigger` | Primitive | The nextTrigger element of the Pagination component. |
- * | `LastTrigger` | Primitive | The lastTrigger element of the Pagination component. |
+ * | `FirstTrigger` | Primitive | The first trigger element of the Pagination component. |
+ * | `PrevTrigger` | Primitive | The prev trigger element of the Pagination component. |
+ * | `NextTrigger` | Primitive | The next trigger element of the Pagination component. |
+ * | `LastTrigger` | Primitive | The last trigger element of the Pagination component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `usePagination()`. |
  * | `Context` | Primitive | Exposes the Pagination state to a render function. |
  * | `El` | Abstraction | An abstraction that renders the previous and next triggers around the page items and ellipses, or "page of total" text with `compact` |

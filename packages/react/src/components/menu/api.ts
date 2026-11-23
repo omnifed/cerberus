@@ -68,19 +68,19 @@ export type {
  * |------|------|-------------|
  * | `Root` | Primitive | Provides the Menu context to its parts; renders no element. |
  * | `Arrow` | Primitive | The arrow element of the Menu component. |
- * | `ArrowTip` | Primitive | The arrowTip element of the Menu component. |
+ * | `ArrowTip` | Primitive | The arrow tip element of the Menu component. |
  * | `Content` | Primitive | The content element of the Menu component. |
- * | `ContextTrigger` | Primitive | The contextTrigger element of the Menu component. |
+ * | `ContextTrigger` | Primitive | The context trigger element of the Menu component. |
  * | `Indicator` | Primitive | The indicator element of the Menu component. |
  * | `Item` | Primitive | The item element of the Menu component. |
- * | `ItemGroup` | Primitive | The itemGroup element of the Menu component. |
- * | `ItemGroupLabel` | Primitive | The itemGroupLabel element of the Menu component. |
- * | `ItemIndicator` | Primitive | The itemIndicator element of the Menu component. |
- * | `ItemText` | Primitive | The itemText element of the Menu component. |
+ * | `ItemGroup` | Primitive | The item group element of the Menu component. |
+ * | `ItemGroupLabel` | Primitive | The item group label element of the Menu component. |
+ * | `ItemIndicator` | Primitive | The item indicator element of the Menu component. |
+ * | `ItemText` | Primitive | The item text element of the Menu component. |
  * | `Positioner` | Primitive | The positioner element of the Menu component. |
  * | `Separator` | Primitive | The separator element of the Menu component. |
  * | `Trigger` | Primitive | The trigger element of the Menu component. |
- * | `TriggerItem` | Primitive | The triggerItem element of the Menu component. |
+ * | `TriggerItem` | Primitive | The trigger item element of the Menu component. |
  * | `CheckboxItem` | Primitive | The checkbox item element of the Menu component, styled with the `item` slot. |
  * | `RadioItemGroup` | Primitive | The radio item group element of the Menu component, styled with the `itemGroup` slot. |
  * | `RadioItem` | Primitive | The radio item element of the Menu component, styled with the `item` slot. |

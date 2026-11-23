@@ -230,7 +230,7 @@
       "name": "ItemTrigger",
       "exportName": "Accordion.ItemTrigger",
       "kind": "primitive",
-      "description": "The item-trigger primitive part of the Accordion component.",
+      "description": "The item trigger primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item-trigger",
       "dataAttributes": [
@@ -291,7 +291,7 @@
       "name": "ItemContent",
       "exportName": "Accordion.ItemContent",
       "kind": "primitive",
-      "description": "The item-content primitive part of the Accordion component.",
+      "description": "The item content primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item-content",
       "dataAttributes": [
@@ -343,7 +343,7 @@
       "name": "ItemIndicator",
       "exportName": "Accordion.ItemIndicator",
       "kind": "primitive",
-      "description": "The item-indicator primitive part of the Accordion component.",
+      "description": "The item indicator primitive part of the Accordion component.",
       "dataScope": "accordion",
       "dataPart": "item-indicator",
       "dataAttributes": [

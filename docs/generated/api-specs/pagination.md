@@ -145,7 +145,7 @@ Selector: `[data-scope="pagination"][data-part="ellipsis"]`
 
 ### Pagination.FirstTrigger (primitive)
 
-The first-trigger primitive part of the Pagination component.
+The first trigger primitive part of the Pagination component.
 
 Selector: `[data-scope="pagination"][data-part="first-trigger"]`
 
@@ -160,7 +160,7 @@ Selector: `[data-scope="pagination"][data-part="first-trigger"]`
 
 ### Pagination.PrevTrigger (primitive)
 
-The prev-trigger primitive part of the Pagination component.
+The prev trigger primitive part of the Pagination component.
 
 Selector: `[data-scope="pagination"][data-part="prev-trigger"]`
 
@@ -175,7 +175,7 @@ Selector: `[data-scope="pagination"][data-part="prev-trigger"]`
 
 ### Pagination.NextTrigger (primitive)
 
-The next-trigger primitive part of the Pagination component.
+The next trigger primitive part of the Pagination component.
 
 Selector: `[data-scope="pagination"][data-part="next-trigger"]`
 
@@ -190,7 +190,7 @@ Selector: `[data-scope="pagination"][data-part="next-trigger"]`
 
 ### Pagination.LastTrigger (primitive)
 
-The last-trigger primitive part of the Pagination component.
+The last trigger primitive part of the Pagination component.
 
 Selector: `[data-scope="pagination"][data-part="last-trigger"]`
 

@@ -206,6 +206,20 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     )
   })
 
+  test('part descriptions are word-cased, or come from parts.<p>.description', () => {
+    expect(part('accordion', 'Accordion.ItemTrigger').description).toBe(
+      'The item trigger primitive part of the Accordion component.',
+    )
+    expect(part('tag', 'Tag.ClosableRoot').description).toContain(
+      'without the close button `Tag.Closable` adds',
+    )
+    const camel = [...specs.values()]
+      .flatMap((spec) => spec.parts)
+      .filter((p) => /The [a-z]+[A-Z]\w* (primitive )?part/.test(p.description))
+      .map((p) => p.exportName)
+    expect(camel).toEqual([])
+  })
+
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {
     const props = part('accordion', 'Accordion.Root').props
     const multiple = props.find((p) => p.name === 'multiple')

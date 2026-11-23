@@ -80,7 +80,7 @@ Also accepts all props of `DatePicker.ViewControl`.
 
 ### DatePicker.ClearTrigger (primitive)
 
-The clear-trigger primitive part of the DatePicker component.
+The clear trigger primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="clear-trigger"]`
 
@@ -179,7 +179,7 @@ Selector: `[data-scope="date-picker"][data-part="label"]`
 
 ### DatePicker.MonthSelect (primitive)
 
-The month-select primitive part of the DatePicker component.
+The month select primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="month-select"]`
 
@@ -191,7 +191,7 @@ Selector: `[data-scope="date-picker"][data-part="month-select"]`
 
 ### DatePicker.NextTrigger (primitive)
 
-The next-trigger primitive part of the DatePicker component.
+The next trigger primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="next-trigger"]`
 
@@ -230,7 +230,7 @@ Selector: `[data-scope="date-picker"][data-part="positioner"]`
 
 ### DatePicker.PresetTrigger (primitive)
 
-The preset-trigger primitive part of the DatePicker component.
+The preset trigger primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="preset-trigger"]`
 
@@ -243,7 +243,7 @@ Selector: `[data-scope="date-picker"][data-part="preset-trigger"]`
 
 ### DatePicker.PrevTrigger (primitive)
 
-The prev-trigger primitive part of the DatePicker component.
+The prev trigger primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="prev-trigger"]`
 
@@ -259,7 +259,7 @@ Selector: `[data-scope="date-picker"][data-part="prev-trigger"]`
 
 ### DatePicker.RangeText (primitive)
 
-The range-text primitive part of the DatePicker component.
+The range text primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="range-text"]`
 
@@ -361,7 +361,7 @@ Keyboard: `Enter`, `Space`, `ArrowLeft`, `ArrowRight`, `ArrowUp`, `ArrowDown`, `
 
 ### DatePicker.TableBody (primitive)
 
-The table-body primitive part of the DatePicker component.
+The table body primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="table-body"]`
 
@@ -378,7 +378,7 @@ Selector: `[data-scope="date-picker"][data-part="table-body"]`
 
 ### DatePicker.TableCell (primitive)
 
-The table-cell primitive part of the DatePicker component.
+The table cell primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="table-cell"]`
 
@@ -394,7 +394,7 @@ Selector: `[data-scope="date-picker"][data-part="table-cell"]`
 
 ### DatePicker.TableCellTrigger (primitive)
 
-The table-cell-trigger primitive part of the DatePicker component.
+The table cell trigger primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="table-cell-trigger"]`
 
@@ -406,7 +406,7 @@ Selector: `[data-scope="date-picker"][data-part="table-cell-trigger"]`
 
 ### DatePicker.TableHead (primitive)
 
-The table-head primitive part of the DatePicker component.
+The table head primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="table-head"]`
 
@@ -423,7 +423,7 @@ Selector: `[data-scope="date-picker"][data-part="table-head"]`
 
 ### DatePicker.TableHeader (primitive)
 
-The table-header primitive part of the DatePicker component.
+The table header primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="table-header"]`
 
@@ -440,7 +440,7 @@ Selector: `[data-scope="date-picker"][data-part="table-header"]`
 
 ### DatePicker.TableRow (primitive)
 
-The table-row primitive part of the DatePicker component.
+The table row primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="table-row"]`
 
@@ -493,7 +493,7 @@ Selector: `[data-scope="date-picker"][data-part="view"]`
 
 ### DatePicker.ViewControl (primitive)
 
-The view-control primitive part of the DatePicker component.
+The view control primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="view-control"]`
 
@@ -509,7 +509,7 @@ Selector: `[data-scope="date-picker"][data-part="view-control"]`
 
 ### DatePicker.ViewTrigger (primitive)
 
-The view-trigger primitive part of the DatePicker component.
+The view trigger primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="view-trigger"]`
 
@@ -526,7 +526,7 @@ Selector: `[data-scope="date-picker"][data-part="view-trigger"]`
 
 ### DatePicker.YearSelect (primitive)
 
-The year-select primitive part of the DatePicker component.
+The year select primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="year-select"]`
 
@@ -538,7 +538,7 @@ Selector: `[data-scope="date-picker"][data-part="year-select"]`
 
 ### DatePicker.ValueText (primitive)
 
-The value-text primitive part of the DatePicker component.
+The value text primitive part of the DatePicker component.
 
 Selector: `[data-scope="date-picker"][data-part="value-text"]`
 
@@ -589,7 +589,7 @@ Exposes the DatePicker state to a render function. Renders no element.
 
 ### DatePicker.WeekNumberCell (primitive)
 
-The week-number-cell primitive part of the DatePicker component, styled with the `tableCell` slot.
+The week number cell primitive part of the DatePicker component, styled with the `tableCell` slot.
 
 Selector: `[data-scope="date-picker"][data-part="table-cell"]`
 
@@ -603,7 +603,7 @@ Selector: `[data-scope="date-picker"][data-part="table-cell"]`
 
 ### DatePicker.WeekNumberHeaderCell (primitive)
 
-The week-number-header-cell primitive part of the DatePicker component, styled with the `tableHeader` slot.
+The week number header cell primitive part of the DatePicker component, styled with the `tableHeader` slot.
 
 Selector: `[data-scope="date-picker"][data-part="table-header"]`
 

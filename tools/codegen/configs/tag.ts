@@ -8,12 +8,19 @@ export const tagConfig = defineComponent({
   anatomy: ['root', 'gradient', 'closableRoot'],
   // Every part renders the same data-scope/data-part as the v1 tags
   parts: {
+    root: {
+      description: 'A filled `<span>` tag styled by the `tag` recipe.',
+    },
     gradient: {
+      description:
+        'A `<span>` tag with a gradient background, styled by the `gradientTag` recipe.',
       recipe: 'gradientTag',
       dataScope: 'tag',
       dataPart: 'root',
     },
     closableRoot: {
+      description:
+        'The bare `<span>` of a closable tag (`closableTag` recipe), without the close button `Tag.Closable` adds.',
       recipe: 'closableTag',
       dataScope: 'tag',
       dataPart: 'root',

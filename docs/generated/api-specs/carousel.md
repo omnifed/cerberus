@@ -64,7 +64,7 @@ Selector: `[data-scope="carousel"][data-part="root"]`
 
 ### Carousel.ItemGroup (primitive)
 
-The item-group primitive part of the Carousel component.
+The item group primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="item-group"]`
 
@@ -117,7 +117,7 @@ Selector: `[data-scope="carousel"][data-part="control"]`
 
 ### Carousel.NextTrigger (primitive)
 
-The next-trigger primitive part of the Carousel component.
+The next trigger primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="next-trigger"]`
 
@@ -133,7 +133,7 @@ Selector: `[data-scope="carousel"][data-part="next-trigger"]`
 
 ### Carousel.PrevTrigger (primitive)
 
-The prev-trigger primitive part of the Carousel component.
+The prev trigger primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="prev-trigger"]`
 
@@ -149,7 +149,7 @@ Selector: `[data-scope="carousel"][data-part="prev-trigger"]`
 
 ### Carousel.IndicatorGroup (primitive)
 
-The indicator-group primitive part of the Carousel component.
+The indicator group primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="indicator-group"]`
 
@@ -188,7 +188,7 @@ Selector: `[data-scope="carousel"][data-part="indicator"]`
 
 ### Carousel.AutoplayTrigger (primitive)
 
-The autoplay-trigger primitive part of the Carousel component.
+The autoplay trigger primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="autoplay-trigger"]`
 
@@ -205,7 +205,7 @@ Selector: `[data-scope="carousel"][data-part="autoplay-trigger"]`
 
 ### Carousel.ProgressText (primitive)
 
-The progress-text primitive part of the Carousel component.
+The progress text primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="progress-text"]`
 
@@ -217,7 +217,7 @@ Selector: `[data-scope="carousel"][data-part="progress-text"]`
 
 ### Carousel.AutoplayIndicator (primitive)
 
-The autoplay-indicator primitive part of the Carousel component.
+The autoplay indicator primitive part of the Carousel component.
 
 Selector: `[data-scope="carousel"][data-part="autoplay-indicator"]`
 

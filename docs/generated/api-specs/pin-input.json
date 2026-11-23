@@ -400,7 +400,7 @@
       "name": "HiddenInput",
       "exportName": "PinInput.HiddenInput",
       "kind": "primitive",
-      "description": "The hidden-input primitive part of the PinInput component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden input primitive part of the PinInput component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

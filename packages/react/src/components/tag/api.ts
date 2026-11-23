@@ -32,9 +32,9 @@ export type {
  *
  * | Part | Kind | Description |
  * |------|------|-------------|
- * | `Root` | Primitive | The root element of the Tag component. |
- * | `Gradient` | Primitive | The gradient element of the Tag component. |
- * | `ClosableRoot` | Primitive | The closableRoot element of the Tag component. |
+ * | `Root` | Primitive | A filled `<span>` tag styled by the `tag` recipe. |
+ * | `Gradient` | Primitive | A `<span>` tag with a gradient background, styled by the `gradientTag` recipe. |
+ * | `ClosableRoot` | Primitive | The bare `<span>` of a closable tag (`closableTag` recipe), without the close button `Tag.Closable` adds. |
  * | `El` | Abstraction | Renders `Tag.Closable` when `onClick` is set, `Tag.Gradient` when `gradient` is set, else `Tag.Root` |
  * | `Closable` | Abstraction | A `Tag.ClosableRoot` with a close IconButton (labelled "Close tag") that calls `onClick`; `pending` disables it |
  *

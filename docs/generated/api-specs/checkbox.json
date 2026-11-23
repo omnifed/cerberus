@@ -470,7 +470,7 @@
       "name": "HiddenInput",
       "exportName": "Checkbox.HiddenInput",
       "kind": "primitive",
-      "description": "The hidden-input primitive part of the Checkbox component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden input primitive part of the Checkbox component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

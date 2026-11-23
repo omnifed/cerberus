@@ -316,7 +316,7 @@
       "name": "ArrowTip",
       "exportName": "Tooltip.ArrowTip",
       "kind": "primitive",
-      "description": "The arrow-tip primitive part of the Tooltip component.",
+      "description": "The arrow tip primitive part of the Tooltip component.",
       "dataScope": "tooltip",
       "dataPart": "arrow-tip",
       "props": [

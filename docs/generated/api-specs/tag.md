@@ -51,7 +51,7 @@ Also accepts all props of `Tag.ClosableRoot`.
 
 ### Tag.Root (primitive)
 
-The root container of the Tag component.
+A filled `<span>` tag styled by the `tag` recipe.
 
 Selector: `[data-scope="tag"][data-part="root"]`
 
@@ -66,7 +66,7 @@ Selector: `[data-scope="tag"][data-part="root"]`
 
 ### Tag.Gradient (primitive)
 
-The gradient primitive part of the Tag component.
+A `<span>` tag with a gradient background, styled by the `gradientTag` recipe.
 
 Selector: `[data-scope="tag"][data-part="root"]`
 
@@ -81,7 +81,7 @@ Selector: `[data-scope="tag"][data-part="root"]`
 
 ### Tag.ClosableRoot (primitive)
 
-The closable-root primitive part of the Tag component.
+The bare `<span>` of a closable tag (`closableTag` recipe), without the close button `Tag.Closable` adds.
 
 Selector: `[data-scope="tag"][data-part="root"]`
 

@@ -48,7 +48,7 @@ Selector: `[data-scope="fieldset"][data-part="root"]`
 
 ### Fieldset.ErrorText (primitive)
 
-The error-text primitive part of the Fieldset component.
+The error text primitive part of the Fieldset component.
 
 Selector: `[data-scope="fieldset"][data-part="error-text"]`
 
@@ -60,7 +60,7 @@ Selector: `[data-scope="fieldset"][data-part="error-text"]`
 
 ### Fieldset.HelperText (primitive)
 
-The helper-text primitive part of the Fieldset component.
+The helper text primitive part of the Fieldset component.
 
 Selector: `[data-scope="fieldset"][data-part="helper-text"]`
 

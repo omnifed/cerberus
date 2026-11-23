@@ -57,13 +57,13 @@ export type {
  * | Part | Kind | Description |
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the Field component. |
- * | `ErrorText` | Primitive | The errorText element of the Field component. |
- * | `HelperText` | Primitive | The helperText element of the Field component. |
+ * | `ErrorText` | Primitive | The error text element of the Field component. |
+ * | `HelperText` | Primitive | The helper text element of the Field component. |
  * | `Input` | Primitive | The input element of the Field component. |
  * | `Label` | Primitive | The label element of the Field component. |
  * | `Select` | Primitive | The select element of the Field component. |
  * | `Textarea` | Primitive | The textarea element of the Field component. |
- * | `RequiredIndicator` | Primitive | The requiredIndicator element of the Field component. |
+ * | `RequiredIndicator` | Primitive | The required indicator element of the Field component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useField()`. |
  * | `Context` | Primitive | Exposes the Field state to a render function. |
  * | `InputRoot` | Primitive | The input root element of the Field component (a Cerberus recipe slot outside the Ark anatomy). |

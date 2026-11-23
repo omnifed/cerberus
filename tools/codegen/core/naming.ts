@@ -7,6 +7,11 @@ export function toKebabCase(str: string): string {
   return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
+/** `itemTrigger`/`ItemTrigger` → `item trigger`, for prose */
+export function toWords(str: string): string {
+  return toKebabCase(str).replace(/-/g, ' ')
+}
+
 /** `date-picker`, `DatePicker` or `date picker` → `DatePicker` */
 export function toPascalCase(str: string): string {
   return str

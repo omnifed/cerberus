@@ -39,9 +39,9 @@ export type {
  *
  * | Part | Kind | Description |
  * |------|------|-------------|
- * | `Root` | Primitive | The root element of the Button component. |
- * | `Group` | Primitive | The group element of the Button component. |
- * | `IconButtonRoot` | Primitive | The iconButtonRoot element of the Button component. |
+ * | `Root` | Primitive | A `<button>` styled by the `button` recipe. |
+ * | `Group` | Primitive | Lays out related buttons together, styled by the `buttonGroup` recipe. |
+ * | `IconButtonRoot` | Primitive | The bare icon `<button>` styled by the `iconButton` recipe; `IconButton` wraps it and requires an `ariaLabel`. |
  * | `Icon` | Abstraction | An abstraction displaying an icon that is replaced by a Spinner when `pending` is set to true |
  * | `Provider` | Abstraction | The Button context provider |
  * | `El` | Abstraction | An abstraction for using the Provider and Button.Root together |

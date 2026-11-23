@@ -174,7 +174,7 @@ describe('loadManifest', () => {
       'exports: src/components/accordion/nope.ts(x) does not exist',
       "exports from '@ark-ui/react' lists nothing",
       'parts.group.recipe: per-part recipes are only supported for Cerberus-only components',
-      'parts.nope: not an anatomy part',
+      'parts.nope: not an anatomy part, elementParts slot or arkMembers entry',
     ])
   })
 })
@@ -464,6 +464,60 @@ describe('generated API', () => {
             'defaultProps: `Root` is not an Ark part or arkMembers entry',
       ),
     ).toHaveLength(1)
+  })
+
+  test('Parts table: word-cased defaults, overridden by parts.<p>.description', () => {
+    const { api } = generate({
+      key: 'accordion',
+      anatomy: { keys: () => ['root', 'itemTrigger', 'itemContent'] },
+      arkMembers: ['RootProvider', 'ItemContext'],
+      elementParts: { headerGroup: 'div' },
+      parts: {
+        itemContent: { description: 'The collapsible panel of an item.' },
+        RootProvider: { description: 'A Root driven by `useAccordion()`.' },
+        headerGroup: { description: 'Groups the headers.' },
+      },
+      description: 'x',
+    })
+    expect(api).toContain(
+      '| `ItemTrigger` | Primitive | The item trigger element of the Accordion component. |',
+    )
+    expect(api).toContain(
+      '| `ItemContent` | Primitive | The collapsible panel of an item. |',
+    )
+    expect(api).toContain(
+      '| `RootProvider` | Primitive | A Root driven by `useAccordion()`. |',
+    )
+    expect(api).toContain(
+      '| `ItemContext` | Primitive | Exposes the Accordion item state to a render function. |',
+    )
+    expect(api).toContain('| `HeaderGroup` | Primitive | Groups the headers. |')
+    expect(api).not.toMatch(/The [a-z]+[A-Z]\w* element/)
+  })
+
+  test('parts overrides name a part, element part or member; only descriptions outside the anatomy', () => {
+    const diagnostics = new Diagnostics()
+    loadManifest(
+      [
+        defineComponent({
+          key: 'accordion',
+          anatomy: { keys: () => ['root', 'item'] },
+          arkMembers: ['RootProvider'],
+          parts: {
+            nope: { description: 'x' },
+            RootProvider: { dataPart: 'root' },
+            item: { description: '  ' },
+          },
+          description: 'x',
+        }),
+      ],
+      diagnostics,
+    )
+    expect(diagnostics.items.map((d) => d.message)).toEqual([
+      'parts.nope: not an anatomy part, elementParts slot or arkMembers entry',
+      'parts.RootProvider: only `description` applies outside the anatomy',
+      'parts.item.description is empty',
+    ])
   })
 
   test('a slotted component imports styled only for parts outside the anatomy', () => {

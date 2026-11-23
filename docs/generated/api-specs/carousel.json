@@ -207,7 +207,7 @@
       "name": "ItemGroup",
       "exportName": "Carousel.ItemGroup",
       "kind": "primitive",
-      "description": "The item-group primitive part of the Carousel component.",
+      "description": "The item group primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "item-group",
       "dataAttributes": [
@@ -349,7 +349,7 @@
       "name": "NextTrigger",
       "exportName": "Carousel.NextTrigger",
       "kind": "primitive",
-      "description": "The next-trigger primitive part of the Carousel component.",
+      "description": "The next trigger primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "next-trigger",
       "dataAttributes": [
@@ -387,7 +387,7 @@
       "name": "PrevTrigger",
       "exportName": "Carousel.PrevTrigger",
       "kind": "primitive",
-      "description": "The prev-trigger primitive part of the Carousel component.",
+      "description": "The prev trigger primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "prev-trigger",
       "dataAttributes": [
@@ -425,7 +425,7 @@
       "name": "IndicatorGroup",
       "exportName": "Carousel.IndicatorGroup",
       "kind": "primitive",
-      "description": "The indicator-group primitive part of the Carousel component.",
+      "description": "The indicator group primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "indicator-group",
       "dataAttributes": [
@@ -537,7 +537,7 @@
       "name": "AutoplayTrigger",
       "exportName": "Carousel.AutoplayTrigger",
       "kind": "primitive",
-      "description": "The autoplay-trigger primitive part of the Carousel component.",
+      "description": "The autoplay trigger primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "autoplay-trigger",
       "dataAttributes": [
@@ -580,7 +580,7 @@
       "name": "ProgressText",
       "exportName": "Carousel.ProgressText",
       "kind": "primitive",
-      "description": "The progress-text primitive part of the Carousel component.",
+      "description": "The progress text primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "progress-text",
       "props": [
@@ -611,7 +611,7 @@
       "name": "AutoplayIndicator",
       "exportName": "Carousel.AutoplayIndicator",
       "kind": "primitive",
-      "description": "The autoplay-indicator primitive part of the Carousel component.",
+      "description": "The autoplay indicator primitive part of the Carousel component.",
       "dataScope": "carousel",
       "dataPart": "autoplay-indicator",
       "props": [

@@ -171,7 +171,7 @@ Selector: `[data-scope="select"][data-part="indicator"]`
 
 ### Select.ClearTrigger (primitive)
 
-The clear-trigger primitive part of the Select component.
+The clear trigger primitive part of the Select component.
 
 Selector: `[data-scope="select"][data-part="clear-trigger"]`
 
@@ -208,7 +208,7 @@ Selector: `[data-scope="select"][data-part="item"]`
 
 ### Select.ItemText (primitive)
 
-The item-text primitive part of the Select component.
+The item text primitive part of the Select component.
 
 Selector: `[data-scope="select"][data-part="item-text"]`
 
@@ -226,7 +226,7 @@ Selector: `[data-scope="select"][data-part="item-text"]`
 
 ### Select.ItemIndicator (primitive)
 
-The item-indicator primitive part of the Select component.
+The item indicator primitive part of the Select component.
 
 Selector: `[data-scope="select"][data-part="item-indicator"]`
 
@@ -242,7 +242,7 @@ Selector: `[data-scope="select"][data-part="item-indicator"]`
 
 ### Select.ItemGroup (primitive)
 
-The item-group primitive part of the Select component.
+The item group primitive part of the Select component.
 
 Selector: `[data-scope="select"][data-part="item-group"]`
 
@@ -258,7 +258,7 @@ Selector: `[data-scope="select"][data-part="item-group"]`
 
 ### Select.ItemGroupLabel (primitive)
 
-The item-group-label primitive part of the Select component.
+The item group label primitive part of the Select component.
 
 Selector: `[data-scope="select"][data-part="item-group-label"]`
 
@@ -386,7 +386,7 @@ Selector: `[data-scope="select"][data-part="control"]`
 
 ### Select.ValueText (primitive)
 
-The value-text primitive part of the Select component.
+The value text primitive part of the Select component.
 
 Selector: `[data-scope="select"][data-part="value-text"]`
 
@@ -405,7 +405,7 @@ Selector: `[data-scope="select"][data-part="value-text"]`
 
 ### Select.HiddenSelect (primitive)
 
-The hidden-select primitive part of the Select component. It has no recipe slot, so it is unstyled.
+The hidden select primitive part of the Select component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

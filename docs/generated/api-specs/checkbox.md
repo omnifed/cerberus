@@ -157,7 +157,7 @@ Selector: `[data-scope="checkbox"][data-part="group"]`
 
 ### Checkbox.HiddenInput (primitive)
 
-The hidden-input primitive part of the Checkbox component. It has no recipe slot, so it is unstyled.
+The hidden input primitive part of the Checkbox component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

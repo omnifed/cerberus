@@ -323,7 +323,7 @@
       "name": "ValueText",
       "exportName": "Clipboard.ValueText",
       "kind": "primitive",
-      "description": "The value-text primitive part of the Clipboard component. It has no recipe slot, so it is unstyled.",
+      "description": "The value text primitive part of the Clipboard component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

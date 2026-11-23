@@ -402,7 +402,7 @@
       "name": "FirstTrigger",
       "exportName": "Pagination.FirstTrigger",
       "kind": "primitive",
-      "description": "The first-trigger primitive part of the Pagination component.",
+      "description": "The first trigger primitive part of the Pagination component.",
       "dataScope": "pagination",
       "dataPart": "first-trigger",
       "dataAttributes": [
@@ -433,7 +433,7 @@
       "name": "PrevTrigger",
       "exportName": "Pagination.PrevTrigger",
       "kind": "primitive",
-      "description": "The prev-trigger primitive part of the Pagination component.",
+      "description": "The prev trigger primitive part of the Pagination component.",
       "dataScope": "pagination",
       "dataPart": "prev-trigger",
       "dataAttributes": [
@@ -464,7 +464,7 @@
       "name": "NextTrigger",
       "exportName": "Pagination.NextTrigger",
       "kind": "primitive",
-      "description": "The next-trigger primitive part of the Pagination component.",
+      "description": "The next trigger primitive part of the Pagination component.",
       "dataScope": "pagination",
       "dataPart": "next-trigger",
       "dataAttributes": [
@@ -495,7 +495,7 @@
       "name": "LastTrigger",
       "exportName": "Pagination.LastTrigger",
       "kind": "primitive",
-      "description": "The last-trigger primitive part of the Pagination component.",
+      "description": "The last trigger primitive part of the Pagination component.",
       "dataScope": "pagination",
       "dataPart": "last-trigger",
       "dataAttributes": [

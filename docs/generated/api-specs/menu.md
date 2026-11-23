@@ -77,7 +77,7 @@ Selector: `[data-scope="menu"][data-part="arrow"]`
 
 ### Menu.ArrowTip (primitive)
 
-The arrow-tip primitive part of the Menu component.
+The arrow tip primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="arrow-tip"]`
 
@@ -116,7 +116,7 @@ Keyboard: `ArrowDown`, `ArrowUp`, `ArrowLeft`, `ArrowRight`, `Enter`, `Space`, `
 
 ### Menu.ContextTrigger (primitive)
 
-The context-trigger primitive part of the Menu component.
+The context trigger primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="context-trigger"]`
 
@@ -177,7 +177,7 @@ Selector: `[data-scope="menu"][data-part="item"]`
 
 ### Menu.ItemGroup (primitive)
 
-The item-group primitive part of the Menu component.
+The item group primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="item-group"]`
 
@@ -190,7 +190,7 @@ Selector: `[data-scope="menu"][data-part="item-group"]`
 
 ### Menu.ItemGroupLabel (primitive)
 
-The item-group-label primitive part of the Menu component.
+The item group label primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="item-group-label"]`
 
@@ -202,7 +202,7 @@ Selector: `[data-scope="menu"][data-part="item-group-label"]`
 
 ### Menu.ItemIndicator (primitive)
 
-The item-indicator primitive part of the Menu component.
+The item indicator primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="item-indicator"]`
 
@@ -220,7 +220,7 @@ Selector: `[data-scope="menu"][data-part="item-indicator"]`
 
 ### Menu.ItemText (primitive)
 
-The item-text primitive part of the Menu component.
+The item text primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="item-text"]`
 
@@ -298,7 +298,7 @@ Keyboard: `ArrowDown`, `ArrowUp`, `Enter`, `Space`
 
 ### Menu.TriggerItem (primitive)
 
-The trigger-item primitive part of the Menu component.
+The trigger item primitive part of the Menu component.
 
 Selector: `[data-scope="menu"][data-part="trigger-item"]`
 
@@ -310,7 +310,7 @@ Selector: `[data-scope="menu"][data-part="trigger-item"]`
 
 ### Menu.CheckboxItem (primitive)
 
-The checkbox-item primitive part of the Menu component, styled with the `item` slot.
+The checkbox item primitive part of the Menu component, styled with the `item` slot.
 
 Selector: `[data-scope="menu"][data-part="item"]`
 
@@ -337,7 +337,7 @@ Selector: `[data-scope="menu"][data-part="item"]`
 
 ### Menu.RadioItemGroup (primitive)
 
-The radio-item-group primitive part of the Menu component, styled with the `itemGroup` slot.
+The radio item group primitive part of the Menu component, styled with the `itemGroup` slot.
 
 Selector: `[data-scope="menu"][data-part="item-group"]`
 
@@ -352,7 +352,7 @@ Selector: `[data-scope="menu"][data-part="item-group"]`
 
 ### Menu.RadioItem (primitive)
 
-The radio-item primitive part of the Menu component, styled with the `item` slot.
+The radio item primitive part of the Menu component, styled with the `item` slot.
 
 Selector: `[data-scope="menu"][data-part="item"]`
 

@@ -17,12 +17,19 @@ export const buttonsConfig = defineComponent({
   ],
   // Button.Group is styled by its own recipe and renders its own data-scope
   parts: {
+    root: {
+      description: 'A `<button>` styled by the `button` recipe.',
+    },
     group: {
+      description:
+        'Lays out related buttons together, styled by the `buttonGroup` recipe.',
       recipe: 'buttonGroup',
       dataScope: 'button-group',
       dataPart: 'root',
     },
     iconButtonRoot: {
+      description:
+        'The bare icon `<button>` styled by the `iconButton` recipe; `IconButton` wraps it and requires an `ariaLabel`.',
       recipe: 'iconButton',
       dataScope: 'icon-button',
       dataPart: 'root',

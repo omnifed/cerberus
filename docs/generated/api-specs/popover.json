@@ -308,7 +308,7 @@
       "name": "ArrowTip",
       "exportName": "Popover.ArrowTip",
       "kind": "primitive",
-      "description": "The arrow-tip primitive part of the Popover component.",
+      "description": "The arrow tip primitive part of the Popover component.",
       "dataScope": "popover",
       "dataPart": "arrow-tip",
       "props": [
@@ -665,7 +665,7 @@
       "name": "CloseTrigger",
       "exportName": "Popover.CloseTrigger",
       "kind": "primitive",
-      "description": "The close-trigger primitive part of the Popover component.",
+      "description": "The close trigger primitive part of the Popover component.",
       "dataScope": "popover",
       "dataPart": "close-trigger",
       "props": [

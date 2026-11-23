@@ -84,7 +84,7 @@
       "name": "Root",
       "exportName": "Tag.Root",
       "kind": "primitive",
-      "description": "The root container of the Tag component.",
+      "description": "A filled `<span>` tag styled by the `tag` recipe.",
       "dataScope": "tag",
       "dataPart": "root",
       "props": [
@@ -136,7 +136,7 @@
       "name": "Gradient",
       "exportName": "Tag.Gradient",
       "kind": "primitive",
-      "description": "The gradient primitive part of the Tag component.",
+      "description": "A `<span>` tag with a gradient background, styled by the `gradientTag` recipe.",
       "dataScope": "tag",
       "dataPart": "root",
       "props": [
@@ -187,7 +187,7 @@
       "name": "ClosableRoot",
       "exportName": "Tag.ClosableRoot",
       "kind": "primitive",
-      "description": "The closable-root primitive part of the Tag component.",
+      "description": "The bare `<span>` of a closable tag (`closableTag` recipe), without the close button `Tag.Closable` adds.",
       "dataScope": "tag",
       "dataPart": "root",
       "props": [

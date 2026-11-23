@@ -495,7 +495,7 @@
       "name": "CloseTrigger",
       "exportName": "Dialog.CloseTrigger",
       "kind": "primitive",
-      "description": "The close-trigger primitive part of the Dialog component.",
+      "description": "The close trigger primitive part of the Dialog component.",
       "dataScope": "dialog",
       "dataPart": "close-trigger",
       "props": [

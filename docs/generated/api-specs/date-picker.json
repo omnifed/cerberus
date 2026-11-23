@@ -104,7 +104,7 @@
       "name": "ClearTrigger",
       "exportName": "DatePicker.ClearTrigger",
       "kind": "primitive",
-      "description": "The clear-trigger primitive part of the DatePicker component.",
+      "description": "The clear trigger primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "clear-trigger",
       "props": [
@@ -372,7 +372,7 @@
       "name": "MonthSelect",
       "exportName": "DatePicker.MonthSelect",
       "kind": "primitive",
-      "description": "The month-select primitive part of the DatePicker component.",
+      "description": "The month select primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "month-select",
       "props": [
@@ -403,7 +403,7 @@
       "name": "NextTrigger",
       "exportName": "DatePicker.NextTrigger",
       "kind": "primitive",
-      "description": "The next-trigger primitive part of the DatePicker component.",
+      "description": "The next trigger primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "next-trigger",
       "dataAttributes": [
@@ -506,7 +506,7 @@
       "name": "PresetTrigger",
       "exportName": "DatePicker.PresetTrigger",
       "kind": "primitive",
-      "description": "The preset-trigger primitive part of the DatePicker component.",
+      "description": "The preset trigger primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "preset-trigger",
       "props": [
@@ -543,7 +543,7 @@
       "name": "PrevTrigger",
       "exportName": "DatePicker.PrevTrigger",
       "kind": "primitive",
-      "description": "The prev-trigger primitive part of the DatePicker component.",
+      "description": "The prev trigger primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "prev-trigger",
       "dataAttributes": [
@@ -581,7 +581,7 @@
       "name": "RangeText",
       "exportName": "DatePicker.RangeText",
       "kind": "primitive",
-      "description": "The range-text primitive part of the DatePicker component.",
+      "description": "The range text primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "range-text",
       "props": [
@@ -1041,7 +1041,7 @@
       "name": "TableBody",
       "exportName": "DatePicker.TableBody",
       "kind": "primitive",
-      "description": "The table-body primitive part of the DatePicker component.",
+      "description": "The table body primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "table-body",
       "dataAttributes": [
@@ -1083,7 +1083,7 @@
       "name": "TableCell",
       "exportName": "DatePicker.TableCell",
       "kind": "primitive",
-      "description": "The table-cell primitive part of the DatePicker component.",
+      "description": "The table cell primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "table-cell",
       "props": [
@@ -1138,7 +1138,7 @@
       "name": "TableCellTrigger",
       "exportName": "DatePicker.TableCellTrigger",
       "kind": "primitive",
-      "description": "The table-cell-trigger primitive part of the DatePicker component.",
+      "description": "The table cell trigger primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "table-cell-trigger",
       "props": [
@@ -1169,7 +1169,7 @@
       "name": "TableHead",
       "exportName": "DatePicker.TableHead",
       "kind": "primitive",
-      "description": "The table-head primitive part of the DatePicker component.",
+      "description": "The table head primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "table-head",
       "dataAttributes": [
@@ -1211,7 +1211,7 @@
       "name": "TableHeader",
       "exportName": "DatePicker.TableHeader",
       "kind": "primitive",
-      "description": "The table-header primitive part of the DatePicker component.",
+      "description": "The table header primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "table-header",
       "dataAttributes": [
@@ -1253,7 +1253,7 @@
       "name": "TableRow",
       "exportName": "DatePicker.TableRow",
       "kind": "primitive",
-      "description": "The table-row primitive part of the DatePicker component.",
+      "description": "The table row primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "table-row",
       "dataAttributes": [
@@ -1388,7 +1388,7 @@
       "name": "ViewControl",
       "exportName": "DatePicker.ViewControl",
       "kind": "primitive",
-      "description": "The view-control primitive part of the DatePicker component.",
+      "description": "The view control primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "view-control",
       "dataAttributes": [
@@ -1425,7 +1425,7 @@
       "name": "ViewTrigger",
       "exportName": "DatePicker.ViewTrigger",
       "kind": "primitive",
-      "description": "The view-trigger primitive part of the DatePicker component.",
+      "description": "The view trigger primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "view-trigger",
       "dataAttributes": [
@@ -1467,7 +1467,7 @@
       "name": "YearSelect",
       "exportName": "DatePicker.YearSelect",
       "kind": "primitive",
-      "description": "The year-select primitive part of the DatePicker component.",
+      "description": "The year select primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "year-select",
       "props": [
@@ -1498,7 +1498,7 @@
       "name": "ValueText",
       "exportName": "DatePicker.ValueText",
       "kind": "primitive",
-      "description": "The value-text primitive part of the DatePicker component.",
+      "description": "The value text primitive part of the DatePicker component.",
       "dataScope": "date-picker",
       "dataPart": "value-text",
       "props": [
@@ -1672,7 +1672,7 @@
       "name": "WeekNumberCell",
       "exportName": "DatePicker.WeekNumberCell",
       "kind": "primitive",
-      "description": "The week-number-cell primitive part of the DatePicker component, styled with the `tableCell` slot.",
+      "description": "The week number cell primitive part of the DatePicker component, styled with the `tableCell` slot.",
       "dataScope": "date-picker",
       "dataPart": "table-cell",
       "props": [
@@ -1715,7 +1715,7 @@
       "name": "WeekNumberHeaderCell",
       "exportName": "DatePicker.WeekNumberHeaderCell",
       "kind": "primitive",
-      "description": "The week-number-header-cell primitive part of the DatePicker component, styled with the `tableHeader` slot.",
+      "description": "The week number header cell primitive part of the DatePicker component, styled with the `tableHeader` slot.",
       "dataScope": "date-picker",
       "dataPart": "table-header",
       "dataAttributes": [

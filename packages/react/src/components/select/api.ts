@@ -70,17 +70,17 @@ export type {
  * | `Positioner` | Primitive | The positioner element of the Select component. |
  * | `Trigger` | Primitive | The trigger element of the Select component. |
  * | `Indicator` | Primitive | The indicator element of the Select component. |
- * | `ClearTrigger` | Primitive | The clearTrigger element of the Select component. |
+ * | `ClearTrigger` | Primitive | The clear trigger element of the Select component. |
  * | `Item` | Primitive | The item element of the Select component. |
- * | `ItemText` | Primitive | The itemText element of the Select component. |
- * | `ItemIndicator` | Primitive | The itemIndicator element of the Select component. |
- * | `ItemGroup` | Primitive | The itemGroup element of the Select component. |
- * | `ItemGroupLabel` | Primitive | The itemGroupLabel element of the Select component. |
+ * | `ItemText` | Primitive | The item text element of the Select component. |
+ * | `ItemIndicator` | Primitive | The item indicator element of the Select component. |
+ * | `ItemGroup` | Primitive | The item group element of the Select component. |
+ * | `ItemGroupLabel` | Primitive | The item group label element of the Select component. |
  * | `List` | Primitive | The list element of the Select component. |
  * | `Content` | Primitive | The content element of the Select component. |
  * | `Root` | Primitive | The root element of the Select component. |
  * | `Control` | Primitive | The control element of the Select component. |
- * | `ValueText` | Primitive | The valueText element of the Select component. |
+ * | `ValueText` | Primitive | The value text element of the Select component. |
  * | `HiddenSelect` | Primitive | The hidden select element of the Select component. It has no recipe slot. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useSelect()`. |
  * | `Context` | Primitive | Exposes the Select state to a render function. |

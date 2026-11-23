@@ -97,7 +97,7 @@
       "name": "ErrorText",
       "exportName": "Fieldset.ErrorText",
       "kind": "primitive",
-      "description": "The error-text primitive part of the Fieldset component.",
+      "description": "The error text primitive part of the Fieldset component.",
       "dataScope": "fieldset",
       "dataPart": "error-text",
       "props": [
@@ -128,7 +128,7 @@
       "name": "HelperText",
       "exportName": "Fieldset.HelperText",
       "kind": "primitive",
-      "description": "The helper-text primitive part of the Fieldset component.",
+      "description": "The helper text primitive part of the Fieldset component.",
       "dataScope": "fieldset",
       "dataPart": "helper-text",
       "props": [

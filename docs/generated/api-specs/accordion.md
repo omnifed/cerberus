@@ -82,7 +82,7 @@ Selector: `[data-scope="accordion"][data-part="item"]`
 
 ### Accordion.ItemTrigger (primitive)
 
-The item-trigger primitive part of the Accordion component.
+The item trigger primitive part of the Accordion component.
 
 Selector: `[data-scope="accordion"][data-part="item-trigger"]`
 
@@ -104,7 +104,7 @@ Keyboard: `ArrowDown`, `ArrowUp`, `ArrowRight`, `ArrowLeft`, `Home`, `End`
 
 ### Accordion.ItemContent (primitive)
 
-The item-content primitive part of the Accordion component.
+The item content primitive part of the Accordion component.
 
 Selector: `[data-scope="accordion"][data-part="item-content"]`
 
@@ -123,7 +123,7 @@ Selector: `[data-scope="accordion"][data-part="item-content"]`
 
 ### Accordion.ItemIndicator (primitive)
 
-The item-indicator primitive part of the Accordion component.
+The item indicator primitive part of the Accordion component.
 
 Selector: `[data-scope="accordion"][data-part="item-indicator"]`
 

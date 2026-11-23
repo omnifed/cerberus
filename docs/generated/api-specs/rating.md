@@ -152,7 +152,7 @@ Exposes the Rating item state to a render function. Renders no element.
 
 ### Rating.HiddenInput (primitive)
 
-The hidden-input primitive part of the Rating component. It has no recipe slot, so it is unstyled.
+The hidden input primitive part of the Rating component. It has no recipe slot, so it is unstyled.
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |

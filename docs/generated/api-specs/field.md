@@ -76,7 +76,7 @@ Selector: `[data-scope="field"][data-part="root"]`
 
 ### Field.ErrorText (primitive)
 
-The error-text primitive part of the Field component.
+The error text primitive part of the Field component.
 
 Selector: `[data-scope="field"][data-part="error-text"]`
 
@@ -88,7 +88,7 @@ Selector: `[data-scope="field"][data-part="error-text"]`
 
 ### Field.HelperText (primitive)
 
-The helper-text primitive part of the Field component.
+The helper text primitive part of the Field component.
 
 Selector: `[data-scope="field"][data-part="helper-text"]`
 
@@ -149,7 +149,7 @@ Selector: `[data-scope="field"][data-part="textarea"]`
 
 ### Field.RequiredIndicator (primitive)
 
-The required-indicator primitive part of the Field component.
+The required indicator primitive part of the Field component.
 
 Selector: `[data-scope="field"][data-part="required-indicator"]`
 
@@ -162,7 +162,7 @@ Selector: `[data-scope="field"][data-part="required-indicator"]`
 
 ### Field.InputRoot (primitive)
 
-The input-root part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.
+The input root part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<div>`.
 
 Selector: `[data-scope="field"][data-part="input-root"]`
 
@@ -174,7 +174,7 @@ Selector: `[data-scope="field"][data-part="input-root"]`
 
 ### Field.StartIndicator (primitive)
 
-The start-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
+The start indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
 
 Selector: `[data-scope="field"][data-part="start-indicator"]`
 
@@ -186,7 +186,7 @@ Selector: `[data-scope="field"][data-part="start-indicator"]`
 
 ### Field.EndIndicator (primitive)
 
-The end-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
+The end indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
 
 Selector: `[data-scope="field"][data-part="end-indicator"]`
 
@@ -198,7 +198,7 @@ Selector: `[data-scope="field"][data-part="end-indicator"]`
 
 ### Field.StatusIndicator (primitive)
 
-The status-indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
+The status indicator part of the Field component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.
 
 Selector: `[data-scope="field"][data-part="status-indicator"]`
 

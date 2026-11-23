@@ -5,7 +5,7 @@ import {
   providerSlot,
   type ComponentEntry,
 } from '../core/manifest'
-import { capitalize, partExportKey, toKebabCase } from '../core/naming'
+import { capitalize, partExportKey, toKebabCase, toWords } from '../core/naming'
 import { REACT_PKG_ROOT } from '../core/paths'
 import type { AbstractionConfig, DefaultPropValue } from '../manifest'
 import { PandaVariants, variantToProp } from './panda'
@@ -450,6 +450,11 @@ function arkPropsFor(
   return props
 }
 
+/** A config `parts.<key>.description`, else the derived one */
+function describe(entry: ComponentEntry, key: string, derived: string): string {
+  return entry.partOverrides[key]?.description?.trim() ?? derived
+}
+
 /** A render-prop context (`Context`, `ItemContext`): Ark's props, nothing styled. */
 function buildContext(
   entry: ComponentEntry,
@@ -458,14 +463,16 @@ function buildContext(
 ): PartSpec {
   const subject = `${entry.name}.${member}`
   const scope =
-    member === 'Context'
-      ? ''
-      : `${toKebabCase(member.replace(/Context$/, ''))} `
+    member === 'Context' ? '' : `${toWords(member.replace(/Context$/, ''))} `
   return {
     name: member,
     exportName: subject,
     kind: 'primitive',
-    description: `Exposes the ${entry.name} ${scope}state to a render function. Renders no element.`,
+    description: describe(
+      entry,
+      member,
+      `Exposes the ${entry.name} ${scope}state to a render function. Renders no element.`,
+    ),
     props: arkPropsFor(entry, member, subject, ctx),
   }
 }
@@ -494,7 +501,11 @@ function buildElementPart(entry: ComponentEntry, slot: string): PartSpec {
     name: capitalize(slot),
     exportName: `${entry.name}.${capitalize(slot)}`,
     kind: 'primitive',
-    description: `The ${toKebabCase(slot)} part of the ${entry.name} component: a Cerberus recipe slot outside the Ark anatomy, rendered as a \`<${entry.elementParts[slot]}>\`.`,
+    description: describe(
+      entry,
+      slot,
+      `The ${toWords(slot)} part of the ${entry.name} component: a Cerberus recipe slot outside the Ark anatomy, rendered as a \`<${entry.elementParts[slot]}>\`.`,
+    ),
     dataScope: entry.arkKey,
     dataPart: toKebabCase(slot),
     props: PRIMITIVE_PROPS,
@@ -514,7 +525,11 @@ function buildUnslotted(
     name: member,
     exportName: subject,
     kind: 'primitive',
-    description: `The ${toKebabCase(part)} primitive part of the ${entry.name} component. It has no recipe slot, so it is unstyled.`,
+    description: describe(
+      entry,
+      member,
+      `The ${toWords(part)} primitive part of the ${entry.name} component. It has no recipe slot, so it is unstyled.`,
+    ),
     ...zagPartFields(part, connect(part), docs),
     props: mergePropLists(
       arkPropsFor(entry, member, subject, ctx),
@@ -592,19 +607,23 @@ function buildPrimitive(
       name: exportKey,
       exportName: subject,
       kind: 'primitive',
-      description: `Provides the ${name} context${entry.recipe ? ' and recipe variants' : ''} to its parts${member ? `, from state created with \`use${entry.arkName}()\`` : ''}. Renders no element.`,
+      description: describe(
+        entry,
+        member ?? part,
+        `Provides the ${name} context${entry.recipe ? ' and recipe variants' : ''} to its parts${member ? `, from state created with \`use${entry.arkName}()\`` : ''}. Renders no element.`,
+      ),
       props: ownProps,
     }
   }
 
   const hook = `use${entry.arkName}${isRoot ? '' : capitalize(part)}()`
   const description = entry.memberSlots[member ?? '']
-    ? `The ${toKebabCase(member!)} primitive part of the ${name} component, styled with the \`${part}\` slot.`
+    ? `The ${toWords(member!)} primitive part of the ${name} component, styled with the \`${part}\` slot.`
     : member
-      ? `The ${isRoot ? 'root container' : `${toKebabCase(part)} part`} of the ${name} component, driven by state created with \`${hook}\`.`
+      ? `The ${isRoot ? 'root container' : `${toWords(part)} part`} of the ${name} component, driven by state created with \`${hook}\`.`
       : isRoot
         ? `The root container of the ${name} component.`
-        : `The ${toKebabCase(part)} primitive part of the ${name} component.`
+        : `The ${toWords(part)} primitive part of the ${name} component.`
   // Without a slot recipe there is nothing for `unstyled` to strip
   const shared = entry.recipe
     ? PRIMITIVE_PROPS
@@ -614,7 +633,7 @@ function buildPrimitive(
     name: exportKey,
     exportName: subject,
     kind: 'primitive',
-    description,
+    description: describe(entry, member ?? part, description),
     ...partAttrs(entry, part),
     ...zagPartFields(part, connect(part), docs),
     props: mergePropLists(ownProps, shared),

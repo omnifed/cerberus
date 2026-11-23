@@ -48,9 +48,9 @@ export type {
  * | `Label` | Primitive | The label element of the NumberInput component. |
  * | `Input` | Primitive | The input element of the NumberInput component. |
  * | `Control` | Primitive | The control element of the NumberInput component. |
- * | `ValueText` | Primitive | The valueText element of the NumberInput component. |
- * | `IncrementTrigger` | Primitive | The incrementTrigger element of the NumberInput component. |
- * | `DecrementTrigger` | Primitive | The decrementTrigger element of the NumberInput component. |
+ * | `ValueText` | Primitive | The value text element of the NumberInput component. |
+ * | `IncrementTrigger` | Primitive | The increment trigger element of the NumberInput component. |
+ * | `DecrementTrigger` | Primitive | The decrement trigger element of the NumberInput component. |
  * | `Scrubber` | Primitive | The scrubber element of the NumberInput component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useNumberInput()`. |
  * | `Context` | Primitive | Exposes the NumberInput state to a render function. |

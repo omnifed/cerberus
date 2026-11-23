@@ -133,7 +133,7 @@
       "name": "Root",
       "exportName": "Button.Root",
       "kind": "primitive",
-      "description": "The root container of the Button component.",
+      "description": "A `<button>` styled by the `button` recipe.",
       "dataScope": "buttons",
       "dataPart": "root",
       "props": [
@@ -192,7 +192,7 @@
       "name": "Group",
       "exportName": "Button.Group",
       "kind": "primitive",
-      "description": "The group primitive part of the Button component.",
+      "description": "Lays out related buttons together, styled by the `buttonGroup` recipe.",
       "dataScope": "button-group",
       "dataPart": "root",
       "props": [
@@ -237,7 +237,7 @@
       "name": "IconButtonRoot",
       "exportName": "Button.IconButtonRoot",
       "kind": "primitive",
-      "description": "The icon-button-root primitive part of the Button component.",
+      "description": "The bare icon `<button>` styled by the `iconButton` recipe; `IconButton` wraps it and requires an `ariaLabel`.",
       "dataScope": "icon-button",
       "dataPart": "root",
       "props": [

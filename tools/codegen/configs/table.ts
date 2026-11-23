@@ -17,6 +17,24 @@ export const tableConfig = defineComponent({
     'footer',
     'trigger',
   ],
+  parts: {
+    root: {
+      description:
+        'The bordered `<div>` around the table; provides the recipe variants to every part.',
+    },
+    table: { description: 'The `<table>` element.' },
+    caption: { description: 'The `<caption>` element.' },
+    header: { description: 'The `<thead>` element.' },
+    headerCol: { description: 'A `<th>` header cell.' },
+    body: { description: 'The `<tbody>` element.' },
+    row: { description: 'A `<tr>` row.' },
+    cell: { description: 'A `<td>` data cell.' },
+    footer: { description: 'The `<tfoot>` element.' },
+    trigger: {
+      description:
+        'A `<button>` for interactive header cells, e.g. a sortable column.',
+    },
+  },
   types: [
     'TableRootProps',
     'TableTableProps',

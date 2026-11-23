@@ -43,7 +43,7 @@ export type {
  * | `Root` | Primitive | Provides the Tooltip context to its parts; renders no element. |
  * | `Trigger` | Primitive | The trigger element of the Tooltip component. |
  * | `Arrow` | Primitive | The arrow element of the Tooltip component. |
- * | `ArrowTip` | Primitive | The arrowTip element of the Tooltip component. |
+ * | `ArrowTip` | Primitive | The arrow tip element of the Tooltip component. |
  * | `Positioner` | Primitive | The positioner element of the Tooltip component. |
  * | `Content` | Primitive | The content element of the Tooltip component. |
  * | `RootProvider` | Primitive | A `Root` driven by state from Ark's `useTooltip()`. |

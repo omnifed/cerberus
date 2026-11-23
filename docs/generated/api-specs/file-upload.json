@@ -344,7 +344,7 @@
       "name": "ItemDeleteTrigger",
       "exportName": "FileUpload.ItemDeleteTrigger",
       "kind": "primitive",
-      "description": "The item-delete-trigger primitive part of the FileUpload component.",
+      "description": "The item delete trigger primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "item-delete-trigger",
       "dataAttributes": [
@@ -391,7 +391,7 @@
       "name": "ItemGroup",
       "exportName": "FileUpload.ItemGroup",
       "kind": "primitive",
-      "description": "The item-group primitive part of the FileUpload component.",
+      "description": "The item group primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "item-group",
       "dataAttributes": [
@@ -439,7 +439,7 @@
       "name": "ItemName",
       "exportName": "FileUpload.ItemName",
       "kind": "primitive",
-      "description": "The item-name primitive part of the FileUpload component.",
+      "description": "The item name primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "item-name",
       "dataAttributes": [
@@ -481,7 +481,7 @@
       "name": "ItemPreview",
       "exportName": "FileUpload.ItemPreview",
       "kind": "primitive",
-      "description": "The item-preview primitive part of the FileUpload component.",
+      "description": "The item preview primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "item-preview",
       "dataAttributes": [
@@ -530,7 +530,7 @@
       "name": "ItemPreviewImage",
       "exportName": "FileUpload.ItemPreviewImage",
       "kind": "primitive",
-      "description": "The item-preview-image primitive part of the FileUpload component.",
+      "description": "The item preview image primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "item-preview-image",
       "dataAttributes": [
@@ -572,7 +572,7 @@
       "name": "ItemSizeText",
       "exportName": "FileUpload.ItemSizeText",
       "kind": "primitive",
-      "description": "The item-size-text primitive part of the FileUpload component.",
+      "description": "The item size text primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "item-size-text",
       "dataAttributes": [
@@ -710,7 +710,7 @@
       "name": "ClearTrigger",
       "exportName": "FileUpload.ClearTrigger",
       "kind": "primitive",
-      "description": "The clear-trigger primitive part of the FileUpload component.",
+      "description": "The clear trigger primitive part of the FileUpload component.",
       "dataScope": "file-upload",
       "dataPart": "clear-trigger",
       "dataAttributes": [
@@ -846,7 +846,7 @@
       "name": "HiddenInput",
       "exportName": "FileUpload.HiddenInput",
       "kind": "primitive",
-      "description": "The hidden-input primitive part of the FileUpload component. It has no recipe slot, so it is unstyled.",
+      "description": "The hidden input primitive part of the FileUpload component. It has no recipe slot, so it is unstyled.",
       "props": [
         {
           "name": "asChild",

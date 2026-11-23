@@ -269,7 +269,7 @@
       "name": "ItemText",
       "exportName": "RadioGroup.ItemText",
       "kind": "primitive",
-      "description": "The item-text primitive part of the RadioGroup component.",
+      "description": "The item text primitive part of the RadioGroup component.",
       "dataScope": "radio-group",
       "dataPart": "item-text",
       "props": [
@@ -300,7 +300,7 @@
       "name": "ItemControl",
       "exportName": "RadioGroup.ItemControl",
       "kind": "primitive",
-      "description": "The item-control primitive part of the RadioGroup component.",
+      "description": "The item control primitive part of the RadioGroup component.",
       "dataScope": "radio-group",
       "dataPart": "item-control",
       "dataAttributes": [
@@ -403,7 +403,7 @@
       "name": "ItemHiddenInput",
       "exportName": "RadioGroup.ItemHiddenInput",
       "kind": "primitive",
-      "description": "The item-hidden-input primitive part of the RadioGroup component. It has no recipe slot, so it is unstyled.",
+      "description": "The item hidden input primitive part of the RadioGroup component. It has no recipe slot, so it is unstyled.",
       "dataAttributes": [
         {
           "name": "data-ownedby"

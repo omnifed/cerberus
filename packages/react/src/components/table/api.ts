@@ -44,16 +44,16 @@ export type {
  *
  * | Part | Kind | Description |
  * |------|------|-------------|
- * | `Root` | Primitive | The root element of the Table component. |
- * | `Table` | Primitive | The table element of the Table component. |
- * | `Caption` | Primitive | The caption element of the Table component. |
- * | `Header` | Primitive | The header element of the Table component. |
- * | `HeaderCol` | Primitive | The headerCol element of the Table component. |
- * | `Body` | Primitive | The body element of the Table component. |
- * | `Row` | Primitive | The row element of the Table component. |
- * | `Cell` | Primitive | The cell element of the Table component. |
- * | `Footer` | Primitive | The footer element of the Table component. |
- * | `Trigger` | Primitive | The trigger element of the Table component. |
+ * | `Root` | Primitive | The bordered `<div>` around the table; provides the recipe variants to every part. |
+ * | `Table` | Primitive | The `<table>` element. |
+ * | `Caption` | Primitive | The `<caption>` element. |
+ * | `Header` | Primitive | The `<thead>` element. |
+ * | `HeaderCol` | Primitive | A `<th>` header cell. |
+ * | `Body` | Primitive | The `<tbody>` element. |
+ * | `Row` | Primitive | A `<tr>` row. |
+ * | `Cell` | Primitive | A `<td>` data cell. |
+ * | `Footer` | Primitive | The `<tfoot>` element. |
+ * | `Trigger` | Primitive | A `<button>` for interactive header cells, e.g. a sortable column. |
  * | `El` | Abstraction | An abstraction rendering `Table.Root` and `Table.Table` with a `caption` and an optional `sticky` header |
  *
  * @example

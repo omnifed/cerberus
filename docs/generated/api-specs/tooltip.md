@@ -96,7 +96,7 @@ Selector: `[data-scope="tooltip"][data-part="arrow"]`
 
 ### Tooltip.ArrowTip (primitive)
 
-The arrow-tip primitive part of the Tooltip component.
+The arrow tip primitive part of the Tooltip component.
 
 Selector: `[data-scope="tooltip"][data-part="arrow-tip"]`
 

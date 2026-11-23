@@ -67,15 +67,15 @@ export type {
  * | Part | Kind | Description |
  * |------|------|-------------|
  * | `Root` | Primitive | The root element of the Combobox component. |
- * | `ClearTrigger` | Primitive | The clearTrigger element of the Combobox component. |
+ * | `ClearTrigger` | Primitive | The clear trigger element of the Combobox component. |
  * | `Content` | Primitive | The content element of the Combobox component. |
  * | `Control` | Primitive | The control element of the Combobox component. |
  * | `Input` | Primitive | The input element of the Combobox component. |
  * | `Item` | Primitive | The item element of the Combobox component. |
- * | `ItemGroup` | Primitive | The itemGroup element of the Combobox component. |
- * | `ItemGroupLabel` | Primitive | The itemGroupLabel element of the Combobox component. |
- * | `ItemIndicator` | Primitive | The itemIndicator element of the Combobox component. |
- * | `ItemText` | Primitive | The itemText element of the Combobox component. |
+ * | `ItemGroup` | Primitive | The item group element of the Combobox component. |
+ * | `ItemGroupLabel` | Primitive | The item group label element of the Combobox component. |
+ * | `ItemIndicator` | Primitive | The item indicator element of the Combobox component. |
+ * | `ItemText` | Primitive | The item text element of the Combobox component. |
  * | `Label` | Primitive | The label element of the Combobox component. |
  * | `List` | Primitive | The list element of the Combobox component. |
  * | `Positioner` | Primitive | The positioner element of the Combobox component. |

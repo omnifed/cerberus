@@ -32,7 +32,7 @@ Also accepts all props of `Table.Root`.
 
 ### Table.Root (primitive)
 
-The root container of the Table component.
+The bordered `<div>` around the table; provides the recipe variants to every part.
 
 Selector: `[data-scope="table"][data-part="root"]`
 
@@ -46,7 +46,7 @@ Selector: `[data-scope="table"][data-part="root"]`
 
 ### Table.Table (primitive)
 
-The table primitive part of the Table component.
+The `<table>` element.
 
 Selector: `[data-scope="table"][data-part="table"]`
 
@@ -58,7 +58,7 @@ Selector: `[data-scope="table"][data-part="table"]`
 
 ### Table.Caption (primitive)
 
-The caption primitive part of the Table component.
+The `<caption>` element.
 
 Selector: `[data-scope="table"][data-part="caption"]`
 
@@ -70,7 +70,7 @@ Selector: `[data-scope="table"][data-part="caption"]`
 
 ### Table.Header (primitive)
 
-The header primitive part of the Table component.
+The `<thead>` element.
 
 Selector: `[data-scope="table"][data-part="header"]`
 
@@ -82,7 +82,7 @@ Selector: `[data-scope="table"][data-part="header"]`
 
 ### Table.HeaderCol (primitive)
 
-The header-col primitive part of the Table component.
+A `<th>` header cell.
 
 Selector: `[data-scope="table"][data-part="header-col"]`
 
@@ -94,7 +94,7 @@ Selector: `[data-scope="table"][data-part="header-col"]`
 
 ### Table.Body (primitive)
 
-The body primitive part of the Table component.
+The `<tbody>` element.
 
 Selector: `[data-scope="table"][data-part="body"]`
 
@@ -106,7 +106,7 @@ Selector: `[data-scope="table"][data-part="body"]`
 
 ### Table.Row (primitive)
 
-The row primitive part of the Table component.
+A `<tr>` row.
 
 Selector: `[data-scope="table"][data-part="row"]`
 
@@ -118,7 +118,7 @@ Selector: `[data-scope="table"][data-part="row"]`
 
 ### Table.Cell (primitive)
 
-The cell primitive part of the Table component.
+A `<td>` data cell.
 
 Selector: `[data-scope="table"][data-part="cell"]`
 
@@ -130,7 +130,7 @@ Selector: `[data-scope="table"][data-part="cell"]`
 
 ### Table.Footer (primitive)
 
-The footer primitive part of the Table component.
+The `<tfoot>` element.
 
 Selector: `[data-scope="table"][data-part="footer"]`
 
@@ -142,7 +142,7 @@ Selector: `[data-scope="table"][data-part="footer"]`
 
 ### Table.Trigger (primitive)
 
-The trigger primitive part of the Table component.
+A `<button>` for interactive header cells, e.g. a sortable column.
 
 Selector: `[data-scope="table"][data-part="trigger"]`
 

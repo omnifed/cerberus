@@ -117,8 +117,11 @@ export type ComponentConfig = {
    */
   exports?: ExportConfig[]
   /**
-   * Docs-only overrides for a part that doesn't follow the anatomy or the component
-   * recipe (Cerberus-only components), e.g. `Button.Group`'s own `buttonGroup` recipe.
+   * Docs-only overrides, keyed by anatomy part (`closableRoot`), `elementParts` slot or
+   * `arkMembers` entry (`RootProvider`). `description` replaces the derived one in the
+   * JSDoc Parts table and the docs spec; the other fields are for an anatomy part that
+   * doesn't follow the component recipe (Cerberus-only components), e.g.
+   * `Button.Group`'s own `buttonGroup` recipe.
    */
   parts?: Record<string, PartOverride>
   a11y?: A11yConfig
@@ -134,6 +137,11 @@ export type ExportConfig = {
 }
 
 export type PartOverride = {
+  /**
+   * One sentence on what the part is, replacing the derived "The closable root element
+   * of the Tag component."
+   */
+  description?: string
   /** Recipe whose variants this part accepts */
   recipe?: string
   /** `false` for a part that renders no `data-scope`/`data-part` (no selector) */
