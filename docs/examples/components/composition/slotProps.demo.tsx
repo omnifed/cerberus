@@ -1,3 +1,5 @@
+'use client'
+
 import { Accordion } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'
 

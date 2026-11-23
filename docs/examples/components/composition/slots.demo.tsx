@@ -1,3 +1,5 @@
+'use client'
+
 import { CerberusLogo } from '@/components/logos/cerberus'
 import { Accordion, cerberus } from '@cerberus-design/react'
 import { HStack, Square } from 'styled-system/jsx'
