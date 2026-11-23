@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'bun:test'
+import { afterEach, describe, test, expect } from 'bun:test'
 import { render, screen, waitFor } from '@testing-library/react'
 import {
   NotificationCenter,
@@ -10,6 +10,9 @@ import userEvent from '@testing-library/user-event'
 
 describe('NotificationCenter & useNotificationCenter', () => {
   const config = makeConfig()
+
+  // `toaster` is a module-level store: clear it so a toast never outlives its test
+  afterEach(() => toaster.remove())
 
   function Feature() {
     function handleClick() {

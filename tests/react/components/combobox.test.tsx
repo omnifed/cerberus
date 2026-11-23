@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'bun:test'
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import {
   Combobox,
   CerberusProvider,
@@ -12,6 +12,39 @@ import {
 } from '@cerberus-design/react'
 import { makeConfig } from '@/utils'
 import userEvent from '@testing-library/user-event'
+
+/**
+ * Lets a frame pass inside `act`, so the combobox's `raf()` work and React's
+ * effects settle, as they do between a person's keystrokes.
+ */
+const settle = () =>
+  act(() => new Promise<void>((resolve) => setTimeout(resolve, 20)))
+
+/** One key at a time; `{Backspace}`/`{ArrowDown}` count as one key */
+const keysOf = (text: string) => text.match(/\{[^}]+\}|./g) ?? []
+
+/**
+ * Types `text` into `input` one key at a time, with a settled frame between
+ * keys. Plain `userEvent.type`/`keyboard` send the next key after a 0ms
+ * timeout: on a slow runner (CI) a render that Zag started in a `raf()` can
+ * still have its effects pending then, and they act on that render's stale
+ * state: `syncInputValue` writes back an old input value ("he" → Backspace,
+ * Backspace → "h" written back → "hh"), and highlight moves are lost.
+ */
+async function typeLikeAPerson(input: HTMLElement, text: string) {
+  for (const key of keysOf(text)) {
+    await userEvent.type(input, key)
+    await settle()
+  }
+}
+
+/** `userEvent.keyboard` on the focused element, one settled key at a time */
+async function pressLikeAPerson(text: string) {
+  for (const key of keysOf(text)) {
+    await userEvent.keyboard(key)
+    await settle()
+  }
+}
 
 describe('Combobox', () => {
   const config = makeConfig()
@@ -164,7 +197,7 @@ describe('Combobox', () => {
       </CerberusProvider>,
     )
     expect(screen.getByRole('combobox')).toBeInTheDocument()
-    await userEvent.type(screen.getByRole('combobox'), 'her')
+    await typeLikeAPerson(screen.getByRole('combobox'), 'her')
     expect(screen.getByText(/Heracles/i)).toBeInTheDocument()
     expect(screen.queryByText(/Persephone/i)).toBeNull()
     expect(screen.queryByText(/Hades/i)).toBeNull()
@@ -195,7 +228,7 @@ describe('Combobox', () => {
       </CerberusProvider>,
     )
     expect(screen.getByTestId('count')).toHaveTextContent('2')
-    await userEvent.type(screen.getByRole('combobox'), 'ze')
+    await typeLikeAPerson(screen.getByRole('combobox'), 'ze')
     expect(screen.getByTestId('chars')).toHaveTextContent('z,e')
     expect(screen.getByTestId('count')).toHaveTextContent('1')
   })
@@ -227,15 +260,16 @@ describe('Combobox', () => {
       </CerberusProvider>,
     )
     const input = screen.getByRole('combobox')
-    await userEvent.type(input, 'ze')
+    await typeLikeAPerson(input, 'ze')
     expect(screen.getByTestId('count')).toHaveTextContent('1')
     // Replace the query: items the previous query excluded come back
     await userEvent.clear(input)
+    await settle()
     expect(screen.getByTestId('count')).toHaveTextContent('3')
     expect(screen.getByTestId('chars')).toBeEmptyDOMElement()
-    await userEvent.type(input, 'he')
+    await typeLikeAPerson(input, 'he')
     expect(screen.getByTestId('count')).toHaveTextContent('1')
-    await userEvent.type(input, '{Backspace}{Backspace}h')
+    await typeLikeAPerson(input, '{Backspace}{Backspace}h')
     expect(screen.getByTestId('count')).toHaveTextContent('2')
   })
 
@@ -281,7 +315,8 @@ describe('Combobox', () => {
       </CerberusProvider>,
     )
     await userEvent.click(screen.getByRole('combobox'))
-    await userEvent.keyboard('{ArrowDown}{ArrowDown}{Enter}')
+    await settle()
+    await pressLikeAPerson('{ArrowDown}{ArrowDown}{Enter}')
     expect(selected).toBe('Zeus')
   })
 
