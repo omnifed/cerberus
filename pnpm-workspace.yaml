@@ -61,6 +61,8 @@ overrides:
   fast-uri: '>=4.1.5'
   postcss-selector-parser: '>=7.1.3'
   # docs
+  # typescript-estree <8.73 (eslint-config-next, eslint-plugin-import) pins a vulnerable minimatch
+  '@typescript-eslint/typescript-estree>minimatch': '^11.0.1'
   eslint>ajv: '^6.12.6'
   '@eslint/eslintrc>js-yaml': '>=4.3.2'
   '@eslint/eslintrc>ajv': '^6.12.6'

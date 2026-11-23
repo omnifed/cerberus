@@ -4,7 +4,6 @@
   "private": true,
   "description": "The tests for the repository.",
   "scripts": {
-    "prepare": "panda codegen",
     "lint:ts": "tsc --noEmit",
     "test": "bun test",
     "test:ci": "bun test --coverage",

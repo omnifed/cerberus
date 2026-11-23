@@ -6,7 +6,8 @@
   "author": "developers@omnifederal.com",
   "type": "module",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky && pnpm run codegen:panda",
+    "codegen:panda": "pnpm --filter @cerberus-design/react run generate && pnpm --filter @cerberus-design/data-grid run generate && pnpm --filter tests exec panda codegen",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
     "lint:npmPackages": "pnpm --filter @cerberus-design/* run -w lint:ts",
