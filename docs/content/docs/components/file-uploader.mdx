@@ -26,9 +26,15 @@ Once a valid file is added, a preview card of the file will be displayed.
 
 ## File Status
 
-If you choose to process the file, you can use the `FileStatus` component to display the status of the job.
+If you choose to process the file, you can use the `FileStatus` component to display the status of the job. It is also available on its own as `@cerberus/react/file-status`.
 
 <Example path="components/file-uploader" demo="status" />
+
+### Customizing the status card
+
+`FileStatus` is a compound: pass `FileStatus.Icon`, `.Info`, `.Name`, `.Progress`, `.StatusText` or `.Action` as direct children to override that part. A self-closing part patches its props (the card still supplies the progress value and the action's status); a part with children replaces its default content. Other children render at the end of the info column.
+
+<Example path="components/file-uploader" demo="statusCustom" />
 
 ## Accepted File Types
 
@@ -231,11 +237,4 @@ When you want to delegate clicking to the trigger and remove the dropzone from t
 
 ### FileStatus
 
-The `FileStatus` component accepts the following props:
-
-| Name     | Default  | Description                              |
-| -------- | -------- | ---------------------------------------- |
-| `id`     |          | A unique identifier for the ProgressBar. |
-| `file`   |          | The name of the file being processed     |
-| `now`    |          | The current progress of the file upload  |
-| `status` | `'todo'` | The status of the file upload            |
+<ComponentApi spec="file-status" />

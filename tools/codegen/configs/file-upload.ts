@@ -10,7 +10,7 @@ export const fileUploadConfig = defineComponent({
   description: `
 The FileUpload component lets users select files with a dropzone (click, \`Enter\`/\`Space\` or drag and drop) and lists the accepted files.
 
-Use the default \`<FileUpload>\` (also available as \`FileUploader\`) with an \`accept\` and an optional \`heading\` to render the dropzone with the Cerberus icon, an "Import <types> files" text and a description, the list of accepted files with image previews, and the hidden input, or compose the primitives for full structural control. Render the file list on its own with \`FileUpload.ItemGroupWithPreview\` (also available as \`ImgPreview\`), and show the progress of a file's upload with the separate \`FileStatus\` component. Map the error codes of rejected files to messages with \`createErrorMessages\`.
+Use the default \`<FileUpload>\` (also available as \`FileUploader\`) with an \`accept\` and an optional \`heading\` to render the dropzone with the Cerberus icon, an "Import <types> files" text and a description, the list of accepted files with image previews, and the hidden input, or compose the primitives for full structural control. Render the file list on its own with \`FileUpload.ItemGroupWithPreview\` (also available as \`ImgPreview\`), and show the progress of a file's upload with the separate \`FileStatus\` compound (\`@cerberus/react/file-status\`). Map the error codes of rejected files to messages with \`createErrorMessages\`.
   `,
 
   // Ark's parts own the bare names. The v1 `FileUploader` (the dropzone with
@@ -55,17 +55,6 @@ Use the default \`<FileUpload>\` (also available as \`FileUploader\`) with an \`
       types: ['FileUploaderProps'],
     },
     { from: './item-group-with-preview', values: ['ImgPreview'] },
-    // A separate Cerberus component with its own `fileStatus` recipe
-    {
-      from: './file-status',
-      values: ['FileStatus', 'processStatus'],
-      types: [
-        'FileStatusProps',
-        'FileBaseStatusProps',
-        'FileStatusKey',
-        'FileStatusActions',
-      ],
-    },
     { from: './helpers', values: ['createErrorMessages'] },
     // v1 re-exported `UseFileUploadContext`. New: the details types of the
     // change callbacks and the error codes `createErrorMessages` maps

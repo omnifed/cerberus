@@ -18,6 +18,7 @@
 - [Dialog](dialog.md): The Dialog component is a modal window that appears on top of the main content.
 - [Field](field.md): The Field component labels a form control and connects it to its helper text and error text, wiring the ids and ARIA attributes for you.
 - [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
+- [FileStatus](file-status.md): The FileStatus component shows the status of a file during processing: the status icon, the file name, its progress and status text, and an action button that cancels, retries or deletes the file.
 - [FileUpload](file-upload.md): The FileUpload component lets users select files with a dropzone (click, `Enter`/`Space` or drag and drop) and lists the accepted files.
 - [Group](group.md): The Group component lays out its children in a normal, attached, grown or stacked group, horizontally or vertically.
 - [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.

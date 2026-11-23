@@ -1,6 +1,5 @@
 import { defineSlotRecipe } from '@pandacss/dev'
 import type { SlotRecipeConfig } from '@pandacss/types'
-import { action, danger, success } from '../shared/palettes'
 
 /**
  * This module contains the fileStatus recipe.
@@ -8,59 +7,45 @@ import { action, danger, success } from '../shared/palettes'
  */
 
 /**
- * Styles for the FileStatus component
- * @definition [FileStatus docs](https://cerberus.digitalu.design/react/file-status)
+ * Styles for the FileStatus component: a status card with the status icon, the
+ * file name, its progress and status text, and an action button.
+ * @definition [FileStatus docs](https://cerberus.digitalu.design/docs/components/file-uploader#filestatus)
  */
 export const fileStatus: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'file-status',
-  slots: ['root', 'icon'],
+  slots: ['root', 'icon', 'info', 'name', 'statusText'],
 
   base: {
     root: {
-      // combine with hstack
+      alignItems: 'center',
       bgColor: 'page.surface.100',
       border: '2px solid',
       borderColor: 'page.border.initial',
+      display: 'flex',
+      flexDirection: 'row',
+      gap: '8px',
       p: 4,
       rounded: 'sm',
       w: 'full',
     },
     icon: {
-      // combine with circle
-      p: 2,
+      display: 'inline-flex',
+      flexShrink: 0,
     },
-  },
-
-  variants: {
-    status: {
-      todo: {
-        icon: {
-          ...action,
-          gradient: 'charon-dark',
-        },
-      },
-      processing: {
-        icon: {
-          ...action,
-          gradient: 'charon-dark',
-        },
-      },
-      done: {
-        icon: {
-          ...success,
-          gradient: 'thanatos-light',
-        },
-      },
-      error: {
-        icon: {
-          ...danger,
-          gradient: 'hades-dark',
-        },
-      },
+    info: {
+      alignItems: 'flex-start',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.12rem',
+      w: 'full',
     },
-  },
-
-  defaultVariants: {
-    status: 'todo',
+    name: {
+      color: 'page.text.initial',
+      textStyle: 'label-sm',
+    },
+    statusText: {
+      color: 'page.text.100',
+      textStyle: 'label-sm',
+    },
   },
 })

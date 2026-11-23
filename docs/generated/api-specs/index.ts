@@ -14,6 +14,7 @@ import date_pickerSpec from './date-picker.json'
 import dialogSpec from './dialog.json'
 import fieldSpec from './field.json'
 import fieldsetSpec from './fieldset.json'
+import file_statusSpec from './file-status.json'
 import file_uploadSpec from './file-upload.json'
 import groupSpec from './group.json'
 import marqueeSpec from './marquee.json'
@@ -51,6 +52,7 @@ export const API_SPECS: Record<string, ComponentDocSpec> = {
   dialog: dialogSpec as ComponentDocSpec,
   field: fieldSpec as ComponentDocSpec,
   fieldset: fieldsetSpec as ComponentDocSpec,
+  'file-status': file_statusSpec as ComponentDocSpec,
   'file-upload': file_uploadSpec as ComponentDocSpec,
   group: groupSpec as ComponentDocSpec,
   marquee: marqueeSpec as ComponentDocSpec,

@@ -1256,6 +1256,54 @@ exports[`every part resolves to the same prop names as last time 1`] = `
       "usage",
     ],
   },
+  "file-status": {
+    "parts": {
+      "FileStatus.Action": [
+        "status",
+        "ariaLabel",
+        "children",
+      ],
+      "FileStatus.El": [
+        "id",
+        "file",
+        "now",
+        "status",
+        "onClick",
+      ],
+      "FileStatus.Icon": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "FileStatus.Info": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "FileStatus.Name": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "FileStatus.Progress": [
+        "id",
+        "label",
+        "now",
+        "indeterminate",
+      ],
+      "FileStatus.Root": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+      "FileStatus.StatusText": [
+        "asChild",
+        "unstyled",
+        "css",
+      ],
+    },
+    "variants": [],
+  },
   "file-upload": {
     "parts": {
       "FileUpload.ClearTrigger": [
@@ -3952,6 +4000,49 @@ exports[`no props lose their description compared with last time 1`] = `
   ],
   "Fieldset.RootProvider": [
     "usage",
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "FileStatus.Action": [
+    "status",
+    "ariaLabel",
+    "children",
+  ],
+  "FileStatus.El": [
+    "id",
+    "file",
+    "now",
+    "status",
+    "onClick",
+  ],
+  "FileStatus.Icon": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "FileStatus.Info": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "FileStatus.Name": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "FileStatus.Progress": [
+    "id",
+    "label",
+    "now",
+    "indeterminate",
+  ],
+  "FileStatus.Root": [
+    "asChild",
+    "unstyled",
+    "css",
+  ],
+  "FileStatus.StatusText": [
     "asChild",
     "unstyled",
     "css",

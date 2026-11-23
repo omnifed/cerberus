@@ -13,6 +13,14 @@ export const admonitionAnatomy: Anatomy = _createAnatomy([
 
 export const buttonAnatomy: Anatomy = _createAnatomy(['root', 'group'])
 
+export const fileStatusAnatomy: Anatomy = _createAnatomy([
+  'root',
+  'icon',
+  'info',
+  'name',
+  'statusText',
+])
+
 // Helpers
 
 type Anatomy = {

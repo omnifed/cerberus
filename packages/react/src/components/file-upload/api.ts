@@ -54,7 +54,7 @@ export type {
  *
  * The FileUpload component lets users select files with a dropzone (click, `Enter`/`Space` or drag and drop) and lists the accepted files.
  *
- * Use the default `<FileUpload>` (also available as `FileUploader`) with an `accept` and an optional `heading` to render the dropzone with the Cerberus icon, an "Import <types> files" text and a description, the list of accepted files with image previews, and the hidden input, or compose the primitives for full structural control. Render the file list on its own with `FileUpload.ItemGroupWithPreview` (also available as `ImgPreview`), and show the progress of a file's upload with the separate `FileStatus` component. Map the error codes of rejected files to messages with `createErrorMessages`.
+ * Use the default `<FileUpload>` (also available as `FileUploader`) with an `accept` and an optional `heading` to render the dropzone with the Cerberus icon, an "Import <types> files" text and a description, the list of accepted files with image previews, and the hidden input, or compose the primitives for full structural control. Render the file list on its own with `FileUpload.ItemGroupWithPreview` (also available as `ImgPreview`), and show the progress of a file's upload with the separate `FileStatus` compound (`@cerberus/react/file-status`). Map the error codes of rejected files to messages with `createErrorMessages`.
  *
  * Customize FileUpload using Panda style props, direct JSX child part overrides on abstractions, or the low-level primitives for full structural control.
  *
@@ -120,13 +120,6 @@ export const FileUpload = Object.assign(FileUploadEl, {
 export { FileUploader } from './file-upload'
 export type { FileUploaderProps } from './file-upload'
 export { ImgPreview } from './item-group-with-preview'
-export { FileStatus, processStatus } from './file-status'
-export type {
-  FileStatusProps,
-  FileBaseStatusProps,
-  FileStatusKey,
-  FileStatusActions,
-} from './file-status'
 export { createErrorMessages } from './helpers'
 export type {
   UseFileUploadContext,
