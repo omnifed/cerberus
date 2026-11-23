@@ -15,14 +15,6 @@ import { focusStates } from '../shared/states'
 export const avatar: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'avatar',
   slots: avatarAnatomy.keys(),
-  jsx: [
-    // primitives
-    'AvatarRoot',
-    'AvatarImage',
-    'AvatarFallback',
-    // abstractions
-    'Avatar',
-  ],
 
   base: {
     root: {

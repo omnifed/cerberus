@@ -9,17 +9,7 @@ describe('radioGroup recipe', () => {
   })
 
   test('should have a jsx props', () => {
-    expect(radioGroup.jsx).toMatchObject([
-      'RadioGroupRoot',
-      'RadioGroupLabel',
-      'RadioGroupIndicator',
-      'RadioGroupItem',
-      'RadioGroupItemText',
-      'RadioGroupItemControl',
-      'RadioGroupItemHiddenInput',
-      'RadioGroup',
-      'Radio',
-    ])
+    expect(radioGroup.jsx).toEqual(['RadioGroup', 'RadioGroup.Radio', 'Radio'])
   })
 
   test('should have a base.root style', () => {

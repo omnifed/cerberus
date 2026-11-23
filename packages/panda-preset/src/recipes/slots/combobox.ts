@@ -31,27 +31,6 @@ const triggerStyles = {
 export const combobox: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'combobox',
   slots: [...comboboxAnatomy.keys(), 'startIcon'],
-  jsx: [
-    // primitives
-    'ComboboxRoot',
-    'ComboboxLabel',
-    'ComboboxControl',
-    'ComboboxInput',
-    'ComboboxTrigger',
-    'ComboboxClearTrigger',
-    'ComboboxPositioner',
-    'ComboboxContent',
-    'ComboboxItemGroup',
-    'ComboboxItemGroupLabel',
-    'ComboboxItem',
-    'ComboboxItemText',
-    'ComboboxItemIndicator',
-    'ComboboxStartIcon',
-    // abstractions
-    'Combobox',
-    'ComboItemGroup',
-    'ComboboxItemWithIndicator',
-  ],
 
   base: {
     root: {

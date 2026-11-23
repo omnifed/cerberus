@@ -22,7 +22,7 @@ import { base, outlined, shapeVariants } from './shared/tag.base'
 export const gradientTag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'grad-tag',
   description: 'WCAG Level AAA compliant tag styles.',
-  jsx: ['GradientTag', 'Tag'],
+  jsx: ['Tag', 'Tag.Gradient', 'GradientTag'],
 
   base,
 

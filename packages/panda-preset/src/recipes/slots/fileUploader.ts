@@ -23,7 +23,7 @@ export const fileUploader: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'file-uploader',
   description: 'The styles for FileUploader components',
   slots: [...fileUploadAnatomy.keys(), 'icon', 'heading', 'description'],
-  jsx: ['ConfirmModal', 'PromptModal'],
+  jsx: ['FileUpload', 'FileUpload.Root', 'FileUploader', 'FileUploader.Root'],
 
   base: {
     root: {

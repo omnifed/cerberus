@@ -45,14 +45,8 @@ describe('field recipe', () => {
 
   test('should support all the JSX elements', () => {
     expect(field.jsx).toEqual([
-      'FieldRoot',
-      'FieldLabel',
-      'FieldInput',
-      'FieldTextarea',
-      'FieldHelperText',
-      'FieldErrorText',
-      'FieldStartIndicator',
-      'FieldStatusIndicator',
+      'Field',
+      'Field.InputGroup',
       'Input',
       'Textarea',
     ])

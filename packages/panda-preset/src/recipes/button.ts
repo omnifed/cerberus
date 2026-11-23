@@ -22,6 +22,7 @@ import {
  */
 export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'button',
+  jsx: ['Button', 'Button.Root'],
   description: 'WCAG Level AAA compliant button styles.',
 
   base: {

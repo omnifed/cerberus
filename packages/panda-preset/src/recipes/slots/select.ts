@@ -17,25 +17,7 @@ import { focusStates, formStates } from '../shared/states'
 export const select: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'select',
   slots: selectAnatomy.keys(),
-  jsx: [
-    'SelectRoot',
-    'SelectLabel',
-    'SelectControl',
-    'SelectTrigger',
-    'SelectValueText',
-    'SelectIndicator',
-    'SelectPositioner',
-    'SelectContent',
-    'SelectItemGroup',
-    'SelectItemGroupLabel',
-    'SelectItem',
-    'SelectItemText',
-    'SelectItemIndicator',
-    'Select',
-    'Option',
-    'OptionGroup',
-    'OptionGroupLabel',
-  ],
+  jsx: ['Select', 'Option', 'OptionGroup', 'OptionGroupLabel'],
 
   base: {
     root: {

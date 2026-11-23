@@ -4,7 +4,7 @@ import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 export const group: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'group',
   description: 'The styles for the Group component',
-  jsx: ['Group', 'ButtonGroup'],
+  jsx: ['Group', 'Group.Root'],
 
   base: {
     isolation: 'isolate',

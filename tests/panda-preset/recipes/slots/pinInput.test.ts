@@ -17,13 +17,7 @@ describe('pin input recipe', () => {
   })
 
   test('should have JSX elements defined', () => {
-    expect(pinInput.jsx).toMatchObject([
-      'PinInputRoot',
-      'PinInputLabel',
-      'PinInputControl',
-      'PinInputInput',
-      'PinInput',
-    ])
+    expect(pinInput.jsx).toBeUndefined()
   })
 
   test('should have base.root styles defined', () => {

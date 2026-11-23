@@ -16,7 +16,13 @@ import { focusStates } from '../shared/states'
 export const ratingGroup: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'rating-group',
   slots: ratingGroupAnatomy.keys(),
-  jsx: ['RatingRoot', 'RatingLabel', 'RatingControl', 'RatingItem', 'Rating'],
+  jsx: [
+    'Rating',
+    'Rating.Root',
+    'Rating.Label',
+    'Rating.Control',
+    'Rating.Item',
+  ],
 
   base: {
     root: {

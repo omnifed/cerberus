@@ -56,18 +56,7 @@ export const field: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'endIndicator',
     'statusIndicator',
   ],
-  jsx: [
-    'FieldRoot',
-    'FieldLabel',
-    'FieldInput',
-    'FieldTextarea',
-    'FieldHelperText',
-    'FieldErrorText',
-    'FieldStartIndicator',
-    'FieldStatusIndicator',
-    'Input',
-    'Textarea',
-  ],
+  jsx: ['Field', 'Field.InputGroup', 'Input', 'Textarea'],
 
   base: {
     root: {

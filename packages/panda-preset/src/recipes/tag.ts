@@ -15,7 +15,7 @@ import { base, outlined, shapeVariants } from './shared/tag.base'
 export const tag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'tag',
   description: 'WCAG Level AAA compliant tag styles.',
-  jsx: ['Tag', 'ClosableTag', 'TagRoot'],
+  jsx: ['Tag', 'Tag.Root', 'FilledTag', 'Tag.Closable', 'ClosableTag'],
 
   base,
 

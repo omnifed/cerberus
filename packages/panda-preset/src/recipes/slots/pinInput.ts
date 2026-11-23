@@ -16,15 +16,6 @@ import { inputStyles } from './field'
 export const pinInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'pin-input',
   slots: pinInputAnatomy.keys(),
-  jsx: [
-    // primitives
-    'PinInputRoot',
-    'PinInputLabel',
-    'PinInputControl',
-    'PinInputInput',
-    // abstractions
-    'PinInput',
-  ],
 
   base: {
     root: {

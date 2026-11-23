@@ -1,5 +1,10 @@
 import { describe, test, expect } from 'bun:test'
-import { focusStates, formStates, slotRecipes, recipes } from '@cerberus/panda-preset'
+import {
+  focusStates,
+  formStates,
+  slotRecipes,
+  recipes,
+} from '@cerberus/panda-preset'
 
 describe('combobox recipe', () => {
   const { label } = recipes
@@ -10,27 +15,7 @@ describe('combobox recipe', () => {
   })
 
   test('should have a jsx property', () => {
-    expect(combobox.jsx).toMatchObject([
-      // primitives
-      'ComboboxRoot',
-      'ComboboxLabel',
-      'ComboboxControl',
-      'ComboboxInput',
-      'ComboboxTrigger',
-      'ComboboxClearTrigger',
-      'ComboboxPositioner',
-      'ComboboxContent',
-      'ComboboxItemGroup',
-      'ComboboxItemGroupLabel',
-      'ComboboxItem',
-      'ComboboxItemText',
-      'ComboboxItemIndicator',
-      'ComboboxStartIcon',
-      // abstractions
-      'Combobox',
-      'ComboItemGroup',
-      'ComboboxItemWithIndicator',
-    ])
+    expect(combobox.jsx).toBeUndefined()
   })
 
   test('should have base.root styles', () => {
@@ -44,7 +29,8 @@ describe('combobox recipe', () => {
   })
 
   test('should have base.label styles', () => {
-    const labelStyles = (label as unknown as { base: Record<string, string> }).base
+    const labelStyles = (label as unknown as { base: Record<string, string> })
+      .base
     expect(combobox.base?.label).toMatchObject({
       ...labelStyles,
       alignItems: 'center',

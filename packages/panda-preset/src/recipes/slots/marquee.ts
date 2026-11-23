@@ -13,16 +13,6 @@ import type { SlotRecipeConfig } from '@pandacss/types'
 export const marquee: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'marquee',
   slots: marqueeAnatomy.keys(),
-  jsx: [
-    // primitives
-    'MarqueeRoot',
-    'MarqueeViewport',
-    'MarqueeContent',
-    'MarqueeEdge',
-    'MarqueeItem',
-    // abstractions
-    'Marquee',
-  ],
 
   base: {
     root: {

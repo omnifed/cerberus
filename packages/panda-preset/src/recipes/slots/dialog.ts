@@ -18,19 +18,8 @@ export const dialog: Partial<SlotRecipeConfig> = defineSlotRecipe({
   description: 'The styles for Dialog components',
   slots: dialogAnatomy.keys(),
   jsx: [
-    // primitives
-    'DialogRoot',
-    'DialogTrigger',
-    'DialogBackdrop',
-    'DialogPositioner',
-    'DialogContent',
-    'DialogHeading',
-    'DialogDescription',
-    'DialogCloseTrigger',
-    // abstractions
-    'DialogProvider',
     'Dialog',
-    'DialogCloseIconTrigger',
+    'Dialog.CloseIconTrigger',
     'ConfirmModal',
     'PromptModal',
     'CTAModal',

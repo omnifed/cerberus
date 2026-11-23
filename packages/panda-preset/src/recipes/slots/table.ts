@@ -26,18 +26,6 @@ export const table: Partial<SlotRecipeConfig> = defineSlotRecipe({
     'th',
     'td',
   ],
-  jsx: [
-    'TableRoot',
-    'TableTrigger',
-    'Table',
-    'Caption',
-    'Thead',
-    'Th',
-    'Tbody',
-    'Tr',
-    'Td',
-    'Tfoot',
-  ],
 
   base: {
     root: {

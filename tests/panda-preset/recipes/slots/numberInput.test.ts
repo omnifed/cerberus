@@ -51,16 +51,7 @@ describe('number input recipe', () => {
   })
 
   test('should have JSX elements defined', () => {
-    expect(numberInput.jsx).toMatchObject([
-      'NumberInput',
-      'NumberInputRoot',
-      'NumberInputLabel',
-      'NumberInputInput',
-      'NumberInputControl',
-      'NumberInputIncrementTrigger',
-      'NumberInputDecrementTrigger',
-      'NumberInputScrubber',
-    ])
+    expect(numberInput.jsx).toBeUndefined()
   })
 
   test('should have base.root styles defined', () => {

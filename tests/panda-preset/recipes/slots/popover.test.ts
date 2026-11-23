@@ -31,25 +31,7 @@ describe('popover recipe', () => {
   })
 
   test('should have jsx aliases', () => {
-    expect(popover.jsx).toMatchObject([
-      // primitives
-      'PopoverTrigger',
-      'PopoverAnchor',
-      'PopoverPositioner',
-      'PopoverArrow',
-      'PopoverArrowTip',
-      'PopoverContent',
-      'PopoverTitle',
-      'PopoverDescription',
-      'PopoverCloseTrigger',
-      'PopoverIndicator',
-      // custom layout helpers
-      'PopoverHeader',
-      'PopoverBody',
-      'PopoverFooter',
-      // abstractions
-      'Popover',
-    ])
+    expect(popover.jsx).toBeUndefined()
   })
 
   test('should have a base styles', () => {

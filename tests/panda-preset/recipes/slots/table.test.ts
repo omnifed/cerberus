@@ -5,18 +5,7 @@ describe('table recipe', () => {
   const { table } = slotRecipes
 
   test('should have a jsx property', () => {
-    expect(table.jsx).toMatchObject([
-      'TableRoot',
-      'TableTrigger',
-      'Table',
-      'Caption',
-      'Thead',
-      'Th',
-      'Tbody',
-      'Tr',
-      'Td',
-      'Tfoot',
-    ])
+    expect(table.jsx).toBeUndefined()
   })
 
   test('should have a base.root style', () => {

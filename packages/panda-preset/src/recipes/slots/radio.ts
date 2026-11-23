@@ -16,17 +16,7 @@ export const radioGroup: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'radio-group',
   description: 'The styles for the Radio components',
   slots: radioGroupAnatomy.keys(),
-  jsx: [
-    'RadioGroupRoot',
-    'RadioGroupLabel',
-    'RadioGroupIndicator',
-    'RadioGroupItem',
-    'RadioGroupItemText',
-    'RadioGroupItemControl',
-    'RadioGroupItemHiddenInput',
-    'RadioGroup',
-    'Radio',
-  ],
+  jsx: ['RadioGroup', 'RadioGroup.Radio', 'Radio'],
 
   base: {
     root: {

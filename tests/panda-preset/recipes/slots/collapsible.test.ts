@@ -15,14 +15,8 @@ describe('collapsible slot recipe', () => {
   })
 
   it('should have jsx defined as array', () => {
-    expect(Array.isArray(collapsible.jsx)).toBe(true)
-    expect(collapsible.jsx).toMatchObject([
-      'CollapsibleRoot',
-      'CollapsibleTrigger',
-      'CollapsibleIndicator',
-      'CollapsibleContent',
-      'Collapsible',
-    ])
+    expect(collapsible.jsx).toBeUndefined()
+    expect(collapsible.jsx).toBeUndefined()
   })
 
   it('should have a content slot defined in base styles', () => {

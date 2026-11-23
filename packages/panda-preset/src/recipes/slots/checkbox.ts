@@ -18,13 +18,6 @@ import { field } from './field'
 export const checkbox: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'checkbox',
   slots: checkboxAnatomy.keys(),
-  jsx: [
-    'CheckboxRoot',
-    'CheckboxLabel',
-    'CheckboxControl',
-    'CheckboxIndicator',
-    'Checkbox',
-  ],
 
   base: {
     root: {

@@ -14,16 +14,16 @@ export const toast: Partial<SlotRecipeConfig> = defineSlotRecipe({
   description: 'The styles for Notification components',
   slots: [...toastAnatomy.keys(), 'icon'],
   jsx: [
-    // primitives
-    'Toast',
     'NotificationRoot',
     'NotificationHeading',
     'NotificationDescription',
     'NotificationCloseTrigger',
     'NotificationActionTrigger',
-    // abstractions
-    'NotificationCenter',
-    'MatchNotificationIcon',
+    'NotificationParts.Root',
+    'NotificationParts.Heading',
+    'NotificationParts.Description',
+    'NotificationParts.CloseTrigger',
+    'NotificationParts.ActionTrigger',
   ],
 
   base: {

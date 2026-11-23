@@ -41,17 +41,6 @@ const trigger = {
 export const numberInput: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'number-input',
   slots: numberInputAnatomy.keys(),
-  jsx: [
-    'NumberInput',
-    // primitives
-    'NumberInputRoot',
-    'NumberInputLabel',
-    'NumberInputInput',
-    'NumberInputControl',
-    'NumberInputIncrementTrigger',
-    'NumberInputDecrementTrigger',
-    'NumberInputScrubber',
-  ],
 
   base: {
     root: {

@@ -11,7 +11,9 @@ describe('fileUploader recipe', () => {
 
   test('should set the metadata', () => {
     expect(fileUploader.className).toBe('file-uploader')
-    expect(fileUploader.description).toBe('The styles for FileUploader components')
+    expect(fileUploader.description).toBe(
+      'The styles for FileUploader components',
+    )
     expect(fileUploader.slots).toMatchObject([
       'root',
       'dropzone',
@@ -29,7 +31,12 @@ describe('fileUploader recipe', () => {
       'heading',
       'description',
     ])
-    expect(fileUploader.jsx).toMatchObject(['ConfirmModal', 'PromptModal'])
+    expect(fileUploader.jsx).toEqual([
+      'FileUpload',
+      'FileUpload.Root',
+      'FileUploader',
+      'FileUploader.Root',
+    ])
   })
 
   test('should have a root style', () => {

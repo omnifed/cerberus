@@ -15,20 +15,17 @@ describe('marquee recipe', () => {
   })
 
   test('should have slots toBeDefined', () => {
-    expect(marquee.slots).toEqual(['root', 'viewport', 'content', 'edge', 'item'])
+    expect(marquee.slots).toEqual([
+      'root',
+      'viewport',
+      'content',
+      'edge',
+      'item',
+    ])
   })
 
   test('expect jsx aliases to exist', () => {
-    expect(marquee.jsx).toEqual([
-      // primitives
-      'MarqueeRoot',
-      'MarqueeViewport',
-      'MarqueeContent',
-      'MarqueeEdge',
-      'MarqueeItem',
-      // abstractions
-      'Marquee',
-    ])
+    expect(marquee.jsx).toBeUndefined()
   })
 
   test('should have base.root styles', () => {
