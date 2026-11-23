@@ -108,16 +108,12 @@ function PartsDocs({ parts, specKey }: PartsProps) {
               key={`parts:${part.exportName}:${idx}`}
               aria-labelledby={`${specKey}-${part.name}-heading`}
             >
-              <cerberus.h3
-                id={`${specKey}-${part.name}-heading`}
-                pt="lg"
-                textStyle="heading-sm"
-              >
+              <Heading id={`${specKey}-${part.name}-heading`}>
                 <Code>{part.exportName}</Code>{' '}
-                <cerberus.small>
+                <Body>
                   ({part.kind === 'abstraction' ? 'Abstraction' : 'Primitive'})
-                </cerberus.small>
-              </cerberus.h3>
+                </Body>
+              </Heading>
               <Body>{part.description}</Body>
 
               <Show
@@ -159,7 +155,7 @@ function PartsDocs({ parts, specKey }: PartsProps) {
 
               {part.dataScope && part.dataPart && (
                 <Body>
-                  <cerberus.strong>Data attributes:</cerberus.strong>{' '}
+                  <Heading>Data attributes:</Heading>{' '}
                   <Code>data-scope="{part.dataScope}"</Code>,{' '}
                   <Code>data-part="{part.dataPart}"</Code>
                 </Body>
@@ -477,7 +473,7 @@ function A11yDocs({ a11y, specKey, ...rest }: A11yProps) {
 
 // Typography ------------------------------------------------------------------
 
-function Heading(props: PropsWithChildren<{ id: string }>) {
+function Heading(props: PropsWithChildren<{ id?: string }>) {
   return <cerberus.h2 py="lg" textStyle="heading-md" {...props} />
 }
 

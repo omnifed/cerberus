@@ -26,7 +26,7 @@ describe('modal recipe', () => {
         animationTimingFunction: 'ease-in',
         animationFillMode: 'forwards',
       },
-      _reduceMotion: {
+      _motionReduce: {
         opacity: '1',
       },
       opacity: '0',

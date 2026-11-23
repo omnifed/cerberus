@@ -11,6 +11,7 @@ export type Headings = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type TextElements = 'p' | 'strong' | 'em' | 'small' | 'span'
 
 /**
+ * @deprecated - use `cerberus.[text-tag]` instead
  * Props of `<Text>`: every HTML attribute (including `ref`) of the element
  * chosen with `as`, plus Panda style props, `css` and `asChild`.
  */
