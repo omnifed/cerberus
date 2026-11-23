@@ -5,6 +5,7 @@ export const enum NodeFlags {
   Dirty = 1 << 0, // This node's value is definitely stale; must recompute
   Check = 1 << 1, // An upstream changed; value MAY be stale (lazy check needed)
   Running = 1 << 2, // Currently evaluating — used for circular dep detection
+  Disposed = 1 << 3, // Effect was destroyed — unlinked from the graph, never runs again
 }
 
 // ─── Dependency Graph Link ────────────────────────────────────────────────────

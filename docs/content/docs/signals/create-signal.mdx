@@ -36,10 +36,6 @@ When you need to reference a signal in any JSX-related context (e.g., `Show` or 
 
 ## Setting State
 
-With Cerberus Signals, how you set the state no longer matters. You are free to
-use mutation or immutability. Both results will yield the same high performant and
-reliable reactivity.
-
 In this example we utilize the `createComputed` primitive to create a reactive
 signal which provides a computational value. This is similar to the native React
 `useMemo` hook.
@@ -50,7 +46,7 @@ signal which provides a computational value. This is similar to the native React
 
 ### Objects and Arrays
 
-When storing Objects or Arrays (any non-Primitiva value) in a signal, we recommend **using immutable updates** when setting new values. Doing so will ensure the best performance outcome since the graph uses strict equality (`!==`) to detect changes.
+When storing Objects or Arrays (any non-primitive value) in a signal, **use immutable updates** when setting new values. The graph uses strict equality (`!==`) to detect changes: mutating the current value and setting it again is the same reference, so no subscriber updates.
 
 <Example path="signals/signal" demo="updates" />
 

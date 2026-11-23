@@ -37,14 +37,12 @@ the _pure accessor_ can be passed into `ReactiveText`.
 
 ## Setting State
 
-With Cerberus Signals, how you set the state no longer matters. You are free to
-use mutation or immutability. Both results will yield the same high performant and
-reliable reactivity.
-
 The second value of the Tuple is the `Setter` function.
 
 The setter API is the exact same as the `createSignal` Setter and accepts any type
 of setting value or callback.
+
+<NoteAdmonition description="Signals detect changes with strict equality (!==). Set Objects and Arrays immutably: mutating the current value and setting it again is the same reference, so nothing updates." />
 
 <Example path="signals/signal" demo="updates" />
 

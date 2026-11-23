@@ -15,7 +15,10 @@ import {
 export let activeObserver: EffectNode | null = null
 export let activeOwner: Owner | null = null
 
-export function setActiveContext(observer: EffectNode | null, owner: Owner | null) {
+export function setActiveContext(
+  observer: EffectNode | null,
+  owner: Owner | null,
+) {
   activeObserver = observer
   activeOwner = owner
 }
@@ -112,11 +115,15 @@ export function scheduleEffect(effect: EffectNode): void {
   if (!isBatching && !isFlushing) _flush()
 }
 
+/**
+ * Runs the owner's cleanups and destroys the nodes it owns (created during
+ * its last run). The owner itself stays linked to its deps: it is about to
+ * re-run, or `disposeNode` unlinks it.
+ */
 export function cleanNode(owner: Owner) {
   if (owner.owned !== null) {
     for (let i = 0; i < owner.owned.length; i++) {
-      const child = owner.owned[i]
-      cleanNode(child)
+      disposeNode(owner.owned[i])
     }
     owner.owned = null
   }
@@ -130,11 +137,30 @@ export function cleanNode(owner: Owner) {
 }
 
 /**
+ * Destroys a node: runs its cleanups, destroys what it owns and unlinks it
+ * from every dep, so no signal or computed reaches it anymore.
+ * - An effect is flagged `Disposed`: it never runs again, even if it was
+ *   already queued in the scheduler.
+ * - A computed is left `Dirty`: nothing pushes to it anymore, but a later
+ *   read re-evaluates it instead of returning a stale value.
+ */
+export function disposeNode(node: Owner): void {
+  cleanNode(node)
+  node.depsTail = null
+  endTracking(node)
+
+  if ('subs' in node) node.flags = NodeFlags.Dirty
+  else node.flags = (node.flags & NodeFlags.Running) | NodeFlags.Disposed
+}
+
+/**
  * Called when a signal or computed definitively changed value.
  * Marks direct subscribers Dirty, then propagates Check upward.
  * Zero allocation — pure pointer traversal.
  */
-export function propagate(node: SignalNode<unknown> | ComputedNode<unknown>): void {
+export function propagate(
+  node: SignalNode<unknown> | ComputedNode<unknown>,
+): void {
   let link = node.subs
 
   while (link !== null) {
@@ -185,7 +211,9 @@ function _propagateCheck(node: ComputedNode<unknown>): void {
 
   while (link !== null) {
     const sub = link.sub
-    if (!(sub.flags & (NodeFlags.Dirty | NodeFlags.Check | NodeFlags.Running))) {
+    if (
+      !(sub.flags & (NodeFlags.Dirty | NodeFlags.Check | NodeFlags.Running))
+    ) {
       sub.flags |= NodeFlags.Check
       if ('subs' in sub) {
         _propagateCheck(sub as ComputedNode<unknown>)
@@ -205,7 +233,9 @@ function _propagateCheck(node: ComputedNode<unknown>): void {
  * Diamond Problem fix: if all upstream computeds produced the same value
  * despite their signals changing, returns false and the effect is a no-op.
  */
-export function updateIfNecessary(sub: ComputedNode<unknown> | EffectNode): boolean {
+export function updateIfNecessary(
+  sub: ComputedNode<unknown> | EffectNode,
+): boolean {
   if (sub.flags & NodeFlags.Dirty) return true
 
   if (sub.flags & NodeFlags.Check) {
@@ -320,6 +350,7 @@ function _flush(): void {
         // Remove the effect from the queue immediately
         bucket.delete(effect)
 
+        if (effect.flags & NodeFlags.Disposed) continue
         if (updateIfNecessary(effect)) {
           try {
             runEffect(effect)
