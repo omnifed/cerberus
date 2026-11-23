@@ -4,6 +4,7 @@ import { Box } from '@/styled-system/jsx'
 import { SortAscending, SortDescending } from '@carbon/icons-react'
 import { Show, Table } from '@cerberus-design/react'
 import { createComputed, useRead, useSignal } from '@cerberus-design/signals'
+import { useMemo } from 'react'
 
 const data = [
   {
@@ -19,12 +20,18 @@ const data = [
 ]
 
 export function ClickableDemo() {
-  const [order, setOrder] = useSignal<'asc' | 'desc'>('asc')
+  const [order, setOrder, getOrder] = useSignal<'asc' | 'desc'>('asc')
 
-  const sortedDataVal = createComputed(() =>
-    order === 'asc'
-      ? data.sort((a, b) => a.age - b.age)
-      : data.sort((a, b) => b.age - a.age),
+  // Read the `getOrder` Accessor so the computed tracks it, and return a new
+  // Array: signals only notify when the value changes (`!==`).
+  const sortedDataVal = useMemo(
+    () =>
+      createComputed(() =>
+        getOrder() === 'asc'
+          ? data.toSorted((a, b) => a.age - b.age)
+          : data.toSorted((a, b) => b.age - a.age),
+      ),
+    [getOrder],
   )
   const sortedData = useRead(sortedDataVal)
 
@@ -37,8 +44,11 @@ export function ClickableDemo() {
       <Table caption="Clickable table">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCol>Name</Table.HeaderCol>
-            <Table.HeaderCol>
+            <Table.HeaderCol scope="col">Name</Table.HeaderCol>
+            <Table.HeaderCol
+              aria-sort={order === 'asc' ? 'ascending' : 'descending'}
+              scope="col"
+            >
               <Table.Trigger onClick={handleClick}>
                 Age
                 <Show when={order === 'asc'} fallback={<SortDescending />}>
