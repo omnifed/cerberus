@@ -220,6 +220,27 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     expect(camel).toEqual([])
   })
 
+  test('patchable props stay required and say a patch child may omit them', async () => {
+    const side = part('marquee', 'Marquee.Edge').props.find(
+      (p) => p.name === 'side',
+    )
+    expect(side?.required).toBe(true)
+    expect(side?.description).toContain('Optional in a patch child')
+
+    // A prop that isn't required on the member is a config mistake
+    const { marqueeConfig } = await import('codegen/configs/marquee')
+    const own = createSpecBuilderContext(undefined, ctx.resolver)
+    const [marquee] = loadManifest(
+      [{ ...marqueeConfig, patchable: { Edge: ['side', 'dir'] } }],
+      own.diagnostics,
+      ctx.resolver.modules,
+    )
+    buildComponentDocSpec(marquee, own)
+    expect(own.diagnostics.items.map((d) => d.message)).toContain(
+      'patchable.Edge: `dir` is not a required prop of Marquee.Edge',
+    )
+  })
+
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {
     const props = part('accordion', 'Accordion.Root').props
     const multiple = props.find((p) => p.name === 'multiple')

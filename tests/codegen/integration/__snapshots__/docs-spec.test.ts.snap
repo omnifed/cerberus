@@ -4081,6 +4081,7 @@ exports[`no props lose their description compared with last time 1`] = `
   ],
   "Marquee.Content": [
     "asChild",
+    "children",
     "unstyled",
     "css",
   ],
@@ -4367,6 +4368,7 @@ exports[`no props lose their description compared with last time 1`] = `
     "layout",
   ],
   "Pagination.Ellipsis": [
+    "index",
     "asChild",
     "css",
   ],
@@ -4376,6 +4378,8 @@ exports[`no props lose their description compared with last time 1`] = `
     "css",
   ],
   "Pagination.Item": [
+    "type",
+    "value",
     "asChild",
     "css",
   ],
@@ -4432,6 +4436,7 @@ exports[`no props lose their description compared with last time 1`] = `
     "css",
   ],
   "PinInput.Input": [
+    "index",
     "asChild",
     "unstyled",
     "css",
@@ -4687,6 +4692,7 @@ exports[`no props lose their description compared with last time 1`] = `
     "css",
   ],
   "Rating.Item": [
+    "index",
     "asChild",
     "unstyled",
     "css",

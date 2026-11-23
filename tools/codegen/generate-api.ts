@@ -36,6 +36,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     collectionGeneric,
     forwardProps,
     defaultProps,
+    patchable,
     docsSlug,
     primitives: parts,
     rootProvider,
@@ -66,6 +67,9 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     }
     if (Object.keys(elementParts).length > 0) {
       primitivesCode += `import { ark } from '@ark-ui/react/factory'\n`
+    }
+    if (Object.keys(patchable).length > 0) {
+      primitivesCode += `import type { Patchable } from '../../internal/extract-parts'\n`
     }
     // Members outside the anatomy have no recipe slot; without a recipe nothing does.
     // Those get Panda's `styled()`, not `cerberus()`: Ark parts handle `asChild`
@@ -180,6 +184,18 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
         primitivesCode += `const ${partName}Styled = ${code}\n`
         primitivesCode += `export type ${partName}Props<T extends CollectionItem = CollectionItem> = Omit<ComponentProps<typeof ${partName}Styled>, keyof ${base}<CollectionItem>> & ${base}<T>\n`
         primitivesCode += `export const ${partName} = ${partName}Styled as unknown as <T extends CollectionItem>(props: ${partName}Props<T>) => ReactElement\n\n`
+        continue
+      }
+      const supplied = patchable[exportKey]
+      if (supplied?.length) {
+        // The abstraction supplies these props to a patch child; `*Props` stays strict
+        const keys = supplied.map((p) => `'${p}'`).join(' | ')
+        const names = supplied.map((p) => `\`${p}\``).join(', ')
+        primitivesCode += `// ${partName} -----------------------------------------------------\n\n`
+        primitivesCode += `const ${partName}Styled = ${code}\n`
+        primitivesCode += `export type ${partName}Props = ComponentProps<typeof ${partName}Styled>\n`
+        primitivesCode += `/** As a patch child of a ${name} abstraction, ${names} may be omitted: the abstraction supplies ${supplied.length > 1 ? 'them' : 'it'}. */\n`
+        primitivesCode += `export const ${partName} = ${partName}Styled as Patchable<typeof ${partName}Styled, ${keys}>\n\n`
         continue
       }
       primitivesCode += `// ${partName} -----------------------------------------------------\n\n`

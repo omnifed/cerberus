@@ -121,8 +121,8 @@ Selector: `[data-scope="pagination"][data-part="item"]`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `type` | `"page"` | Yes | — |  |
-| `value` | `number` | Yes | — |  |
+| `type` | `"page"` | Yes | — | Optional in a patch child of a Pagination abstraction, which supplies it. |
+| `value` | `number` | Yes | — | Optional in a patch child of a Pagination abstraction, which supplies it. |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 
@@ -139,7 +139,7 @@ Selector: `[data-scope="pagination"][data-part="ellipsis"]`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `index` | `number` | Yes | — |  |
+| `index` | `number` | Yes | — | Optional in a patch child of a Pagination abstraction, which supplies it. |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 

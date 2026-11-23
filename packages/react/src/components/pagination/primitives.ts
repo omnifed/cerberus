@@ -6,6 +6,7 @@
 'use client'
 
 import { Pagination as ArkPagination } from '@ark-ui/react/pagination'
+import type { Patchable } from '../../internal/extract-parts'
 import { type ComponentProps, styled } from 'styled-system/jsx'
 
 // PaginationRoot -----------------------------------------------------
@@ -19,13 +20,25 @@ export const PaginationRoot = styled(
 
 // PaginationItem -----------------------------------------------------
 
-export type PaginationItemProps = ComponentProps<typeof PaginationItem>
-export const PaginationItem = styled(ArkPagination.Item)
+const PaginationItemStyled = styled(ArkPagination.Item)
+export type PaginationItemProps = ComponentProps<typeof PaginationItemStyled>
+/** As a patch child of a Pagination abstraction, `type`, `value` may be omitted: the abstraction supplies them. */
+export const PaginationItem = PaginationItemStyled as Patchable<
+  typeof PaginationItemStyled,
+  'type' | 'value'
+>
 
 // PaginationEllipsis -----------------------------------------------------
 
-export type PaginationEllipsisProps = ComponentProps<typeof PaginationEllipsis>
-export const PaginationEllipsis = styled(ArkPagination.Ellipsis)
+const PaginationEllipsisStyled = styled(ArkPagination.Ellipsis)
+export type PaginationEllipsisProps = ComponentProps<
+  typeof PaginationEllipsisStyled
+>
+/** As a patch child of a Pagination abstraction, `index` may be omitted: the abstraction supplies it. */
+export const PaginationEllipsis = PaginationEllipsisStyled as Patchable<
+  typeof PaginationEllipsisStyled,
+  'index'
+>
 
 // PaginationFirstTrigger -----------------------------------------------------
 

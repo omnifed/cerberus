@@ -601,6 +601,8 @@ function buildPrimitive(
         )
     : mergePropLists(ownVariants, arkProps)
 
+  const patched = patchableProps(entry, exportKey, ownProps, subject, ctx)
+
   if (isRoot && entry.rootProvider) {
     // `withRootProvider` renders no element: no data attributes, `asChild` or `css`
     return {
@@ -612,7 +614,7 @@ function buildPrimitive(
         member ?? part,
         `Provides the ${name} context${entry.recipe ? ' and recipe variants' : ''} to its parts${member ? `, from state created with \`use${entry.arkName}()\`` : ''}. Renders no element.`,
       ),
-      props: ownProps,
+      props: patched,
     }
   }
 
@@ -636,8 +638,40 @@ function buildPrimitive(
     description: describe(entry, member ?? part, description),
     ...partAttrs(entry, part),
     ...zagPartFields(part, connect(part), docs),
-    props: mergePropLists(ownProps, shared),
+    props: mergePropLists(patched, shared),
   }
+}
+
+/**
+ * Notes the `patchable` props a patch child may omit. Each must be a required prop
+ * of the member: anything else is a config mistake.
+ */
+function patchableProps(
+  entry: ComponentEntry,
+  member: string,
+  props: PropSpec[],
+  subject: string,
+  { diagnostics }: SpecBuilderContext,
+): PropSpec[] {
+  const supplied = entry.patchable[member] ?? []
+  for (const name of supplied) {
+    const prop = props.find((p) => p.name === name)
+    if (!prop?.required) {
+      diagnostics.error(
+        entry.key,
+        `patchable.${member}: \`${name}\` is not a required prop of ${subject}`,
+      )
+    }
+  }
+  if (supplied.length === 0) return props
+  return props.map((prop) =>
+    supplied.includes(prop.name)
+      ? {
+          ...prop,
+          description: `${prop.description ? `${prop.description} ` : ''}Optional in a patch child of a ${entry.name} abstraction, which supplies it.`,
+        }
+      : prop,
+  )
 }
 
 /**

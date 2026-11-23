@@ -60,4 +60,7 @@ Use the default \`<Rating>\` for a labeled rating that renders one item per \`co
       { key: 'End', description: 'Sets the rating to `count`.' },
     ],
   },
+
+  // <Rating> renders one item per `count`, each with its `index`
+  patchable: { Item: ['index'] },
 })

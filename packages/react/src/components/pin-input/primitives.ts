@@ -6,6 +6,7 @@
 'use client'
 
 import { PinInput as ArkPinInput } from '@ark-ui/react/pin-input'
+import type { Patchable } from '../../internal/extract-parts'
 import {
   type ComponentProps,
   createSlotRecipeContext,
@@ -27,8 +28,13 @@ export const PinInputLabel = withContext(ArkPinInput.Label, 'label')
 
 // PinInputInput -----------------------------------------------------
 
-export type PinInputInputProps = ComponentProps<typeof PinInputInput>
-export const PinInputInput = withContext(ArkPinInput.Input, 'input')
+const PinInputInputStyled = withContext(ArkPinInput.Input, 'input')
+export type PinInputInputProps = ComponentProps<typeof PinInputInputStyled>
+/** As a patch child of a PinInput abstraction, `index` may be omitted: the abstraction supplies it. */
+export const PinInputInput = PinInputInputStyled as Patchable<
+  typeof PinInputInputStyled,
+  'index'
+>
 
 // PinInputControl -----------------------------------------------------
 

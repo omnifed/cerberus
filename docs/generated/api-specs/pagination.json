@@ -344,13 +344,13 @@
           "name": "type",
           "type": "\"page\"",
           "required": true,
-          "description": ""
+          "description": "Optional in a patch child of a Pagination abstraction, which supplies it."
         },
         {
           "name": "value",
           "type": "number",
           "required": true,
-          "description": ""
+          "description": "Optional in a patch child of a Pagination abstraction, which supplies it."
         },
         {
           "name": "asChild",
@@ -380,7 +380,7 @@
           "name": "index",
           "type": "number",
           "required": true,
-          "description": ""
+          "description": "Optional in a patch child of a Pagination abstraction, which supplies it."
         },
         {
           "name": "asChild",

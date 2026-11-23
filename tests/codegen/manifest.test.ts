@@ -524,6 +524,59 @@ describe('generated API', () => {
     ])
   })
 
+  test('patchable members get a PartPatch signature; their *Props stay strict', () => {
+    const { primitives } = generate({
+      key: 'marquee',
+      anatomy: { keys: () => ['root', 'edge', 'content'] },
+      patchable: { Edge: ['side'], Content: ['children', 'dir'] },
+      description: 'x',
+    })
+    expect(primitives).toContain(
+      "import type { Patchable } from '../../internal/extract-parts'",
+    )
+    expect(primitives).toContain(
+      "const MarqueeEdgeStyled = withContext(ArkMarquee.Edge, 'edge')\nexport type MarqueeEdgeProps = ComponentProps<typeof MarqueeEdgeStyled>\n",
+    )
+    expect(primitives).toContain(
+      "/** As a patch child of a Marquee abstraction, `side` may be omitted: the abstraction supplies it. */\nexport const MarqueeEdge = MarqueeEdgeStyled as Patchable<typeof MarqueeEdgeStyled, 'side'>",
+    )
+    expect(primitives).toContain(
+      "export const MarqueeContent = MarqueeContentStyled as Patchable<typeof MarqueeContentStyled, 'children' | 'dir'>",
+    )
+    // Other members are untouched
+    expect(primitives).toContain(
+      "export const MarqueeRoot = withProvider(ArkMarquee.Root, 'root')",
+    )
+  })
+
+  test('patchable only names styled, non-generic Ark members', () => {
+    const diagnostics = new Diagnostics()
+    loadManifest(
+      [
+        defineComponent({
+          key: 'combobox',
+          anatomy: { keys: () => ['root', 'item'] },
+          arkMembers: ['Context'],
+          collectionGeneric: ['Root'],
+          patchable: {
+            Nope: ['x'],
+            Context: ['x'],
+            Root: ['collection'],
+            Item: [],
+          },
+          description: 'x',
+        }),
+      ],
+      diagnostics,
+    )
+    expect(diagnostics.items.map((d) => d.message)).toEqual([
+      'patchable: `Nope` is not an Ark part or arkMembers entry',
+      'patchable: `Context` is a render prop and is not styled',
+      "patchable: `Root` is collectionGeneric; it can't be both",
+      'patchable.Item lists no props',
+    ])
+  })
+
   test('a slotted component imports styled only for parts outside the anatomy', () => {
     const { primitives } = generate({
       key: 'switch',

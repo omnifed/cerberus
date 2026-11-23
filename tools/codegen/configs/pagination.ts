@@ -92,4 +92,7 @@ Use the default \`<Pagination>\` to render the previous and next triggers around
 
   // Zag's pagination machine handles no keys: every part is a native button
   // (or link) navigated with Tab and activated with Enter/Space
+
+  // The page lists set every item's `type`/`value` and every ellipsis' `index`
+  patchable: { Item: ['type', 'value'], Ellipsis: ['index'] },
 })

@@ -23,4 +23,7 @@ The Marquee component can be used to showcase logos, announcements, or any repea
 
   // v1 exported a styled RootProvider and `Marquee.Context`; keep both
   arkMembers: ['RootProvider', 'Context'],
+
+  // <Marquee> sets each edge's `side` and renders its other children as content
+  patchable: { Edge: ['side'], Content: ['children'] },
 })

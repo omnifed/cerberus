@@ -340,7 +340,7 @@
           "name": "index",
           "type": "number",
           "required": true,
-          "description": ""
+          "description": "Optional in a patch child of a PinInput abstraction, which supplies it."
         },
         {
           "name": "asChild",

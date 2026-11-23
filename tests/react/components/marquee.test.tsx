@@ -22,10 +22,10 @@ describe('Marquee', () => {
     render(
       <Marquee edges={['both']}>
         <Marquee.Viewport data-testid="viewport" />
-        {/* Content's children and Edge's side are required by their types, but the
-            abstraction supplies them */}
-        <Marquee.Content data-testid="content">{null}</Marquee.Content>
-        <Marquee.Edge data-testid="edge" side="start" />
+        {/* Patch children may omit what the abstraction supplies: Content's
+            children and Edge's side */}
+        <Marquee.Content data-testid="content" />
+        <Marquee.Edge data-testid="edge" />
         <Marquee.Item>Item</Marquee.Item>
       </Marquee>,
     )

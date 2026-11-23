@@ -38,8 +38,8 @@ describe('PinInput', () => {
     render(
       <PinInput>
         <PinInput.Label>Verification code</PinInput.Label>
-        {/* The index of an Input override is ignored: it patches every input */}
-        <PinInput.Input index={0} data-testid="pin" />
+        {/* An Input patch needs no index: it patches every input */}
+        <PinInput.Input data-testid="pin" />
       </PinInput>,
     )
     expect(screen.getByText('Verification code')).toBeTruthy()

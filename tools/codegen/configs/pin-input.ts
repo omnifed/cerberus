@@ -33,4 +33,7 @@ Rendered on its own, PinInput displays one input per \`count\` (3 by default) pl
       },
     ],
   },
+
+  // <PinInput> renders one input per `length`, each with its `index`
+  patchable: { Input: ['index'] },
 })

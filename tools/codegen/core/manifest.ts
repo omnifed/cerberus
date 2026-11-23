@@ -49,6 +49,8 @@ export interface ComponentEntry {
   collectionGeneric: string[]
   /** Members' props forwarded to Ark despite sharing a CSS property's name */
   forwardProps: Record<string, string[]>
+  /** Members whose listed required props a patch child may omit */
+  patchable: Record<string, string[]>
   /** Members' props passed to Ark unless the caller sets them */
   defaultProps: Record<string, Record<string, DefaultPropValue>>
   docsSlug: string
@@ -279,6 +281,31 @@ export function loadManifest(
       )
     }
 
+    const patchable = config.patchable ?? {}
+    for (const [member, props] of Object.entries(patchable)) {
+      if (source !== 'ark' || !memberNames.includes(member)) {
+        diagnostics.error(
+          key,
+          `patchable: \`${member}\` is not an Ark part or arkMembers entry`,
+        )
+      }
+      if (member.endsWith('Context')) {
+        diagnostics.error(
+          key,
+          `patchable: \`${member}\` is a render prop and is not styled`,
+        )
+      }
+      if (collectionGeneric.includes(member)) {
+        diagnostics.error(
+          key,
+          `patchable: \`${member}\` is collectionGeneric; it can't be both`,
+        )
+      }
+      if (props.length === 0) {
+        diagnostics.error(key, `patchable.${member} lists no props`)
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -363,6 +390,7 @@ export function loadManifest(
       collectionGeneric,
       forwardProps,
       defaultProps,
+      patchable,
       docsSlug: config.docsSlug ?? key,
       example: config.example?.trim() || null,
       anatomy: config.anatomy,

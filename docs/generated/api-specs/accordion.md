@@ -67,7 +67,7 @@ Selector: `[data-scope="accordion"][data-part="item"]`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `value` | `string` | Yes | — | The value of the accordion item. |
+| `value` | `string` | Yes | — | The value of the accordion item. Optional in a patch child of a Accordion abstraction, which supplies it. |
 | `disabled` | `boolean` | No | — | Whether the accordion item is disabled. |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |

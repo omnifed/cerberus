@@ -6,6 +6,7 @@
 'use client'
 
 import { Marquee as ArkMarquee } from '@ark-ui/react/marquee'
+import type { Patchable } from '../../internal/extract-parts'
 import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
 import { marquee } from 'styled-system/recipes'
 
@@ -23,13 +24,23 @@ export const MarqueeViewport = withContext(ArkMarquee.Viewport, 'viewport')
 
 // MarqueeContent -----------------------------------------------------
 
-export type MarqueeContentProps = ComponentProps<typeof MarqueeContent>
-export const MarqueeContent = withContext(ArkMarquee.Content, 'content')
+const MarqueeContentStyled = withContext(ArkMarquee.Content, 'content')
+export type MarqueeContentProps = ComponentProps<typeof MarqueeContentStyled>
+/** As a patch child of a Marquee abstraction, `children` may be omitted: the abstraction supplies it. */
+export const MarqueeContent = MarqueeContentStyled as Patchable<
+  typeof MarqueeContentStyled,
+  'children'
+>
 
 // MarqueeEdge -----------------------------------------------------
 
-export type MarqueeEdgeProps = ComponentProps<typeof MarqueeEdge>
-export const MarqueeEdge = withContext(ArkMarquee.Edge, 'edge')
+const MarqueeEdgeStyled = withContext(ArkMarquee.Edge, 'edge')
+export type MarqueeEdgeProps = ComponentProps<typeof MarqueeEdgeStyled>
+/** As a patch child of a Marquee abstraction, `side` may be omitted: the abstraction supplies it. */
+export const MarqueeEdge = MarqueeEdgeStyled as Patchable<
+  typeof MarqueeEdgeStyled,
+  'side'
+>
 
 // MarqueeItem -----------------------------------------------------
 

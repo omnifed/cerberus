@@ -195,7 +195,7 @@
           "name": "value",
           "type": "string",
           "required": true,
-          "description": "The value of the accordion item."
+          "description": "The value of the accordion item. Optional in a patch child of a Accordion abstraction, which supplies it."
         },
         {
           "name": "disabled",

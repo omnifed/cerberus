@@ -6,6 +6,7 @@
 'use client'
 
 import { Accordion as ArkAccordion } from '@ark-ui/react/accordion'
+import type { Patchable } from '../../internal/extract-parts'
 import { type ComponentProps, createSlotRecipeContext } from 'styled-system/jsx'
 import { accordion } from 'styled-system/recipes'
 
@@ -18,8 +19,13 @@ export const AccordionRoot = withProvider(ArkAccordion.Root, 'root')
 
 // AccordionItem -----------------------------------------------------
 
-export type AccordionItemProps = ComponentProps<typeof AccordionItem>
-export const AccordionItem = withContext(ArkAccordion.Item, 'item')
+const AccordionItemStyled = withContext(ArkAccordion.Item, 'item')
+export type AccordionItemProps = ComponentProps<typeof AccordionItemStyled>
+/** As a patch child of a Accordion abstraction, `value` may be omitted: the abstraction supplies it. */
+export const AccordionItem = AccordionItemStyled as Patchable<
+  typeof AccordionItemStyled,
+  'value'
+>
 
 // AccordionItemTrigger -----------------------------------------------------
 

@@ -276,7 +276,7 @@
           "name": "index",
           "type": "number",
           "required": true,
-          "description": ""
+          "description": "Optional in a patch child of a Rating abstraction, which supplies it."
         },
         {
           "name": "asChild",

@@ -6,7 +6,7 @@ export function SlotPropsDemo() {
     <HStack w="3/4">
       <Accordion collapsible>
         <Accordion.ItemGroup heading="Slot props demo" value="one">
-          <Accordion.Item value="one" data-testid="my-qa-thing" />
+          <Accordion.Item data-testid="my-qa-thing" />
           <Accordion.ItemContent className="some-tw-class" />
           This default content still shows because the part overrides above only
           patch props.

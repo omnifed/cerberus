@@ -148,7 +148,7 @@ describe('Rating', () => {
         <Rating defaultValue={2} label="Patched label" name="patched">
           <Rating.Label data-testid="label" />
           <Rating.Control data-testid="control" />
-          <Rating.Item index={0} data-testid="item" />
+          <Rating.Item data-testid="item" />
           <Rating.HiddenInput data-testid="input" />
         </Rating>
       </CerberusProvider>,

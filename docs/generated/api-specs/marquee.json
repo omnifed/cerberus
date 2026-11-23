@@ -281,7 +281,7 @@
           "name": "children",
           "type": "ReactNode",
           "required": true,
-          "description": ""
+          "description": "Optional in a patch child of a Marquee abstraction, which supplies it."
         },
         {
           "name": "unstyled",
@@ -325,7 +325,7 @@
           "name": "side",
           "type": "Side",
           "required": true,
-          "description": "The side where the edge gradient should appear."
+          "description": "The side where the edge gradient should appear. Optional in a patch child of a Marquee abstraction, which supplies it."
         },
         {
           "name": "asChild",

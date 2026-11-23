@@ -112,6 +112,14 @@ export type ComponentConfig = {
    * other abstraction that has one), else `<Name />`.
    */
   example?: string
+  /**
+   * Required props an abstraction always supplies to a part it takes as a patch
+   * child, e.g. `{ Edge: ['side'] }`: `<Marquee>` sets each edge's `side`, so
+   * `<Marquee.Edge data-testid="qa" />` may omit it. The member is typed
+   * `Patchable<…>` (an extra call signature with those props optional); its `*Props`
+   * type stays strict. Each prop must be required on the member.
+   */
+  patchable?: Record<string, string[]>
   /** Docs page slug when it isn't the key, e.g. `progress` for CircularProgress */
   docsSlug?: string
   abstractions?: AbstractionConfig[]

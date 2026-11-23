@@ -6,6 +6,7 @@
 'use client'
 
 import { RatingGroup as ArkRatingGroup } from '@ark-ui/react/rating-group'
+import type { Patchable } from '../../internal/extract-parts'
 import {
   type ComponentProps,
   createSlotRecipeContext,
@@ -27,8 +28,13 @@ export const RatingLabel = withContext(ArkRatingGroup.Label, 'label')
 
 // RatingItem -----------------------------------------------------
 
-export type RatingItemProps = ComponentProps<typeof RatingItem>
-export const RatingItem = withContext(ArkRatingGroup.Item, 'item')
+const RatingItemStyled = withContext(ArkRatingGroup.Item, 'item')
+export type RatingItemProps = ComponentProps<typeof RatingItemStyled>
+/** As a patch child of a Rating abstraction, `index` may be omitted: the abstraction supplies it. */
+export const RatingItem = RatingItemStyled as Patchable<
+  typeof RatingItemStyled,
+  'index'
+>
 
 // RatingControl -----------------------------------------------------
 

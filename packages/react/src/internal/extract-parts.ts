@@ -8,6 +8,26 @@ import {
   type ReactNode,
 } from 'react'
 
+/**
+ * Props of a part used as a patch child of an abstraction: the props `K` that the
+ * abstraction always supplies itself (Marquee.Edge's `side`, PinInput.Input's
+ * `index`) become optional, everything else keeps its type.
+ */
+export type PartPatch<P, K extends PropertyKey> = P extends unknown
+  ? Omit<P, K> & Partial<Pick<P, Extract<K, keyof P>>>
+  : never
+
+/**
+ * A part component that also accepts `PartPatch` props, so a self-closing patch
+ * child (`<Marquee.Edge data-testid="qa" />` inside `<Marquee>`) can omit the props
+ * `K` its abstraction supplies. The strict signature comes last, so
+ * `ComponentProps<typeof Part>` (and the generated `*Props` types) stay strict.
+ */
+export type Patchable<
+  C extends ElementType,
+  K extends keyof ComponentProps<C>,
+> = ((props: PartPatch<ComponentProps<C>, K>) => ReactNode) & C
+
 export type ExtractedParts<TParts extends Record<string, ElementType>> = {
   [K in keyof TParts]?: ComponentProps<TParts[K]>
 }
