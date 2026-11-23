@@ -44,7 +44,9 @@ describe('FileUpload', () => {
 
     const root = container.querySelector('[data-scope="file-upload"]')
     expect(root).toHaveClass('cerberus-file-uploader__root')
-    const dropzone = screen.getByRole('button', { name: 'dropzone' })
+    const dropzone = screen.getByRole('button', {
+      name: 'Upload Files Import any image files Drag and drop files or click to upload',
+    })
     expect(dropzone).toHaveClass('cerberus-file-uploader__dropzone')
     expect(dropzone).toHaveAttribute('tabindex', '0')
     expect(dropzone.querySelector('[data-part="icon"]')).toHaveClass(
@@ -152,11 +154,104 @@ describe('FileUpload', () => {
         <FileUpload.Dropzone>Drop it here</FileUpload.Dropzone>
       </Test>,
     )
-    expect(screen.getByRole('button', { name: 'dropzone' })).toHaveTextContent(
-      'Drop it here',
-    )
+    // The accessible name follows the replaced content
+    expect(
+      screen.getByRole('button', { name: 'Drop it here' }),
+    ).toHaveTextContent('Drop it here')
     expect(screen.queryByText('Gone')).toBeNull()
     expect(screen.queryByText(/import any files/i)).toBeNull()
+  })
+
+  describe('dropzone accessible name', () => {
+    // The visible text of the dropzone, one entry per rendered text block
+    const getVisibleText = (dropzone: HTMLElement) => {
+      const heading = dropzone.querySelector('[data-part="heading"]')
+      const description = dropzone.querySelector('[data-part="description"]')!
+      const importText = Array.from(description.parentElement!.childNodes)
+        .filter((node) => node.nodeType === Node.TEXT_NODE)
+        .map((node) => node.textContent)
+        .join('')
+      return [heading?.textContent, importText, description.textContent]
+        .filter(Boolean)
+        .join(' ')
+    }
+
+    test('should match the visible text by default', () => {
+      render(<Test accept=".csv,.docx" heading="Upload Files" name="name" />)
+      const dropzone = screen.getByRole('button', {
+        name: 'Upload Files Import .csv, .docx files Drag and drop files or click to upload',
+      })
+      expect(dropzone).toHaveAttribute('aria-label', getVisibleText(dropzone))
+      expect(screen.queryByRole('button', { name: 'dropzone' })).toBeNull()
+    })
+
+    test('should match the visible text without a heading', () => {
+      render(<Test name="no-heading-name" />)
+      const dropzone = screen.getByRole('button', {
+        name: 'Import any files Drag and drop files or click to upload',
+      })
+      expect(dropzone).toHaveAttribute('aria-label', getVisibleText(dropzone))
+    })
+
+    test('should follow heading and description part overrides', () => {
+      render(
+        <Test accept="image/*" heading="Ignored" name="override-name">
+          <FileUpload.Heading>
+            Your <strong>avatar</strong>
+          </FileUpload.Heading>
+          <FileUpload.Description>PNG up to {2}MB</FileUpload.Description>
+        </Test>,
+      )
+      const dropzone = screen.getByRole('button', {
+        name: 'Your avatar Import any image files PNG up to 2MB',
+      })
+      expect(dropzone).toHaveAttribute('aria-label', getVisibleText(dropzone))
+    })
+
+    test('should let a user translations.dropzone win', () => {
+      render(
+        <Test
+          heading="Upload Files"
+          name="user-name"
+          translations={{ dropzone: 'Upload your reports' }}
+        />,
+      )
+      expect(
+        screen.getByRole('button', { name: 'Upload your reports' }),
+      ).toBeInTheDocument()
+    })
+
+    test('should keep the other user translations', async () => {
+      const user = userEvent.setup()
+      const file = new File(['x'], 'ares.png', { type: 'image/png' })
+      const { container } = render(
+        <Test
+          accept="image/*"
+          heading="Upload Files"
+          name="other-translations"
+          translations={{
+            deleteFile: (f) => `remove ${f.name}`,
+            itemPreview: (f) => `thumbnail of ${f.name}`,
+          }}
+        />,
+      )
+
+      // The dropzone still gets its default name
+      expect(
+        screen.getByRole('button', {
+          name: 'Upload Files Import any image files Drag and drop files or click to upload',
+        }),
+      ).toBeInTheDocument()
+
+      await user.upload(getHiddenInput(container), file)
+
+      expect(
+        await screen.findByRole('button', { name: 'remove ares.png' }),
+      ).toBeInTheDocument()
+      expect(
+        await screen.findByAltText('thumbnail of ares.png'),
+      ).toBeInTheDocument()
+    })
   })
 
   test('should render the abstraction from FileUpload.El', () => {

@@ -221,6 +221,10 @@ When you want to delegate clicking to the trigger and remove the dropzone from t
 
 `<FileUpload>` (also exported as `FileUploader`) renders the dropzone with its icon, heading and description, the accepted files and the hidden input. Pass `FileUpload.Dropzone`, `FileUpload.Icon`, `FileUpload.Heading`, `FileUpload.Description`, `FileUpload.Label`, `FileUpload.ClearTrigger` or `FileUpload.HiddenInput` as direct children to override those parts, render the file list on its own with `FileUpload.ItemGroupWithPreview` (also exported as `ImgPreview`), or compose `FileUpload.Root` with the parts yourself.
 
+## Accessibility
+
+`<FileUpload>` names its dropzone with the text it shows: the heading, the "Import … files" text and the description (or the text of a `FileUpload.Dropzone` child's children), so screen readers announce what sighted users read. To name it differently, pass `translations={{ dropzone: '…' }}`; any other `translations` keys you pass are kept. When you compose `FileUpload.Root` yourself, set `translations.dropzone` to match your dropzone's visible text, as it otherwise defaults to "dropzone".
+
 ## API
 
 <ComponentApi spec="file-upload" />

@@ -17,7 +17,7 @@ import {
   FileUploadRoot,
   type FileUploadRootProps,
 } from './primitives'
-import { formatFileTypes } from './utils'
+import { formatFileTypes, getNodeText } from './utils'
 
 /**
  * This module contains the default FileUpload abstraction.
@@ -57,7 +57,9 @@ export type FileUploadProps = FileUploadRootProps & {
  * `FileUpload.HiddenInput` children override that part; a part child with
  * children replaces its default content. `FileUpload.Label` and
  * `FileUpload.ClearTrigger` children render only when given (the label before
- * the dropzone, the clear trigger after the files).
+ * the dropzone, the clear trigger after the files). The dropzone's accessible
+ * name defaults to its visible text (`translations.dropzone`, which a
+ * `translations` prop overrides).
  * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/file-uploader)
  * @description [Ark Docs](https://ark-ui.com/docs/components/file-upload)
  * @example
@@ -66,7 +68,13 @@ export type FileUploadProps = FileUploadRootProps & {
  * ```
  */
 export function FileUploadEl(props: FileUploadProps) {
-  const { heading, showPreview = true, children, ...rootProps } = props
+  const {
+    heading,
+    showPreview = true,
+    translations,
+    children,
+    ...rootProps
+  } = props
   const { icons } = useCerberusContext()
   const { waitingFileUploader: Icon } = icons
 
@@ -81,9 +89,30 @@ export function FileUploadEl(props: FileUploadProps) {
     parts.description ?? {}
 
   const headingContent = headingChildren ?? heading
+  const importText = `Import ${formatFileTypes(rootProps.accept)} files`
+  const descriptionContent =
+    descriptionChildren ?? 'Drag and drop files or click to upload'
+
+  // Zag labels the dropzone with `translations.dropzone` ("dropzone" by
+  // default), which overrides its visible text as the accessible name. Default
+  // it to the same text the dropzone shows, keeping any user translations.
+  const dropzoneLabel =
+    getNodeText(
+      dropzoneChildren ?? [
+        headingContent,
+        ' ',
+        importText,
+        ' ',
+        descriptionContent,
+      ],
+    ) || undefined
+  const rootTranslations = {
+    ...translations,
+    dropzone: translations?.dropzone ?? dropzoneLabel,
+  }
 
   return (
-    <FileUploadRoot {...rootProps}>
+    <FileUploadRoot {...rootProps} translations={rootTranslations}>
       {parts.label && <FileUploadLabel {...parts.label} />}
 
       <FileUploadDropzone {...dropzoneOverrideProps}>
@@ -102,10 +131,9 @@ export function FileUploadEl(props: FileUploadProps) {
                   {headingContent}
                 </FileUploadHeading>
               )}
-              Import {formatFileTypes(rootProps.accept)} files
+              {importText}
               <FileUploadDescription {...descriptionOverrideProps}>
-                {descriptionChildren ??
-                  'Drag and drop files or click to upload'}
+                {descriptionContent}
               </FileUploadDescription>
             </div>
           </>
