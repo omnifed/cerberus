@@ -566,5 +566,99 @@
         }
       ]
     }
-  ]
+  ],
+  "contextApi": {
+    "exposedBy": [
+      "Pagination.Context",
+      "usePagination()",
+      "usePaginationContext()"
+    ],
+    "members": [
+      {
+        "name": "page",
+        "type": "number",
+        "description": "The current page."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "The total number of data items."
+      },
+      {
+        "name": "pageSize",
+        "type": "number",
+        "description": "The number of data items per page."
+      },
+      {
+        "name": "totalPages",
+        "type": "number",
+        "description": "The total number of pages."
+      },
+      {
+        "name": "pages",
+        "type": "Pages",
+        "description": "The page range. Represented as an array of page numbers (including ellipsis)."
+      },
+      {
+        "name": "previousPage",
+        "type": "number | null",
+        "description": "The previous page."
+      },
+      {
+        "name": "nextPage",
+        "type": "number | null",
+        "description": "The next page."
+      },
+      {
+        "name": "pageRange",
+        "type": "PageRange",
+        "description": "The page range. Represented as an object with `start` and `end` properties."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"link\"",
+        "description": "The type of the pagination controls."
+      },
+      {
+        "name": "getPageUrl",
+        "type": "(page: number) => string | undefined",
+        "description": "Returns the url for the given page, or `undefined` when `getPageUrl` is not provided."
+      },
+      {
+        "name": "slice",
+        "type": "<V>(data: V[]) => V[]",
+        "description": "Function to slice an array of data based on the current page."
+      },
+      {
+        "name": "setPageSize",
+        "type": "(size: number) => void",
+        "description": "Function to set the page size."
+      },
+      {
+        "name": "setPage",
+        "type": "(page: number) => void",
+        "description": "Function to set the current page."
+      },
+      {
+        "name": "goToNextPage",
+        "type": "VoidFunction",
+        "description": "Function to go to the next page."
+      },
+      {
+        "name": "goToPrevPage",
+        "type": "VoidFunction",
+        "description": "Function to go to the previous page."
+      },
+      {
+        "name": "goToFirstPage",
+        "type": "VoidFunction",
+        "description": "Function to go to the first page."
+      },
+      {
+        "name": "goToLastPage",
+        "type": "VoidFunction",
+        "description": "Function to go to the last page."
+      }
+    ]
+  }
 }

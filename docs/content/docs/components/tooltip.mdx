@@ -28,15 +28,3 @@ You can position the tooltip relative to the target element using the `positioni
 ## API
 
 <ComponentApi spec="tooltip" />
-
-### Context API
-
-`Tooltip.Context` and `useTooltip()` expose:
-
-| Property          | Type                                              | Description                        |
-| ----------------- | ------------------------------------------------- | ---------------------------------- |
-| `open`            | `boolean`                                         | Whether the tooltip is open.       |
-| `setOpen`         | `(open: boolean) => void`                         | Function to open the tooltip.      |
-| `triggerValue`    | `string \| null`                                  | The trigger value                  |
-| `setTriggerValue` | `(value: string \| null) => void`                 | Function to set the trigger value  |
-| `reposition`      | `(options?: Partial<PositioningOptions>) => void` | Function to reposition the popover |

@@ -258,6 +258,45 @@
       },
       "required": ["keyboard"],
       "additionalProperties": false
+    },
+    "contextApi": {
+      "type": "object",
+      "properties": {
+        "exposedBy": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Cerberus exports that expose it: `X.Context`, `useX()`…"
+        },
+        "members": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": ["name", "type", "description"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["exposedBy", "members"],
+      "additionalProperties": false,
+      "description": "The Zag machine's API, from `@zag-js/docs`"
     }
   },
   "required": ["name", "key", "description", "variants", "parts"],

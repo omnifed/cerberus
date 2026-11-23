@@ -1499,5 +1499,120 @@
         "description": "When focus is on the trigger of a single select, selects the last item. When focus is on the content, highlights the last item."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Select.Context", "useSelect()"],
+    "members": [
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the select is focused."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the select is open."
+      },
+      {
+        "name": "empty",
+        "type": "boolean",
+        "description": "Whether the select value is empty."
+      },
+      {
+        "name": "highlightedValue",
+        "type": "string | null",
+        "description": "The value of the highlighted item."
+      },
+      {
+        "name": "highlightedItem",
+        "type": "V | null",
+        "description": "The highlighted item."
+      },
+      {
+        "name": "setHighlightValue",
+        "type": "(value: string) => void",
+        "description": "Function to highlight a value."
+      },
+      {
+        "name": "clearHighlightValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the highlighted value."
+      },
+      {
+        "name": "selectedItems",
+        "type": "V[]",
+        "description": "The selected items."
+      },
+      {
+        "name": "hasSelectedItems",
+        "type": "boolean",
+        "description": "Whether there's a selected option."
+      },
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The selected item keys."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The string representation of the selected items."
+      },
+      {
+        "name": "selectValue",
+        "type": "(value: string) => void",
+        "description": "Function to select a value."
+      },
+      {
+        "name": "selectAll",
+        "type": "VoidFunction",
+        "description": "Function to select all values."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Function to set the value of the select."
+      },
+      {
+        "name": "clearValue",
+        "type": "(value?: string) => void",
+        "description": "Function to clear the value of the select.\nIf a value is provided, it will only clear that value, otherwise, it will clear all values."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus on the select input."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of a select item."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the select."
+      },
+      {
+        "name": "collection",
+        "type": "ListCollection<V>",
+        "description": "Function to toggle the select."
+      },
+      {
+        "name": "reposition",
+        "type": "(options?: Partial<PositioningOptions>) => void",
+        "description": "Function to set the positioning options of the select."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "description": "Whether the select allows multiple selections."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the select is disabled."
+      }
+    ]
   }
 }

@@ -125,6 +125,18 @@ Selector: `[data-scope="collapsible"][data-part="root"]`
 | --- | --- |
 | `data-state` | `"open"` \| `"closed"` |
 
+## Context API
+
+`useCollapsible()` and `useCollapsibleContext()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `open` | `boolean` | Whether the collapsible is open. |
+| `visible` | `boolean` | Whether the collapsible is visible (open or closing). |
+| `disabled` | `boolean` | Whether the collapsible is disabled. |
+| `setOpen` | `(open: boolean) => void` | Function to open or close the collapsible. |
+| `measureSize` | `VoidFunction` | Function to measure the size of the content. |
+
 ## Accessibility
 
 | Key | Description |

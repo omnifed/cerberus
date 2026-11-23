@@ -169,6 +169,18 @@ Selector: `[data-scope="switch"][data-part="root"]`
 | `data-invalid` | Present when invalid. |
 | `data-required` | Present when required. |
 
+## Context API
+
+`useSwitch()` exposes the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `checked` | `boolean` | Whether the switch is checked. |
+| `disabled` | `boolean \| undefined` | Whether the switch is disabled. |
+| `focused` | `boolean \| undefined` | Whether the switch is focused. |
+| `setChecked` | `(checked: boolean) => void` | Sets the checked state of the switch. |
+| `toggleChecked` | `VoidFunction` | Toggles the checked state of the switch. |
+
 ## Accessibility
 
 Follows the [Switch WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/).

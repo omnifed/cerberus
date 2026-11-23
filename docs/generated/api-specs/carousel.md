@@ -251,6 +251,29 @@ Selector: `[data-scope="carousel"][data-part="root"]`
 | `--slide-spacing` | The spacing between slides. |
 | `--slide-item-size` | The calculated size of each slide item. |
 
+## Context API
+
+`useCarousel()` exposes the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `page` | `number` | The current index of the carousel. |
+| `pageSnapPoints` | `number[]` | The current snap points of the carousel. |
+| `isPlaying` | `boolean` | Whether the carousel is auto playing. |
+| `isDragging` | `boolean` | Whether the carousel is being dragged. This only works when `draggable` is true. |
+| `canScrollNext` | `boolean` | Whether the carousel is can scroll to the next view. |
+| `canScrollPrev` | `boolean` | Whether the carousel is can scroll to the previous view. |
+| `scrollToIndex` | `(index: number, instant?: boolean) => void` | Function to scroll to a specific item index. |
+| `scrollTo` | `(page: number, instant?: boolean) => void` | Function to scroll to a specific page. |
+| `scrollNext` | `(instant?: boolean) => void` | Function to scroll to the next page. |
+| `scrollPrev` | `(instant?: boolean) => void` | Function to scroll to the previous page. |
+| `getProgress` | `() => number` | Returns the current scroll progress as a percentage. |
+| `getProgressText` | `() => string` | Returns the progress text. |
+| `play` | `VoidFunction` | Function to start/resume autoplay. |
+| `pause` | `VoidFunction` | Function to pause autoplay. |
+| `isInView` | `(index: number) => boolean` | Whether the item is in view. |
+| `refresh` | `VoidFunction` | Function to re-compute the snap points and clamp the page. |
+
 ## Accessibility
 
 Follows the [Carousel WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).

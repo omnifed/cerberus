@@ -298,6 +298,19 @@ Exposes the Popover state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UsePopoverContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Popover.Context` and `usePopover()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `portalled` | `boolean` | Whether the popover is portalled. |
+| `open` | `boolean` | Whether the popover is open. |
+| `setOpen` | `(open: boolean) => void` | Function to open or close the popover. |
+| `triggerValue` | `string \| null` | The trigger value. |
+| `setTriggerValue` | `(value: string \| null) => void` | Function to set the trigger value. |
+| `reposition` | `(options?: Partial<PositioningOptions>) => void` | Function to reposition the popover. |
+
 ## Accessibility
 
 | Key | Description |

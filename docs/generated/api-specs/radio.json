@@ -557,5 +557,35 @@
         "description": "Moves focus to the previous radio item in the group."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["RadioGroup.Context", "useRadioGroup()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "string | null",
+        "description": "The current value of the radio group."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string) => void",
+        "description": "Function to set the value of the radio group."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the value of the radio group."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the radio group."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state details of a radio input."
+      }
+    ]
   }
 }

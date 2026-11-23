@@ -341,5 +341,30 @@
         }
       ]
     }
-  ]
+  ],
+  "contextApi": {
+    "exposedBy": ["Clipboard.Context", "useClipboard()"],
+    "members": [
+      {
+        "name": "copied",
+        "type": "boolean",
+        "description": "Whether the value has been copied to the clipboard."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "The value to be copied to the clipboard."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string) => void",
+        "description": "Set the value to be copied to the clipboard."
+      },
+      {
+        "name": "copy",
+        "type": "VoidFunction",
+        "description": "Copy the value to the clipboard."
+      }
+    ]
+  }
 }

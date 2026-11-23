@@ -481,6 +481,37 @@ Exposes the Combobox item state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseComboboxItemContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Combobox.Context`, `useCombobox()` and `useComboboxContext()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `focused` | `boolean` | Whether the combobox is focused. |
+| `open` | `boolean` | Whether the combobox is open. |
+| `loading` | `boolean` | Whether the results are being loaded. |
+| `inputValue` | `string` | The value of the combobox input. |
+| `highlightedValue` | `string \| null` | The value of the highlighted item. |
+| `highlightedItem` | `V \| null` | The highlighted item. |
+| `setHighlightValue` | `(value: string) => void` | The value of the combobox input. |
+| `clearHighlightValue` | `VoidFunction` | Function to clear the highlighted value. |
+| `syncSelectedItems` | `VoidFunction` | Function to sync the selected items with the value. Useful when `value` is updated from async sources. |
+| `selectedItems` | `V[]` | The selected items. |
+| `hasSelectedItems` | `boolean` | Whether there's a selected item. |
+| `value` | `string[]` | The selected item keys. |
+| `valueAsString` | `string` | The string representation of the selected items. |
+| `selectValue` | `(value: string) => void` | Function to select a value. |
+| `setValue` | `(value: string[]) => void` | Function to set the value of the combobox. |
+| `clearValue` | `(value?: string) => void` | Function to clear the value of the combobox. |
+| `focus` | `VoidFunction` | Function to focus on the combobox input. |
+| `setInputValue` | `(value: string, reason?: InputValueChangeReason) => void` | Function to set the input value of the combobox. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of a combobox item. |
+| `setOpen` | `(open: boolean, reason?: OpenChangeReason) => void` | Function to open or close the combobox. |
+| `collection` | `ListCollection<V>` | Function to toggle the combobox. |
+| `reposition` | `(options?: Partial<PositioningOptions>) => void` | Function to set the positioning options. |
+| `multiple` | `boolean` | Whether the combobox allows multiple selections. |
+| `disabled` | `boolean` | Whether the combobox is disabled. |
+
 ## Accessibility
 
 Follows the [Combobox WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).

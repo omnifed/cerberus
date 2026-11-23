@@ -6,6 +6,7 @@ import type { z } from 'zod'
 import type {
   A11ySpecSchema,
   ComponentDocSpecSchema,
+  ContextApiSpecSchema,
   CssVarSpecSchema,
   DataAttributeSpecSchema,
   KeyboardMappingSchema,
@@ -23,4 +24,5 @@ export type CssVarSpec = z.infer<typeof CssVarSpecSchema>
 export type DataAttributeSpec = z.infer<typeof DataAttributeSpecSchema>
 export type VariantSpec = z.infer<typeof VariantSpecSchema>
 export type A11ySpec = z.infer<typeof A11ySpecSchema>
+export type ContextApiSpec = z.infer<typeof ContextApiSpecSchema>
 export type ComponentDocSpec = z.infer<typeof ComponentDocSpecSchema>

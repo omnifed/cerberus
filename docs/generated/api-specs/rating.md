@@ -159,6 +159,21 @@ The hidden input primitive part of the Rating component. It has no recipe slot, 
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 
+## Context API
+
+`Rating.Context` and `useRatingGroup()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `setValue` | `(value: number) => void` | Sets the value of the rating group. |
+| `clearValue` | `VoidFunction` | Clears the value of the rating group. |
+| `hovering` | `boolean` | Whether the rating group is being hovered. |
+| `value` | `number` | The current value of the rating group. |
+| `hoveredValue` | `number` | The value of the currently hovered rating. |
+| `count` | `number` | The total number of ratings. |
+| `items` | `number[]` | The array of rating values. Returns an array of numbers from 1 to the max value. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of a rating item. |
+
 ## Accessibility
 
 Follows the [Radio Group WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/).

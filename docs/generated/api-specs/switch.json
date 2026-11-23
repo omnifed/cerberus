@@ -500,5 +500,35 @@
         "description": "Toggle the switch."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["useSwitch()"],
+    "members": [
+      {
+        "name": "checked",
+        "type": "boolean",
+        "description": "Whether the switch is checked."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "Whether the switch is disabled."
+      },
+      {
+        "name": "focused",
+        "type": "boolean | undefined",
+        "description": "Whether the switch is focused."
+      },
+      {
+        "name": "setChecked",
+        "type": "(checked: boolean) => void",
+        "description": "Sets the checked state of the switch."
+      },
+      {
+        "name": "toggleChecked",
+        "type": "VoidFunction",
+        "description": "Toggles the checked state of the switch."
+      }
+    ]
   }
 }

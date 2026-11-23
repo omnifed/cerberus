@@ -1803,5 +1803,250 @@
         "description": "Selects the focused date, like `Enter`."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["DatePicker.Context", "useDatePicker()"],
+    "members": [
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the input is focused."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the date picker is open."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the date picker is disabled."
+      },
+      {
+        "name": "invalid",
+        "type": "boolean",
+        "description": "Whether the date picker is invalid."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "description": "Whether the date picker is read-only."
+      },
+      {
+        "name": "inline",
+        "type": "boolean",
+        "description": "Whether the date picker is rendered inline."
+      },
+      {
+        "name": "numOfMonths",
+        "type": "number",
+        "description": "The number of months to display."
+      },
+      {
+        "name": "showWeekNumbers",
+        "type": "boolean",
+        "description": "Whether the week number column is shown in the day view."
+      },
+      {
+        "name": "selectionMode",
+        "type": "SelectionMode",
+        "description": "The selection mode (single, multiple, or range)."
+      },
+      {
+        "name": "maxSelectedDates",
+        "type": "number | undefined",
+        "description": "The maximum number of dates that can be selected (only for multiple selection mode)."
+      },
+      {
+        "name": "isMaxSelected",
+        "type": "boolean",
+        "description": "Whether the maximum number of selected dates has been reached."
+      },
+      {
+        "name": "view",
+        "type": "DateView",
+        "description": "The current view of the date picker."
+      },
+      {
+        "name": "getWeekNumber",
+        "type": "(week: DateValue[]) => number",
+        "description": "Returns the ISO 8601 week number (1-53) for the given week (array of dates)."
+      },
+      {
+        "name": "getDaysInWeek",
+        "type": "(week: number, from?: DateValue) => DateValue[]",
+        "description": "Returns an array of days in the week index counted from the provided start date, or the first visible date if not given."
+      },
+      {
+        "name": "getOffset",
+        "type": "(duration: DateDuration) => DateValueOffset",
+        "description": "Returns the offset of the month based on the provided number of months."
+      },
+      {
+        "name": "getRangePresetValue",
+        "type": "(value: DateRangePreset) => DateValue[]",
+        "description": "Returns the range of dates based on the provided date range preset."
+      },
+      {
+        "name": "getMonthWeeks",
+        "type": "(from?: DateValue) => DateValue[][]",
+        "description": "Returns the weeks of the month from the provided date. Represented as an array of arrays of dates."
+      },
+      {
+        "name": "isUnavailable",
+        "type": "(date: DateValue) => boolean",
+        "description": "Returns whether the provided date is available (or can be selected)."
+      },
+      {
+        "name": "weeks",
+        "type": "DateValue[][]",
+        "description": "The weeks of the month. Represented as an array of arrays of dates."
+      },
+      {
+        "name": "weekDays",
+        "type": "WeekDay[]",
+        "description": "The days of the week. Represented as an array of strings."
+      },
+      {
+        "name": "visibleRange",
+        "type": "VisibleRange",
+        "description": "The visible range of dates."
+      },
+      {
+        "name": "visibleRangeText",
+        "type": "VisibleRangeText",
+        "description": "The human readable text for the visible range of dates."
+      },
+      {
+        "name": "value",
+        "type": "DateValue[]",
+        "description": "The selected date."
+      },
+      {
+        "name": "valueAsDate",
+        "type": "Date[]",
+        "description": "The selected date as a Date object."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string[]",
+        "description": "The selected date as a string."
+      },
+      {
+        "name": "focusedValue",
+        "type": "DateValue",
+        "description": "The focused date."
+      },
+      {
+        "name": "focusedValueAsDate",
+        "type": "Date",
+        "description": "The focused date as a Date object."
+      },
+      {
+        "name": "focusedValueAsString",
+        "type": "string",
+        "description": "The focused date as a string."
+      },
+      {
+        "name": "selectToday",
+        "type": "VoidFunction",
+        "description": "Sets the selected date to today."
+      },
+      {
+        "name": "setValue",
+        "type": "(values: DateValue[]) => void",
+        "description": "Sets the selected date to the given date."
+      },
+      {
+        "name": "setTime",
+        "type": "(time: Time, index?: number) => void",
+        "description": "Sets the time for a specific date value.\nConverts CalendarDate to CalendarDateTime if needed."
+      },
+      {
+        "name": "setFocusedValue",
+        "type": "(value: DateValue) => void",
+        "description": "Sets the focused date to the given date."
+      },
+      {
+        "name": "clearValue",
+        "type": "(options?: { focus?: boolean }) => void",
+        "description": "Clears the selected date(s)."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the calendar."
+      },
+      {
+        "name": "focusMonth",
+        "type": "(month: number) => void",
+        "description": "Function to set the selected month."
+      },
+      {
+        "name": "focusYear",
+        "type": "(year: number) => void",
+        "description": "Function to set the selected year."
+      },
+      {
+        "name": "getYears",
+        "type": "() => Cell[]",
+        "description": "Returns the months of the year."
+      },
+      {
+        "name": "getYearsGrid",
+        "type": "(props?: YearGridProps) => YearGridValue",
+        "description": "Returns the years of the decade based on the columns.\nRepresented as an array of arrays of years."
+      },
+      {
+        "name": "getDecade",
+        "type": "() => Range<number | undefined>",
+        "description": "Returns the start and end years of the decade."
+      },
+      {
+        "name": "getMonths",
+        "type": "(props?: MonthFormatOptions) => Cell[]",
+        "description": "Returns the months of the year."
+      },
+      {
+        "name": "getMonthsGrid",
+        "type": "(props?: MonthGridProps) => MonthGridValue",
+        "description": "Returns the months of the year based on the columns.\nRepresented as an array of arrays of months."
+      },
+      {
+        "name": "format",
+        "type": "(value: DateValue, opts?: Intl.DateTimeFormatOptions) => string",
+        "description": "Formats the given date value based on the provided options."
+      },
+      {
+        "name": "setView",
+        "type": "(view: DateView) => void",
+        "description": "Sets the view of the date picker."
+      },
+      {
+        "name": "goToNext",
+        "type": "VoidFunction",
+        "description": "Goes to the next month/year/decade."
+      },
+      {
+        "name": "goToPrev",
+        "type": "VoidFunction",
+        "description": "Goes to the previous month/year/decade."
+      },
+      {
+        "name": "getDayTableCellState",
+        "type": "(props: DayTableCellProps) => DayTableCellState",
+        "description": "Returns the state details for a given cell."
+      },
+      {
+        "name": "getMonthTableCellState",
+        "type": "(props: TableCellProps) => TableCellState",
+        "description": "Returns the state details for a given month cell."
+      },
+      {
+        "name": "getYearTableCellState",
+        "type": "(props: TableCellProps) => TableCellState",
+        "description": "Returns the state details for a given year cell."
+      }
+    ]
   }
 }

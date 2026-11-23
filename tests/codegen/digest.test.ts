@@ -101,3 +101,31 @@ test('llms index lists digests by key', () => {
     '- [Alpha](alpha.md): A thing.\n- [Thing](thing.md): A thing.',
   )
 })
+
+describe('Context API digest', () => {
+  test('lists what exposes it and one row per member', () => {
+    const md = renderDigest({
+      ...spec,
+      contextApi: {
+        exposedBy: ['Thing.Context', 'useThing()', 'useThingContext()'],
+        members: [
+          { name: 'open', type: 'boolean', description: 'Whether it is open.' },
+          {
+            name: 'setValue',
+            type: '(value: string | null) => void',
+            description: 'Sets\nthe value.',
+          },
+        ],
+      },
+    })
+    expect(md).toContain(
+      "## Context API\n\n`Thing.Context`, `useThing()` and `useThingContext()` expose the component's state and methods:",
+    )
+    expect(md).toContain('| `open` | `boolean` | Whether it is open. |')
+    expect(md).toContain(
+      '| `setValue` | `(value: string \\| null) => void` | Sets the value. |',
+    )
+    // It comes before Accessibility, after the parts
+    expect(md.indexOf('## Context API')).toBeGreaterThan(md.indexOf('## Parts'))
+  })
+})

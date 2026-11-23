@@ -1047,5 +1047,85 @@
         "description": "Sets the value to its maximum."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["useSlider()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "number[]",
+        "description": "The value of the slider."
+      },
+      {
+        "name": "dragging",
+        "type": "boolean",
+        "description": "Whether the slider is being dragged."
+      },
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the slider is focused."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: number[]) => void",
+        "description": "Function to set the value of the slider."
+      },
+      {
+        "name": "getThumbValue",
+        "type": "(index: number) => number",
+        "description": "Returns the value of the thumb at the given index."
+      },
+      {
+        "name": "setThumbValue",
+        "type": "(index: number, value: number) => void",
+        "description": "Sets the value of the thumb at the given index."
+      },
+      {
+        "name": "getValuePercent",
+        "type": "(value: number) => number",
+        "description": "Returns the percent of the thumb at the given index."
+      },
+      {
+        "name": "getPercentValue",
+        "type": "(percent: number) => number",
+        "description": "Returns the value of the thumb at the given percent."
+      },
+      {
+        "name": "getThumbPercent",
+        "type": "(index: number) => number",
+        "description": "Returns the percent of the thumb at the given index."
+      },
+      {
+        "name": "setThumbPercent",
+        "type": "(index: number, percent: number) => void",
+        "description": "Sets the percent of the thumb at the given index."
+      },
+      {
+        "name": "getThumbMin",
+        "type": "(index: number) => number",
+        "description": "Returns the min value of the thumb at the given index."
+      },
+      {
+        "name": "getThumbMax",
+        "type": "(index: number) => number",
+        "description": "Returns the max value of the thumb at the given index."
+      },
+      {
+        "name": "increment",
+        "type": "(index: number) => void",
+        "description": "Function to increment the value of the slider at the given index."
+      },
+      {
+        "name": "decrement",
+        "type": "(index: number) => void",
+        "description": "Function to decrement the value of the slider at the given index."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the slider. This focuses the first thumb."
+      }
+    ]
   }
 }

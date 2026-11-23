@@ -143,5 +143,35 @@
         "description": "Toggle the pressed state."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Toggle.Context", "useToggle()", "useToggleContext()"],
+    "members": [
+      {
+        "name": "pressed",
+        "type": "boolean",
+        "description": "Whether the toggle is pressed."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the toggle is disabled."
+      },
+      {
+        "name": "setPressed",
+        "type": "(pressed: boolean) => void",
+        "description": "Sets the pressed state of the toggle."
+      },
+      {
+        "name": "getRootProps",
+        "type": "() => T[\"element\"]",
+        "description": "Props for the root `button` element."
+      },
+      {
+        "name": "getIndicatorProps",
+        "type": "() => T[\"element\"]",
+        "description": "Props for the optional visual indicator (e.g. icon) element."
+      }
+    ]
   }
 }

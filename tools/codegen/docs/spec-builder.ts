@@ -1,3 +1,4 @@
+import { existsSync, readFileSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import { Diagnostics } from '../core/diagnostics'
 import {
@@ -14,6 +15,7 @@ import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
 import type {
   PartSpecExternal,
   A11ySpec,
+  ContextApiSpec,
   ComponentDocSpec,
   KeyboardMapping,
   PartSpec,
@@ -152,6 +154,7 @@ export function buildComponentDocSpec(
   ]
 
   const a11y = buildA11y(entry, zag, ctx.diagnostics)
+  const contextApi = buildContextApi(entry, zag)
   return {
     name: entry.name,
     key: entry.key,
@@ -159,7 +162,38 @@ export function buildComponentDocSpec(
     variants,
     parts,
     ...(a11y ? { a11y } : {}),
+    ...(contextApi ? { contextApi } : {}),
   }
+}
+
+/** Where the package's public hooks are exported from */
+const PACKAGE_ENTRIES = ['index.ts', 'index.client.ts'].map((file) =>
+  join(REACT_PKG_ROOT, 'src', file),
+)
+
+/**
+ * The Zag machine's API from `@zag-js/docs`, when Cerberus exposes it: through the
+ * `Context` render prop, or Ark's `useX()`/`useXContext()` re-exported by the
+ * package or the component module. Omitted when nothing exposes it.
+ */
+function buildContextApi(
+  entry: ComponentEntry,
+  zag: ZagFacts | null,
+): ContextApiSpec | null {
+  const members = zag?.docs?.api ?? []
+  if (members.length === 0) return null
+  const sources = [...PACKAGE_ENTRIES, join(entry.dir, 'api.ts')]
+    .filter((file) => existsSync(file))
+    .map((file) => readFileSync(file, 'utf8'))
+    .join('\n')
+  const exported = (hook: string) => new RegExp(`\\b${hook}\\b`).test(sources)
+  const exposedBy = [
+    ...(entry.arkMembers.includes('Context') ? [`${entry.name}.Context`] : []),
+    ...[`use${entry.arkName}`, `use${entry.arkName}Context`]
+      .filter(exported)
+      .map((hook) => `${hook}()`),
+  ]
+  return exposedBy.length > 0 ? { exposedBy, members } : null
 }
 
 /**

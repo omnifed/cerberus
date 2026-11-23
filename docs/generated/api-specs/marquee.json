@@ -469,5 +469,55 @@
         }
       ]
     }
-  ]
+  ],
+  "contextApi": {
+    "exposedBy": ["Marquee.Context", "useMarquee()"],
+    "members": [
+      {
+        "name": "paused",
+        "type": "boolean",
+        "description": "Whether the marquee is currently paused."
+      },
+      {
+        "name": "orientation",
+        "type": "\"horizontal\" | \"vertical\"",
+        "description": "The current orientation of the marquee."
+      },
+      {
+        "name": "side",
+        "type": "Side",
+        "description": "The current side/direction of the marquee."
+      },
+      {
+        "name": "multiplier",
+        "type": "number",
+        "description": "The multiplier for auto-fill. Indicates how many times to duplicate content.\nWhen autoFill is enabled and content is smaller than container, this returns\nthe number of additional copies needed. Otherwise returns 1."
+      },
+      {
+        "name": "contentCount",
+        "type": "number",
+        "description": "The total number of content elements to render (original + clones).\nUse this value when rendering your content in a loop."
+      },
+      {
+        "name": "pause",
+        "type": "VoidFunction",
+        "description": "Pause the marquee animation."
+      },
+      {
+        "name": "resume",
+        "type": "VoidFunction",
+        "description": "Resume the marquee animation."
+      },
+      {
+        "name": "togglePause",
+        "type": "VoidFunction",
+        "description": "Toggle the pause state."
+      },
+      {
+        "name": "restart",
+        "type": "VoidFunction",
+        "description": "Restart the marquee animation from the beginning."
+      }
+    ]
+  }
 }

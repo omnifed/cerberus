@@ -97,3 +97,14 @@ Selector: `[data-scope="avatar"][data-part="root"]`
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+## Context API
+
+`useAvatar()` exposes the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `loaded` | `boolean` | Whether the image is loaded. |
+| `setSrc` | `(src: string) => void` | Function to set new src. |
+| `setLoaded` | `VoidFunction` | Function to set loaded state. |
+| `setError` | `VoidFunction` | Function to set error state. |

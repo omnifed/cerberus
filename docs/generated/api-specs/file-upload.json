@@ -949,5 +949,95 @@
       "The hidden file input is removed from the accessibility tree (`aria-hidden`); the dropzone and `FileUpload.Trigger` are the accessible ways to open the file picker.",
       "Each `FileUpload.ItemDeleteTrigger` is labelled \"delete file <name>\" and each preview image has the alt text \"preview of <name>\" by default (`translations.deleteFile` and `translations.itemPreview`)."
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["FileUpload.Context", "useFileUpload()"],
+    "members": [
+      {
+        "name": "dragging",
+        "type": "boolean",
+        "description": "Whether the user is dragging something over the root element."
+      },
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the user is focused on the dropzone element."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the file input is disabled."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean",
+        "description": "Whether the file input is in read-only mode."
+      },
+      {
+        "name": "transforming",
+        "type": "boolean",
+        "description": "Whether files are currently being transformed via `transformFiles`."
+      },
+      {
+        "name": "maxFilesReached",
+        "type": "boolean",
+        "description": "Whether the maximum number of files has been reached."
+      },
+      {
+        "name": "remainingFiles",
+        "type": "number",
+        "description": "The number of files that can still be added."
+      },
+      {
+        "name": "openFilePicker",
+        "type": "VoidFunction",
+        "description": "Function to open the file dialog."
+      },
+      {
+        "name": "deleteFile",
+        "type": "(file: File, type?: ItemType | undefined) => void",
+        "description": "Function to delete the file from the list."
+      },
+      {
+        "name": "acceptedFiles",
+        "type": "File[]",
+        "description": "The accepted files that have been dropped or selected."
+      },
+      {
+        "name": "rejectedFiles",
+        "type": "FileRejection[]",
+        "description": "The files that have been rejected."
+      },
+      {
+        "name": "setFiles",
+        "type": "(files: File[]) => void",
+        "description": "Sets the accepted files."
+      },
+      {
+        "name": "clearFiles",
+        "type": "VoidFunction",
+        "description": "Clears the accepted files."
+      },
+      {
+        "name": "clearRejectedFiles",
+        "type": "VoidFunction",
+        "description": "Clears the rejected files."
+      },
+      {
+        "name": "getFileSize",
+        "type": "(file: File) => string",
+        "description": "Returns the formatted file size (e.g. 1.2MB)."
+      },
+      {
+        "name": "createFileUrl",
+        "type": "(file: File, cb: (url: string) => void) => VoidFunction",
+        "description": "Returns the preview url of a file.\nReturns a function to revoke the url."
+      },
+      {
+        "name": "setClipboardFiles",
+        "type": "(dt: DataTransfer | null) => boolean",
+        "description": "Sets the clipboard files\nReturns `true` if the clipboard data contains files, `false` otherwise."
+      }
+    ]
   }
 }

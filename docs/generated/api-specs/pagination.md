@@ -222,3 +222,27 @@ Exposes the Pagination state to a render function. Renders no element.
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UsePaginationContext) => ReactNode` | Yes | — |  |
+
+## Context API
+
+`Pagination.Context`, `usePagination()` and `usePaginationContext()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `page` | `number` | The current page. |
+| `count` | `number` | The total number of data items. |
+| `pageSize` | `number` | The number of data items per page. |
+| `totalPages` | `number` | The total number of pages. |
+| `pages` | `Pages` | The page range. Represented as an array of page numbers (including ellipsis). |
+| `previousPage` | `number \| null` | The previous page. |
+| `nextPage` | `number \| null` | The next page. |
+| `pageRange` | `PageRange` | The page range. Represented as an object with `start` and `end` properties. |
+| `type` | `"button" \| "link"` | The type of the pagination controls. |
+| `getPageUrl` | `(page: number) => string \| undefined` | Returns the url for the given page, or `undefined` when `getPageUrl` is not provided. |
+| `slice` | `<V>(data: V[]) => V[]` | Function to slice an array of data based on the current page. |
+| `setPageSize` | `(size: number) => void` | Function to set the page size. |
+| `setPage` | `(page: number) => void` | Function to set the current page. |
+| `goToNextPage` | `VoidFunction` | Function to go to the next page. |
+| `goToPrevPage` | `VoidFunction` | Function to go to the previous page. |
+| `goToFirstPage` | `VoidFunction` | Function to go to the first page. |
+| `goToLastPage` | `VoidFunction` | Function to go to the last page. |

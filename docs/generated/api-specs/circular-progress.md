@@ -206,3 +206,20 @@ Exposes the CircularProgress state to a render function. Renders no element.
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseProgressContext) => ReactNode` | Yes | — |  |
+
+## Context API
+
+`CircularProgress.Context` and `useProgress()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `value` | `number \| null` | The current value of the progress bar. |
+| `valueAsString` | `string` | The current value of the progress bar as a string. |
+| `setValue` | `(value: number \| null) => void` | Sets the current value of the progress bar. |
+| `setToMax` | `VoidFunction` | Sets the current value of the progress bar to the max value. |
+| `setToMin` | `VoidFunction` | Sets the current value of the progress bar to the min value. |
+| `percent` | `number` | The percentage of the progress bar's value. |
+| `percentAsString` | `string` | The percentage of the progress bar's value as a string. |
+| `min` | `number` | The minimum allowed value of the progress bar. |
+| `max` | `number` | The maximum allowed value of the progress bar. |
+| `indeterminate` | `boolean` | Whether the progress bar is indeterminate. |

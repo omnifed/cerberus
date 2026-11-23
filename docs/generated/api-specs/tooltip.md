@@ -173,6 +173,18 @@ Exposes the Tooltip state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseTooltipContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Tooltip.Context` and `useTooltip()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `open` | `boolean` | Whether the tooltip is open. |
+| `setOpen` | `(open: boolean) => void` | Function to open the tooltip. |
+| `triggerValue` | `string \| null` | The trigger value. |
+| `setTriggerValue` | `(value: string \| null) => void` | Function to set the trigger value. |
+| `reposition` | `(options?: Partial<PositioningOptions>) => void` | Function to reposition the popover. |
+
 ## Accessibility
 
 Follows the [Tooltip WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/).

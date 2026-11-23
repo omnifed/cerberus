@@ -455,6 +455,35 @@ Exposes the Select item state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseSelectItemContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Select.Context` and `useSelect()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `focused` | `boolean` | Whether the select is focused. |
+| `open` | `boolean` | Whether the select is open. |
+| `empty` | `boolean` | Whether the select value is empty. |
+| `highlightedValue` | `string \| null` | The value of the highlighted item. |
+| `highlightedItem` | `V \| null` | The highlighted item. |
+| `setHighlightValue` | `(value: string) => void` | Function to highlight a value. |
+| `clearHighlightValue` | `VoidFunction` | Function to clear the highlighted value. |
+| `selectedItems` | `V[]` | The selected items. |
+| `hasSelectedItems` | `boolean` | Whether there's a selected option. |
+| `value` | `string[]` | The selected item keys. |
+| `valueAsString` | `string` | The string representation of the selected items. |
+| `selectValue` | `(value: string) => void` | Function to select a value. |
+| `selectAll` | `VoidFunction` | Function to select all values. |
+| `setValue` | `(value: string[]) => void` | Function to set the value of the select. |
+| `clearValue` | `(value?: string) => void` | Function to clear the value of the select. If a value is provided, it will only clear that value, otherwise, it will clear all values. |
+| `focus` | `VoidFunction` | Function to focus on the select input. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of a select item. |
+| `setOpen` | `(open: boolean) => void` | Function to open or close the select. |
+| `collection` | `ListCollection<V>` | Function to toggle the select. |
+| `reposition` | `(options?: Partial<PositioningOptions>) => void` | Function to set the positioning options of the select. |
+| `multiple` | `boolean` | Whether the select allows multiple selections. |
+| `disabled` | `boolean` | Whether the select is disabled. |
+
 ## Accessibility
 
 Follows the [Select-Only Combobox WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/).

@@ -536,5 +536,55 @@
         "description": "When focus is on an input, submits the form the pin input belongs to."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["usePinInput()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The value of the input as an array of strings."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The value of the input as a string."
+      },
+      {
+        "name": "complete",
+        "type": "boolean",
+        "description": "Whether all inputs are filled."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "The number of inputs to render."
+      },
+      {
+        "name": "items",
+        "type": "number[]",
+        "description": "The array of input values."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Function to set the value of the inputs."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the value of the inputs."
+      },
+      {
+        "name": "setValueAtIndex",
+        "type": "(index: number, value: string) => void",
+        "description": "Function to set the value of the input at a specific index."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the pin-input. This will focus the first input."
+      }
+    ]
   }
 }

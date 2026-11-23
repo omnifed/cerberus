@@ -159,6 +159,26 @@ export function renderDigest(spec: ComponentDocSpec): string {
 
   out.push('', '## Parts', '', spec.parts.map(renderPart).join('\n\n'))
 
+  if (spec.contextApi) {
+    const { exposedBy, members } = spec.contextApi
+    const names = exposedBy.map(code)
+    const list =
+      names.length > 1
+        ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}`
+        : names[0]
+    out.push(
+      '',
+      '## Context API',
+      '',
+      `${list} ${names.length > 1 ? 'expose' : 'exposes'} the component's state and methods:`,
+      '',
+      table(
+        ['Property', 'Type', 'Description'],
+        members.map((m) => [code(m.name), code(m.type), cell(m.description)]),
+      ),
+    )
+  }
+
   if (spec.a11y) {
     const { pattern, apgUrl, keyboard, notes } = spec.a11y
     out.push(

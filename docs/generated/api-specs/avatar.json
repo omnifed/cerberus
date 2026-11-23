@@ -265,5 +265,30 @@
         }
       ]
     }
-  ]
+  ],
+  "contextApi": {
+    "exposedBy": ["useAvatar()"],
+    "members": [
+      {
+        "name": "loaded",
+        "type": "boolean",
+        "description": "Whether the image is loaded."
+      },
+      {
+        "name": "setSrc",
+        "type": "(src: string) => void",
+        "description": "Function to set new src."
+      },
+      {
+        "name": "setLoaded",
+        "type": "VoidFunction",
+        "description": "Function to set loaded state."
+      },
+      {
+        "name": "setError",
+        "type": "VoidFunction",
+        "description": "Function to set error state."
+      }
+    ]
+  }
 }

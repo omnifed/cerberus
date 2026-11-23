@@ -643,5 +643,35 @@
         "description": "Closes the dialog and moves focus to trigger or the defined final focus element."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Dialog.Context", "useDialog()"],
+    "members": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the dialog is open."
+      },
+      {
+        "name": "modal",
+        "type": "boolean",
+        "description": "Whether the dialog is modal."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the dialog."
+      },
+      {
+        "name": "triggerValue",
+        "type": "string | null",
+        "description": "The active trigger value."
+      },
+      {
+        "name": "setTriggerValue",
+        "type": "(value: string | null) => void",
+        "description": "Function to set the active trigger value."
+      }
+    ]
   }
 }

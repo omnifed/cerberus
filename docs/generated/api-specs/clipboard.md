@@ -156,3 +156,14 @@ The value text primitive part of the Clipboard component. It has no recipe slot,
 | --- | --- | --- | --- | --- |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
+
+## Context API
+
+`Clipboard.Context` and `useClipboard()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `copied` | `boolean` | Whether the value has been copied to the clipboard. |
+| `value` | `string` | The value to be copied to the clipboard. |
+| `setValue` | `(value: string) => void` | Set the value to be copied to the clipboard. |
+| `copy` | `VoidFunction` | Copy the value to the clipboard. |

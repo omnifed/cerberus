@@ -42,22 +42,3 @@ You can customize the `NumberInput` component using the [primitive components](#
 ## API
 
 <ComponentApi spec="number-input" />
-
-### Context API
-
-`NumberInput.Context` and `useNumberInput()` expose:
-
-| Property        | Type                      | Description                                               |
-| --------------- | ------------------------- | --------------------------------------------------------- |
-| `focused`       | `boolean`                 | Whether the input is focused.                             |
-| `invalid`       | `boolean`                 | Whether the input is invalid.                             |
-| `empty`         | `boolean`                 | Whether the input value is empty.                         |
-| `value`         | `string`                  | The formatted value of the input.                         |
-| `valueAsNumber` | `number`                  | The value of the input as a number.                       |
-| `setValue`      | `(value: number) => void` | Function to set the value of the input.                   |
-| `clearValue`    | `VoidFunction`            | Function to clear the value of the input.                 |
-| `increment`     | `VoidFunction`            | Function to increment the value of the input by the step. |
-| `decrement`     | `VoidFunction`            | Function to decrement the value of the input by the step. |
-| `setToMax`      | `VoidFunction`            | Function to set the value of the input to the max.        |
-| `setToMin`      | `VoidFunction`            | Function to set the value of the input to the min.        |
-| `focus`         | `VoidFunction`            | Function to focus the input.                              |

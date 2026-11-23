@@ -212,6 +212,20 @@ Exposes the Checkbox state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseCheckboxContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Checkbox.Context` and `useCheckbox()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `checked` | `boolean` | Whether the checkbox is checked. |
+| `disabled` | `boolean \| undefined` | Whether the checkbox is disabled. |
+| `indeterminate` | `boolean` | Whether the checkbox is indeterminate. |
+| `focused` | `boolean \| undefined` | Whether the checkbox is focused. |
+| `checkedState` | `CheckedState` | The checked state of the checkbox. |
+| `setChecked` | `(checked: CheckedState) => void` | Function to set the checked state of the checkbox. |
+| `toggleChecked` | `VoidFunction` | Function to toggle the checked state of the checkbox. |
+
 ## Accessibility
 
 Follows the [Checkbox WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/).

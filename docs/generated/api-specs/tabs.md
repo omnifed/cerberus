@@ -177,6 +177,23 @@ Exposes the Tabs state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseTabsContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Tabs.Context` and `useTabs()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `value` | `string \| null` | The current value of the tabs. |
+| `focusedValue` | `string \| null` | The value of the tab that is currently focused. |
+| `setValue` | `(value: string) => void` | Sets the value of the tabs. |
+| `clearValue` | `VoidFunction` | Clears the value of the tabs. |
+| `setIndicatorRect` | `(value: string) => void` | Sets the indicator rect to the tab with the given value. |
+| `syncTabIndex` | `VoidFunction` | Synchronizes the tab index of the content element. Useful when rendering tabs within a select or combobox. |
+| `focus` | `VoidFunction` | Set focus on the selected tab trigger. |
+| `selectNext` | `(fromValue?: string) => void` | Selects the next tab. |
+| `selectPrev` | `(fromValue?: string) => void` | Selects the previous tab. |
+| `getTriggerState` | `(props: TriggerProps) => TriggerState` | Returns the state of the trigger with the given props. |
+
 ## Accessibility
 
 Follows the [Tabs WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/).

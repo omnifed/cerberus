@@ -902,5 +902,40 @@
         "description": "<span>Closes the popover and moves focus to the trigger.</span>."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Popover.Context", "usePopover()"],
+    "members": [
+      {
+        "name": "portalled",
+        "type": "boolean",
+        "description": "Whether the popover is portalled."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the popover is open."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the popover."
+      },
+      {
+        "name": "triggerValue",
+        "type": "string | null",
+        "description": "The trigger value."
+      },
+      {
+        "name": "setTriggerValue",
+        "type": "(value: string | null) => void",
+        "description": "Function to set the trigger value."
+      },
+      {
+        "name": "reposition",
+        "type": "(options?: Partial<PositioningOptions>) => void",
+        "description": "Function to reposition the popover."
+      }
+    ]
   }
 }

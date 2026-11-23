@@ -167,3 +167,19 @@ Exposes the Marquee state to a render function. Renders no element.
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseMarqueeContext) => ReactNode` | Yes | — |  |
+
+## Context API
+
+`Marquee.Context` and `useMarquee()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `paused` | `boolean` | Whether the marquee is currently paused. |
+| `orientation` | `"horizontal" \| "vertical"` | The current orientation of the marquee. |
+| `side` | `Side` | The current side/direction of the marquee. |
+| `multiplier` | `number` | The multiplier for auto-fill. Indicates how many times to duplicate content. When autoFill is enabled and content is smaller than container, this returns the number of additional copies needed. Otherwise returns 1. |
+| `contentCount` | `number` | The total number of content elements to render (original + clones). Use this value when rendering your content in a loop. |
+| `pause` | `VoidFunction` | Pause the marquee animation. |
+| `resume` | `VoidFunction` | Resume the marquee animation. |
+| `togglePause` | `VoidFunction` | Toggle the pause state. |
+| `restart` | `VoidFunction` | Restart the marquee animation from the beginning. |

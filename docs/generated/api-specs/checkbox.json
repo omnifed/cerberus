@@ -638,5 +638,45 @@
         "description": "Toggle the checkbox."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Checkbox.Context", "useCheckbox()"],
+    "members": [
+      {
+        "name": "checked",
+        "type": "boolean",
+        "description": "Whether the checkbox is checked."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "Whether the checkbox is disabled."
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "description": "Whether the checkbox is indeterminate."
+      },
+      {
+        "name": "focused",
+        "type": "boolean | undefined",
+        "description": "Whether the checkbox is focused."
+      },
+      {
+        "name": "checkedState",
+        "type": "CheckedState",
+        "description": "The checked state of the checkbox."
+      },
+      {
+        "name": "setChecked",
+        "type": "(checked: CheckedState) => void",
+        "description": "Function to set the checked state of the checkbox."
+      },
+      {
+        "name": "toggleChecked",
+        "type": "VoidFunction",
+        "description": "Function to toggle the checked state of the checkbox."
+      }
+    ]
   }
 }

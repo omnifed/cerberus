@@ -537,5 +537,60 @@
         }
       ]
     }
-  ]
+  ],
+  "contextApi": {
+    "exposedBy": ["CircularProgress.Context", "useProgress()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "number | null",
+        "description": "The current value of the progress bar."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The current value of the progress bar as a string."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: number | null) => void",
+        "description": "Sets the current value of the progress bar."
+      },
+      {
+        "name": "setToMax",
+        "type": "VoidFunction",
+        "description": "Sets the current value of the progress bar to the max value."
+      },
+      {
+        "name": "setToMin",
+        "type": "VoidFunction",
+        "description": "Sets the current value of the progress bar to the min value."
+      },
+      {
+        "name": "percent",
+        "type": "number",
+        "description": "The percentage of the progress bar's value."
+      },
+      {
+        "name": "percentAsString",
+        "type": "string",
+        "description": "The percentage of the progress bar's value as a string."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "description": "The minimum allowed value of the progress bar."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "description": "The maximum allowed value of the progress bar."
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "description": "Whether the progress bar is indeterminate."
+      }
+    ]
+  }
 }

@@ -727,5 +727,70 @@
         "description": "Submits the value entered in the number input."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["NumberInput.Context", "useNumberInput()"],
+    "members": [
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the input is focused."
+      },
+      {
+        "name": "invalid",
+        "type": "boolean",
+        "description": "Whether the input is invalid."
+      },
+      {
+        "name": "empty",
+        "type": "boolean",
+        "description": "Whether the input value is empty."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "The formatted value of the input."
+      },
+      {
+        "name": "valueAsNumber",
+        "type": "number",
+        "description": "The value of the input as a number."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: number) => void",
+        "description": "Function to set the value of the input."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the value of the input."
+      },
+      {
+        "name": "increment",
+        "type": "VoidFunction",
+        "description": "Function to increment the value of the input by the step."
+      },
+      {
+        "name": "decrement",
+        "type": "VoidFunction",
+        "description": "Function to decrement the value of the input by the step."
+      },
+      {
+        "name": "setToMax",
+        "type": "VoidFunction",
+        "description": "Function to set the value of the input to the max."
+      },
+      {
+        "name": "setToMin",
+        "type": "VoidFunction",
+        "description": "Function to set the value of the input to the min."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the input."
+      }
+    ]
   }
 }

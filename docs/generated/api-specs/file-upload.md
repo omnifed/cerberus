@@ -337,6 +337,30 @@ Exposes the FileUpload state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseFileUploadContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`FileUpload.Context` and `useFileUpload()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `dragging` | `boolean` | Whether the user is dragging something over the root element. |
+| `focused` | `boolean` | Whether the user is focused on the dropzone element. |
+| `disabled` | `boolean` | Whether the file input is disabled. |
+| `readOnly` | `boolean` | Whether the file input is in read-only mode. |
+| `transforming` | `boolean` | Whether files are currently being transformed via `transformFiles`. |
+| `maxFilesReached` | `boolean` | Whether the maximum number of files has been reached. |
+| `remainingFiles` | `number` | The number of files that can still be added. |
+| `openFilePicker` | `VoidFunction` | Function to open the file dialog. |
+| `deleteFile` | `(file: File, type?: ItemType \| undefined) => void` | Function to delete the file from the list. |
+| `acceptedFiles` | `File[]` | The accepted files that have been dropped or selected. |
+| `rejectedFiles` | `FileRejection[]` | The files that have been rejected. |
+| `setFiles` | `(files: File[]) => void` | Sets the accepted files. |
+| `clearFiles` | `VoidFunction` | Clears the accepted files. |
+| `clearRejectedFiles` | `VoidFunction` | Clears the rejected files. |
+| `getFileSize` | `(file: File) => string` | Returns the formatted file size (e.g. 1.2MB). |
+| `createFileUrl` | `(file: File, cb: (url: string) => void) => VoidFunction` | Returns the preview url of a file. Returns a function to revoke the url. |
+| `setClipboardFiles` | `(dt: DataTransfer \| null) => boolean` | Sets the clipboard files Returns `true` if the clipboard data contains files, `false` otherwise. |
+
 ## Accessibility
 
 `FileUpload.Dropzone` renders a focusable `role="button"` element (`role="application"` with `disableClick`) labelled "dropzone" by default; set its `aria-label` through the root's `translations.dropzone`.

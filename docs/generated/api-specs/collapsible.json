@@ -344,5 +344,35 @@
         "description": "Opens/closes the collapsible."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["useCollapsible()", "useCollapsibleContext()"],
+    "members": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the collapsible is open."
+      },
+      {
+        "name": "visible",
+        "type": "boolean",
+        "description": "Whether the collapsible is visible (open or closing)."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the collapsible is disabled."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the collapsible."
+      },
+      {
+        "name": "measureSize",
+        "type": "VoidFunction",
+        "description": "Function to measure the size of the content."
+      }
+    ]
   }
 }

@@ -732,5 +732,90 @@
         "description": "When focus is on an indicator, moves to the last page."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["useCarousel()"],
+    "members": [
+      {
+        "name": "page",
+        "type": "number",
+        "description": "The current index of the carousel."
+      },
+      {
+        "name": "pageSnapPoints",
+        "type": "number[]",
+        "description": "The current snap points of the carousel."
+      },
+      {
+        "name": "isPlaying",
+        "type": "boolean",
+        "description": "Whether the carousel is auto playing."
+      },
+      {
+        "name": "isDragging",
+        "type": "boolean",
+        "description": "Whether the carousel is being dragged. This only works when `draggable` is true."
+      },
+      {
+        "name": "canScrollNext",
+        "type": "boolean",
+        "description": "Whether the carousel is can scroll to the next view."
+      },
+      {
+        "name": "canScrollPrev",
+        "type": "boolean",
+        "description": "Whether the carousel is can scroll to the previous view."
+      },
+      {
+        "name": "scrollToIndex",
+        "type": "(index: number, instant?: boolean) => void",
+        "description": "Function to scroll to a specific item index."
+      },
+      {
+        "name": "scrollTo",
+        "type": "(page: number, instant?: boolean) => void",
+        "description": "Function to scroll to a specific page."
+      },
+      {
+        "name": "scrollNext",
+        "type": "(instant?: boolean) => void",
+        "description": "Function to scroll to the next page."
+      },
+      {
+        "name": "scrollPrev",
+        "type": "(instant?: boolean) => void",
+        "description": "Function to scroll to the previous page."
+      },
+      {
+        "name": "getProgress",
+        "type": "() => number",
+        "description": "Returns the current scroll progress as a percentage."
+      },
+      {
+        "name": "getProgressText",
+        "type": "() => string",
+        "description": "Returns the progress text."
+      },
+      {
+        "name": "play",
+        "type": "VoidFunction",
+        "description": "Function to start/resume autoplay."
+      },
+      {
+        "name": "pause",
+        "type": "VoidFunction",
+        "description": "Function to pause autoplay."
+      },
+      {
+        "name": "isInView",
+        "type": "(index: number) => boolean",
+        "description": "Whether the item is in view."
+      },
+      {
+        "name": "refresh",
+        "type": "VoidFunction",
+        "description": "Function to re-compute the snap points\nand clamp the page."
+      }
+    ]
   }
 }

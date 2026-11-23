@@ -241,6 +241,32 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     )
   })
 
+  test('the Context API comes from @zag-js/docs, with what exposes it', () => {
+    const radio = specs.get('radio')?.contextApi
+    expect(radio?.exposedBy).toEqual(['RadioGroup.Context', 'useRadioGroup()'])
+    expect(radio?.members.map((m) => m.name)).toEqual([
+      'value',
+      'setValue',
+      'clearValue',
+      'focus',
+      'getItemState',
+    ])
+    expect(radio?.members[0]).toEqual({
+      name: 'value',
+      type: 'string | null',
+      description: 'The current value of the radio group.',
+    })
+    // Only hooks the package exports are listed
+    expect(specs.get('toggle')?.contextApi?.exposedBy).toEqual([
+      'Toggle.Context',
+      'useToggle()',
+      'useToggleContext()',
+    ])
+    // No Zag machine (Cerberus-only, or no @zag-js/docs entry): no table
+    expect(specs.get('tag')?.contextApi).toBeUndefined()
+    expect(specs.get('field')?.contextApi).toBeUndefined()
+  })
+
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {
     const props = part('accordion', 'Accordion.Root').props
     const multiple = props.find((p) => p.name === 'multiple')

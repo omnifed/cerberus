@@ -618,6 +618,61 @@ Selector: `[data-scope="date-picker"][data-part="table-header"]`
 | `data-view` | The view of the table header. |
 | `data-disabled` | Present when disabled. |
 
+## Context API
+
+`DatePicker.Context` and `useDatePicker()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `focused` | `boolean` | Whether the input is focused. |
+| `open` | `boolean` | Whether the date picker is open. |
+| `disabled` | `boolean` | Whether the date picker is disabled. |
+| `invalid` | `boolean` | Whether the date picker is invalid. |
+| `readOnly` | `boolean` | Whether the date picker is read-only. |
+| `inline` | `boolean` | Whether the date picker is rendered inline. |
+| `numOfMonths` | `number` | The number of months to display. |
+| `showWeekNumbers` | `boolean` | Whether the week number column is shown in the day view. |
+| `selectionMode` | `SelectionMode` | The selection mode (single, multiple, or range). |
+| `maxSelectedDates` | `number \| undefined` | The maximum number of dates that can be selected (only for multiple selection mode). |
+| `isMaxSelected` | `boolean` | Whether the maximum number of selected dates has been reached. |
+| `view` | `DateView` | The current view of the date picker. |
+| `getWeekNumber` | `(week: DateValue[]) => number` | Returns the ISO 8601 week number (1-53) for the given week (array of dates). |
+| `getDaysInWeek` | `(week: number, from?: DateValue) => DateValue[]` | Returns an array of days in the week index counted from the provided start date, or the first visible date if not given. |
+| `getOffset` | `(duration: DateDuration) => DateValueOffset` | Returns the offset of the month based on the provided number of months. |
+| `getRangePresetValue` | `(value: DateRangePreset) => DateValue[]` | Returns the range of dates based on the provided date range preset. |
+| `getMonthWeeks` | `(from?: DateValue) => DateValue[][]` | Returns the weeks of the month from the provided date. Represented as an array of arrays of dates. |
+| `isUnavailable` | `(date: DateValue) => boolean` | Returns whether the provided date is available (or can be selected). |
+| `weeks` | `DateValue[][]` | The weeks of the month. Represented as an array of arrays of dates. |
+| `weekDays` | `WeekDay[]` | The days of the week. Represented as an array of strings. |
+| `visibleRange` | `VisibleRange` | The visible range of dates. |
+| `visibleRangeText` | `VisibleRangeText` | The human readable text for the visible range of dates. |
+| `value` | `DateValue[]` | The selected date. |
+| `valueAsDate` | `Date[]` | The selected date as a Date object. |
+| `valueAsString` | `string[]` | The selected date as a string. |
+| `focusedValue` | `DateValue` | The focused date. |
+| `focusedValueAsDate` | `Date` | The focused date as a Date object. |
+| `focusedValueAsString` | `string` | The focused date as a string. |
+| `selectToday` | `VoidFunction` | Sets the selected date to today. |
+| `setValue` | `(values: DateValue[]) => void` | Sets the selected date to the given date. |
+| `setTime` | `(time: Time, index?: number) => void` | Sets the time for a specific date value. Converts CalendarDate to CalendarDateTime if needed. |
+| `setFocusedValue` | `(value: DateValue) => void` | Sets the focused date to the given date. |
+| `clearValue` | `(options?: { focus?: boolean }) => void` | Clears the selected date(s). |
+| `setOpen` | `(open: boolean) => void` | Function to open or close the calendar. |
+| `focusMonth` | `(month: number) => void` | Function to set the selected month. |
+| `focusYear` | `(year: number) => void` | Function to set the selected year. |
+| `getYears` | `() => Cell[]` | Returns the months of the year. |
+| `getYearsGrid` | `(props?: YearGridProps) => YearGridValue` | Returns the years of the decade based on the columns. Represented as an array of arrays of years. |
+| `getDecade` | `() => Range<number \| undefined>` | Returns the start and end years of the decade. |
+| `getMonths` | `(props?: MonthFormatOptions) => Cell[]` | Returns the months of the year. |
+| `getMonthsGrid` | `(props?: MonthGridProps) => MonthGridValue` | Returns the months of the year based on the columns. Represented as an array of arrays of months. |
+| `format` | `(value: DateValue, opts?: Intl.DateTimeFormatOptions) => string` | Formats the given date value based on the provided options. |
+| `setView` | `(view: DateView) => void` | Sets the view of the date picker. |
+| `goToNext` | `VoidFunction` | Goes to the next month/year/decade. |
+| `goToPrev` | `VoidFunction` | Goes to the previous month/year/decade. |
+| `getDayTableCellState` | `(props: DayTableCellProps) => DayTableCellState` | Returns the state details for a given cell. |
+| `getMonthTableCellState` | `(props: TableCellProps) => TableCellState` | Returns the state details for a given month cell. |
+| `getYearTableCellState` | `(props: TableCellProps) => TableCellState` | Returns the state details for a given year cell. |
+
 ## Accessibility
 
 Follows the [Date Picker Dialog WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/).

@@ -29,6 +29,7 @@ export function ComponentApi({ spec }: ComponentApiProps) {
         variants={data.variants}
       />
       <PartsDocs parts={data.parts} specKey={data.key} />
+      <ContextApiDocs contextApi={data.contextApi} specKey={data.key} />
       <A11yDocs a11y={data.a11y} specKey={data.key} name={data.name} />
     </Stack>
   )
@@ -351,6 +352,66 @@ function partHeadingId(
 ): string {
   const part = parts.find((p) => p.exportName === target)
   return `${specKey}-${part?.name ?? target}-heading`
+}
+
+// Context API Docs ------------------------------------------------------------
+
+type ContextApiProps = {
+  contextApi: ComponentDocSpec['contextApi']
+  specKey: string
+}
+
+function ContextApiDocs({ contextApi, specKey }: ContextApiProps) {
+  if (!contextApi) return null
+
+  return (
+    <cerberus.section aria-labelledby={`${specKey}-context-api-heading`}>
+      <Heading id={`${specKey}-context-api-heading`}>Context API</Heading>
+      <Body>
+        <For each={contextApi.exposedBy}>
+          {(name, index) => (
+            <span key={name}>
+              {index > 0 &&
+                (index === contextApi.exposedBy.length - 1 ? ' and ' : ', ')}
+              <Code>{name}</Code>
+            </span>
+          )}
+        </For>{' '}
+        {contextApi.exposedBy.length > 1 ? 'expose' : 'exposes'} the component's
+        state and methods:
+      </Body>
+
+      <Box overflowX="auto">
+        <Table decoration="zebra">
+          <Table.Caption>Context API</Table.Caption>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCol scope="col">Property</Table.HeaderCol>
+              <Table.HeaderCol scope="col">Type</Table.HeaderCol>
+              <Table.HeaderCol scope="col">Description</Table.HeaderCol>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <For each={contextApi.members}>
+              {(member) => (
+                <Table.Row key={`context:${member.name}`}>
+                  <Table.Cell>
+                    <Code>{member.name}</Code>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Code>{member.type}</Code>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <CellText>{member.description}</CellText>
+                  </Table.Cell>
+                </Table.Row>
+              )}
+            </For>
+          </Table.Body>
+        </Table>
+      </Box>
+    </cerberus.section>
+  )
 }
 
 // A11y Docs -------------------------------------------------------------------

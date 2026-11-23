@@ -333,6 +333,28 @@ The hidden input primitive part of the Slider component. It has no recipe slot, 
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |
 
+## Context API
+
+`useSlider()` exposes the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `value` | `number[]` | The value of the slider. |
+| `dragging` | `boolean` | Whether the slider is being dragged. |
+| `focused` | `boolean` | Whether the slider is focused. |
+| `setValue` | `(value: number[]) => void` | Function to set the value of the slider. |
+| `getThumbValue` | `(index: number) => number` | Returns the value of the thumb at the given index. |
+| `setThumbValue` | `(index: number, value: number) => void` | Sets the value of the thumb at the given index. |
+| `getValuePercent` | `(value: number) => number` | Returns the percent of the thumb at the given index. |
+| `getPercentValue` | `(percent: number) => number` | Returns the value of the thumb at the given percent. |
+| `getThumbPercent` | `(index: number) => number` | Returns the percent of the thumb at the given index. |
+| `setThumbPercent` | `(index: number, percent: number) => void` | Sets the percent of the thumb at the given index. |
+| `getThumbMin` | `(index: number) => number` | Returns the min value of the thumb at the given index. |
+| `getThumbMax` | `(index: number) => number` | Returns the max value of the thumb at the given index. |
+| `increment` | `(index: number) => void` | Function to increment the value of the slider at the given index. |
+| `decrement` | `(index: number) => void` | Function to decrement the value of the slider at the given index. |
+| `focus` | `VoidFunction` | Function to focus the slider. This focuses the first thumb. |
+
 ## Accessibility
 
 Follows the [Slider WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/).

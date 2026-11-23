@@ -155,6 +155,22 @@ Selector: `[data-scope="pin-input"][data-part="root"]`
 | `data-complete` | Present when the pin-input value is complete. |
 | `data-readonly` | Present when read-only. |
 
+## Context API
+
+`usePinInput()` exposes the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `value` | `string[]` | The value of the input as an array of strings. |
+| `valueAsString` | `string` | The value of the input as a string. |
+| `complete` | `boolean` | Whether all inputs are filled. |
+| `count` | `number` | The number of inputs to render. |
+| `items` | `number[]` | The array of input values. |
+| `setValue` | `(value: string[]) => void` | Function to set the value of the inputs. |
+| `clearValue` | `VoidFunction` | Function to clear the value of the inputs. |
+| `setValueAtIndex` | `(index: number, value: string) => void` | Function to set the value of the input at a specific index. |
+| `focus` | `VoidFunction` | Function to focus the pin-input. This will focus the first input. |
+
 ## Accessibility
 
 | Key | Description |

@@ -57,6 +57,18 @@ Exposes the Toggle state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseToggleContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Toggle.Context`, `useToggle()` and `useToggleContext()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `pressed` | `boolean` | Whether the toggle is pressed. |
+| `disabled` | `boolean` | Whether the toggle is disabled. |
+| `setPressed` | `(pressed: boolean) => void` | Sets the pressed state of the toggle. |
+| `getRootProps` | `() => T["element"]` | Props for the root `button` element. |
+| `getIndicatorProps` | `() => T["element"]` | Props for the optional visual indicator (e.g. icon) element. |
+
 ## Accessibility
 
 Follows the [Button WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/).

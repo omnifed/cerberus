@@ -408,6 +408,25 @@ Exposes the Menu item state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseMenuItemContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Menu.Context` and `useMenu()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `open` | `boolean` | Whether the menu is open. |
+| `setOpen` | `(open: boolean) => void` | Function to open or close the menu. |
+| `triggerValue` | `string \| null` | The trigger value. |
+| `setTriggerValue` | `(value: string \| null) => void` | Function to set the trigger value. |
+| `highlightedValue` | `string \| null` | The id of the currently highlighted menuitem. |
+| `setHighlightedValue` | `(value: string) => void` | Function to set the highlighted menuitem. |
+| `setParent` | `(parent: MenuService) => void` | Function to register a parent menu. This is used for submenus. |
+| `setChild` | `(child: MenuService) => void` | Function to register a child menu. This is used for submenus. |
+| `reposition` | `(options?: Partial<PositioningOptions>) => void` | Function to reposition the popover. |
+| `getOptionItemState` | `(props: OptionItemProps) => OptionItemState` | Returns the state of the option item. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of the menu item. |
+| `addItemListener` | `(props: ItemListenerProps) => VoidFunction \| undefined` | Setup the custom event listener for item selection event. |
+
 ## Accessibility
 
 Follows the [Menu Button WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/).

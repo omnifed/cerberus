@@ -208,6 +208,18 @@ Exposes the Dialog state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseDialogContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`Dialog.Context` and `useDialog()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `open` | `boolean` | Whether the dialog is open. |
+| `modal` | `boolean` | Whether the dialog is modal. |
+| `setOpen` | `(open: boolean) => void` | Function to open or close the dialog. |
+| `triggerValue` | `string \| null` | The active trigger value. |
+| `setTriggerValue` | `(value: string \| null) => void` | Function to set the active trigger value. |
+
 ## Accessibility
 
 Follows the [Dialog (Modal) WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/).

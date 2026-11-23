@@ -199,6 +199,18 @@ Exposes the RadioGroup item state to a render function. Renders no element.
 | --- | --- | --- | --- | --- |
 | `children` | `(context: UseRadioGroupItemContext) => ReactNode` | Yes | — |  |
 
+## Context API
+
+`RadioGroup.Context` and `useRadioGroup()` expose the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `value` | `string \| null` | The current value of the radio group. |
+| `setValue` | `(value: string) => void` | Function to set the value of the radio group. |
+| `clearValue` | `VoidFunction` | Function to clear the value of the radio group. |
+| `focus` | `VoidFunction` | Function to focus the radio group. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state details of a radio input. |
+
 ## Accessibility
 
 Follows the [Radio Group WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/radio/).

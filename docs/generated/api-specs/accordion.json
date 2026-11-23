@@ -509,5 +509,30 @@
         "description": "When focus is on a trigger, moves focus to the last trigger."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["useAccordion()"],
+    "members": [
+      {
+        "name": "focusedValue",
+        "type": "string | null",
+        "description": "The value of the focused accordion item."
+      },
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The value of the accordion."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Sets the value of the accordion."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of an accordion item."
+      }
+    ]
   }
 }

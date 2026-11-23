@@ -161,6 +161,17 @@ Selector: `[data-scope="accordion"][data-part="root"]`
 | --- | --- |
 | `data-orientation` | Mirrors the `orientation` prop |
 
+## Context API
+
+`useAccordion()` exposes the component's state and methods:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `focusedValue` | `string \| null` | The value of the focused accordion item. |
+| `value` | `string[]` | The value of the accordion. |
+| `setValue` | `(value: string[]) => void` | Sets the value of the accordion. |
+| `getItemState` | `(props: ItemProps) => ItemState` | Returns the state of an accordion item. |
+
 ## Accessibility
 
 Follows the [Accordion WAI-ARIA pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).

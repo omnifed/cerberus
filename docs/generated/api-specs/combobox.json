@@ -1651,5 +1651,130 @@
         "description": "Closes the combobox."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Combobox.Context", "useCombobox()", "useComboboxContext()"],
+    "members": [
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the combobox is focused."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the combobox is open."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "description": "Whether the results are being loaded."
+      },
+      {
+        "name": "inputValue",
+        "type": "string",
+        "description": "The value of the combobox input."
+      },
+      {
+        "name": "highlightedValue",
+        "type": "string | null",
+        "description": "The value of the highlighted item."
+      },
+      {
+        "name": "highlightedItem",
+        "type": "V | null",
+        "description": "The highlighted item."
+      },
+      {
+        "name": "setHighlightValue",
+        "type": "(value: string) => void",
+        "description": "The value of the combobox input."
+      },
+      {
+        "name": "clearHighlightValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the highlighted value."
+      },
+      {
+        "name": "syncSelectedItems",
+        "type": "VoidFunction",
+        "description": "Function to sync the selected items with the value.\nUseful when `value` is updated from async sources."
+      },
+      {
+        "name": "selectedItems",
+        "type": "V[]",
+        "description": "The selected items."
+      },
+      {
+        "name": "hasSelectedItems",
+        "type": "boolean",
+        "description": "Whether there's a selected item."
+      },
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The selected item keys."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The string representation of the selected items."
+      },
+      {
+        "name": "selectValue",
+        "type": "(value: string) => void",
+        "description": "Function to select a value."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Function to set the value of the combobox."
+      },
+      {
+        "name": "clearValue",
+        "type": "(value?: string) => void",
+        "description": "Function to clear the value of the combobox."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus on the combobox input."
+      },
+      {
+        "name": "setInputValue",
+        "type": "(value: string, reason?: InputValueChangeReason) => void",
+        "description": "Function to set the input value of the combobox."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of a combobox item."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean, reason?: OpenChangeReason) => void",
+        "description": "Function to open or close the combobox."
+      },
+      {
+        "name": "collection",
+        "type": "ListCollection<V>",
+        "description": "Function to toggle the combobox."
+      },
+      {
+        "name": "reposition",
+        "type": "(options?: Partial<PositioningOptions>) => void",
+        "description": "Function to set the positioning options."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "description": "Whether the combobox allows multiple selections."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the combobox is disabled."
+      }
+    ]
   }
 }

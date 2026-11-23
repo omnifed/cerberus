@@ -118,6 +118,24 @@ export const A11ySpecSchema = z
     message: '`pattern` and `apgUrl` go together',
   })
 
+export const ContextApiSpecSchema = z
+  .strictObject({
+    exposedBy: z
+      .array(z.string().min(1))
+      .min(1)
+      .describe('Cerberus exports that expose it: `X.Context`, `useX()`…'),
+    members: z
+      .array(
+        z.strictObject({
+          name: z.string().min(1),
+          type: z.string().min(1),
+          description: z.string(),
+        }),
+      )
+      .min(1),
+  })
+  .describe("The Zag machine's API, from `@zag-js/docs`")
+
 export const ComponentDocSpecSchema = z
   .strictObject({
     name: z.string().min(1),
@@ -126,6 +144,7 @@ export const ComponentDocSpecSchema = z
     variants: z.array(VariantSpecSchema),
     parts: z.array(PartSpecSchema),
     a11y: A11ySpecSchema.optional(),
+    contextApi: ContextApiSpecSchema.optional(),
   })
   .superRefine((spec, ctx) => {
     const exportNames = new Set(spec.parts.map((p) => p.exportName))

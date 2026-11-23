@@ -564,5 +564,60 @@
         "description": "In manual mode, when a trigger is focused, moves focus to its associated content."
       }
     ]
+  },
+  "contextApi": {
+    "exposedBy": ["Tabs.Context", "useTabs()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "string | null",
+        "description": "The current value of the tabs."
+      },
+      {
+        "name": "focusedValue",
+        "type": "string | null",
+        "description": "The value of the tab that is currently focused."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string) => void",
+        "description": "Sets the value of the tabs."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Clears the value of the tabs."
+      },
+      {
+        "name": "setIndicatorRect",
+        "type": "(value: string) => void",
+        "description": "Sets the indicator rect to the tab with the given value."
+      },
+      {
+        "name": "syncTabIndex",
+        "type": "VoidFunction",
+        "description": "Synchronizes the tab index of the content element.\nUseful when rendering tabs within a select or combobox."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Set focus on the selected tab trigger."
+      },
+      {
+        "name": "selectNext",
+        "type": "(fromValue?: string) => void",
+        "description": "Selects the next tab."
+      },
+      {
+        "name": "selectPrev",
+        "type": "(fromValue?: string) => void",
+        "description": "Selects the previous tab."
+      },
+      {
+        "name": "getTriggerState",
+        "type": "(props: TriggerProps) => TriggerState",
+        "description": "Returns the state of the trigger with the given props."
+      }
+    ]
   }
 }
