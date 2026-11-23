@@ -24,7 +24,6 @@ const REF_URL = 'https://cerberus.digitalu.design/docs/components'
 export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
   const {
     name,
-    key,
     recipe,
     source,
     arkKey,

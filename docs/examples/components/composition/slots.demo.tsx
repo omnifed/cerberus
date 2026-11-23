@@ -8,7 +8,7 @@ export function SlotsDemo() {
   return (
     <HStack w="3/4">
       <Accordion collapsible>
-        <Accordion.ItemGroup heading="Slots demo" value="one">
+        <Accordion.ItemGroup heading="Parts demo" value="one">
           <Accordion.ItemIndicator>
             <Square size="6rem">
               <CerberusLogo />

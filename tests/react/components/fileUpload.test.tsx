@@ -436,6 +436,7 @@ describe('FileUpload', () => {
 
     function RootProviderTest() {
       const fileUpload = useFileUpload({ accept: 'image/*', maxFiles: 3 })
+      // oxlint-disable-next-line react/globals
       api = fileUpload
       return (
         <FileUpload.RootProvider value={fileUpload} data-testid="root">
