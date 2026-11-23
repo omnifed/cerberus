@@ -15,6 +15,7 @@ export interface EmitOptions {
   /**
    * Directories fully owned by the generator. Files in them that the generator no
    * longer produces (e.g. a removed component) are deleted, or reported in check mode.
+   * Dot-entries (`.claude/`, `.DS_Store`) are left alone.
    */
   ownedDirs?: string[]
 }
@@ -76,6 +77,10 @@ export async function emitFiles(
   for (const dir of ownedDirs) {
     if (!existsSync(dir)) continue
     for (const entry of readdirSync(dir)) {
+      // Generators never emit dot-entries, but tools drop them into whatever
+      // directory they run in (Claude Code's `.claude/`, macOS `.DS_Store`):
+      // neither stale output nor ours to delete
+      if (entry.startsWith('.')) continue
       const path = join(dir, entry)
       if (produced.has(path)) continue
       if (check) stale.push(path)
