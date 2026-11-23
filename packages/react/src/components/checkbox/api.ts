@@ -56,7 +56,10 @@ export type {
  * @example
  * ```tsx
  * import { Checkbox } from '@cerberus/react'
- * <Checkbox />
+ *
+ * <Checkbox name="terms" required>
+ *   I agree to the terms
+ * </Checkbox>
  * ```
  *
  * ## Reference

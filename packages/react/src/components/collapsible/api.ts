@@ -41,7 +41,11 @@ export type {
  * @example
  * ```tsx
  * import { Collapsible } from '@cerberus/react'
- * <Collapsible />
+ *
+ * <Collapsible>
+ *   <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+ *   <Collapsible.Content>Collapsible content goes here.</Collapsible.Content>
+ * </Collapsible>
  * ```
  *
  * ## Reference

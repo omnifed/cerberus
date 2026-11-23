@@ -74,9 +74,8 @@ export type {
  * @example
  * ```tsx
  * import { Slider } from '@cerberus/react'
- * <Slider>
- *   <Slider.Thumbs />
- * </Slider>
+ *
+ * <Slider defaultValue={[30]} />
  * ```
  *
  * ## Reference

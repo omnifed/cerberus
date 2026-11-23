@@ -92,9 +92,20 @@ export type {
  * @example
  * ```tsx
  * import { Select } from '@cerberus/react'
- * <Select>
- *   <Select.ItemWithIndicator />
- * </Select>
+ *
+ * const collection = createSelectCollection([
+ *   { label: 'Hades', value: 'hades' },
+ *   { label: 'Persephone', value: 'persephone' },
+ *   { label: 'Zeus', value: 'zeus', disabled: true },
+ * ])
+ *
+ * <Field label="Select Relative">
+ *   <Select collection={collection} placeholder="Choose option">
+ *     <For each={collection.items}>
+ *       {(item) => <Select.ItemWithIndicator key={item.value} item={item} />}
+ *     </For>
+ *   </Select>
+ * </Field>
  * ```
  *
  * ## Reference

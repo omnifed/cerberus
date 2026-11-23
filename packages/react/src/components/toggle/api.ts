@@ -31,7 +31,14 @@ export type {
  * @example
  * ```tsx
  * import { Toggle } from '@cerberus/react'
- * <Toggle />
+ *
+ * <Toggle defaultPressed asChild>
+ *   <IconButton ariaLabel="Notifications">
+ *     <Toggle.Indicator fallback={<NotificationOff />}>
+ *       <Notification />
+ *     </Toggle.Indicator>
+ *   </IconButton>
+ * </Toggle>
  * ```
  *
  * ## Reference

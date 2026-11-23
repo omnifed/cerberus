@@ -59,7 +59,10 @@ export type {
  * @example
  * ```tsx
  * import { NumberInput } from '@cerberus/react'
- * <NumberInput />
+ *
+ * <Field label="How many?">
+ *   <NumberInput />
+ * </Field>
  * ```
  *
  * ## Reference

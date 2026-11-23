@@ -86,9 +86,8 @@ export type {
  * @example
  * ```tsx
  * import { FileUpload } from '@cerberus/react'
- * <FileUpload>
- *   <FileUpload.ItemGroupWithPreview />
- * </FileUpload>
+ *
+ * <FileUpload accept="image/*" heading="Upload Files" name="avatar" />
  * ```
  *
  * ## Reference

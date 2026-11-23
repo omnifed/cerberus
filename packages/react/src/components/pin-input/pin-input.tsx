@@ -25,6 +25,12 @@ export type PinInputProps = PinInputRootProps
  * hidden input that holds the combined value. Direct `PinInput.Label`,
  * `PinInput.Control` and `PinInput.Input` children override those parts; a
  * `PinInput.Input` child patches every input (its `index` is ignored).
+ * @example
+ * ```tsx
+ * <Field label="Enter PIN">
+ *   <PinInput />
+ * </Field>
+ * ```
  */
 export function PinInputEl(props: PinInputProps) {
   const [localProps, rootProps] = splitProps(props, ['children'])

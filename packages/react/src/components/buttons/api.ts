@@ -51,8 +51,9 @@ export type {
  * @example
  * ```tsx
  * import { Button } from '@cerberus/react'
- * <Button>
- *   <Button.Icon />
+ *
+ * <Button usage="filled" onClick={save}>
+ *   Save
  * </Button>
  * ```
  *

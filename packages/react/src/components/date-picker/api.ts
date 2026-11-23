@@ -143,9 +143,14 @@ export type {
  * @example
  * ```tsx
  * import { DatePicker } from '@cerberus/react'
- * <DatePicker>
- *   <DatePicker.InputGroup />
- * </DatePicker>
+ *
+ * <Field label="Start date">
+ *   <DatePicker name="start_date">
+ *     <DatePicker.Label>Start date</DatePicker.Label>
+ *     <DatePicker.InputGroup />
+ *     <DatePicker.Calendar />
+ *   </DatePicker>
+ * </Field>
  * ```
  *
  * ## Reference

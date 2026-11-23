@@ -59,7 +59,8 @@ export type {
  * @example
  * ```tsx
  * import { CircularProgress } from '@cerberus/react'
- * <CircularProgress />
+ *
+ * <CircularProgress value={50} label="Uploading" size="md" />
  * ```
  *
  * ## Reference

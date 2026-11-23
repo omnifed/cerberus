@@ -33,7 +33,8 @@ export type { ProgressBarRootProps, ProgressBarBarProps } from './primitives'
  * @example
  * ```tsx
  * import { ProgressBar } from '@cerberus/react'
- * <ProgressBar />
+ *
+ * <ProgressBar id="upload" label="Uploading" now={75} />
  * ```
  *
  * ## Reference

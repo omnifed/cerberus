@@ -53,7 +53,8 @@ export type {
  * @example
  * ```tsx
  * import { Rating } from '@cerberus/react'
- * <Rating />
+ *
+ * <Rating count={5} defaultValue={3} allowHalf label="Rate this course" />
  * ```
  *
  * ## Reference

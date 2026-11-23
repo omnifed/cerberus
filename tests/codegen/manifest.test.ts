@@ -1,6 +1,10 @@
 import { describe, expect, test } from 'bun:test'
+import { mkdtempSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { listConfigKeys, loadConfigs } from 'codegen/core/configs'
 import { Diagnostics } from 'codegen/core/diagnostics'
+import { componentExample, jsdocExample } from 'codegen/core/examples'
 import { loadManifest } from 'codegen/core/manifest'
 import {
   toCamelCase,
@@ -612,5 +616,121 @@ export const slotRecipes = {
     expect(once).toContain(`import { hoverCard } from './slots/hoverCard'`)
     expect(once).toContain(`  accordion,\n  hoverCard,\n}`)
     expect(registerSlotRecipe(once, 'hoverCard')).toBeNull()
+  })
+})
+
+describe('JSDoc example', () => {
+  const source = `
+/** Not this one. @example \`\`\`tsx\n<Wrong />\n\`\`\` */
+export function Other() {}
+
+/**
+ * The tag.
+ *
+ * @example
+ * \`\`\`tsx
+ * <Tag>
+ *   Hi
+ * </Tag>
+ * \`\`\`
+ */
+export function TagEl() {}
+
+/** No example here. */
+export const TagBare = () => null
+
+export const TagAlias = TagEl
+`
+
+  test('reads the fenced block after @example above the declaration', () => {
+    expect(jsdocExample(source, 'TagEl')).toBe('<Tag>\n  Hi\n</Tag>')
+    expect(jsdocExample(source, 'TagBare')).toBeNull()
+    expect(jsdocExample(source, 'Missing')).toBeNull()
+    // An alias is followed to the declaration it names
+    expect(jsdocExample(source, 'TagAlias')).toBe('<Tag>\n  Hi\n</Tag>')
+  })
+
+  test('config example, then the <Name> abstraction, then any other, then <Name />', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'codegen-example-'))
+    const docs = (name: string, code: string) =>
+      `/**\n * @example\n * \`\`\`tsx\n * ${code}\n * \`\`\`\n */\nexport function ${name}() {}\n`
+    writeFileSync(join(dir, 'tag.tsx'), docs('TagEl', '<Tag>El</Tag>'))
+    writeFileSync(
+      join(dir, 'closable.tsx'),
+      docs('TagClosable', '<Tag.Closable onClick={close} />'),
+    )
+    writeFileSync(join(dir, 'bare.tsx'), 'export function TagBare() {}\n')
+    const entry = (config: Partial<Parameters<typeof defineComponent>[0]>) => {
+      const [e] = loadManifest(
+        [
+          defineComponent({
+            key: 'tag',
+            anatomy: ['root'],
+            description: 'x',
+            ...config,
+          }),
+        ],
+        new Diagnostics(),
+      )
+      return { ...e, dir }
+    }
+    const closable = { name: 'Closable', file: 'closable', description: 'x' }
+    const el = {
+      name: 'El',
+      file: 'tag',
+      description: 'x',
+      isDefaultExport: true,
+    }
+    const bare = { name: 'Bare', file: 'bare', description: 'x' }
+
+    // The default export wins even when listed last; members are never nested
+    expect(componentExample(entry({ abstractions: [closable, el] }))).toBe(
+      '<Tag>El</Tag>',
+    )
+    expect(componentExample(entry({ abstractions: [bare, closable] }))).toBe(
+      '<Tag.Closable onClick={close} />',
+    )
+    expect(componentExample(entry({ abstractions: [bare] }))).toBe('<Tag />')
+    expect(
+      componentExample(
+        entry({ abstractions: [el], example: '\n<Tag gradient="x" />\n' }),
+      ),
+    ).toBe('<Tag gradient="x" />')
+  })
+
+  test('the api.ts example block uses it, and a closing */ is rejected', () => {
+    const [e] = loadManifest(
+      [
+        defineComponent({
+          key: 'tag',
+          anatomy: ['root'],
+          description: 'x',
+          example: '<Tag>\n\n  Hi\n</Tag>',
+        }),
+      ],
+      new Diagnostics(),
+    )
+    const api =
+      generateComponentAPI(e).find((f) => f.path.endsWith('/api.ts'))
+        ?.content ?? ''
+    expect(api).toContain(
+      " * import { Tag } from '@cerberus/react'\n *\n * <Tag>\n *\n *   Hi\n * </Tag>\n * ```",
+    )
+
+    const diagnostics = new Diagnostics()
+    loadManifest(
+      [
+        defineComponent({
+          key: 'tag',
+          anatomy: ['root'],
+          description: 'x',
+          example: '<Tag /> */',
+        }),
+      ],
+      diagnostics,
+    )
+    expect(diagnostics.items.map((d) => d.message)).toContain(
+      'example must not contain `*/` (it ends the JSDoc)',
+    )
   })
 })

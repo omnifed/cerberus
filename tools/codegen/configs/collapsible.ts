@@ -9,6 +9,12 @@ The Collapsible component is used to expand and collapse additional content. It 
 
 It supports an initial open state, a partial collapsed height to preview the content, and different open/close effects on the content.
   `,
+  example: `
+<Collapsible>
+  <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+  <Collapsible.Content>Collapsible content goes here.</Collapsible.Content>
+</Collapsible>
+`,
 
   // v1 exported a RootProvider; keep it as `Collapsible.RootProvider`
   arkMembers: ['RootProvider'],

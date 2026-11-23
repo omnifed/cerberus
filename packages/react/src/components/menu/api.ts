@@ -92,8 +92,15 @@ export type {
  * @example
  * ```tsx
  * import { Menu } from '@cerberus/react'
+ *
  * <Menu>
- *   <Menu.ContentGroup />
+ *   <Menu.Trigger asChild>
+ *     <Button>Open</Button>
+ *   </Menu.Trigger>
+ *   <Menu.ContentGroup>
+ *     <Menu.Item value="edit">Edit</Menu.Item>
+ *     <Menu.Item value="delete">Delete</Menu.Item>
+ *   </Menu.ContentGroup>
  * </Menu>
  * ```
  *

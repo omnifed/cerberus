@@ -47,8 +47,14 @@ export type {
  * @example
  * ```tsx
  * import { Accordion } from '@cerberus/react'
- * <Accordion>
- *   <Accordion.ItemGroup />
+ *
+ * <Accordion defaultValue={['one']}>
+ *   <Accordion.ItemGroup heading="What is Cerberus?" value="one">
+ *     A design system.
+ *   </Accordion.ItemGroup>
+ *   <Accordion.ItemGroup heading="Is it accessible?" value="two">
+ *     Yes.
+ *   </Accordion.ItemGroup>
  * </Accordion>
  * ```
  *

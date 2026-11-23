@@ -9,6 +9,19 @@ The Clipboard component provides an accessible way to copy text to the user's cl
 
 It is unstyled by default: every part accepts Panda style props, \`css\` and \`asChild\`, so you can turn the trigger into a button or the input into a text field. Use \`Clipboard.CopyIndicator\` or \`Clipboard.CopyText\` inside the trigger for the default copy/copied feedback, or \`Clipboard.TriggerWithTooltip\` to show that status in a tooltip.
   `,
+  example: `
+<Clipboard value="Hello, World!">
+  <Clipboard.Label>Greeting</Clipboard.Label>
+  <Clipboard.Control>
+    <Clipboard.Input />
+    <Clipboard.TriggerWithTooltip asChild>
+      <IconButton clipboard>
+        <Clipboard.CopyIndicator />
+      </IconButton>
+    </Clipboard.TriggerWithTooltip>
+  </Clipboard.Control>
+</Clipboard>
+`,
 
   // No `clipboard` slot recipe exists: every part is `cerberus(ArkClipboard.X)`
   recipe: false,

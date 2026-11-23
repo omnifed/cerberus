@@ -65,9 +65,16 @@ export type {
  * @example
  * ```tsx
  * import { Carousel } from '@cerberus/react'
- * <Carousel>
- *   <Carousel.El />
- * </Carousel>
+ *
+ * <Carousel.El slideCount={items.length} slidesPerPage={2} showIndicators>
+ *   <Carousel.ItemGroup>
+ *     {items.map((item, index) => (
+ *       <Carousel.Item key={item.id} index={index}>
+ *         {item.content}
+ *       </Carousel.Item>
+ *     ))}
+ *   </Carousel.ItemGroup>
+ * </Carousel.El>
  * ```
  *
  * ## Reference

@@ -92,8 +92,21 @@ export type {
  * @example
  * ```tsx
  * import { Combobox } from '@cerberus/react'
- * <Combobox>
- *   <Combobox.ItemWithIndicator />
+ *
+ * const { collection, handleInputChange } = useStatefulCollection(items)
+ *
+ * <Combobox
+ *   collection={collection}
+ *   label="Select Relative"
+ *   onInputValueChange={handleInputChange}
+ * >
+ *   <For each={collection.items}>
+ *     {(item) => (
+ *       <Combobox.ItemWithIndicator key={item.value} item={item}>
+ *         <Combobox.ItemText>{item.label}</Combobox.ItemText>
+ *       </Combobox.ItemWithIndicator>
+ *     )}
+ *   </For>
  * </Combobox>
  * ```
  *

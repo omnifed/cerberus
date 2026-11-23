@@ -28,7 +28,13 @@ export type { SpinnerRootProps } from './primitives'
  * @example
  * ```tsx
  * import { Spinner } from '@cerberus/react'
- * <Spinner />
+ *
+ * <Button>
+ *   <Show when={loading} fallback={<>Save</>}>
+ *      Saving
+ *      <Spinner size={24} />
+ *   </Show>
+ * </Button>
  * ```
  *
  * ## Reference

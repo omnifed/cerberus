@@ -28,7 +28,11 @@ export type { GroupRootProps, GroupProps } from './primitives'
  * @example
  * ```tsx
  * import { Group } from '@cerberus/react'
- * <Group />
+ *
+ * <Group layout="attached">
+ *   <Button usage="outlined">Item 1</Button>
+ *   <Button usage="outlined">Item 2</Button>
+ * </Group>
  * ```
  *
  * ## Reference

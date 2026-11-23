@@ -47,7 +47,8 @@ export type {
  * @example
  * ```tsx
  * import { Switch } from '@cerberus/react'
- * <Switch />
+ *
+ * <Switch>Receive in app notifications</Switch>
  * ```
  *
  * ## Reference

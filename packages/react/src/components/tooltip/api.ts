@@ -53,7 +53,10 @@ export type {
  * @example
  * ```tsx
  * import { Tooltip } from '@cerberus/react'
- * <Tooltip />
+ *
+ * <Tooltip content="This is a tooltip">
+ *   <Information />
+ * </Tooltip>
  * ```
  *
  * ## Reference

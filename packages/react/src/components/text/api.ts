@@ -32,7 +32,13 @@ export type { TextRootProps } from './primitives'
  * @example
  * ```tsx
  * import { Text } from '@cerberus/react'
- * <Text />
+ *
+ * <Text as="h1" color="page.text.100" textStyle={{
+ *   base: 'heading-md',
+ *   md: 'heading-lg',
+ * }}>
+ *  Hello, world!
+ * </Text>
  * ```
  *
  * ## Reference

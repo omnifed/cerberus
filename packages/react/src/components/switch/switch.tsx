@@ -27,6 +27,10 @@ export type SwitchProps = SwitchRootProps
  * `Switch.Label` or `Switch.HiddenInput` children override that part.
  * @description [Cerberus Docs] https://cerberus.digitalu.design/docs/components/switch
  * @description [Ark Docs] https://ark-ui.com/docs/components/switch
+ * @example
+ * ```tsx
+ * <Switch>Receive in app notifications</Switch>
+ * ```
  */
 export function SwitchEl(props: SwitchProps) {
   const { children, ...rootProps } = props

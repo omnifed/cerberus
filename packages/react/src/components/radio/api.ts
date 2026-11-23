@@ -59,8 +59,10 @@ export type {
  * @example
  * ```tsx
  * import { RadioGroup } from '@cerberus/react'
- * <RadioGroup>
- *   <RadioGroup.Radio />
+ *
+ * <RadioGroup defaultValue="cerberus">
+ *   <Radio value="cerberus">Cerberus</Radio>
+ *   <Radio value="hades" size="md">Hades</Radio>
  * </RadioGroup>
  * ```
  *

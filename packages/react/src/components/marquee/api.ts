@@ -50,7 +50,11 @@ export type {
  * @example
  * ```tsx
  * import { Marquee } from '@cerberus/react'
- * <Marquee />
+ *
+ * <Marquee spacing="5rem">
+ *   <Marquee.Item>One</Marquee.Item>
+ *   <Marquee.Item>Two</Marquee.Item>
+ * </Marquee>
  * ```
  *
  * ## Reference

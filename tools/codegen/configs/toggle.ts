@@ -9,6 +9,15 @@ The Toggle component is a two-state button that allows users to toggle between s
 
 It is headless (unstyled) to fit any scenario: style it with style props or the \`css\` prop, or render your own button with \`asChild\`. Use \`Toggle.Indicator\` to show content based on the pressed state. If you only need to conditionally render content based on a binary condition, use the Show component instead.
   `,
+  example: `
+<Toggle defaultPressed asChild>
+  <IconButton ariaLabel="Notifications">
+    <Toggle.Indicator fallback={<NotificationOff />}>
+      <Notification />
+    </Toggle.Indicator>
+  </IconButton>
+</Toggle>
+`,
 
   // No slot recipe: the legacy `toggle` recipe's slots don't match Ark's anatomy
   recipe: false,

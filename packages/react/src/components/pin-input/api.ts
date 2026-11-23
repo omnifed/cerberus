@@ -47,7 +47,10 @@ export type {
  * @example
  * ```tsx
  * import { PinInput } from '@cerberus/react'
- * <PinInput />
+ *
+ * <Field label="Enter PIN">
+ *   <PinInput />
+ * </Field>
  * ```
  *
  * ## Reference

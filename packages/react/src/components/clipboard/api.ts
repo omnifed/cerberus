@@ -62,8 +62,17 @@ export type {
  * @example
  * ```tsx
  * import { Clipboard } from '@cerberus/react'
- * <Clipboard>
- *   <Clipboard.CopyIndicator />
+ *
+ * <Clipboard value="Hello, World!">
+ *   <Clipboard.Label>Greeting</Clipboard.Label>
+ *   <Clipboard.Control>
+ *     <Clipboard.Input />
+ *     <Clipboard.TriggerWithTooltip asChild>
+ *       <IconButton clipboard>
+ *         <Clipboard.CopyIndicator />
+ *       </IconButton>
+ *     </Clipboard.TriggerWithTooltip>
+ *   </Clipboard.Control>
  * </Clipboard>
  * ```
  *

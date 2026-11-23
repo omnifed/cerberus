@@ -50,9 +50,15 @@ export type {
  * @example
  * ```tsx
  * import { Tabs } from '@cerberus/react'
- * <Tabs>
- *   <Tabs.ListGroup />
- * </Tabs>
+ *
+ * <Tabs.Root defaultValue="overview">
+ *   <Tabs.ListGroup>
+ *     <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+ *     <Tabs.Trigger value="features">Features</Tabs.Trigger>
+ *   </Tabs.ListGroup>
+ *   <Tabs.Content value="overview">Overview content</Tabs.Content>
+ *   <Tabs.Content value="features">Features content</Tabs.Content>
+ * </Tabs.Root>
  * ```
  *
  * ## Reference

@@ -53,6 +53,10 @@ export type SliderProps = SliderRootProps & {
  * marker).
  * @description [Cerberus Docs] https://cerberus.digitalu.design/docs/components/slider
  * @description [Ark Docs] https://ark-ui.com/docs/components/slider
+ * @example
+ * ```tsx
+ * <Slider defaultValue={[30]} />
+ * ```
  */
 export function SliderEl(props: SliderProps) {
   const [localProps, rootProps] = splitProps(props, [

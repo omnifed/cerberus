@@ -106,6 +106,12 @@ export type ComponentConfig = {
    * caller's value never reaches Ark; the docs spec fails on such a variant.
    */
   defaultProps?: Record<string, Record<string, DefaultPropValue>>
+  /**
+   * TSX for the JSDoc `@example` in `api.ts`, without the import line. Defaults to the
+   * `@example` written on the abstraction rendered as `<Name>` (else on the first
+   * other abstraction that has one), else `<Name />`.
+   */
+  example?: string
   /** Docs page slug when it isn't the key, e.g. `progress` for CircularProgress */
   docsSlug?: string
   abstractions?: AbstractionConfig[]

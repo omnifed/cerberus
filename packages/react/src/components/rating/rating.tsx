@@ -60,9 +60,7 @@ export interface RatingProps extends Omit<RatingRootProps, 'children'> {
  * @description [Ark Docs](https://ark-ui.com/docs/components/rating-group)
  * @example
  * ```tsx
- * <Rating count={5} defaultValue={3} allowHalf label="Rate this course">
- *   {({ half }) => (half ? <StarHalf /> : <StarFilled />)}
- * </Rating>
+ * <Rating count={5} defaultValue={3} allowHalf label="Rate this course" />
  * ```
  */
 export function RatingEl(props: RatingProps) {

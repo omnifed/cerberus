@@ -77,8 +77,14 @@ export type {
  * @example
  * ```tsx
  * import { Field } from '@cerberus/react'
- * <Field>
- *   <Field.InputGroup />
+ *
+ * <Field
+ *   label="First name"
+ *   helperText="This is what people will see on your profile."
+ *   errorText="A first name is required to create an account."
+ *   required
+ * >
+ *   <Input name="firstName" type="text" />
  * </Field>
  * ```
  *

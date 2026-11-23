@@ -44,7 +44,10 @@ export type {
  * @example
  * ```tsx
  * import { Admonition } from '@cerberus/react'
- * <Admonition />
+ *
+ * <Admonition palette="info" heading="Heads up">
+ *   Something worth knowing.
+ * </Admonition>
  * ```
  *
  * ## Reference

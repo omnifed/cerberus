@@ -15,4 +15,10 @@ Use the \`layout\` and \`orientation\` props to choose how the children are grou
 
 **NOTE**: This API is _slotless_ and is a single rendered layer: \`<Group>\` renders \`Group.Root\`.
     `,
+  example: `
+<Group layout="attached">
+  <Button usage="outlined">Item 1</Button>
+  <Button usage="outlined">Item 2</Button>
+</Group>
+`,
 })

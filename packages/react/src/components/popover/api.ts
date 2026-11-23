@@ -77,7 +77,13 @@ export type {
  * @example
  * ```tsx
  * import { Popover } from '@cerberus/react'
- * <Popover />
+ *
+ * <Popover trigger={<Button>Open</Button>} size="lg">
+ *   <Popover.Header>
+ *     <Popover.Title>Title</Popover.Title>
+ *   </Popover.Header>
+ *   <Popover.Body>Content</Popover.Body>
+ * </Popover>
  * ```
  *
  * ## Reference

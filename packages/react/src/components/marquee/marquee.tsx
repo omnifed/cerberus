@@ -32,6 +32,13 @@ export type MarqueeProps = MarqueeRootProps & {
  * `Marquee.Edge` children override the matching part; every other child is
  * rendered inside the content.
  * @description [Marquee Docs](https://cerberus.digitalu.design/docs/components/marquee)
+ * @example
+ * ```tsx
+ * <Marquee spacing="5rem">
+ *   <Marquee.Item>One</Marquee.Item>
+ *   <Marquee.Item>Two</Marquee.Item>
+ * </Marquee>
+ * ```
  */
 export function MarqueeEl(props: MarqueeProps) {
   const [localProps, rootProps] = splitProps(props, ['edges', 'children'])

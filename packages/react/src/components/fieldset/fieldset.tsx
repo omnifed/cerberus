@@ -45,6 +45,14 @@ export type FieldsetProps = FieldsetRootProps & {
  * `Fieldset.HelperText` and `Fieldset.ErrorText` children override that part.
  * @description [Fieldset Docs](https://cerberus.digitalu.design/docs/components/fieldset)
  * @description [Primitive Docs](https://ark-ui.com/react/docs/components/fieldset)
+ * @example
+ * ```tsx
+ * <Fieldset legend="Profile" helperText="Shown on your public page.">
+ *   <Field label="Display name">
+ *     <Input name="displayName" />
+ *   </Field>
+ * </Fieldset>
+ * ```
  */
 export function FieldsetEl(props: FieldsetProps) {
   const [localProps, rootProps] = splitProps(props, [

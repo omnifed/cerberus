@@ -40,7 +40,8 @@ export type {
  * @example
  * ```tsx
  * import { Avatar } from '@cerberus/react'
- * <Avatar />
+ *
+ * <Avatar alt="Cerberus" src="/logo.svg" fallback="CB" />
  * ```
  *
  * ## Reference

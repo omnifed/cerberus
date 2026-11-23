@@ -2,6 +2,7 @@ import { join } from 'node:path'
 import { loadConfigs } from './core/configs'
 import { Diagnostics } from './core/diagnostics'
 import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
+import { componentExample } from './core/examples'
 import {
   defaultPropSource,
   loadManifest,
@@ -304,17 +305,13 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     jsDoc += ` * | \`${abs.name}\` | Abstraction | ${abs.description} |\n`
   }
 
-  const primaryAbs = abstractions.find((abs) => !abs.isDefaultExport)
   jsDoc += ` *\n`
   jsDoc += ` * @example\n`
   jsDoc += ` * \`\`\`tsx\n`
   jsDoc += ` * import { ${name} } from '@cerberus/react'\n`
-  if (primaryAbs) {
-    jsDoc += ` * <${name}>\n`
-    jsDoc += ` *   <${name}.${primaryAbs.name} />\n`
-    jsDoc += ` * </${name}>\n`
-  } else {
-    jsDoc += ` * <${name} />\n`
+  jsDoc += ` *\n`
+  for (const line of componentExample(entry).split('\n')) {
+    jsDoc += line ? ` * ${line}\n` : ` *\n`
   }
   jsDoc += ` * \`\`\`\n`
   jsDoc += ` *\n`

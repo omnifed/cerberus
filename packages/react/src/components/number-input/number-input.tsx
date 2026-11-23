@@ -41,6 +41,12 @@ export type NumberInputProps = NumberInputRootProps & {
  * end of the root.
  * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/number-input)
  * @description [Ark Docs](https://ark-ui.com/docs/components/number-input)
+ * @example
+ * ```tsx
+ * <Field label="How many?">
+ *   <NumberInput />
+ * </Field>
+ * ```
  */
 export function NumberInputEl(props: NumberInputProps) {
   const [localProps, rootProps] = splitProps(props, ['scrubber', 'children'])

@@ -41,9 +41,8 @@ export type {
  * @example
  * ```tsx
  * import { Tag } from '@cerberus/react'
- * <Tag>
- *   <Tag.Closable />
- * </Tag>
+ *
+ * <Tag>Tag</Tag>
  * ```
  *
  * ## Reference

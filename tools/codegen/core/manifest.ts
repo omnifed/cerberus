@@ -52,6 +52,8 @@ export interface ComponentEntry {
   /** Members' props passed to Ark unless the caller sets them */
   defaultProps: Record<string, Record<string, DefaultPropValue>>
   docsSlug: string
+  /** The config's JSDoc example; null to derive it (see `componentExample`) */
+  example: string | null
   description: string
   abstractions: AbstractionConfig[]
   types: string[]
@@ -270,6 +272,13 @@ export function loadManifest(
       }
     }
 
+    if (config.example?.includes('*/')) {
+      diagnostics.error(
+        key,
+        'example must not contain `*/` (it ends the JSDoc)',
+      )
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -355,6 +364,7 @@ export function loadManifest(
       forwardProps,
       defaultProps,
       docsSlug: config.docsSlug ?? key,
+      example: config.example?.trim() || null,
       anatomy: config.anatomy,
       parts,
       rootProvider,

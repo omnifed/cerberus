@@ -78,9 +78,8 @@ export type {
  * @example
  * ```tsx
  * import { Pagination } from '@cerberus/react'
- * <Pagination>
- *   <Pagination.ItemList />
- * </Pagination>
+ *
+ * <Pagination count={5000} pageSize={10} siblingCount={2} layout="attached" />
  * ```
  *
  * ## Reference

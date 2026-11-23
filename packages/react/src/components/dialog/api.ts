@@ -62,9 +62,17 @@ export type {
  * @example
  * ```tsx
  * import { Dialog } from '@cerberus/react'
- * <Dialog>
- *   <Dialog.CloseIconTrigger />
- * </Dialog>
+ *
+ * <Dialog.Root size="sm">
+ *   <Dialog.Trigger asChild>
+ *     <Button>Open Dialog</Button>
+ *   </Dialog.Trigger>
+ *   <Dialog>
+ *     <Dialog.CloseIconTrigger />
+ *     <Dialog.Title>Dialog Title</Dialog.Title>
+ *     <Dialog.Description>Dialog Description</Dialog.Description>
+ *   </Dialog>
+ * </Dialog.Root>
  * ```
  *
  * ## Reference

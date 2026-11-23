@@ -59,7 +59,19 @@ export type {
  * @example
  * ```tsx
  * import { Table } from '@cerberus/react'
- * <Table />
+ *
+ * <Table caption="Products" size="sm" decoration="zebra">
+ *   <Table.Header>
+ *     <Table.Row>
+ *       <Table.HeaderCol scope="col">Name</Table.HeaderCol>
+ *     </Table.Row>
+ *   </Table.Header>
+ *   <Table.Body>
+ *     <Table.Row>
+ *       <Table.Cell>Cerberus</Table.Cell>
+ *     </Table.Row>
+ *   </Table.Body>
+ * </Table>
  * ```
  *
  * ## Reference

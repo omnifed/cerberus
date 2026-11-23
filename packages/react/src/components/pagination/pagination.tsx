@@ -55,9 +55,7 @@ export interface PaginationProps extends Omit<PaginationRootProps, 'page'> {
  * @description [Ark Docs](https://ark-ui.com/docs/components/pagination)
  * @example
  * ```tsx
- * <Pagination count={5000} pageSize={10} siblingCount={2} layout="attached">
- *   <Pagination.PrevTrigger data-testid="prev" />
- * </Pagination>
+ * <Pagination count={5000} pageSize={10} siblingCount={2} layout="attached" />
  * ```
  */
 export function PaginationEl(props: PaginationProps) {

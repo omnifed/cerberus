@@ -47,7 +47,12 @@ export type {
  * @example
  * ```tsx
  * import { Fieldset } from '@cerberus/react'
- * <Fieldset />
+ *
+ * <Fieldset legend="Profile" helperText="Shown on your public page.">
+ *   <Field label="Display name">
+ *     <Input name="displayName" />
+ *   </Field>
+ * </Fieldset>
  * ```
  *
  * ## Reference
