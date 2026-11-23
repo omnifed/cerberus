@@ -461,7 +461,6 @@
           "name": "value",
           "type": "UseSwitchReturn",
           "required": true,
-          "defaultValue": "\"on\"",
           "description": ""
         },
         {

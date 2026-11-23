@@ -173,7 +173,7 @@ Selector: `[data-scope="checkbox"][data-part="root"]`
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `size` | `'sm' \| 'md'` | No | `'sm'` | PandaCSS recipe variant for size. |
-| `value` | `UseCheckboxReturn` | Yes | `"on"` |  |
+| `value` | `UseCheckboxReturn` | Yes | — |  |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |
 | `unstyled` | `boolean` | No | `false` | Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes. |
 | `css` | `SystemStyleObject` | No | `undefined` | PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted. |

@@ -3,7 +3,9 @@ import { loadConfigs } from './core/configs'
 import { Diagnostics } from './core/diagnostics'
 import { emitFiles, reportStale, type GeneratedFile } from './core/emit'
 import {
+  defaultPropSource,
   loadManifest,
+  propertyKey,
   providerSlot,
   type ComponentEntry,
 } from './core/manifest'
@@ -32,6 +34,7 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
     elementParts,
     collectionGeneric,
     forwardProps,
+    defaultProps,
     docsSlug,
     primitives: parts,
     rootProvider,
@@ -92,11 +95,27 @@ export function generateComponentAPI(entry: ComponentEntry): GeneratedFile[] {
       primitivesCode += `const { ${factories} } = createSlotRecipeContext(${recipe})\n\n`
     }
 
-    /** `{ forwardProps: [...] }` for a member that forwards CSS-named props, else '' */
+    /**
+     * Factory options for a member: `forwardProps` (CSS-named props kept for Ark) and
+     * `defaultProps` (passed to Ark unless the caller sets them); '' when neither
+     */
     const forwardOptions = (member: string) => {
-      const props = forwardProps[member]
-      if (!props?.length) return ''
-      return `{ forwardProps: [${props.map((p) => `'${p}'`).join(', ')}] }`
+      const options: string[] = []
+      const forwarded = forwardProps[member]
+      if (forwarded?.length) {
+        options.push(
+          `forwardProps: [${forwarded.map((p) => `'${p}'`).join(', ')}]`,
+        )
+      }
+      const defaults = Object.entries(defaultProps[member] ?? {})
+      if (defaults.length > 0) {
+        const entries = defaults.map(
+          ([prop, value]) =>
+            `${propertyKey(prop)}: ${defaultPropSource(value)}`,
+        )
+        options.push(`defaultProps: { ${entries.join(', ')} }`)
+      }
+      return options.length > 0 ? `{ ${options.join(', ')} }` : ''
     }
 
     /** `root` provides the recipe; other parts consume it from context */

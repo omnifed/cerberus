@@ -6,6 +6,7 @@ import type {
   AbstractionConfig,
   Anatomy,
   ComponentConfig,
+  DefaultPropValue,
   ExportConfig,
   PartOverride,
 } from '../manifest'
@@ -48,6 +49,8 @@ export interface ComponentEntry {
   collectionGeneric: string[]
   /** Members' props forwarded to Ark despite sharing a CSS property's name */
   forwardProps: Record<string, string[]>
+  /** Members' props passed to Ark unless the caller sets them */
+  defaultProps: Record<string, Record<string, DefaultPropValue>>
   docsSlug: string
   description: string
   abstractions: AbstractionConfig[]
@@ -58,6 +61,16 @@ export interface ComponentEntry {
   /** `src/components/<key>` */
   dir: string
 }
+
+/** An object key in generated source: bare when it's an identifier, else quoted */
+export const propertyKey = (key: string) =>
+  /^[A-Za-z_$][\w$]*$/.test(key) ? key : defaultPropSource(key)
+
+/** Source text of a `defaultProps` value, e.g. `'horizontal'` */
+export const defaultPropSource = (value: DefaultPropValue) =>
+  typeof value === 'string'
+    ? `'${value.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`
+    : String(value)
 
 const KEY = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/
 
@@ -238,6 +251,25 @@ export function loadManifest(
       }
     }
 
+    const defaultProps = config.defaultProps ?? {}
+    for (const [member, props] of Object.entries(defaultProps)) {
+      if (source !== 'ark' || !memberNames.includes(member)) {
+        diagnostics.error(
+          key,
+          `defaultProps: \`${member}\` is not an Ark part or arkMembers entry`,
+        )
+      }
+      if (member.endsWith('Context')) {
+        diagnostics.error(
+          key,
+          `defaultProps: \`${member}\` is a render prop and is not styled`,
+        )
+      }
+      if (Object.keys(props).length === 0) {
+        diagnostics.error(key, `defaultProps.${member} sets no props`)
+      }
+    }
+
     const exports = config.exports ?? []
     for (const { from, values = [], types = [] } of exports) {
       if (values.length + types.length === 0) {
@@ -303,6 +335,7 @@ export function loadManifest(
       elementParts,
       collectionGeneric,
       forwardProps,
+      defaultProps,
       docsSlug: config.docsSlug ?? key,
       anatomy: config.anatomy,
       parts,

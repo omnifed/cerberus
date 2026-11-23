@@ -39,6 +39,34 @@ describe('RadioGroup & Radio', () => {
     )
   })
 
+  test('Zag reports the horizontal orientation the recipe draws by default', () => {
+    render(
+      <RadioGroup>
+        <Radio value="test">Test Label</Radio>
+      </RadioGroup>,
+    )
+    const group = screen.getByRole('radiogroup')
+    expect(group).toHaveClass(
+      'cerberus-radio-group__root--orientation_horizontal',
+    )
+    expect(group).toHaveAttribute('aria-orientation', 'horizontal')
+    expect(group).toHaveAttribute('data-orientation', 'horizontal')
+  })
+
+  test('the orientation prop reaches Zag as well as the recipe', () => {
+    render(
+      <RadioGroup orientation="vertical">
+        <Radio value="test">Test Label</Radio>
+      </RadioGroup>,
+    )
+    const group = screen.getByRole('radiogroup')
+    expect(group).toHaveClass(
+      'cerberus-radio-group__root--orientation_vertical',
+    )
+    expect(group).toHaveAttribute('aria-orientation', 'vertical')
+    expect(group).toHaveAttribute('data-orientation', 'vertical')
+  })
+
   test('should render a horizontal orientation', () => {
     render(
       <RadioGroup orientation="horizontal">

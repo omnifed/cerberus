@@ -18,7 +18,10 @@ const { withProvider, withContext } = createSlotRecipeContext(radioGroup)
 // RadioGroupRoot -----------------------------------------------------
 
 export type RadioGroupRootProps = ComponentProps<typeof RadioGroupRoot>
-export const RadioGroupRoot = withProvider(ArkRadioGroup.Root, 'root')
+export const RadioGroupRoot = withProvider(ArkRadioGroup.Root, 'root', {
+  forwardProps: ['orientation'],
+  defaultProps: { orientation: 'horizontal' },
+})
 
 // RadioGroupLabel -----------------------------------------------------
 

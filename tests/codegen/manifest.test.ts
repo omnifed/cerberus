@@ -380,6 +380,92 @@ describe('generated API', () => {
     expect(messages).toContain('forwardProps.Root lists no props')
   })
 
+  test('defaultProps are emitted as factory options, beside forwardProps', () => {
+    const slotted = generate({
+      key: 'radio',
+      ark: 'radio-group',
+      anatomy: { keys: () => ['root', 'item'] },
+      arkMembers: ['RootProvider'],
+      forwardProps: { Root: ['orientation'] },
+      defaultProps: {
+        Root: { orientation: 'horizontal' },
+        Item: { 'data-x': "it's", tabIndex: 0, invalid: false, form: null },
+      },
+      description: 'x',
+    })
+    expect(slotted.primitives).toContain(
+      "withProvider(ArkRadioGroup.Root, 'root', { forwardProps: ['orientation'], defaultProps: { orientation: 'horizontal' } })",
+    )
+    // Non-identifier keys are quoted; strings are escaped; other literals as written
+    expect(slotted.primitives).toContain(
+      "withContext(ArkRadioGroup.Item, 'item', { defaultProps: { 'data-x': 'it\\'s', tabIndex: 0, invalid: false, form: null } })",
+    )
+    // Only the member that sets them gets them
+    expect(slotted.primitives).toContain(
+      "withProvider(ArkRadioGroup.RootProvider, 'root')\n",
+    )
+
+    const recipeless = generate({
+      key: 'radio',
+      ark: 'radio-group',
+      recipe: false,
+      anatomy: { keys: () => ['root'] },
+      defaultProps: { Root: { orientation: 'horizontal' } },
+      description: 'x',
+    })
+    expect(recipeless.primitives).toContain(
+      "styled(ArkRadioGroup.Root, {}, { defaultProps: { orientation: 'horizontal' } })",
+    )
+
+    const rootProvider = generate({
+      key: 'dialog',
+      anatomy: { keys: () => ['trigger'] },
+      defaultProps: { Root: { modal: true } },
+      description: 'x',
+    })
+    expect(rootProvider.primitives).toContain(
+      'withRootProvider(ArkDialog.Root, { defaultProps: { modal: true } })',
+    )
+  })
+
+  test('defaultProps only names styled Ark members', () => {
+    const diagnostics = new Diagnostics()
+    loadManifest(
+      [
+        defineComponent({
+          key: 'pagination',
+          anatomy: { keys: () => ['root'] },
+          arkMembers: ['Context'],
+          defaultProps: { Trigger: { a: 1 }, Context: { a: 1 }, Root: {} },
+          description: 'x',
+        }),
+        defineComponent({
+          key: 'not-ark',
+          anatomy: ['root'],
+          defaultProps: { Root: { a: 1 } },
+          description: 'x',
+        }),
+      ],
+      diagnostics,
+    )
+    const messages = diagnostics.items.map((d) => d.message)
+    expect(messages).toContain(
+      'defaultProps: `Trigger` is not an Ark part or arkMembers entry',
+    )
+    expect(messages).toContain(
+      'defaultProps: `Context` is a render prop and is not styled',
+    )
+    expect(messages).toContain('defaultProps.Root sets no props')
+    expect(
+      diagnostics.items.filter(
+        (d) =>
+          d.scope === 'not-ark' &&
+          d.message ===
+            'defaultProps: `Root` is not an Ark part or arkMembers entry',
+      ),
+    ).toHaveLength(1)
+  })
+
   test('a slotted component imports styled only for parts outside the anatomy', () => {
     const { primitives } = generate({
       key: 'switch',

@@ -1,9 +1,13 @@
 import { join, relative } from 'node:path'
 import { Diagnostics } from '../core/diagnostics'
-import { providerSlot, type ComponentEntry } from '../core/manifest'
+import {
+  defaultPropSource,
+  providerSlot,
+  type ComponentEntry,
+} from '../core/manifest'
 import { capitalize, partExportKey, toKebabCase } from '../core/naming'
 import { REACT_PKG_ROOT } from '../core/paths'
-import type { AbstractionConfig } from '../manifest'
+import type { AbstractionConfig, DefaultPropValue } from '../manifest'
 import { PandaVariants, variantToProp } from './panda'
 import { mergePropLists } from './resolver/prop-utils'
 import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
@@ -334,15 +338,32 @@ const sameDefault = (a: string, b: string) => {
   return norm(a) === norm(b)
 }
 
-/** Fills Root props that lack a JSDoc `@default` from the machine's defaults. */
+/**
+ * Fills Root props that lack a JSDoc `@default`: from the config's `defaultProps` (what
+ * the generated part passes to Ark), else from the machine's defaults.
+ */
 function applyMachineDefaults(
   props: PropSpec[],
   defaults: Map<string, string>,
+  configured: Record<string, DefaultPropValue>,
   subject: string,
   key: string,
   diagnostics: Diagnostics,
 ): PropSpec[] {
   return props.map((prop) => {
+    if (Object.hasOwn(configured, prop.name)) {
+      const value = defaultPropSource(configured[prop.name])
+      if (prop.defaultValue === undefined) {
+        return { ...prop, defaultValue: value }
+      }
+      if (!sameDefault(prop.defaultValue, value)) {
+        diagnostics.warn(
+          key,
+          `${subject}.${prop.name}: JSDoc says @default ${prop.defaultValue} but defaultProps sets ${value}`,
+        )
+      }
+      return { ...prop, defaultValue: value }
+    }
     const machine = defaults.get(prop.name)
     if (machine === undefined) return prop
     if (prop.defaultValue === undefined)
@@ -355,6 +376,24 @@ function applyMachineDefaults(
     }
     return prop
   })
+}
+
+/**
+ * A `RootProvider` variant named like a machine prop styles the part only; the
+ * behavior comes from the hook's own prop, which may default differently.
+ */
+function styleOnly(
+  prop: PropSpec,
+  machineDefaults: Map<string, string>,
+  hook: string,
+): PropSpec {
+  const machine = machineDefaults.get(prop.name)
+  if (machine === undefined) return prop
+  const note = `Styles only: pass \`${prop.name}\` to \`${hook}\` for the behavior (it defaults to ${machine} there).`
+  return {
+    ...prop,
+    description: prop.description ? `${prop.description} ${note}` : note,
+  }
 }
 
 /**
@@ -513,14 +552,38 @@ function buildPrimitive(
     : isRoot || entry.providers.includes(part)
       ? variantProps
       : []
-  const ownProps = isRoot
-    ? applyMachineDefaults(
-        mergePropLists(ownVariants, arkProps),
-        machineDefaults,
-        subject,
+  // Panda's slot factories split recipe variants off before Ark sees them: a variant
+  // that is also an Ark prop only reaches Ark when the member forwards it
+  const forwarded = new Set(entry.forwardProps[exportKey] ?? [])
+  const arkPropNames = new Set(arkProps.map((p) => p.name))
+  for (const variant of ownVariants) {
+    if (arkPropNames.has(variant.name) && !forwarded.has(variant.name)) {
+      diagnostics.error(
         key,
-        diagnostics,
+        `${subject}.${variant.name} is a recipe variant and an Ark prop, but Panda keeps variants from Ark: add it to forwardProps.${exportKey}`,
       )
+    }
+  }
+
+  // The machine's props reach `Root`; a `RootProvider`'s machine is created by
+  // `useX()`, so a variant that shares a machine prop's name only styles it
+  const viaHook = member === 'RootProvider'
+  const ownProps = isRoot
+    ? viaHook
+      ? mergePropLists(
+          ownVariants.map((prop) =>
+            styleOnly(prop, machineDefaults, `use${entry.arkName}()`),
+          ),
+          arkProps,
+        )
+      : applyMachineDefaults(
+          mergePropLists(ownVariants, arkProps),
+          machineDefaults,
+          entry.defaultProps[exportKey] ?? {},
+          subject,
+          key,
+          diagnostics,
+        )
     : mergePropLists(ownVariants, arkProps)
 
   if (isRoot && entry.rootProvider) {

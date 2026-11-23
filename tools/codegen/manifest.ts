@@ -96,6 +96,16 @@ export type ComponentConfig = {
    * keeps Pagination's controlled `page` from becoming a `page` style.
    */
   forwardProps?: Record<string, string[]>
+  /**
+   * Props a member passes to its Ark component when the caller doesn't, emitted as
+   * the factory's `defaultProps` (`withProvider`, `withRootProvider`, `styled`):
+   * `{ Root: { orientation: 'horizontal' } }` makes RadioGroup's Zag machine agree
+   * with the recipe's horizontal default. The docs spec documents the value as the
+   * prop's default. Panda splits recipe variants off before Ark sees them, so when a
+   * variant is also an Ark prop (`orientation`), list it in `forwardProps` too or the
+   * caller's value never reaches Ark; the docs spec fails on such a variant.
+   */
+  defaultProps?: Record<string, Record<string, DefaultPropValue>>
   /** Docs page slug when it isn't the key, e.g. `progress` for CircularProgress */
   docsSlug?: string
   abstractions?: AbstractionConfig[]
@@ -113,6 +123,9 @@ export type ComponentConfig = {
   parts?: Record<string, PartOverride>
   a11y?: A11yConfig
 }
+
+/** A literal a generated `defaultProps` entry can hold */
+export type DefaultPropValue = string | number | boolean | null
 
 export type ExportConfig = {
   from: string

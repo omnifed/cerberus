@@ -164,6 +164,48 @@ describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
     ).toEqual(['--slides-per-page', '--slide-spacing', '--slide-item-size'])
   })
 
+  test('defaultProps document what the generated part passes to Ark', () => {
+    // RadioGroup defaults Zag's orientation to the recipe's, so no mismatch warning
+    const orientation = part('radio', 'RadioGroup.Root').props.find(
+      (p) => p.name === 'orientation',
+    )
+    expect(orientation?.defaultValue).toBe("'horizontal'")
+    expect(
+      diagnostics.items
+        .filter((d) => d.scope === 'radio')
+        .map((d) => d.message),
+    ).toEqual([])
+  })
+
+  test('a RootProvider takes no machine defaults: its machine comes from useX()', () => {
+    // Checkbox's machine defaults `value` to "on"; RootProvider's `value` is the hook's
+    const value = part('checkbox', 'Checkbox.RootProvider').props.find(
+      (p) => p.name === 'value',
+    )
+    expect(value?.defaultValue).toBeUndefined()
+    // A variant named like a machine prop says where the behavior is set
+    const orientation = part('radio', 'RadioGroup.RootProvider').props.find(
+      (p) => p.name === 'orientation',
+    )
+    expect(orientation?.description).toContain(
+      'pass `orientation` to `useRadioGroup()`',
+    )
+  })
+
+  test('a recipe variant that is also an Ark prop must be forwarded', async () => {
+    const { radioConfig } = await import('codegen/configs/radio')
+    const own = createSpecBuilderContext(undefined, ctx.resolver)
+    const [radio] = loadManifest(
+      [{ ...radioConfig, forwardProps: undefined }],
+      own.diagnostics,
+      ctx.resolver.modules,
+    )
+    buildComponentDocSpec(radio, own)
+    expect(own.diagnostics.items.map((d) => d.message)).toContain(
+      'RadioGroup.Root.orientation is a recipe variant and an Ark prop, but Panda keeps variants from Ark: add it to forwardProps.Root',
+    )
+  })
+
   test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {
     const props = part('accordion', 'Accordion.Root').props
     const multiple = props.find((p) => p.name === 'multiple')

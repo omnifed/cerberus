@@ -32,6 +32,12 @@ Wrap \`<Radio>\` items (also available as \`RadioGroup.Radio\`) in a \`<RadioGro
   // root driven by `useRadioGroup()` state
   arkMembers: ['ItemHiddenInput', 'RootProvider', 'Context', 'ItemContext'],
 
+  // `orientation` is both a recipe variant (horizontal by default) and a Zag prop
+  // (vertical by default). Forward it so the caller's value reaches Zag, and default it
+  // to the recipe's so `aria-orientation`/`data-orientation` match what is drawn
+  forwardProps: { Root: ['orientation'] },
+  defaultProps: { Root: { orientation: 'horizontal' } },
+
   // Keyboard rows come from @zag-js/docs
   a11y: {
     pattern: 'Radio Group',

@@ -169,7 +169,7 @@ Selector: `[data-scope="radio-group"][data-part="root"]`
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
-| `orientation` | `'horizontal' \| 'vertical'` | No | `'horizontal'` | PandaCSS recipe variant for orientation. |
+| `orientation` | `'horizontal' \| 'vertical'` | No | `'horizontal'` | PandaCSS recipe variant for orientation. Styles only: pass `orientation` to `useRadioGroup()` for the behavior (it defaults to "vertical" there). |
 | `size` | `'sm' \| 'md'` | No | `'sm'` | PandaCSS recipe variant for size. |
 | `value` | `UseRadioGroupReturn` | Yes | — |  |
 | `asChild` | `boolean` | No | `false` | Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node. |

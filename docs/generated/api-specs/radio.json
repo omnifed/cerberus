@@ -461,7 +461,7 @@
           "type": "'horizontal' | 'vertical'",
           "required": false,
           "defaultValue": "'horizontal'",
-          "description": "PandaCSS recipe variant for orientation."
+          "description": "PandaCSS recipe variant for orientation. Styles only: pass `orientation` to `useRadioGroup()` for the behavior (it defaults to \"vertical\" there)."
         },
         {
           "name": "size",

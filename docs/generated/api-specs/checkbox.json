@@ -545,7 +545,6 @@
           "name": "value",
           "type": "UseCheckboxReturn",
           "required": true,
-          "defaultValue": "\"on\"",
           "description": ""
         },
         {
