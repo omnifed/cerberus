@@ -1,13 +1,22 @@
 import {
   Button,
   cerberus,
-  CerberusPrimitiveRecipe,
   createCerberusPrimitive,
 } from '@cerberus-design/react'
 import { recipes, slotRecipes } from '@cerberus/panda-preset'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, test } from 'bun:test'
-import type { ButtonHTMLAttributes, HTMLAttributes, PropsWithChildren } from 'react'
+import type {
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  PropsWithChildren,
+} from 'react'
+
+// CerberusPrimitiveRecipe is no longer exported from the package root (only the
+// deprecated createCerberusPrimitive accepts it), so derive it from that signature
+type CerberusPrimitiveRecipe = NonNullable<
+  Parameters<typeof createCerberusPrimitive>[0]
+>
 
 describe('cerberus', () => {
   test('should return a Cerberus component by name', () => {
@@ -34,7 +43,12 @@ describe('cerberus', () => {
 
   test('should allow asChild prop', () => {
     render(
-      <cerberus.div asChild data-test="124" bgColor="black" css={{ color: 'blue' }}>
+      <cerberus.div
+        asChild
+        data-test="124"
+        bgColor="black"
+        css={{ color: 'blue' }}
+      >
         <Button>click me</Button>
       </cerberus.div>,
     )

@@ -4,7 +4,7 @@ import { ITEMS } from './items'
 
 export function IndicatorDemo() {
   return (
-    <Carousel.Root
+    <Carousel.El
       defaultPage={0}
       padding="1rem"
       slideCount={ITEMS.length}
@@ -34,6 +34,6 @@ export function IndicatorDemo() {
           )}
         </For>
       </Carousel.ItemGroup>
-    </Carousel.Root>
+    </Carousel.El>
   )
 }

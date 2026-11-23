@@ -6,24 +6,19 @@ export function SlotsDemo() {
   return (
     <HStack w="3/4">
       <Accordion collapsible>
-        <Accordion.ItemGroup
-          heading="Slots demo"
-          value="one"
-          slots={{
-            itemIndicator: (
-              <Square size="6rem">
-                <CerberusLogo />
-              </Square>
-            ),
-            itemContent: (
-              <cerberus.p textStyle="heading-lg">
-                We replaced the ItemContent slot with our own custom component
-              </cerberus.p>
-            ),
-          }}
-        >
-          This is default content that will never show because we have altered the
-          abstracted API.
+        <Accordion.ItemGroup heading="Slots demo" value="one">
+          <Accordion.ItemIndicator>
+            <Square size="6rem">
+              <CerberusLogo />
+            </Square>
+          </Accordion.ItemIndicator>
+          <Accordion.ItemContent>
+            <cerberus.p textStyle="heading-lg">
+              We replaced the ItemContent children with our own custom component
+            </cerberus.p>
+          </Accordion.ItemContent>
+          This is default content that will never show because we have
+          overridden the ItemContent part.
         </Accordion.ItemGroup>
       </Accordion>
     </HStack>

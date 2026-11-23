@@ -177,7 +177,7 @@ Every component created with the Cerberus factory can accept the
 
 ## Slot-based Abstractions <FeatureBadge since="2.0.0" />
 
-If you are familiar with our [Slot-based features](/docs/components/composition#slots), you can create your own super powered abstractions using the `createAbstraction` factory in combination with the `cerberus` factory.
+You can create your own super powered abstractions using the `createAbstraction` factory in combination with the `cerberus` factory. Note that abstractions built this way take `slots` and `slotProps` props; Cerberus' own abstractions use [part overrides](/docs/components/composition#part-overrides) (direct part children) instead.
 
 The `createAbstraction` takes a Object primitive record for the first argument along with a render function for the second. The render function provides the parts as the second parameter which is a super-powered version of the primitive layer.
 
@@ -201,7 +201,10 @@ export interface AccordionItemGroupBaseProps extends AccordionItemProps {
 export const AccordionItemGroup = createAbstraction(
   PARTS,
   (props: AccordionItemGroupBaseProps, parts) => {
-    const [localProps, itemProps] = splitProps(props, ['heading', 'indicatorPosition'])
+    const [localProps, itemProps] = splitProps(props, [
+      'heading',
+      'indicatorPosition',
+    ])
     const indicatorPosition = localProps.indicatorPosition ?? 'end'
 
     const { icons } = useCerberusContext()

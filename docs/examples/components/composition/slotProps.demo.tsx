@@ -5,16 +5,11 @@ export function SlotPropsDemo() {
   return (
     <HStack w="3/4">
       <Accordion collapsible>
-        <Accordion.ItemGroup
-          heading="Slots demo"
-          value="one"
-          slotProps={{
-            item: { 'data-testid': 'my-qa-thing' },
-            itemContent: { className: 'some-tw-class' },
-          }}
-        >
-          This is default content that will never show because we have altered the
-          abstracted API.
+        <Accordion.ItemGroup heading="Slot props demo" value="one">
+          <Accordion.Item value="one" data-testid="my-qa-thing" />
+          <Accordion.ItemContent className="some-tw-class" />
+          This default content still shows because the part overrides above only
+          patch props.
         </Accordion.ItemGroup>
       </Accordion>
     </HStack>

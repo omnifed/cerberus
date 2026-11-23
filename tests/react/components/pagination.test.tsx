@@ -186,8 +186,16 @@ describe('Pagination', () => {
         <Pagination.NextTrigger data-testid="next">
           Forward
         </Pagination.NextTrigger>
-        <Pagination.Item data-testid="item" usage="filled" />
-        <Pagination.Ellipsis data-testid="ellipsis">...</Pagination.Ellipsis>
+        {/* type/value/index are required by the primitive types, the abstraction drops them */}
+        <Pagination.Item
+          data-testid="item"
+          type="page"
+          value={1}
+          {...({ usage: 'filled' } as object)}
+        />
+        <Pagination.Ellipsis data-testid="ellipsis" index={0}>
+          ...
+        </Pagination.Ellipsis>
         <p>Extra content</p>
       </Pagination>,
     )
@@ -213,7 +221,7 @@ describe('Pagination', () => {
   test('should let an asChild part child replace the Cerberus button', () => {
     renderWithProvider(
       <Pagination count={30} pageSize={10}>
-        <Pagination.Item asChild>
+        <Pagination.Item type="page" value={1} asChild>
           <a href="#page" data-testid="link-item">
             page
           </a>
@@ -324,7 +332,7 @@ describe('Pagination', () => {
     renderWithProvider(
       <Pagination.Root count={100} pageSize={10}>
         <Pagination.ItemList layout="attached" data-testid="list">
-          <Pagination.Ellipsis data-testid="gap" />
+          <Pagination.Ellipsis data-testid="gap" index={0} />
         </Pagination.ItemList>
       </Pagination.Root>,
     )

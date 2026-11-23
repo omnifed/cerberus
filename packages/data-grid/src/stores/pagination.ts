@@ -15,7 +15,7 @@ import {
 } from '../utils'
 
 export type PaginationStore = {
-  defaultPage: number | void
+  defaultPage: number | undefined
   currentPageRange: Accessor<{ start: number; end: number }>
   pageIndex: Accessor<number>
   pageSize: Accessor<number>
@@ -44,21 +44,25 @@ export function createPaginationStore<TData>(
   const [pageIndex, setPageIndex] = createSignal<number>(
     defaultPage || DEFAULT_PAGE_IDX,
   )
-  const [pageSize, setPageSize] = createSignal<number>(determinePageSize(initOptions))
+  const [pageSize, setPageSize] = createSignal<number>(
+    determinePageSize(initOptions),
+  )
   const [pageRange] = createSignal<number[]>(determinePageRange(initOptions))
 
   const isServerPaginated = createComputed<boolean>(() =>
     Boolean(determineInitialCount(initOptions)),
   )
 
-  const currentPageRange = createComputed<{ start: number; end: number }>(() => {
-    const idx = pageIndex()
-    const size = pageSize()
-    return {
-      start: (idx - 1) * size,
-      end: idx * size,
-    }
-  })
+  const currentPageRange = createComputed<{ start: number; end: number }>(
+    () => {
+      const idx = pageIndex()
+      const size = pageSize()
+      return {
+        start: (idx - 1) * size,
+        end: idx * size,
+      }
+    },
+  )
 
   return {
     defaultPage,
@@ -81,7 +85,8 @@ export function createPaginationStore<TData>(
         setPageIndex(DEFAULT_PAGE_IDX)
       }
       setPageSize(details.pageSize)
-      if (optionActions.onPageSizeChange) optionActions.onPageSizeChange(details)
+      if (optionActions.onPageSizeChange)
+        optionActions.onPageSizeChange(details)
     },
   }
 }

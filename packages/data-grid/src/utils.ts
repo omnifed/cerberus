@@ -31,14 +31,16 @@ export function determineRowHeight(rowSize: RowSizeOptions = SM): number {
 
 export function determineDefaultPage(
   options?: boolean | PaginationOptions,
-): number | void {
+): number | undefined {
   if (!options) return undefined
   if (typeof options === 'boolean' && options === true) return undefined
   if (options.defaultPage) return options.defaultPage
   return undefined
 }
 
-export function determinePageSize(options?: boolean | PaginationOptions): number {
+export function determinePageSize(
+  options?: boolean | PaginationOptions,
+): number {
   if (!options) return 0
   if (typeof options === 'boolean' && options === true) {
     return SM_PAGE_SIZE
@@ -49,7 +51,9 @@ export function determinePageSize(options?: boolean | PaginationOptions): number
   return options.pageSize ?? SM_PAGE_SIZE
 }
 
-export function determinePageRange(options?: boolean | PaginationOptions): number[] {
+export function determinePageRange(
+  options?: boolean | PaginationOptions,
+): number[] {
   if (!options) return DEFAULT_PAGE_SIZES
   if (typeof options === 'boolean' && options === true) {
     return DEFAULT_PAGE_SIZES

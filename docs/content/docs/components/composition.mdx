@@ -30,9 +30,9 @@ Style props, `css`, and `className` still apply.
 
 <Example path="components/composition" demo="unstyled" />
 
-## Slots <FeatureBadge since="2.0.0" />
+## Part Overrides <FeatureBadge since="2.1.0" />
 
-For any abstraction-based component API (e.g., made of multiple primitive layers), you can use the `slots` prop to completely replace the layer specified with the `ReactNode` you provide as a value.
+For any abstraction-based component API (e.g., made of multiple primitive layers), you can render a primitive part (e.g., `Accordion.ItemIndicator`) as a direct child of the abstraction. When the part has `children` (or `asChild`), those replace the default content of that layer. Every other child is rendered as the abstraction's default content.
 
 This feature is only available on multi-layered components. For single layer components, just use [style props](#styling-components)
 
@@ -40,11 +40,9 @@ To whitelist a single layer, use `unstyled={false}` on that layer when there is 
 
 <Example path="components/composition" demo="slots" />
 
-## Slot Props <FeatureBadge since="2.0.0" />
+## Patching Part Props <FeatureBadge since="2.1.0" />
 
-For any abstraction-based component API (e.g., made of multiple primitive layers), you can use the `slots` prop to completely replace the layer specified with the `ReactNode` you provide as a value.
-
-This feature is only available on multi-layered components. For single layer components, just pass custom props in.
+Render a part without `children` to patch its props (e.g., `data-testid`, `className`) while keeping its default content.
 
 <Example path="components/composition" demo="slotProps" />
 
@@ -70,8 +68,8 @@ This is to help reduce the amount of JSX you need to write for typography driven
 <WarningAdmonition
   description={
     <>
-      This is only available for the <code>Text</code> component which is a wrapper
-      around our text-related patterns.
+      This is only available for the <code>Text</code> component which is a
+      wrapper around our text-related patterns.
     </>
   }
 />

@@ -4,12 +4,14 @@ import {
   For,
   Radio,
   RadioGroup,
-  type RadioGroupRootProps,
+  type RadioProps,
 } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
-const variants = data.slotRecipes.radioGroup.variants.size
-  .values as RadioGroupRootProps['size'][]
+const variants = data.slotRecipes.radioGroup.variants.size.values as Extract<
+  RadioProps['size'],
+  string
+>[]
 
 export function SizeDemo() {
   return (
