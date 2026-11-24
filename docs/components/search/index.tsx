@@ -10,10 +10,17 @@ import {
   toaster,
 } from '@cerberus-design/react'
 import { useRead, useStore } from '@cerberus-design/signals'
-import { ChangeEvent, Suspense, useEffect, useRef } from 'react'
+import {
+  ChangeEvent,
+  Suspense,
+  useDeferredValue,
+  useEffect,
+  useRef,
+} from 'react'
 import { FallbackLinks } from './fallback-links'
 import { Footer } from './footer'
 import { SearchResults } from './results'
+import { SearchingCerberus } from './searching-cerberus'
 import { SearchInput } from './search-input'
 import { searchStore, SearchStore } from './store'
 
@@ -22,6 +29,10 @@ export function Search() {
 
   const store = useStore<SearchStore>(searchStore)
   const search = useRead(store.search)
+  // With no earlier results to keep on screen (deferred is still empty), use
+  // the live query so the first search suspends and shows the loader.
+  const deferredSearch = useDeferredValue(search) || search
+  const isStale = search !== deferredSearch
   const open = useRead(store.open)
   const activeFilter = useRead(store.filter)
 
@@ -187,8 +198,23 @@ export function Search() {
                 </Box>
               }
             >
-              <Suspense fallback={<SearchingText />}>
-                <SearchResults query={search} activeFilter={activeFilter} />
+              {/* The lantern shows for the first search only. Refining a
+                  search keeps the current results up, dimmed, until the new
+                  ones are ready, instead of swapping them out for the loader. */}
+              <Suspense fallback={<SearchingCerberus />}>
+                <Box
+                  aria-busy={isStale}
+                  opacity={isStale ? 0.5 : 1}
+                  transitionDelay={isStale ? '150ms' : '0ms'}
+                  transitionDuration="200ms"
+                  transitionProperty="opacity"
+                  transitionTimingFunction="ease-out"
+                >
+                  <SearchResults
+                    query={deferredSearch}
+                    activeFilter={activeFilter}
+                  />
+                </Box>
               </Suspense>
             </Show>
           </Scrollable>
@@ -197,19 +223,5 @@ export function Search() {
         </Dialog>
       </Box>
     </Dialog.Root>
-  )
-}
-
-function SearchingText() {
-  return (
-    <Text
-      as="em"
-      color="page.text.100"
-      display="block"
-      p="md"
-      textStyle="label-sm"
-    >
-      Searching the Underworld...
-    </Text>
   )
 }
