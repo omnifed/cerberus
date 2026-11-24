@@ -3,11 +3,8 @@ import { cerberus, For, Show, Table } from '@cerberus-design/react'
 import { Admonition } from '@cerberus-design/react/admonition'
 import type { PropsWithChildren } from 'react'
 import { Box, HStack, Stack } from 'styled-system/jsx'
+import type { CerberusProps } from '../../packages/react/src/system/types'
 import type { ComponentDocSpec } from '../../tools/codegen/docs/types'
-import type {
-  CerberusOptions,
-  CerberusProps,
-} from '../../packages/react/src/system/types'
 
 interface ComponentApiProps {
   spec: string
