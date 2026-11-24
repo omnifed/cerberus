@@ -1,0 +1,1780 @@
+{
+  "name": "Combobox",
+  "key": "combobox",
+  "description": "The Combobox component is a filterable select: users type into an input to narrow a list of options and pick one or more of them.\n\nUse the default `<Combobox>` with a `label` and an optional `startIcon` to render the label, the input with its clear and open triggers, and the dropdown for you, or compose the primitives for full structural control. Render options with `Combobox.ItemWithIndicator` and `Combobox.ItemText`, and group them with `Combobox.ItemGroupWithLabel`. Pair it with the `useStatefulCollection` hook for a collection that filters as the user types. It supports sizes from `sm` to `lg`; to use it within a form, wrap it with the Field component.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "md", "lg"],
+      "defaultValue": "'md'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Combobox.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the label, the control with an optional start icon, the input, the clear and open triggers, and the positioned dropdown content",
+      "inherits": ["Combobox.Root"],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onPointerDownOutside",
+          "type": "((event: PointerDownOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the pointer is pressed down outside the component"
+        },
+        {
+          "name": "onFocusOutside",
+          "type": "((event: FocusOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the focus is moved outside the component"
+        },
+        {
+          "name": "onInteractOutside",
+          "type": "((event: InteractOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when an interaction happens outside the component"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the combobox"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "The initial open state of the combobox when rendered. Use when you don't need to control the open state of the combobox."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the combobox. Useful for composition."
+        },
+        {
+          "name": "inputValue",
+          "type": "string",
+          "required": false,
+          "description": "The controlled value of the combobox's input"
+        },
+        {
+          "name": "defaultInputValue",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"\"",
+          "description": "The initial value of the combobox's input when rendered. Use when you don't need to control the value of the combobox's input."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The `name` attribute of the combobox's input. Useful for form submission"
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the combobox."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is disabled"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode but the user can still interact with it"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is invalid"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is required"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "The placeholder text of the combobox's input"
+        },
+        {
+          "name": "defaultHighlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial highlighted value of the combobox when rendered. Use when you don't need to control the highlighted value of the combobox."
+        },
+        {
+          "name": "highlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled highlighted value of the combobox"
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled value of the combobox's selected items"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "defaultValue": "[]",
+          "description": "The initial value of the combobox's selected items when rendered. Use when you don't need to control the value of the combobox's selected items."
+        },
+        {
+          "name": "inputBehavior",
+          "type": "\"autohighlight\" | \"autocomplete\" | \"none\"",
+          "required": false,
+          "defaultValue": "\"none\"",
+          "description": "Defines the auto-completion behavior of the combobox. - `autohighlight`: The first focused item is highlighted as the user types - `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
+        },
+        {
+          "name": "selectionBehavior",
+          "type": "\"clear\" | \"replace\" | \"preserve\"",
+          "required": false,
+          "defaultValue": "\"replace\"",
+          "description": "The behavior of the combobox input when an item is selected - `replace`: The selected item string is set as the input value - `clear`: The input value is cleared - `preserve`: The input value is preserved"
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to autofocus the input on mount"
+        },
+        {
+          "name": "openOnClick",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to open the combobox popup on initial click on the input"
+        },
+        {
+          "name": "openOnChange",
+          "type": "boolean | ((details: InputValueChangeDetails) => boolean)",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to show the combobox when the input value changes"
+        },
+        {
+          "name": "allowCustomValue",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow typing custom values in the input"
+        },
+        {
+          "name": "alwaysSubmitOnEnter",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to always submit on Enter key press, even if popup is open. Useful for single-field autocomplete forms where Enter should submit the form."
+        },
+        {
+          "name": "loopFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to loop the keyboard navigation through the items"
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "defaultValue": "{ placement: \"bottom-start\" }",
+          "description": "The positioning options to dynamically position the menu"
+        },
+        {
+          "name": "onInputValueChange",
+          "type": "((details: InputValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the input's value changes"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails<T>) => void)",
+          "required": false,
+          "description": "Function called when a new item is selected"
+        },
+        {
+          "name": "onHighlightChange",
+          "type": "((details: HighlightChangeDetails<T>) => void)",
+          "required": false,
+          "description": "Function called when an item is highlighted using the pointer or keyboard navigation."
+        },
+        {
+          "name": "onSelect",
+          "type": "((details: SelectionDetails) => void)",
+          "required": false,
+          "description": "Function called when an item is selected"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the popup is opened"
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow multiple selection. **Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`. It is recommended to render the selected items in a separate container."
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to close the combobox when an item is selected."
+        },
+        {
+          "name": "openOnKeyPress",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to open the combobox on arrow key press"
+        },
+        {
+          "name": "scrollToIndexFn",
+          "type": "((details: ScrollToIndexDetails) => void)",
+          "required": false,
+          "description": "Function to scroll to a specific index"
+        },
+        {
+          "name": "composite",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the combobox is a composed with other composite widgets like tabs"
+        },
+        {
+          "name": "disableLayer",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to disable registering this a dismissable layer"
+        },
+        {
+          "name": "navigate",
+          "type": "((details: NavigateDetails) => void) | null",
+          "required": false,
+          "description": "Function to navigate to the selected item"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the results are being loaded (e.g. fetched from a server). While loading, the listbox is marked with `aria-busy`, the loading message is announced instead of the result count, and \"no results\" is never announced."
+        },
+        {
+          "name": "collection",
+          "type": "ListCollection<T>",
+          "required": true,
+          "description": "The collection of items"
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The label that appears above the combobox input."
+        },
+        {
+          "name": "startIcon",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The icon that appears at the start of the combobox input."
+        }
+      ]
+    },
+    {
+      "name": "ItemWithIndicator",
+      "exportName": "Combobox.ItemWithIndicator",
+      "kind": "abstraction",
+      "description": "An abstraction of the item that renders the Cerberus check icon in its indicator",
+      "inherits": ["Combobox.Item"],
+      "props": []
+    },
+    {
+      "name": "ItemGroupWithLabel",
+      "exportName": "Combobox.ItemGroupWithLabel",
+      "kind": "abstraction",
+      "description": "An abstraction of the item group that renders its `label` as the group label",
+      "inherits": ["Combobox.ItemGroup"],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The label that appears for the combobox item group."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Combobox.Root",
+      "kind": "primitive",
+      "description": "The root container of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onPointerDownOutside",
+          "type": "((event: PointerDownOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the pointer is pressed down outside the component"
+        },
+        {
+          "name": "onFocusOutside",
+          "type": "((event: FocusOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the focus is moved outside the component"
+        },
+        {
+          "name": "onInteractOutside",
+          "type": "((event: InteractOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when an interaction happens outside the component"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the combobox"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "The initial open state of the combobox when rendered. Use when you don't need to control the open state of the combobox."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the combobox. Useful for composition."
+        },
+        {
+          "name": "inputValue",
+          "type": "string",
+          "required": false,
+          "description": "The controlled value of the combobox's input"
+        },
+        {
+          "name": "defaultInputValue",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"\"",
+          "description": "The initial value of the combobox's input when rendered. Use when you don't need to control the value of the combobox's input."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The `name` attribute of the combobox's input. Useful for form submission"
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the combobox."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is disabled"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode but the user can still interact with it"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is invalid"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the combobox is required"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "The placeholder text of the combobox's input"
+        },
+        {
+          "name": "defaultHighlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial highlighted value of the combobox when rendered. Use when you don't need to control the highlighted value of the combobox."
+        },
+        {
+          "name": "highlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled highlighted value of the combobox"
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled value of the combobox's selected items"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "defaultValue": "[]",
+          "description": "The initial value of the combobox's selected items when rendered. Use when you don't need to control the value of the combobox's selected items."
+        },
+        {
+          "name": "inputBehavior",
+          "type": "\"autohighlight\" | \"autocomplete\" | \"none\"",
+          "required": false,
+          "defaultValue": "\"none\"",
+          "description": "Defines the auto-completion behavior of the combobox. - `autohighlight`: The first focused item is highlighted as the user types - `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
+        },
+        {
+          "name": "selectionBehavior",
+          "type": "\"clear\" | \"replace\" | \"preserve\"",
+          "required": false,
+          "defaultValue": "\"replace\"",
+          "description": "The behavior of the combobox input when an item is selected - `replace`: The selected item string is set as the input value - `clear`: The input value is cleared - `preserve`: The input value is preserved"
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to autofocus the input on mount"
+        },
+        {
+          "name": "openOnClick",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to open the combobox popup on initial click on the input"
+        },
+        {
+          "name": "openOnChange",
+          "type": "boolean | ((details: InputValueChangeDetails) => boolean)",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to show the combobox when the input value changes"
+        },
+        {
+          "name": "allowCustomValue",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow typing custom values in the input"
+        },
+        {
+          "name": "alwaysSubmitOnEnter",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to always submit on Enter key press, even if popup is open. Useful for single-field autocomplete forms where Enter should submit the form."
+        },
+        {
+          "name": "loopFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to loop the keyboard navigation through the items"
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "defaultValue": "{ placement: \"bottom-start\" }",
+          "description": "The positioning options to dynamically position the menu"
+        },
+        {
+          "name": "onInputValueChange",
+          "type": "((details: InputValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the input's value changes"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails<T>) => void)",
+          "required": false,
+          "description": "Function called when a new item is selected"
+        },
+        {
+          "name": "onHighlightChange",
+          "type": "((details: HighlightChangeDetails<T>) => void)",
+          "required": false,
+          "description": "Function called when an item is highlighted using the pointer or keyboard navigation."
+        },
+        {
+          "name": "onSelect",
+          "type": "((details: SelectionDetails) => void)",
+          "required": false,
+          "description": "Function called when an item is selected"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the popup is opened"
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow multiple selection. **Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`. It is recommended to render the selected items in a separate container."
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to close the combobox when an item is selected."
+        },
+        {
+          "name": "openOnKeyPress",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to open the combobox on arrow key press"
+        },
+        {
+          "name": "scrollToIndexFn",
+          "type": "((details: ScrollToIndexDetails) => void)",
+          "required": false,
+          "description": "Function to scroll to a specific index"
+        },
+        {
+          "name": "composite",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the combobox is a composed with other composite widgets like tabs"
+        },
+        {
+          "name": "disableLayer",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to disable registering this a dismissable layer"
+        },
+        {
+          "name": "navigate",
+          "type": "((details: NavigateDetails) => void) | null",
+          "required": false,
+          "description": "Function to navigate to the selected item"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the results are being loaded (e.g. fetched from a server). While loading, the listbox is marked with `aria-busy`, the loading message is announced instead of the result count, and \"no results\" is never announced."
+        },
+        {
+          "name": "collection",
+          "type": "ListCollection<T>",
+          "required": true,
+          "description": "The collection of items"
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ClearTrigger",
+      "exportName": "Combobox.ClearTrigger",
+      "kind": "primitive",
+      "description": "The clear trigger primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "clear-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Combobox.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-placement",
+          "description": "The placement of the content."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the content is positioned on."
+        },
+        {
+          "name": "data-empty",
+          "presence": true,
+          "description": "Present when the content is empty."
+        },
+        {
+          "name": "data-loading",
+          "presence": true,
+          "description": "Present when loading."
+        },
+        {
+          "name": "data-nested",
+          "description": "listbox."
+        },
+        {
+          "name": "data-has-nested",
+          "description": "listbox."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--layer-index",
+          "description": "The index of the dismissable in the layer stack."
+        },
+        {
+          "name": "--nested-layer-count",
+          "description": "The number of nested comboboxs."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Combobox.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "exportName": "Combobox.Input",
+      "kind": "primitive",
+      "description": "The input primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "input",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-autofocus",
+          "presence": true
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Combobox.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        }
+      ],
+      "props": [
+        {
+          "name": "persistFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether hovering outside should clear the highlighted state"
+        },
+        {
+          "name": "item",
+          "type": "CollectionItem",
+          "required": true,
+          "description": "The item to render"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroup",
+      "exportName": "Combobox.ItemGroup",
+      "kind": "primitive",
+      "description": "The item group primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "item-group",
+      "dataAttributes": [
+        {
+          "name": "data-empty",
+          "presence": true,
+          "description": "Present when the content is empty."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroupLabel",
+      "exportName": "Combobox.ItemGroupLabel",
+      "kind": "primitive",
+      "description": "The item group label primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "item-group-label",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemIndicator",
+      "exportName": "Combobox.ItemIndicator",
+      "kind": "primitive",
+      "description": "The item indicator primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "item-indicator",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemText",
+      "exportName": "Combobox.ItemText",
+      "kind": "primitive",
+      "description": "The item text primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "item-text",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Combobox.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "List",
+      "exportName": "Combobox.List",
+      "kind": "primitive",
+      "description": "The list primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "list",
+      "dataAttributes": [
+        {
+          "name": "data-empty",
+          "presence": true,
+          "description": "Present when the content is empty."
+        },
+        {
+          "name": "data-loading",
+          "presence": true,
+          "description": "Present when loading."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Positioner",
+      "exportName": "Combobox.Positioner",
+      "kind": "primitive",
+      "description": "The positioner primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "positioner",
+      "cssVars": [
+        {
+          "name": "--reference-width",
+          "description": "The width of the reference element."
+        },
+        {
+          "name": "--reference-height",
+          "description": "The height of the root."
+        },
+        {
+          "name": "--available-width",
+          "description": "The available width in viewport."
+        },
+        {
+          "name": "--available-height",
+          "description": "The available height in viewport."
+        },
+        {
+          "name": "--x",
+          "description": "The x position for transform."
+        },
+        {
+          "name": "--y",
+          "description": "The y position for transform."
+        },
+        {
+          "name": "--z-index",
+          "description": "The z-index value."
+        },
+        {
+          "name": "--transform-origin",
+          "description": "The transform origin for animations."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Combobox.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focusable",
+          "presence": true
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "keyboard": ["ArrowDown", "ArrowUp"],
+      "props": [
+        {
+          "name": "focusable",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the trigger is focusable"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Empty",
+      "exportName": "Combobox.Empty",
+      "kind": "primitive",
+      "description": "The empty primitive part of the Combobox component.",
+      "dataScope": "combobox",
+      "dataPart": "empty",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "StartIcon",
+      "exportName": "Combobox.StartIcon",
+      "kind": "primitive",
+      "description": "The start icon part of the Combobox component: a Cerberus recipe slot outside the Ark anatomy, rendered as a `<span>`.",
+      "dataScope": "combobox",
+      "dataPart": "start-icon",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Combobox.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Combobox component, driven by state created with `useCombobox()`.",
+      "dataScope": "combobox",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseComboboxReturn<T>",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Combobox.Context",
+      "kind": "primitive",
+      "description": "Exposes the Combobox state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseComboboxContext<T>) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "ItemContext",
+      "exportName": "Combobox.ItemContext",
+      "kind": "primitive",
+      "description": "Exposes the Combobox item state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseComboboxItemContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Combobox",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/",
+    "keyboard": [
+      {
+        "key": "ArrowDown",
+        "description": "When the combobox is closed, opens the listbox and highlights to the first option.\nWhen the combobox is open, moves focus to the next option."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "When the combobox is closed, opens the listbox and highlights to the last option.\nWhen the combobox is open, moves focus to the previous option."
+      },
+      {
+        "key": "Home",
+        "description": "When the combobox is open, moves focus to the first option."
+      },
+      {
+        "key": "End",
+        "description": "When the combobox is open, moves focus to the last option."
+      },
+      {
+        "key": "Escape",
+        "description": "Closes the listbox."
+      },
+      {
+        "key": "Enter",
+        "description": "Selects the highlighted option and closes the combobox."
+      },
+      {
+        "key": "Escape",
+        "description": "Closes the combobox."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["Combobox.Context", "useCombobox()", "useComboboxContext()"],
+    "members": [
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the combobox is focused."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the combobox is open."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "description": "Whether the results are being loaded."
+      },
+      {
+        "name": "inputValue",
+        "type": "string",
+        "description": "The value of the combobox input."
+      },
+      {
+        "name": "highlightedValue",
+        "type": "string | null",
+        "description": "The value of the highlighted item."
+      },
+      {
+        "name": "highlightedItem",
+        "type": "V | null",
+        "description": "The highlighted item."
+      },
+      {
+        "name": "setHighlightValue",
+        "type": "(value: string) => void",
+        "description": "The value of the combobox input."
+      },
+      {
+        "name": "clearHighlightValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the highlighted value."
+      },
+      {
+        "name": "syncSelectedItems",
+        "type": "VoidFunction",
+        "description": "Function to sync the selected items with the value.\nUseful when `value` is updated from async sources."
+      },
+      {
+        "name": "selectedItems",
+        "type": "V[]",
+        "description": "The selected items."
+      },
+      {
+        "name": "hasSelectedItems",
+        "type": "boolean",
+        "description": "Whether there's a selected item."
+      },
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The selected item keys."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The string representation of the selected items."
+      },
+      {
+        "name": "selectValue",
+        "type": "(value: string) => void",
+        "description": "Function to select a value."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Function to set the value of the combobox."
+      },
+      {
+        "name": "clearValue",
+        "type": "(value?: string) => void",
+        "description": "Function to clear the value of the combobox."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus on the combobox input."
+      },
+      {
+        "name": "setInputValue",
+        "type": "(value: string, reason?: InputValueChangeReason) => void",
+        "description": "Function to set the input value of the combobox."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of a combobox item."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean, reason?: OpenChangeReason) => void",
+        "description": "Function to open or close the combobox."
+      },
+      {
+        "name": "collection",
+        "type": "ListCollection<V>",
+        "description": "Function to toggle the combobox."
+      },
+      {
+        "name": "reposition",
+        "type": "(options?: Partial<PositioningOptions>) => void",
+        "description": "Function to set the positioning options."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "description": "Whether the combobox allows multiple selections."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the combobox is disabled."
+      }
+    ]
+  }
+}

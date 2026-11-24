@@ -14,15 +14,6 @@ import type { SlotRecipeConfig } from '@pandacss/types'
 export const collapsible: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'collapsible',
   slots: collapsibleAnatomy.keys(),
-  jsx: [
-    // primitives
-    'CollapsibleRoot',
-    'CollapsibleTrigger',
-    'CollapsibleIndicator',
-    'CollapsibleContent',
-    // abstractions
-    'Collapsible',
-  ],
 
   base: {
     content: {

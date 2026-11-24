@@ -15,7 +15,7 @@ export function CustomDemo() {
   ]
 
   return (
-    <Table.Root
+    <Table
       caption="Customized table"
       border="3px solid"
       borderColor="danger.border.initial"
@@ -41,7 +41,11 @@ export function CustomDemo() {
         <For each={data}>
           {(item) => (
             <Table.Row key={item.id}>
-              <Table.Cell bgColor="info.bg.initial" color="black" fontWeight="bold">
+              <Table.Cell
+                bgColor="info.bg.initial"
+                color="black"
+                fontWeight="bold"
+              >
                 {item.name}
               </Table.Cell>
               <Table.Cell bgColor="white" color="black">
@@ -51,6 +55,6 @@ export function CustomDemo() {
           )}
         </For>
       </Table.Body>
-    </Table.Root>
+    </Table>
   )
 }

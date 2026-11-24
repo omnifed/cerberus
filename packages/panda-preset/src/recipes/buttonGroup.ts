@@ -11,6 +11,7 @@ import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
  */
 export const buttonGroup: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'buttonGroup',
+  jsx: ['Button.Group'],
   description: 'Styles for the buttonGroup component.',
 
   base: {

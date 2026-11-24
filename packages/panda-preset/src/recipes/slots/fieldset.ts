@@ -17,13 +17,6 @@ import { field } from './field'
 export const fieldset: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'fieldset',
   slots: fieldsetAnatomy.keys(),
-  jsx: [
-    'FieldsetRoot',
-    'FieldsetLegend',
-    'FieldsetHelperText',
-    'FieldsetErrorText',
-    'Fieldset',
-  ],
 
   base: {
     root: {

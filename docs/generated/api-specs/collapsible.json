@@ -1,0 +1,378 @@
+{
+  "name": "Collapsible",
+  "key": "collapsible",
+  "description": "The Collapsible component is used to expand and collapse additional content. It allows you to show or hide content with a trigger, and is useful for accordions, dropdowns, and expandable sections.\n\nIt supports an initial open state, a partial collapsed height to preview the content, and different open/close effects on the content.",
+  "variants": [
+    {
+      "name": "effect",
+      "values": ["none", "expandIn", "fade"],
+      "defaultValue": "'expandIn'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "Root",
+      "exportName": "Collapsible.Root",
+      "kind": "primitive",
+      "description": "The root container of the Collapsible component.",
+      "dataScope": "collapsible",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "effect",
+          "type": "'none' | 'expandIn' | 'fade'",
+          "required": false,
+          "defaultValue": "'expandIn'",
+          "description": "PandaCSS recipe variant for effect."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the collapsible. Useful for composition."
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the collapsible."
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "The initial open state of the collapsible when rendered. Use when you don't need to control the open state of the collapsible."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "The callback invoked when the open state changes."
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "The callback invoked when the exit animation completes."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the collapsible is disabled."
+        },
+        {
+          "name": "collapsedHeight",
+          "type": "number | string",
+          "required": false,
+          "description": "The height of the content when collapsed."
+        },
+        {
+          "name": "collapsedWidth",
+          "type": "number | string",
+          "required": false,
+          "description": "The width of the content when collapsed."
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Collapsible.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Collapsible component.",
+      "dataScope": "collapsible",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Collapsible.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Collapsible component.",
+      "dataScope": "collapsible",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-collapsible",
+          "values": [""]
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-has-collapsed-size",
+          "presence": true,
+          "description": "Present when the content has collapsed width or height."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--height",
+          "description": "The height of the element."
+        },
+        {
+          "name": "--width",
+          "description": "The width of the element."
+        },
+        {
+          "name": "--collapsed-height",
+          "description": "The height of the Content."
+        },
+        {
+          "name": "--collapsed-width",
+          "description": "The width of the Content."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Collapsible.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Collapsible component.",
+      "dataScope": "collapsible",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Collapsible.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Collapsible component, driven by state created with `useCollapsible()`.",
+      "dataScope": "collapsible",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "effect",
+          "type": "'none' | 'expandIn' | 'fade'",
+          "required": false,
+          "defaultValue": "'expandIn'",
+          "description": "PandaCSS recipe variant for effect."
+        },
+        {
+          "name": "value",
+          "type": "UseCollapsibleReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "keyboard": [
+      {
+        "key": "Space",
+        "description": "Opens/closes the collapsible."
+      },
+      {
+        "key": "Enter",
+        "description": "Opens/closes the collapsible."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["useCollapsible()", "useCollapsibleContext()"],
+    "members": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the collapsible is open."
+      },
+      {
+        "name": "visible",
+        "type": "boolean",
+        "description": "Whether the collapsible is visible (open or closing)."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the collapsible is disabled."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the collapsible."
+      },
+      {
+        "name": "measureSize",
+        "type": "VoidFunction",
+        "description": "Function to measure the size of the content."
+      }
+    ]
+  }
+}

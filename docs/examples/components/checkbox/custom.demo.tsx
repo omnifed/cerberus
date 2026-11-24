@@ -2,14 +2,14 @@
 
 import { Box } from '@/styled-system/jsx'
 import { ArrowDownRight } from '@carbon/icons-react'
-import { CheckboxParts } from '@cerberus-design/react'
+import { Checkbox } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Box w="1/2">
-      <CheckboxParts.Root>
-        <CheckboxParts.Label>Custom Checkbox</CheckboxParts.Label>
-        <CheckboxParts.Control
+      <Checkbox.Root>
+        <Checkbox.Label>Custom Checkbox</Checkbox.Label>
+        <Checkbox.Control
           bgColor="black"
           border="4px solid"
           borderColor="danger.border.initial"
@@ -21,12 +21,12 @@ export function CustomDemo() {
             bgColor: 'info.bg.initial',
           }}
         >
-          <CheckboxParts.Indicator>
+          <Checkbox.Indicator>
             <ArrowDownRight />
-          </CheckboxParts.Indicator>
-        </CheckboxParts.Control>
-        <CheckboxParts.HiddenInput />
-      </CheckboxParts.Root>
+          </Checkbox.Indicator>
+        </Checkbox.Control>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
     </Box>
   )
 }

@@ -15,11 +15,11 @@ export function InputDemo() {
             textStyle="label-sm"
             w="15rem"
           />
-          <Clipboard.Trigger color="action.text.initial" asChild>
-            <Button color="inherit" shape="default" size="md">
-              <Clipboard.Indicator />
+          <Clipboard.TriggerWithTooltip color="action.text.initial" asChild>
+            <Button color="inherit" shape="squared" size="md">
+              <Clipboard.CopyIndicator />
             </Button>
-          </Clipboard.Trigger>
+          </Clipboard.TriggerWithTooltip>
         </Group>
       </Clipboard.Control>
     </Clipboard.Root>

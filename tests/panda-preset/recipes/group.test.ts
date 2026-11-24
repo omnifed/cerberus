@@ -11,7 +11,7 @@ describe('group recipe', () => {
   test('should have metadata', () => {
     expect(group.className).toEqual('group')
     expect(group.description).toEqual('The styles for the Group component')
-    expect(group.jsx).toEqual(['Group', 'ButtonGroup'])
+    expect(group.jsx).toEqual(['Group', 'Group.Root'])
   })
 
   test('should have base styles', () => {

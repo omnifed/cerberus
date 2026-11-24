@@ -44,6 +44,8 @@ export interface DefinedIcons<T extends IconType = IconType> {
   pinRight?: T
   pinRightFilled?: T
   promptModal?: T
+  rating?: T
+  ratingHalf?: T
   redo?: T
   search?: T
   selectArrow?: T

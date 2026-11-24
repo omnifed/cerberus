@@ -1,0 +1,296 @@
+{
+  "name": "Button",
+  "key": "buttons",
+  "description": "The Button component provides a visual indicator for a user to make an\naction of sorts, commonly used in forms, menus, and popovers.\n\nFor a customizable Button, use the Button object to access the\nindividual primitives of the Button component or style props.\n\n**NOTE**: This API is _slotless_ and is a single rendered layer abstraction.",
+  "variants": [
+    {
+      "name": "palette",
+      "values": [
+        "action",
+        "secondaryAction",
+        "info",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "defaultValue": "'action'"
+    },
+    {
+      "name": "usage",
+      "values": ["ghost", "outlined", "outlined-subtle", "filled"],
+      "defaultValue": "'filled'"
+    },
+    {
+      "name": "shape",
+      "values": ["hard", "squared", "sharp", "rounded"],
+      "defaultValue": "'squared'"
+    },
+    {
+      "name": "size",
+      "values": ["xs", "sm", "md", "lg", "xl", "2xl"],
+      "defaultValue": "'lg'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "Icon",
+      "exportName": "Button.Icon",
+      "kind": "abstraction",
+      "description": "An abstraction displaying an icon that is replaced by a Spinner when `pending` is set to true",
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The icon to render. It is replaced by a Spinner while the parent Button is `pending`."
+        },
+        {
+          "name": "ref",
+          "type": "Ref<HTMLDivElement>",
+          "required": false,
+          "description": "A ref to the Spinner wrapper rendered while the parent Button is `pending`."
+        }
+      ]
+    },
+    {
+      "name": "Provider",
+      "exportName": "Button.Provider",
+      "kind": "abstraction",
+      "description": "The Button context provider",
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
+        }
+      ]
+    },
+    {
+      "name": "El",
+      "exportName": "Button.El",
+      "kind": "abstraction",
+      "description": "An abstraction for using the Provider and Button.Root together",
+      "inherits": ["Button.Root"],
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
+        }
+      ]
+    },
+    {
+      "name": "IconButton",
+      "exportName": "Button.IconButton",
+      "kind": "abstraction",
+      "description": "An icon-only button styled by the `iconButton` recipe, labelled with `ariaLabel` (or \"Copy to clipboard\" with `clipboard`)",
+      "inherits": ["Button.IconButtonRoot"],
+      "props": [
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": false,
+          "description": "The aria-label attribute for the icon button."
+        },
+        {
+          "name": "clipboard",
+          "type": "true",
+          "required": false,
+          "description": "If true, the icon button is used as a clipboard trigger. In this case, the aria-label defaults to \"Copy to clipboard\"."
+        }
+      ]
+    },
+    {
+      "name": "SplitButton",
+      "exportName": "Button.SplitButton",
+      "kind": "abstraction",
+      "description": "A primary action `<Button>` attached to an IconButton that opens a Menu of other actions; `pending` disables the action and shows a Spinner",
+      "inherits": ["Button.Root"],
+      "props": [
+        {
+          "name": "pending",
+          "type": "boolean",
+          "required": false,
+          "description": "When true, replaces the `Button.Indicator` icon with a Spinner."
+        },
+        {
+          "name": "actionText",
+          "type": "string",
+          "required": true,
+          "description": "The text for the primary action button."
+        },
+        {
+          "name": "size",
+          "type": "IconButtonProps['size']",
+          "required": false,
+          "description": "The size of the SplitButton."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Button.Root",
+      "kind": "primitive",
+      "description": "A `<button>` styled by the `button` recipe.",
+      "dataScope": "buttons",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'secondaryAction' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "usage",
+          "type": "'ghost' | 'outlined' | 'outlined-subtle' | 'filled'",
+          "required": false,
+          "defaultValue": "'filled'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "shape",
+          "type": "'hard' | 'squared' | 'sharp' | 'rounded'",
+          "required": false,
+          "defaultValue": "'squared'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Group",
+      "exportName": "Button.Group",
+      "kind": "primitive",
+      "description": "Lays out related buttons together, styled by the `buttonGroup` recipe.",
+      "dataScope": "button-group",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "layout",
+          "type": "'default' | 'attached'",
+          "required": false,
+          "defaultValue": "'default'",
+          "description": "PandaCSS recipe variant for layout."
+        },
+        {
+          "name": "shape",
+          "type": "'default' | 'sharp' | 'rounded'",
+          "required": false,
+          "defaultValue": "'sharp'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "IconButtonRoot",
+      "exportName": "Button.IconButtonRoot",
+      "kind": "primitive",
+      "description": "The bare icon `<button>` styled by the `iconButton` recipe; `IconButton` wraps it and requires an `ariaLabel`.",
+      "dataScope": "icon-button",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'secondaryAction' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "usage",
+          "type": "'ghost' | 'filled' | 'outlined' | 'outlined-subtle'",
+          "required": false,
+          "defaultValue": "'ghost'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "shape",
+          "type": "'square' | 'circle'",
+          "required": false,
+          "defaultValue": "'circle'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}

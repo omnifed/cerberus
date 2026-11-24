@@ -31,3 +31,11 @@ a Signal `Accessor`.
 
 **Important:** be sure to use `Accessor` getters _not_ values within a `createComputed`
 primitive. Ignoring to do so will cause stale values that will not be updated.
+
+### Equality
+
+A computed only notifies its subscribers when its new value is different by strict
+equality (`!==`) from the previous one. Return a new Object or Array when the result
+changes; mutating and returning the same reference (e.g. `data.sort()`) re-evaluates
+the computed but updates nothing downstream. Prefer non-mutating methods like
+`toSorted`, `toReversed`, `map` or `filter`.

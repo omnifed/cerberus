@@ -5,7 +5,7 @@ import { items } from './items'
 export function BasicDemo() {
   return (
     <Box w="1/2">
-      <Table.Root caption="Basic table example">
+      <Table caption="Basic table example">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCol>Product</Table.HeaderCol>
@@ -24,7 +24,7 @@ export function BasicDemo() {
             )}
           </For>
         </Table.Body>
-      </Table.Root>
+      </Table>
     </Box>
   )
 }

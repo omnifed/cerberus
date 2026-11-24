@@ -1,0 +1,303 @@
+import { describe, expect, test } from 'bun:test'
+import { existsSync } from 'node:fs'
+import { relative } from 'node:path'
+import { loadConfigs } from 'codegen/core/configs'
+import { loadManifest } from 'codegen/core/manifest'
+import {
+  DESIGN_SYSTEM_SPEC_PATH,
+  REACT_PKG_ROOT,
+  REPO_ROOT,
+} from 'codegen/core/paths'
+import {
+  buildComponentDocSpec,
+  createSpecBuilderContext,
+} from 'codegen/docs/spec-builder'
+import type { ComponentDocSpec } from 'codegen/docs/types'
+import { ZAG_DOCS_VERSION } from 'codegen/docs/zag/zag-docs'
+
+/**
+ * Integration tests against the real installed Ark UI / Zag.js / Panda sources.
+ * The snapshot records every part's prop names, so any change to what the generator
+ * resolves shows up as a reviewable snapshot diff (`bun test codegen -u` to accept).
+ *
+ * They need the docs Panda spec (recipe variants). Without it they are skipped with a
+ * message, except when `CODEGEN_REQUIRE_SPEC=1` (the generated-docs CI job), where a
+ * missing spec fails the run instead of skipping silently.
+ */
+
+const SPEC = relative(REPO_ROOT, DESIGN_SYSTEM_SPEC_PATH)
+const HAS_SPEC = existsSync(DESIGN_SYSTEM_SPEC_PATH)
+if (!HAS_SPEC) {
+  const fix = 'run `pnpm --filter docs exec panda codegen --spec`'
+  if (process.env.CODEGEN_REQUIRE_SPEC === '1') {
+    throw new Error(`${SPEC} is missing and CODEGEN_REQUIRE_SPEC=1; ${fix}.`)
+  }
+  console.warn(
+    `⏭️  Skipping codegen integration tests: ${SPEC} is missing (${fix}).`,
+  )
+}
+const it = test.skipIf(!HAS_SPEC)
+
+/** Version of `@zag-js/<key>` as Ark resolves it */
+function zagVersion(key: string): string {
+  const ark = Bun.resolveSync('@ark-ui/react/package.json', REACT_PKG_ROOT)
+  const pkg = Bun.resolveSync(`@zag-js/${key}/package.json`, ark)
+  return (require(pkg) as { version: string }).version
+}
+
+const ctx = createSpecBuilderContext()
+const { diagnostics } = ctx
+const entries = HAS_SPEC
+  ? loadManifest(await loadConfigs(), diagnostics, ctx.resolver.modules)
+  : []
+ctx.entries = entries
+const specs = new Map<string, ComponentDocSpec>(
+  entries.map((e) => [e.key, buildComponentDocSpec(e, ctx)]),
+)
+
+function part(key: string, exportName: string) {
+  const found = specs.get(key)?.parts.find((p) => p.exportName === exportName)
+  if (!found) throw new Error(`${exportName} not generated`)
+  return found
+}
+
+it('every expected type resolves (no generator errors)', () => {
+  const errors = diagnostics.items.filter((d) => d.severity === 'error')
+  expect(errors).toEqual([])
+})
+
+describe.skipIf(!HAS_SPEC)('baseline prop counts never regress', () => {
+  test.each([
+    ['accordion', 'Accordion.Root', 16],
+    ['accordion', 'Accordion.Item', 5],
+    ['carousel', 'Carousel.Root', 23],
+  ])('%s › %s has at least %i props', (key, exportName, min) => {
+    expect(part(key, exportName).props.length).toBeGreaterThanOrEqual(min)
+  })
+
+  test('recipe-less Cerberus parts document no variants or unstyled', () => {
+    expect(specs.get('text')?.variants ?? []).toEqual([])
+    const textRoot = part('text', 'Text.Root')
+    // Text renders no data attributes, so no selector is documented
+    expect(textRoot.dataScope).toBeUndefined()
+    expect(textRoot.props.map((p) => p.name)).not.toContain('unstyled')
+    expect(
+      part('spinner', 'Spinner.Root').props.map((p) => p.name),
+    ).not.toContain('unstyled')
+  })
+
+  test('abstractions link to the primitive whose props they inherit', () => {
+    expect(part('carousel', 'Carousel.El').inherits).toEqual(['Carousel.Root'])
+    expect(part('accordion', 'Accordion.ItemGroup').inherits).toEqual([
+      'Accordion.Item',
+    ])
+    // Another component's part is linked to its spec
+    expect(part('pagination', 'Pagination.ItemList').inheritsExternal).toEqual([
+      { part: 'Group.Root', spec: 'group', docsSlug: 'group' },
+    ])
+    // An element part outside the Ark anatomy can be inherited from too
+    expect(part('field', 'Field.StatusIndicatorWithIcon').inherits).toEqual([
+      'Field.StatusIndicator',
+    ])
+    // A collectionGeneric Root inherits through its private `ComboboxRootStyled`
+    expect(part('combobox', 'Combobox.El').inherits).toEqual(['Combobox.Root'])
+    // Button.Icon renders no Cerberus primitive, so it accepts no `css`/`unstyled`
+    expect(part('buttons', 'Button.Icon').props.map((p) => p.name)).toEqual([
+      'children',
+      'ref',
+    ])
+  })
+
+  test('primitives carry data attributes, keys and machine defaults from Zag', () => {
+    expect(part('accordion', 'Accordion.Item').dataAttributes).toEqual([
+      { name: 'data-state', values: ['open', 'closed'] },
+      {
+        name: 'data-focus',
+        presence: true,
+        description: 'Present when focused.',
+      },
+      {
+        name: 'data-disabled',
+        presence: true,
+        description: 'Present when disabled.',
+      },
+      {
+        name: 'data-orientation',
+        reflects: 'orientation',
+        description: 'The orientation of the item.',
+      },
+    ])
+    expect(part('accordion', 'Accordion.ItemTrigger').keyboard).toEqual([
+      'ArrowDown',
+      'ArrowUp',
+      'ArrowRight',
+      'ArrowLeft',
+      'Home',
+      'End',
+    ])
+    const defaultValue = part('accordion', 'Accordion.Root').props.find(
+      (p) => p.name === 'defaultValue',
+    )
+    expect(defaultValue?.defaultValue).toBe('[]')
+  })
+
+  test('@zag-js/docs adds keyboard rows, attribute prose and CSS variables', () => {
+    expect(ZAG_DOCS_VERSION).toBe(zagVersion('accordion'))
+    expect(specs.get('accordion')?.a11y?.keyboard.map((k) => k.key)).toEqual([
+      'Space',
+      'Enter',
+      'Tab',
+      'Shift + Tab',
+      'ArrowDown',
+      'ArrowUp',
+      'ArrowRight',
+      'ArrowLeft',
+      'Home',
+      'End',
+    ])
+    const focus = part('accordion', 'Accordion.Item').dataAttributes?.find(
+      (a) => a.name === 'data-focus',
+    )
+    expect(focus?.description).toBe('Present when focused.')
+    expect(
+      part('carousel', 'Carousel.Root').cssVars?.map((v) => v.name),
+    ).toEqual(['--slides-per-page', '--slide-spacing', '--slide-item-size'])
+  })
+
+  test('defaultProps document what the generated part passes to Ark', () => {
+    // RadioGroup defaults Zag's orientation to the recipe's, so no mismatch warning
+    const orientation = part('radio', 'RadioGroup.Root').props.find(
+      (p) => p.name === 'orientation',
+    )
+    expect(orientation?.defaultValue).toBe("'horizontal'")
+    expect(
+      diagnostics.items
+        .filter((d) => d.scope === 'radio')
+        .map((d) => d.message),
+    ).toEqual([])
+  })
+
+  test('a RootProvider takes no machine defaults: its machine comes from useX()', () => {
+    // Checkbox's machine defaults `value` to "on"; RootProvider's `value` is the hook's
+    const value = part('checkbox', 'Checkbox.RootProvider').props.find(
+      (p) => p.name === 'value',
+    )
+    expect(value?.defaultValue).toBeUndefined()
+    // A variant named like a machine prop says where the behavior is set
+    const orientation = part('radio', 'RadioGroup.RootProvider').props.find(
+      (p) => p.name === 'orientation',
+    )
+    expect(orientation?.description).toContain(
+      'pass `orientation` to `useRadioGroup()`',
+    )
+  })
+
+  test('a recipe variant that is also an Ark prop must be forwarded', async () => {
+    const { radioConfig } = await import('codegen/configs/radio')
+    const own = createSpecBuilderContext(undefined, ctx.resolver)
+    const [radio] = loadManifest(
+      [{ ...radioConfig, forwardProps: undefined }],
+      own.diagnostics,
+      ctx.resolver.modules,
+    )
+    buildComponentDocSpec(radio, own)
+    expect(own.diagnostics.items.map((d) => d.message)).toContain(
+      'RadioGroup.Root.orientation is a recipe variant and an Ark prop, but Panda keeps variants from Ark: add it to forwardProps.Root',
+    )
+  })
+
+  test('part descriptions are word-cased, or come from parts.<p>.description', () => {
+    expect(part('accordion', 'Accordion.ItemTrigger').description).toBe(
+      'The item trigger primitive part of the Accordion component.',
+    )
+    expect(part('tag', 'Tag.ClosableRoot').description).toContain(
+      'without the close button `Tag.Closable` adds',
+    )
+    const camel = [...specs.values()]
+      .flatMap((spec) => spec.parts)
+      .filter((p) => /The [a-z]+[A-Z]\w* (primitive )?part/.test(p.description))
+      .map((p) => p.exportName)
+    expect(camel).toEqual([])
+  })
+
+  test('patchable props stay required and say a patch child may omit them', async () => {
+    const side = part('marquee', 'Marquee.Edge').props.find(
+      (p) => p.name === 'side',
+    )
+    expect(side?.required).toBe(true)
+    expect(side?.description).toContain('Optional in a patch child')
+
+    // A prop that isn't required on the member is a config mistake
+    const { marqueeConfig } = await import('codegen/configs/marquee')
+    const own = createSpecBuilderContext(undefined, ctx.resolver)
+    const [marquee] = loadManifest(
+      [{ ...marqueeConfig, patchable: { Edge: ['side', 'dir'] } }],
+      own.diagnostics,
+      ctx.resolver.modules,
+    )
+    buildComponentDocSpec(marquee, own)
+    expect(own.diagnostics.items.map((d) => d.message)).toContain(
+      'patchable.Edge: `dir` is not a required prop of Marquee.Edge',
+    )
+  })
+
+  test('the Context API comes from @zag-js/docs, with what exposes it', () => {
+    const radio = specs.get('radio')?.contextApi
+    expect(radio?.exposedBy).toEqual(['RadioGroup.Context', 'useRadioGroup()'])
+    expect(radio?.members.map((m) => m.name)).toEqual([
+      'value',
+      'setValue',
+      'clearValue',
+      'focus',
+      'getItemState',
+    ])
+    expect(radio?.members[0]).toEqual({
+      name: 'value',
+      type: 'string | null',
+      description: 'The current value of the radio group.',
+    })
+    // Only hooks the package exports are listed
+    expect(specs.get('toggle')?.contextApi?.exposedBy).toEqual([
+      'Toggle.Context',
+      'useToggle()',
+      'useToggleContext()',
+    ])
+    // No Zag machine (Cerberus-only, or no @zag-js/docs entry): no table
+    expect(specs.get('tag')?.contextApi).toBeUndefined()
+    expect(specs.get('field')?.contextApi).toBeUndefined()
+  })
+
+  test('Accordion.Root resolves Zag props with JSDoc and defaults', () => {
+    const props = part('accordion', 'Accordion.Root').props
+    const multiple = props.find((p) => p.name === 'multiple')
+    expect(multiple?.defaultValue).toBe('false')
+    expect(multiple?.description.length).toBeGreaterThan(0)
+  })
+})
+
+it('every part resolves to the same prop names as last time', () => {
+  const summary = Object.fromEntries(
+    [...specs.values()].map((spec) => [
+      spec.key,
+      {
+        variants: spec.variants.map((v) => v.name),
+        parts: Object.fromEntries(
+          spec.parts.map((p) => [p.exportName, p.props.map((x) => x.name)]),
+        ),
+      },
+    ]),
+  )
+  expect(summary).toMatchSnapshot()
+})
+
+it('no props lose their description compared with last time', () => {
+  const described = Object.fromEntries(
+    [...specs.values()].flatMap((spec) =>
+      spec.parts.map((p) => [
+        p.exportName,
+        p.props.filter((x) => x.description).map((x) => x.name),
+      ]),
+    ),
+  )
+  expect(described).toMatchSnapshot()
+})

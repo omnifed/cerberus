@@ -16,22 +16,6 @@ import { noPageSlotPalettes } from '../shared/palettes'
 export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'slider',
   slots: [...sliderAnatomy.keys(), 'markerIndicator'],
-  jsx: [
-    // primitives
-    'SliderRoot',
-    'SliderLabel',
-    'SliderValueText',
-    'SliderControl',
-    'SliderTrack',
-    'SliderRange',
-    'SliderThumb',
-    'SliderMarkerGroup',
-    'SliderMarker',
-    'SliderMarkerIndicator',
-    'SliderDraggingIndicator',
-    // abstractions
-    'Slider',
-  ],
 
   base: {
     root: {
@@ -77,7 +61,8 @@ export const slider: Partial<SlotRecipeConfig> = defineSlotRecipe({
     markerIndicator: {
       bgColor: 'var(--marker-bg)',
       borderRadius: 'full',
-      height: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
+      height:
+        'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
       width: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
     },
     draggingIndicator: {

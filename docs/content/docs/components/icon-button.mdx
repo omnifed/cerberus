@@ -2,7 +2,7 @@
 title: 'IconButton'
 description: 'The IconButton component is a button that displays an icon.'
 npm: '@cerberus-design/react'
-source: 'components/icon-button'
+source: 'components/buttons'
 recipe: 'iconButton.ts'
 group: Components
 order: 17
@@ -56,21 +56,10 @@ You can create IconButton styled links by using the `asChild` prop.
 
 ## Primitives
 
-You can utilize the primitive components or the `css` prop to customize the button.
-
-| Component    | Description                               |
-| ------------ | ----------------------------------------- |
-| `IconButton` | The context provider for the Button parts |
+`IconButton` (also available as `Button.IconButton`) labels `IconButtonRoot`, the icon-only `<button>` styled by the `iconButton` recipe, with its `ariaLabel`. Compose `IconButtonRoot` directly when you label it yourself (e.g. inside a trigger with `asChild`).
 
 ## API
 
-### Props
+`IconButton` lives with the other Button APIs. See `Button.IconButton` below.
 
-The `IconButton` component is an abstraction of the primitives and accepts the following props:
-
-| Name        | Default  | Description                                                     |
-| ----------- | -------- | --------------------------------------------------------------- |
-| `clipboard` | false    | If true, uses Clipboard aria-attributes.                        |
-| `palette`   | `action` | The color palette (any of the Cerberus palettes) of the button. |
-| `usage`     | `filled` | The style treatment of the button.                              |
-| `shape`     | `sharp`  | The shape of the button.                                        |
+<ComponentApi spec="buttons" />

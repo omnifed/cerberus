@@ -10,17 +10,7 @@ describe('carousel recipe', () => {
   })
 
   test('should have designated JSX names', () => {
-    expect(carousel.jsx).toEqual([
-      'CarouselRoot',
-      'CarouselControl',
-      'CarouselPrevTrigger',
-      'CarouselNextTrigger',
-      'CarouselIndicatorGroup',
-      'CarouselIndicator',
-      'CarouselItemGroup',
-      'CarouselItem',
-      'Carousel',
-    ])
+    expect(carousel.jsx).toBeUndefined()
   })
 
   test('should have a base.root style', () => {

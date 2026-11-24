@@ -1,0 +1,539 @@
+{
+  "name": "Rating",
+  "key": "rating",
+  "description": "The Rating component provides a way to select a value from a range of values, typically used for feedback on a scale.\n\nUse the default `<Rating>` for a labeled rating that renders one item per `count` (5 by default), with a render function child that returns each item's icon from its state (`highlighted`, `half`, `checked`), or compose the primitives for full structural control. It supports `readOnly`, half values, two sizes, two palettes and a horizontal or vertical orientation.",
+  "variants": [
+    {
+      "name": "palette",
+      "values": ["action", "warning"],
+      "defaultValue": "'action'"
+    },
+    {
+      "name": "orientation",
+      "values": ["horizontal", "vertical"],
+      "defaultValue": "'vertical'"
+    },
+    {
+      "name": "size",
+      "values": ["sm", "md"],
+      "defaultValue": "'sm'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Rating.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders an optional label and one item per `count`, each showing the icon returned by its render function child (Cerberus stars by default)",
+      "inherits": ["Rating.Root"],
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The label of the rating, rendered in `Rating.Label`. A `Rating.Label` child with children replaces it."
+        },
+        {
+          "name": "children",
+          "type": "RatingItemRenderer | ReactNode",
+          "required": false,
+          "description": "A render function that returns each item's content from its state (`highlighted`, `half`, `checked`), or direct `Rating.Label`, `Rating.Control`, `Rating.Item`, `Rating.ItemContext` and `Rating.HiddenInput` children that override those parts. Without a render function, each item shows the Cerberus `rating` icon (the `ratingHalf` icon when `half`)."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Rating.Root",
+      "kind": "primitive",
+      "description": "The root container of the Rating component.",
+      "dataScope": "rating-group",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'warning'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'",
+          "required": false,
+          "defaultValue": "'vertical'",
+          "description": "PandaCSS recipe variant for orientation."
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the rating. Useful for composition."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "required": false,
+          "defaultValue": "5",
+          "description": "The total number of ratings."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"rating\"",
+          "description": "The name attribute of the rating element (used in forms)."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the underlying input element."
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "required": false,
+          "description": "The controlled value of the rating"
+        },
+        {
+          "name": "defaultValue",
+          "type": "number",
+          "required": false,
+          "defaultValue": "-1",
+          "description": "The initial value of the rating when rendered. Use when you don't need to control the value of the rating."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the rating is readonly."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the rating is disabled."
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the rating is required."
+        },
+        {
+          "name": "allowHalf",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow half stars."
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to autofocus the rating."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function to be called when the rating value changes."
+        },
+        {
+          "name": "onHoverChange",
+          "type": "((details: HoverChangeDetails) => void)",
+          "required": false,
+          "description": "Function to be called when the rating value is hovered."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Rating.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Rating component.",
+      "dataScope": "rating-group",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Rating.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Rating component.",
+      "dataScope": "rating-group",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-checked",
+          "presence": true,
+          "description": "Present when checked."
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-half",
+          "presence": true
+        }
+      ],
+      "keyboard": [
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Space",
+        "Home",
+        "End"
+      ],
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true,
+          "description": "Optional in a patch child of a Rating abstraction, which supplies it."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Rating.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Rating component.",
+      "dataScope": "rating-group",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Rating.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Rating component, driven by state created with `useRatingGroup()`.",
+      "dataScope": "rating-group",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'warning'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'",
+          "required": false,
+          "defaultValue": "'vertical'",
+          "description": "PandaCSS recipe variant for orientation."
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseRatingGroupReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Rating.Context",
+      "kind": "primitive",
+      "description": "Exposes the Rating state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseRatingGroupContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "ItemContext",
+      "exportName": "Rating.ItemContext",
+      "kind": "primitive",
+      "description": "Exposes the Rating item state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseRatingGroupItemContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "HiddenInput",
+      "exportName": "Rating.HiddenInput",
+      "kind": "primitive",
+      "description": "The hidden input primitive part of the Rating component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Radio Group",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/radio/",
+    "keyboard": [
+      {
+        "key": "ArrowRight",
+        "description": "Moves focus to the next star, increasing the rating value based on the `allowHalf` property."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "Moves focus to the previous star, decreasing the rating value based on the `allowHalf` property."
+      },
+      {
+        "key": "Enter",
+        "description": "Selects the focused star in the rating group."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Decreases the rating by one step (a half star with `allowHalf`), like `ArrowLeft`."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Increases the rating by one step (a half star with `allowHalf`), like `ArrowRight`."
+      },
+      {
+        "key": "Space",
+        "description": "Selects the focused star when the rating has no value yet."
+      },
+      {
+        "key": "Home",
+        "description": "Sets the rating to 1."
+      },
+      {
+        "key": "End",
+        "description": "Sets the rating to `count`."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["Rating.Context", "useRatingGroup()"],
+    "members": [
+      {
+        "name": "setValue",
+        "type": "(value: number) => void",
+        "description": "Sets the value of the rating group."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Clears the value of the rating group."
+      },
+      {
+        "name": "hovering",
+        "type": "boolean",
+        "description": "Whether the rating group is being hovered."
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "The current value of the rating group."
+      },
+      {
+        "name": "hoveredValue",
+        "type": "number",
+        "description": "The value of the currently hovered rating."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "The total number of ratings."
+      },
+      {
+        "name": "items",
+        "type": "number[]",
+        "description": "The array of rating values. Returns an array of numbers from 1 to the max value."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of a rating item."
+      }
+    ]
+  }
+}

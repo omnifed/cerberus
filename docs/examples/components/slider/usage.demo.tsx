@@ -3,7 +3,8 @@ import { For, Slider, SliderProps } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 import { getSacredNumber } from './utils'
 
-const variants = data.slotRecipes.slider.variants.usage.values as SliderProps['usage'][]
+const variants = data.slotRecipes.slider.variants.usage
+  .values as SliderProps['usage'][]
 
 export function UsageDemo() {
   return (
@@ -16,7 +17,7 @@ export function UsageDemo() {
             size={usage === 'filled' ? 'sm' : 'lg'}
             usage={usage}
           >
-            <Slider.Label>Slider - {usage} </Slider.Label>
+            <Slider.Label>Slider - {String(usage)} </Slider.Label>
           </Slider>
         )}
       </For>

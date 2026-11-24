@@ -1,0 +1,1342 @@
+{
+  "name": "Menu",
+  "key": "menu",
+  "description": "The Menu component displays a list of actions or options that the user can choose from, opened from a trigger such as a button.\n\n`<Menu>` provides the menu state to its parts and renders no element. Use `Menu.Trigger` with `asChild` to open the menu from your own button, and `Menu.ContentGroup` to render the positioned menu content. Group items with `Menu.ItemGroup` and `Menu.ItemGroupLabel`, divide them with `Menu.Separator`, and use `Menu.CheckboxItem` or `Menu.RadioItemGroup` with `Menu.RadioItem` for selectable options. The `positioning` prop places the menu relative to its trigger.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "ContentGroup",
+      "exportName": "Menu.ContentGroup",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the menu content inside its positioner",
+      "inherits": ["Menu.Content"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Menu.Root",
+      "kind": "primitive",
+      "description": "Provides the Menu context and recipe variants to its parts. Renders no element.",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onPointerDownOutside",
+          "type": "((event: PointerDownOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the pointer is pressed down outside the component"
+        },
+        {
+          "name": "onFocusOutside",
+          "type": "((event: FocusOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the focus is moved outside the component"
+        },
+        {
+          "name": "onInteractOutside",
+          "type": "((event: InteractOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when an interaction happens outside the component"
+        },
+        {
+          "name": "onEscapeKeyDown",
+          "type": "((event: KeyboardEvent) => void)",
+          "required": false,
+          "description": "Function called when the escape key is pressed"
+        },
+        {
+          "name": "onRequestDismiss",
+          "type": "((event: LayerDismissEvent) => void)",
+          "required": false,
+          "description": "Function called when this layer is closed due to a parent layer being closed"
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the menu. Useful for composition."
+        },
+        {
+          "name": "defaultHighlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial highlighted value of the menu item when rendered. Use when you don't need to control the highlighted value of the menu item."
+        },
+        {
+          "name": "highlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled highlighted value of the menu item."
+        },
+        {
+          "name": "onHighlightChange",
+          "type": "((details: HighlightChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the highlighted menu item changes."
+        },
+        {
+          "name": "onSelect",
+          "type": "((details: SelectionDetails) => void)",
+          "required": false,
+          "description": "Function called when a menu item is selected."
+        },
+        {
+          "name": "anchorPoint",
+          "type": "Point | null",
+          "required": false,
+          "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
+        },
+        {
+          "name": "loopFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to loop the keyboard navigation."
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "description": "The options used to dynamically position the menu"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to close the menu when an option is selected"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the menu"
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the menu opens or closes"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "The initial open state of the menu when rendered. Use when you don't need to control the open state of the menu."
+        },
+        {
+          "name": "typeahead",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the pressing printable characters should trigger typeahead navigation"
+        },
+        {
+          "name": "composite",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the menu is a composed with other composite widgets like a combobox or tabs"
+        },
+        {
+          "name": "navigate",
+          "type": "((details: NavigateDetails) => void) | null",
+          "required": false,
+          "description": "Function to navigate to the selected item if it's an anchor element"
+        },
+        {
+          "name": "triggerValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled trigger value"
+        },
+        {
+          "name": "defaultTriggerValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial trigger value when rendered. Use when you don't need to control the trigger value."
+        },
+        {
+          "name": "onTriggerValueChange",
+          "type": "((details: TriggerValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the trigger value changes."
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Arrow",
+      "exportName": "Menu.Arrow",
+      "kind": "primitive",
+      "description": "The arrow primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "arrow",
+      "cssVars": [
+        {
+          "name": "--arrow-size",
+          "description": "The size of the arrow."
+        },
+        {
+          "name": "--arrow-size-half",
+          "description": "Half the size of the arrow."
+        },
+        {
+          "name": "--arrow-background",
+          "description": "Use this variable to style the arrow background."
+        },
+        {
+          "name": "--arrow-offset",
+          "description": "The offset position of the arrow."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ArrowTip",
+      "exportName": "Menu.ArrowTip",
+      "kind": "primitive",
+      "description": "The arrow tip primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "arrow-tip",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Menu.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-placement",
+          "description": "The placement of the content."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the content is positioned on."
+        },
+        {
+          "name": "data-nested",
+          "description": "menu."
+        },
+        {
+          "name": "data-has-nested",
+          "description": "menu."
+        }
+      ],
+      "keyboard": [
+        "ArrowDown",
+        "ArrowUp",
+        "ArrowLeft",
+        "ArrowRight",
+        "Enter",
+        "Space",
+        "Home",
+        "End"
+      ],
+      "cssVars": [
+        {
+          "name": "--layer-index",
+          "description": "The index of the dismissable in the layer stack."
+        },
+        {
+          "name": "--nested-layer-count",
+          "description": "The number of nested menus."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ContextTrigger",
+      "exportName": "Menu.ContextTrigger",
+      "kind": "primitive",
+      "description": "The context trigger primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "context-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-current",
+          "presence": true,
+          "description": "Present when current."
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Menu.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Menu.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-valuetext",
+          "description": "The human-readable value."
+        },
+        {
+          "name": "data-close-on-select"
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The unique value of the menu item option."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the menu item is disabled"
+        },
+        {
+          "name": "valueText",
+          "type": "string",
+          "required": false,
+          "description": "The textual value of the option. Used in typeahead navigation of the menu. If not provided, the text content of the menu item will be used."
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the menu should be closed when the option is selected."
+        },
+        {
+          "name": "onSelect",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "The function to call when the item is selected"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroup",
+      "exportName": "Menu.ItemGroup",
+      "kind": "primitive",
+      "description": "The item group primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "item-group",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The `id` of the element that provides accessibility label to the option group"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroupLabel",
+      "exportName": "Menu.ItemGroupLabel",
+      "kind": "primitive",
+      "description": "The item group label primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "item-group-label",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemIndicator",
+      "exportName": "Menu.ItemIndicator",
+      "kind": "primitive",
+      "description": "The item indicator primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "item-indicator",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemText",
+      "exportName": "Menu.ItemText",
+      "kind": "primitive",
+      "description": "The item text primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "item-text",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Positioner",
+      "exportName": "Menu.Positioner",
+      "kind": "primitive",
+      "description": "The positioner primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "positioner",
+      "cssVars": [
+        {
+          "name": "--reference-width",
+          "description": "The width of the reference element."
+        },
+        {
+          "name": "--reference-height",
+          "description": "The height of the root."
+        },
+        {
+          "name": "--available-width",
+          "description": "The available width in viewport."
+        },
+        {
+          "name": "--available-height",
+          "description": "The available height in viewport."
+        },
+        {
+          "name": "--x",
+          "description": "The x position for transform."
+        },
+        {
+          "name": "--y",
+          "description": "The y position for transform."
+        },
+        {
+          "name": "--z-index",
+          "description": "The z-index value."
+        },
+        {
+          "name": "--transform-origin",
+          "description": "The transform origin for animations."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Separator",
+      "exportName": "Menu.Separator",
+      "kind": "primitive",
+      "description": "The separator primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "separator",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Menu.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-placement",
+          "description": "The placement of the trigger."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the trigger is positioned on."
+        },
+        {
+          "name": "data-uid",
+          "reflects": "id"
+        },
+        {
+          "name": "data-controls"
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-current",
+          "description": "Present when current."
+        }
+      ],
+      "keyboard": ["ArrowDown", "ArrowUp", "Enter", "Space"],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "The value that identifies this specific trigger"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "TriggerItem",
+      "exportName": "Menu.TriggerItem",
+      "kind": "primitive",
+      "description": "The trigger item primitive part of the Menu component.",
+      "dataScope": "menu",
+      "dataPart": "trigger-item",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "CheckboxItem",
+      "exportName": "Menu.CheckboxItem",
+      "kind": "primitive",
+      "description": "The checkbox item primitive part of the Menu component, styled with the `item` slot.",
+      "dataScope": "menu",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-valuetext",
+          "description": "The human-readable value."
+        },
+        {
+          "name": "data-close-on-select"
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of the option"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the menu item is disabled"
+        },
+        {
+          "name": "valueText",
+          "type": "string",
+          "required": false,
+          "description": "The textual value of the option. Used in typeahead navigation of the menu. If not provided, the text content of the menu item will be used."
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the menu should be closed when the option is selected."
+        },
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": true,
+          "description": "Whether the option is checked"
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((checked: boolean) => void)",
+          "required": false,
+          "description": "Function called when the option state is changed"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RadioItemGroup",
+      "exportName": "Menu.RadioItemGroup",
+      "kind": "primitive",
+      "description": "The radio item group primitive part of the Menu component, styled with the `itemGroup` slot.",
+      "dataScope": "menu",
+      "dataPart": "item-group",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onValueChange",
+          "type": "((e: ValueChangeDetails) => void)",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RadioItem",
+      "exportName": "Menu.RadioItem",
+      "kind": "primitive",
+      "description": "The radio item primitive part of the Menu component, styled with the `item` slot.",
+      "dataScope": "menu",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-valuetext",
+          "description": "The human-readable value."
+        },
+        {
+          "name": "data-close-on-select"
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": "The value of the option"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the menu item is disabled"
+        },
+        {
+          "name": "valueText",
+          "type": "string",
+          "required": false,
+          "description": "The textual value of the option. Used in typeahead navigation of the menu. If not provided, the text content of the menu item will be used."
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the menu should be closed when the option is selected."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Menu.RootProvider",
+      "kind": "primitive",
+      "description": "Provides the Menu context and recipe variants to its parts, from state created with `useMenu()`. Renders no element.",
+      "props": [
+        {
+          "name": "value",
+          "type": "UseMenuReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Menu.Context",
+      "kind": "primitive",
+      "description": "Exposes the Menu state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseMenuContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "ItemContext",
+      "exportName": "Menu.ItemContext",
+      "kind": "primitive",
+      "description": "Exposes the Menu item state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseMenuItemContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Menu Button",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/",
+    "keyboard": [
+      {
+        "key": "Space",
+        "description": "Activates/Selects the highlighted item."
+      },
+      {
+        "key": "Enter",
+        "description": "Activates/Selects the highlighted item."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Highlights the next item in the menu."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Highlights the previous item in the menu."
+      },
+      {
+        "key": "ArrowRight",
+        "description": "<span>When focus is on trigger, opens or closes the submenu depending on reading direction.</span>."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "<span>When focus is on trigger, opens or closes the submenu depending on reading direction.</span>."
+      },
+      {
+        "key": "Escape",
+        "description": "Closes the menu and moves focus to the trigger."
+      },
+      {
+        "key": "Home",
+        "description": "Highlights the first item in the menu."
+      },
+      {
+        "key": "End",
+        "description": "Highlights the last item in the menu."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["Menu.Context", "useMenu()"],
+    "members": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the menu is open."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the menu."
+      },
+      {
+        "name": "triggerValue",
+        "type": "string | null",
+        "description": "The trigger value."
+      },
+      {
+        "name": "setTriggerValue",
+        "type": "(value: string | null) => void",
+        "description": "Function to set the trigger value."
+      },
+      {
+        "name": "highlightedValue",
+        "type": "string | null",
+        "description": "The id of the currently highlighted menuitem."
+      },
+      {
+        "name": "setHighlightedValue",
+        "type": "(value: string) => void",
+        "description": "Function to set the highlighted menuitem."
+      },
+      {
+        "name": "setParent",
+        "type": "(parent: MenuService) => void",
+        "description": "Function to register a parent menu. This is used for submenus."
+      },
+      {
+        "name": "setChild",
+        "type": "(child: MenuService) => void",
+        "description": "Function to register a child menu. This is used for submenus."
+      },
+      {
+        "name": "reposition",
+        "type": "(options?: Partial<PositioningOptions>) => void",
+        "description": "Function to reposition the popover."
+      },
+      {
+        "name": "getOptionItemState",
+        "type": "(props: OptionItemProps) => OptionItemState",
+        "description": "Returns the state of the option item."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of the menu item."
+      },
+      {
+        "name": "addItemListener",
+        "type": "(props: ItemListenerProps) => VoidFunction | undefined",
+        "description": "Setup the custom event listener for item selection event."
+      }
+    ]
+  }
+}

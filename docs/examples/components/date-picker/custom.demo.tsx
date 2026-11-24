@@ -1,11 +1,5 @@
 import { Grid } from '@/styled-system/jsx'
-import {
-  DatePicker,
-  DatePickerCalendar,
-  DatePickerInput,
-  DatePickerLabel,
-  Field,
-} from '@cerberus-design/react'
+import { DatePicker, Field } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
@@ -20,9 +14,9 @@ export function CustomDemo() {
             },
           }}
         >
-          <DatePickerLabel>Start date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
+          <DatePicker.Label>Start date</DatePicker.Label>
+          <DatePicker.InputGroup />
+          <DatePicker.Calendar />
         </DatePicker>
       </Field>
       <Field>
@@ -35,9 +29,9 @@ export function CustomDemo() {
             },
           }}
         >
-          <DatePickerLabel>End date</DatePickerLabel>
-          <DatePickerInput />
-          <DatePickerCalendar />
+          <DatePicker.Label>End date</DatePicker.Label>
+          <DatePicker.InputGroup />
+          <DatePicker.Calendar />
         </DatePicker>
       </Field>
     </Grid>

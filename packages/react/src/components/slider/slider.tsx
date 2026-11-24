@@ -1,86 +1,130 @@
+'use client'
+
 import { HStack } from 'styled-system/jsx'
+import { extractParts } from '../../internal/extract-parts'
+import { splitProps } from '../../utils/index'
 import { Show } from '../show/show'
-import { Marker, SliderMarks } from './marks'
+import { MARK_PARTS, MarkList, SliderMarks, type SliderMark } from './marks'
 import {
   SliderControl,
-  SliderDraggingIndicator,
-  SliderHiddenInput,
-  SliderLabel,
-  SliderMarker,
   SliderMarkerGroup,
-  SliderMarkerIndicator,
   SliderRange,
   SliderRoot,
-  SliderRootProps,
-  SliderProvider,
-  SliderThumb,
   SliderTrack,
-  SliderValueText,
+  type SliderRootProps,
 } from './primitives'
-import { SliderThumbs } from './thumbs'
+import { SliderThumbs, THUMB_PARTS, ThumbList } from './thumbs'
+
+const PARTS = {
+  control: SliderControl,
+  track: SliderTrack,
+  range: SliderRange,
+  markerGroup: SliderMarkerGroup,
+  thumbs: SliderThumbs,
+  marks: SliderMarks,
+  ...THUMB_PARTS,
+  ...MARK_PARTS,
+}
 
 export type SliderProps = SliderRootProps & {
-  marks?: Array<Marker>
+  /**
+   * The marks to render along the track. A number renders as its own label;
+   * an object renders `label` (or its `value` when no label is given).
+   */
+  marks?: SliderMark[]
+  /**
+   * Shows a dragging indicator with the thumb's value while a thumb is dragged
+   * or focused.
+   * @default false
+   */
   showIndicator?: boolean
 }
 
 /**
- * ## Slider Component
- * Slider component that wraps the slider primitives. This provides an abstraction to streamline basic slider usage.
- *
- * For more advanced use cases, use the slider
- * primitives directly via the `Slider.[Slot]` component's parts.
- *
- * @see {@link https://cerberus.digitalu.design/docs/components/slider}
+ * The Slider component is an abstraction of the primitives that renders the
+ * control, track, range, one thumb per value and optional marks. The
+ * `direction` variant follows `orientation` unless it is set. Non-part
+ * children (e.g. `Slider.Label`, `Slider.ValueText`) render as a header above
+ * the control. A direct `Slider.Thumbs` or `Slider.Marks` child replaces the
+ * default thumbs or marks; direct `Slider.Control`, `Slider.Track`,
+ * `Slider.Range`, `Slider.Thumb`, `Slider.DraggingIndicator`,
+ * `Slider.HiddenInput`, `Slider.MarkerGroup`, `Slider.Marker` or
+ * `Slider.MarkerIndicator` children patch that part (on every thumb or
+ * marker).
+ * @description [Cerberus Docs] https://cerberus.digitalu.design/docs/components/slider
+ * @description [Ark Docs] https://ark-ui.com/docs/components/slider
+ * @example
+ * ```tsx
+ * <Slider defaultValue={[30]} />
+ * ```
  */
-export function Slider(props: SliderProps) {
-  const { showIndicator, ...rootProps } = props
+export function SliderEl(props: SliderProps) {
+  const [localProps, rootProps] = splitProps(props, [
+    'marks',
+    'showIndicator',
+    'children',
+  ])
+  const { marks, showIndicator } = localProps
+
+  const { parts, content } = extractParts(localProps.children, PARTS)
+  const { children: controlChildren, ...controlOverrideProps } =
+    parts.control ?? {}
+  const { children: trackChildren, ...trackOverrideProps } = parts.track ?? {}
+  const { children: _markerGroupChildren, ...markerGroupOverrideProps } =
+    parts.markerGroup ?? {}
+
   return (
-    <SliderRoot {...rootProps} direction={props.orientation}>
-      <Show when={props.children}>
+    <SliderRoot
+      {...rootProps}
+      direction={rootProps.direction ?? rootProps.orientation}
+    >
+      <Show when={content != null}>
         {() => (
           <HStack justify="space-between" w="full">
-            {props.children}
+            {content}
           </HStack>
         )}
       </Show>
 
-      <SliderControl direction={props.orientation}>
-        <SliderTrack direction={props.orientation} usage={props.usage}>
-          <SliderRange usage={props.usage} />
-        </SliderTrack>
+      <SliderControl {...controlOverrideProps}>
+        {controlChildren ?? (
+          <>
+            <SliderTrack {...trackOverrideProps}>
+              {trackChildren ?? <SliderRange {...parts.range} />}
+            </SliderTrack>
 
-        <SliderThumbs
-          direction={props.orientation}
-          showIndicator={showIndicator}
-          usage={props.usage}
-          value={props.defaultValue ?? props.value}
-        />
+            {parts.thumbs ? (
+              <SliderThumbs {...parts.thumbs} />
+            ) : (
+              <ThumbList
+                showIndicator={showIndicator}
+                parts={{
+                  thumb: parts.thumb,
+                  draggingIndicator: parts.draggingIndicator,
+                  hiddenInput: parts.hiddenInput,
+                }}
+              />
+            )}
 
-        <Show when={props.marks?.length}>
-          {() => (
-            <SliderMarks direction={props.orientation} marks={props.marks ?? []} />
-          )}
-        </Show>
+            {parts.marks ? (
+              <SliderMarks {...parts.marks} />
+            ) : (
+              <Show when={marks?.length}>
+                {() => (
+                  <MarkList
+                    {...markerGroupOverrideProps}
+                    marks={marks ?? []}
+                    parts={{
+                      marker: parts.marker,
+                      markerIndicator: parts.markerIndicator,
+                    }}
+                  />
+                )}
+              </Show>
+            )}
+          </>
+        )}
       </SliderControl>
     </SliderRoot>
   )
 }
-
-// Parts
-
-Slider.Provider = SliderProvider
-Slider.Root = SliderRoot
-Slider.Label = SliderLabel
-Slider.ValueText = SliderValueText
-Slider.Control = SliderControl
-Slider.Track = SliderTrack
-Slider.Range = SliderRange
-Slider.Thumb = SliderThumb
-Slider.Thumbs = SliderThumbs
-Slider.DraggingIndicator = SliderDraggingIndicator
-Slider.MarkerGroup = SliderMarkerGroup
-Slider.Marker = SliderMarker
-Slider.MarkerIndicator = SliderMarkerIndicator
-Slider.Marks = SliderMarks
-Slider.HiddenInput = SliderHiddenInput

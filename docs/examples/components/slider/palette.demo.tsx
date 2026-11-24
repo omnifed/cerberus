@@ -17,7 +17,7 @@ export function PaletteDemo() {
             palette={palette}
             usage="outlined"
           >
-            <Slider.Label>Slider - {palette} </Slider.Label>
+            <Slider.Label>Slider - {String(palette)} </Slider.Label>
           </Slider>
         )}
       </For>

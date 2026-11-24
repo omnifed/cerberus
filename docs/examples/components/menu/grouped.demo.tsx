@@ -1,30 +1,21 @@
 'use client'
 
-import {
-  Button,
-  Menu,
-  MenuContent,
-  MenuGroupLabel,
-  MenuItem,
-  MenuItemGroup,
-  MenuSeparator,
-  MenuTrigger,
-} from '@cerberus-design/react'
+import { Button, Menu } from '@cerberus-design/react'
 
 export function GroupedDemo() {
   return (
     <Menu>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button>Grouped Menu</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItemGroup>
-          <MenuGroupLabel>Group Label</MenuGroupLabel>
-          <MenuSeparator />
-          <MenuItem value="item_1">Item 1</MenuItem>
-          <MenuItem value="item_2">Item 2</MenuItem>
-        </MenuItemGroup>
-      </MenuContent>
+      </Menu.Trigger>
+      <Menu.ContentGroup>
+        <Menu.ItemGroup>
+          <Menu.ItemGroupLabel>Group Label</Menu.ItemGroupLabel>
+          <Menu.Separator />
+          <Menu.Item value="item_1">Item 1</Menu.Item>
+          <Menu.Item value="item_2">Item 2</Menu.Item>
+        </Menu.ItemGroup>
+      </Menu.ContentGroup>
     </Menu>
   )
 }

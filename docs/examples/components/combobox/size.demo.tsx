@@ -4,8 +4,6 @@ import { Stack, VStack } from '@/styled-system/jsx'
 import {
   Combobox,
   ComboboxProps,
-  ComboItemText,
-  ComboItemWithIndicator,
   For,
   Text,
   useStatefulCollection,
@@ -16,7 +14,9 @@ import { sizes } from './meta'
 export function SizeDemo() {
   return (
     <Stack gap="md" w="3/4">
-      <For each={sizes}>{(size) => <SizeBox key={String(size)} size={size} />}</For>
+      <For each={sizes}>
+        {(size) => <SizeBox key={String(size)} size={size} />}
+      </For>
     </Stack>
   )
 }
@@ -47,9 +47,9 @@ export function SizeBox<T>(props: SizeBoxProps<T>) {
         }
       >
         {(item) => (
-          <ComboItemWithIndicator key={item.value} item={item}>
-            <ComboItemText>{item.label}</ComboItemText>
-          </ComboItemWithIndicator>
+          <Combobox.ItemWithIndicator key={item.value} item={item}>
+            <Combobox.ItemText>{item.label}</Combobox.ItemText>
+          </Combobox.ItemWithIndicator>
         )}
       </For>
     </Combobox>

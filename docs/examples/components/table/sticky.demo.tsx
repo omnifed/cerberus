@@ -11,7 +11,7 @@ export function StickyDemo() {
       rounded="md"
       w="1/2"
     >
-      <Table.Root caption="Better find a mop, it's getting sticky..." sticky>
+      <Table caption="Better find a mop, it's getting sticky..." sticky>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCol>Product</Table.HeaderCol>
@@ -30,7 +30,7 @@ export function StickyDemo() {
             )}
           </For>
         </Table.Body>
-      </Table.Root>
+      </Table>
     </Scrollable>
   )
 }

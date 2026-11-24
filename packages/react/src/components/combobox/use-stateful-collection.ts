@@ -1,9 +1,12 @@
 'use client'
 
 import { useCallback, useMemo, useState } from 'react'
+import {
+  createListCollection,
+  type ListCollection,
+} from '@ark-ui/react/collection'
 import type { ComboboxInputValueChangeDetails } from '@ark-ui/react/combobox'
-import type { SelectCollectionItem } from '../select/select'
-import { createSelectCollection } from '../select/primitives'
+import type { SelectCollectionItem } from '../select/collection'
 
 /**
  * This module contains a custom hook that provides a stateful collection for
@@ -14,7 +17,7 @@ export interface StatefulCollectionReturn {
   /**
    * The collection of items.
    */
-  collection: ReturnType<typeof createSelectCollection>
+  collection: ListCollection<SelectCollectionItem>
   /**
    * The filter value split into an array of characters.
    */
@@ -37,18 +40,22 @@ export function useStatefulCollection(
   const [items, setItems] = useState(initialItems)
   const [filterValue, setFilterValue] = useState<string[]>([])
 
-  const collection = useMemo(() => createSelectCollection(items), [items])
+  const collection = useMemo(() => createListCollection({ items }), [items])
 
   const handleInputChange = useCallback(
     (details: ComboboxInputValueChangeDetails) => {
       if (details.inputValue === '') {
+        setFilterValue([])
         return setItems(initialItems)
       }
-      setItems((prev) =>
-        prev.filter(
+      // Filter the initial items, not the last result, so a query that is
+      // edited (not only extended) finds items the previous query excluded
+      const query = details.inputValue.toLowerCase()
+      setItems(
+        initialItems.filter(
           (item) =>
-            item.value.toLowerCase().includes(details.inputValue.toLowerCase()) ||
-            item.label.toLowerCase().includes(details.inputValue.toLowerCase()),
+            item.value.toLowerCase().includes(query) ||
+            item.label.toLowerCase().includes(query),
         ),
       )
       setFilterValue(details.inputValue.split(''))

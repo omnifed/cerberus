@@ -1,21 +1,17 @@
-import { MarqueeEdgeOption, MarqueeProps } from './marquee'
+import type { MarqueeEdgeOption, MarqueeProps } from './marquee'
+
+type MarqueeSide = Exclude<MarqueeEdgeOption, 'both'>
 
 enum Direction {
-  start = 1,
-  end = 1,
-  top = 2,
-  bottom = 2,
-  both = 3,
+  horizontal = 1,
+  vertical = 2,
 }
 
-const dir = {
-  start: Direction.start,
-  end: Direction.end,
-  top: Direction.top,
-  bottom: Direction.bottom,
-  both: Direction.both,
-  hor: Direction.start,
-  vert: Direction.top,
+const dir: Record<MarqueeSide, Direction> = {
+  start: Direction.horizontal,
+  end: Direction.horizontal,
+  top: Direction.vertical,
+  bottom: Direction.vertical,
 }
 
 export function shouldShowEdge(
@@ -29,23 +25,15 @@ export function shouldShowEdge(
 export function getStartEdge(
   edges: MarqueeProps['edges'],
   side: MarqueeProps['side'],
-): MarqueeEdgeOption {
+): MarqueeSide {
   if (!edges) return 'start'
-  const reliableSide = side ?? 'start'
-  const direction = dir[reliableSide]
-  if (direction === dir.hor) return 'start'
-  if (direction === dir.vert) return 'top'
-  return 'start'
+  return dir[side ?? 'start'] === Direction.vertical ? 'top' : 'start'
 }
 
 export function getEndEdge(
   edges: MarqueeProps['edges'],
   side: MarqueeProps['side'],
-): MarqueeEdgeOption {
+): MarqueeSide {
   if (!edges) return 'end'
-  const reliableSide = side ?? 'end'
-  const direction = dir[reliableSide]
-  if (direction === dir.hor) return 'end'
-  if (direction === dir.vert) return 'bottom'
-  return 'end'
+  return dir[side ?? 'end'] === Direction.vertical ? 'bottom' : 'end'
 }

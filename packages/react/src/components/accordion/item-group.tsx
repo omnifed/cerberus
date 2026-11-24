@@ -1,70 +1,95 @@
-import type {
-  AccordionItemProps,
-  AccordionRootProps,
-} from '@ark-ui/react/accordion'
-import { type AccordionVariantProps } from 'styled-system/recipes'
+'use client'
+
+import type { ReactNode } from 'react'
+import { useCerberusContext } from '../../context/cerberus'
+import { extractParts } from '../../internal/extract-parts'
 import { splitProps } from '../../utils/index'
 import { Show } from '../show/index'
-import { AccordionParts } from './parts'
-import { AccordionChevronItemIndicator } from './item-indicator'
+import {
+  AccordionItem,
+  AccordionItemContent,
+  AccordionItemIndicator,
+  AccordionItemTrigger,
+  type AccordionItemProps,
+} from './primitives'
 
-/**
- * This module contains an abstraction of the AccordionItem components.
- * @module
- */
-
-export function Accordion(props: AccordionRootProps & AccordionVariantProps) {
-  return <AccordionParts.Root {...props} />
+const PARTS = {
+  item: AccordionItem,
+  itemTrigger: AccordionItemTrigger,
+  itemIndicator: AccordionItemIndicator,
+  itemContent: AccordionItemContent,
 }
 
-export interface AccordionItemGroupProps
-  extends AccordionItemProps,
-    AccordionVariantProps {
+export type AccordionItemGroupProps = AccordionItemProps & {
   /**
-   * The heading of the accordion item to open and close the content.
+   * The heading content displayed inside the accordion trigger.
    */
-  heading: string
+  heading?: ReactNode
   /**
-   * The position of the arrow indicator.
+   * The position of the indicator icon relative to the heading.
+   * @default 'end'
    */
   indicatorPosition?: 'start' | 'end'
 }
 
-/**
- * The AccordionItemGroup component is an abstraction of the Accordion primitive
- * components which renders an accordion item with a heading and an indicator.
- *
- * It is a wrapper around the `AccordionParts.Item`, `AccordionParts.
- * ItemTrigger`, `AccordionParts.ItemIndicator`, and `AccordionParts.ItemContent` components.
- *
- * @description [Cerberus docs](https://cerberus.digitalu.design/react/accordion)
- * @description [Ark docs](https://ark-ui.com/react/docs/components/accordion)
- */
 export function AccordionItemGroup(props: AccordionItemGroupProps) {
-  const [groupProps, itemProps] = splitProps(props, [
+  const [localProps, itemProps] = splitProps(props, [
     'heading',
-    'children',
     'indicatorPosition',
+    'children',
   ])
-  const indicatorPosition = groupProps.indicatorPosition ?? 'end'
+
+  const indicatorPosition = localProps.indicatorPosition ?? 'end'
+  const { icons } = useCerberusContext()
+  const { accordionIndicator: ChevronDown } = icons
+
+  if (!itemProps.value) {
+    throw new Error(
+      'AccordionItemGroup requires a value prop to properly identify the item.',
+    )
+  }
+
+  const { parts, content } = extractParts(localProps.children, PARTS)
+
+  const { children: _itemChildren, ...itemOverrideProps } = parts.item ?? {}
+  const { children: triggerChildren, ...triggerOverrideProps } =
+    parts.itemTrigger ?? {}
+  const { children: indicatorChildren, ...indicatorOverrideProps } =
+    parts.itemIndicator ?? {}
+  const { children: contentChildren, ...contentOverrideProps } =
+    parts.itemContent ?? {}
+
+  const indicator = (
+    <AccordionItemIndicator
+      asChild={indicatorOverrideProps.asChild ?? !indicatorChildren}
+      {...indicatorOverrideProps}
+    >
+      {indicatorChildren ?? <ChevronDown />}
+    </AccordionItemIndicator>
+  )
 
   return (
-    <AccordionParts.Item {...itemProps}>
-      <AccordionParts.ItemTrigger data-indicator-position={indicatorPosition}>
-        <Show when={indicatorPosition === 'start'}>
-          <AccordionChevronItemIndicator />
-        </Show>
+    <AccordionItem
+      {...itemProps}
+      {...itemOverrideProps}
+      value={itemProps.value}
+    >
+      <AccordionItemTrigger
+        data-indicator-position={indicatorPosition}
+        {...triggerOverrideProps}
+      >
+        {triggerChildren ?? (
+          <>
+            <Show when={indicatorPosition === 'start'}>{indicator}</Show>
+            {localProps.heading}
+            <Show when={indicatorPosition === 'end'}>{indicator}</Show>
+          </>
+        )}
+      </AccordionItemTrigger>
 
-        {groupProps.heading}
-
-        <Show when={indicatorPosition === 'end'}>
-          <AccordionChevronItemIndicator />
-        </Show>
-      </AccordionParts.ItemTrigger>
-
-      <AccordionParts.ItemContent>
-        {groupProps.children}
-      </AccordionParts.ItemContent>
-    </AccordionParts.Item>
+      <AccordionItemContent {...contentOverrideProps}>
+        {contentChildren ?? content}
+      </AccordionItemContent>
+    </AccordionItem>
   )
 }

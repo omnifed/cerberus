@@ -6,7 +6,8 @@
   "author": "developers@omnifederal.com",
   "type": "module",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky && pnpm run codegen:panda",
+    "codegen:panda": "pnpm --filter @cerberus-design/react run generate && pnpm --filter @cerberus-design/data-grid run generate && pnpm --filter tests exec panda codegen",
     "lint:es": "eslint . --max-warnings=0",
     "lint:ox": "oxlint --deny-warnings",
     "lint:npmPackages": "pnpm --filter @cerberus-design/* run -w lint:ts",
@@ -15,7 +16,11 @@
     "lint": "pnpm lint:npmPackages && pnpm lint:jsrPackages && pnpm lint:tests",
     "test": "pnpm --filter tests run test",
     "ci:version": "changeset version && bun ./scripts/src/bump-versions.mjs --stable && pnpm install --no-frozen-lockfile",
-    "gen:component": "bun ./scripts/src/bootstrap-component.ts",
+    "gen:component": "pnpm --filter codegen run scaffold",
+    "generate:api": "pnpm --filter codegen run generate:api",
+    "generate:docs": "pnpm --filter codegen run generate:docs",
+    "generate:check": "pnpm --filter codegen run generate:check",
+    "test:codegen": "pnpm --filter tests run test:codegen",
     "start:docs": "pnpm --filter docs run dev",
     "watch:react": "pnpm --filter @cerberus-design/react run -w watch",
     "watch:data-grid": "pnpm --filter @cerberus-design/data-grid run -w watch",
@@ -41,5 +46,5 @@
     "bun": ">=1.4.3",
     "node": ">=26.0.0"
   },
-  "packageManager": "pnpm@12.16.1"
+  "packageManager": "pnpm@12.21.0"
 }

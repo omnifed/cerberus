@@ -1,0 +1,682 @@
+{
+  "name": "Checkbox",
+  "key": "checkbox",
+  "description": "The Checkbox component allows users to select one or more options from a set. It supports the checked, unchecked and indeterminate states.\n\nUse the default `<Checkbox>` for a labeled checkbox with the Cerberus check and indeterminate icons, or compose the primitives for full structural control. Wrap several checkboxes in `Checkbox.Group` to manage their values together. It supports different sizes to match the design requirements of your application. To use it within a form, wrap it with the Field component.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "md"],
+      "defaultValue": "'sm'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Checkbox.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders a labeled checkbox with the Cerberus check or indeterminate icon and a required notice",
+      "inherits": ["Checkbox.Root"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Checkbox.Root",
+      "kind": "primitive",
+      "description": "The root container of the Checkbox component.",
+      "dataScope": "checkbox",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["indeterminate", "checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the checkbox. Useful for composition."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the checkbox is disabled"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the checkbox is invalid"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the checkbox is required"
+        },
+        {
+          "name": "checked",
+          "type": "CheckedState",
+          "required": false,
+          "description": "The controlled checked state of the checkbox"
+        },
+        {
+          "name": "defaultChecked",
+          "type": "CheckedState",
+          "required": false,
+          "description": "The initial checked state of the checkbox when rendered. Use when you don't need to control the checked state of the checkbox."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the checkbox is read-only"
+        },
+        {
+          "name": "onCheckedChange",
+          "type": "((details: CheckedChangeDetails) => void)",
+          "required": false,
+          "description": "The callback invoked when the checked state changes."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the input field in a checkbox. Useful for form submission."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The id of the form that the checkbox belongs to."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"on\"",
+          "description": "The value of checkbox input. Useful for form submission."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Checkbox.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Checkbox component.",
+      "dataScope": "checkbox",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["indeterminate", "checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Checkbox.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Checkbox component.",
+      "dataScope": "checkbox",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["indeterminate", "checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Checkbox.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Checkbox component.",
+      "dataScope": "checkbox",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["indeterminate", "checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Group",
+      "exportName": "Checkbox.Group",
+      "kind": "primitive",
+      "description": "The group primitive part of the Checkbox component.",
+      "dataScope": "checkbox",
+      "dataPart": "group",
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "description": "The initial value of `value` when uncontrolled"
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled value of the checkbox group"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the input fields in the checkbox group (Useful for form submission)."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((value: string[]) => void)",
+          "required": false,
+          "description": "The callback to call when the value changes"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the checkbox group is disabled"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the checkbox group is read-only"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the checkbox group is invalid"
+        },
+        {
+          "name": "maxSelectedValues",
+          "type": "number",
+          "required": false,
+          "description": "The maximum number of selected values"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HiddenInput",
+      "exportName": "Checkbox.HiddenInput",
+      "kind": "primitive",
+      "description": "The hidden input primitive part of the Checkbox component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Checkbox.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Checkbox component, driven by state created with `useCheckbox()`.",
+      "dataScope": "checkbox",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "description": "Present when active or pressed."
+        },
+        {
+          "name": "data-focus",
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-focus-visible",
+          "description": "Present when focused with keyboard."
+        },
+        {
+          "name": "data-readonly",
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-hover",
+          "description": "Present when hovered."
+        },
+        {
+          "name": "data-disabled",
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state",
+          "values": ["indeterminate", "checked", "unchecked"]
+        },
+        {
+          "name": "data-invalid",
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseCheckboxReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "GroupProvider",
+      "exportName": "Checkbox.GroupProvider",
+      "kind": "primitive",
+      "description": "The group part of the Checkbox component, driven by state created with `useCheckboxGroup()`.",
+      "dataScope": "checkbox",
+      "dataPart": "group",
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseCheckboxGroupContext",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Checkbox.Context",
+      "kind": "primitive",
+      "description": "Exposes the Checkbox state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseCheckboxContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Checkbox",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/",
+    "keyboard": [
+      {
+        "key": "Space",
+        "description": "Toggle the checkbox."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["Checkbox.Context", "useCheckbox()"],
+    "members": [
+      {
+        "name": "checked",
+        "type": "boolean",
+        "description": "Whether the checkbox is checked."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "Whether the checkbox is disabled."
+      },
+      {
+        "name": "indeterminate",
+        "type": "boolean",
+        "description": "Whether the checkbox is indeterminate."
+      },
+      {
+        "name": "focused",
+        "type": "boolean | undefined",
+        "description": "Whether the checkbox is focused."
+      },
+      {
+        "name": "checkedState",
+        "type": "CheckedState",
+        "description": "The checked state of the checkbox."
+      },
+      {
+        "name": "setChecked",
+        "type": "(checked: CheckedState) => void",
+        "description": "Function to set the checked state of the checkbox."
+      },
+      {
+        "name": "toggleChecked",
+        "type": "VoidFunction",
+        "description": "Function to toggle the checked state of the checkbox."
+      }
+    ]
+  }
+}

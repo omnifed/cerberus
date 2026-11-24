@@ -2,12 +2,10 @@
 
 import {
   Group,
-  NextTrigger,
   type PageDetails,
   type PageSizeChangeDetails,
   type PaginationContextDetails,
-  PaginationParts,
-  PrevTrigger,
+  Pagination,
   SelectValueChangeDetails,
   Show,
   Text,
@@ -35,7 +33,7 @@ export function GridPagination() {
   return (
     <Show when={pageSize}>
       {() => (
-        <PaginationParts.Root
+        <Pagination.Root
           defaultPage={store.defaultPage}
           count={rowCount}
           onPageChange={handlePageChange}
@@ -43,7 +41,7 @@ export function GridPagination() {
           page={pageIndex}
           pageSize={pageSize}
         >
-          <PaginationParts.Context>
+          <Pagination.Context>
             {(pagination: PaginationContextDetails) => (
               <HStack
                 bgColor="page.surface.100"
@@ -61,8 +59,8 @@ export function GridPagination() {
                     textStyle="label-sm"
                     userSelect="none"
                   >
-                    {pagination.pageRange.start + 1}-{pagination.pageRange.end} of{' '}
-                    {pagination.count}
+                    {pagination.pageRange.start + 1}-{pagination.pageRange.end}{' '}
+                    of {pagination.count}
                   </Text>
                   <Divider
                     color="page.border.200"
@@ -87,7 +85,7 @@ export function GridPagination() {
                 </HStack>
 
                 <Group>
-                  <PrevTrigger size="sm" />
+                  <Pagination.PrevTriggerWithIcon size="sm" />
                   <VStack justify="center">
                     <Text
                       as="small"
@@ -99,12 +97,12 @@ export function GridPagination() {
                       {pagination.page} of {pagination.totalPages}
                     </Text>
                   </VStack>
-                  <NextTrigger size="sm" />
+                  <Pagination.NextTriggerWithIcon size="sm" />
                 </Group>
               </HStack>
             )}
-          </PaginationParts.Context>
-        </PaginationParts.Root>
+          </Pagination.Context>
+        </Pagination.Root>
       )}
     </Show>
   )

@@ -1,0 +1,590 @@
+{
+  "name": "PinInput",
+  "key": "pin-input",
+  "description": "The PinInput component lets users enter and manage fixed-length codes, such as verification codes or PINs, one character at a time. It manages focus movement between the inputs and aggregates the value for you.\n\nRendered on its own, PinInput displays one input per `count` (3 by default) plus a hidden input that carries the combined value for form submission. It supports different sizes to match the design requirements of your application.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["md", "lg"],
+      "defaultValue": "'lg'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "PinInput.El",
+      "kind": "abstraction",
+      "description": "An entry abstraction that renders the control, one input per `count` and the hidden input",
+      "inherits": ["PinInput.Root"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "PinInput.Root",
+      "kind": "primitive",
+      "description": "The root container of the PinInput component.",
+      "dataScope": "pin-input",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-complete",
+          "presence": true,
+          "description": "Present when the pin-input value is complete."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the input element. Useful for form submission."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the underlying input element."
+        },
+        {
+          "name": "pattern",
+          "type": "string",
+          "required": false,
+          "description": "The regular expression that the user-entered input value is checked against."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the pin input. Useful for composition."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the inputs are disabled"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"○\"",
+          "description": "The placeholder text for the input"
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to auto-focus the first input."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the pin input is in the invalid state"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the pin input is required"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the pin input is in the valid state"
+        },
+        {
+          "name": "otp",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "If `true`, the pin input component signals to its fields that they should use `autocomplete=\"one-time-code\"`."
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled value of the the pin input."
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "description": "The initial value of the the pin input when rendered. Use when you don't need to control the value of the pin input."
+        },
+        {
+          "name": "type",
+          "type": "\"alphanumeric\" | \"numeric\" | \"alphabetic\"",
+          "required": false,
+          "defaultValue": "\"numeric\"",
+          "description": "The type of value the pin-input should allow"
+        },
+        {
+          "name": "onValueComplete",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when all inputs have valid values"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called on input change"
+        },
+        {
+          "name": "onValueInvalid",
+          "type": "((details: ValueInvalidDetails) => void)",
+          "required": false,
+          "description": "Function called when an invalid value is entered"
+        },
+        {
+          "name": "mask",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the input's value will be masked just like `type=password`"
+        },
+        {
+          "name": "autoSubmit",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to auto-submit the owning form when all inputs are filled."
+        },
+        {
+          "name": "blurOnComplete",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to blur the input when the value is complete"
+        },
+        {
+          "name": "selectOnFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to select input value when input is focused"
+        },
+        {
+          "name": "sanitizeValue",
+          "type": "((value: string) => string)",
+          "required": false,
+          "description": "Function to sanitize pasted values before validation. Useful for stripping dashes, spaces, or other formatting."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "required": false,
+          "description": "The number of inputs to render to improve SSR aria attributes. This will be required in next major version."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "PinInput.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the PinInput component.",
+      "dataScope": "pin-input",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-complete",
+          "presence": true,
+          "description": "Present when the label value is complete."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "exportName": "PinInput.Input",
+      "kind": "primitive",
+      "description": "The input primitive part of the PinInput component.",
+      "dataScope": "pin-input",
+      "dataPart": "input",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-complete",
+          "presence": true,
+          "description": "Present when the input value is complete."
+        },
+        {
+          "name": "data-filled",
+          "presence": true
+        },
+        {
+          "name": "data-index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "keyboard": [
+        "Backspace",
+        "Delete",
+        "ArrowLeft",
+        "ArrowRight",
+        "Enter",
+        "Home",
+        "End",
+        "ArrowUp",
+        "ArrowDown"
+      ],
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true,
+          "description": "Optional in a patch child of a PinInput abstraction, which supplies it."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "PinInput.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the PinInput component.",
+      "dataScope": "pin-input",
+      "dataPart": "control",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HiddenInput",
+      "exportName": "PinInput.HiddenInput",
+      "kind": "primitive",
+      "description": "The hidden input primitive part of the PinInput component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "PinInput.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the PinInput component, driven by state created with `usePinInput()`.",
+      "dataScope": "pin-input",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-complete",
+          "presence": true,
+          "description": "Present when the pin-input value is complete."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UsePinInputReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "keyboard": [
+      {
+        "key": "ArrowLeft",
+        "description": "Moves focus to the previous input."
+      },
+      {
+        "key": "ArrowRight",
+        "description": "Moves focus to the next input."
+      },
+      {
+        "key": "Home",
+        "description": "Moves focus to the first input."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Moves focus to the first input."
+      },
+      {
+        "key": "Control + ArrowLeft",
+        "description": "Moves focus to the first input."
+      },
+      {
+        "key": "End",
+        "description": "Moves focus to the last filled input."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Moves focus to the last filled input."
+      },
+      {
+        "key": "Control + ArrowRight",
+        "description": "Moves focus to the last filled input."
+      },
+      {
+        "key": "Backspace",
+        "description": "Deletes the value in the current input and moves focus to the previous input."
+      },
+      {
+        "key": "Delete",
+        "description": "Deletes the value in the current input."
+      },
+      {
+        "key": "Control + V",
+        "description": "Pastes the value into the input fields."
+      },
+      {
+        "key": "Enter",
+        "description": "When focus is on an input, submits the form the pin input belongs to."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["usePinInput()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The value of the input as an array of strings."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The value of the input as a string."
+      },
+      {
+        "name": "complete",
+        "type": "boolean",
+        "description": "Whether all inputs are filled."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "description": "The number of inputs to render."
+      },
+      {
+        "name": "items",
+        "type": "number[]",
+        "description": "The array of input values."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Function to set the value of the inputs."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the value of the inputs."
+      },
+      {
+        "name": "setValueAtIndex",
+        "type": "(index: number, value: string) => void",
+        "description": "Function to set the value of the input at a specific index."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the pin-input. This will focus the first input."
+      }
+    ]
+  }
+}

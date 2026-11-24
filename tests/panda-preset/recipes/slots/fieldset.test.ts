@@ -9,13 +9,7 @@ describe('fieldset recipe', () => {
   })
 
   test('should support jsx components', () => {
-    expect(fieldset.jsx).toEqual([
-      'FieldsetRoot',
-      'FieldsetLegend',
-      'FieldsetHelperText',
-      'FieldsetErrorText',
-      'Fieldset',
-    ])
+    expect(fieldset.jsx).toBeUndefined()
   })
 
   test('should support base.root styles', () => {

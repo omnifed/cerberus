@@ -1,0 +1,248 @@
+{
+  "name": "Fieldset",
+  "key": "fieldset",
+  "description": "The Fieldset component groups related form fields together with a shared legend, helper text and error text. It is composed of several primitives that enable customization and flexibility in its usage.\n\nUse the `usage` prop to style it as a `fieldGroup` (default), labeling a group of Radio or Checkbox inputs, or as a `formSection`, grouping the fields of a larger form. Mark it `invalid` to show the error text.",
+  "variants": [
+    {
+      "name": "usage",
+      "values": ["fieldGroup", "formSection"],
+      "defaultValue": "'fieldGroup'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Fieldset.El",
+      "kind": "abstraction",
+      "description": "An entry abstraction that renders the legend, helper text, the grouped fields and the error text",
+      "inherits": ["Fieldset.Root"],
+      "props": [
+        {
+          "name": "legend",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The legend/title/label of the fieldset group."
+        },
+        {
+          "name": "helperText",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The description text for the fieldset group."
+        },
+        {
+          "name": "errorText",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The error text for the fieldset group shown when the fieldset is invalid."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Fieldset.Root",
+      "kind": "primitive",
+      "description": "The root container of the Fieldset component.",
+      "dataScope": "fieldset",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "usage",
+          "type": "'fieldGroup' | 'formSection'",
+          "required": false,
+          "defaultValue": "'fieldGroup'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The id of the fieldset."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Indicates whether the fieldset is disabled."
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Indicates whether the fieldset is invalid."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ErrorText",
+      "exportName": "Fieldset.ErrorText",
+      "kind": "primitive",
+      "description": "The error text primitive part of the Fieldset component.",
+      "dataScope": "fieldset",
+      "dataPart": "error-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HelperText",
+      "exportName": "Fieldset.HelperText",
+      "kind": "primitive",
+      "description": "The helper text primitive part of the Fieldset component.",
+      "dataScope": "fieldset",
+      "dataPart": "helper-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Legend",
+      "exportName": "Fieldset.Legend",
+      "kind": "primitive",
+      "description": "The legend primitive part of the Fieldset component.",
+      "dataScope": "fieldset",
+      "dataPart": "legend",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Fieldset.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Fieldset component, driven by state created with `useFieldset()`.",
+      "dataScope": "fieldset",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "usage",
+          "type": "'fieldGroup' | 'formSection'",
+          "required": false,
+          "defaultValue": "'fieldGroup'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "value",
+          "type": "UseFieldsetReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Fieldset.Context",
+      "kind": "primitive",
+      "description": "Exposes the Fieldset state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseFieldsetContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

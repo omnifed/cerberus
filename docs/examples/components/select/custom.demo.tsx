@@ -7,7 +7,7 @@ import {
   createSelectCollection,
   For,
   Portal,
-  SelectParts,
+  Select,
 } from '@cerberus-design/react'
 
 const collection = createSelectCollection([
@@ -21,17 +21,17 @@ const collection = createSelectCollection([
 export function CustomDemo() {
   return (
     <Box w="1/2">
-      <SelectParts.Root collection={collection}>
-        <SelectParts.Label
+      <Select.Root collection={collection}>
+        <Select.Label
           paddingBlock="2"
           textStyle="body-sm"
           textTransform="uppercase"
         >
           Select a custom relative
-        </SelectParts.Label>
+        </Select.Label>
 
-        <SelectParts.Control>
-          <SelectParts.Trigger
+        <Select.Control>
+          <Select.Trigger
             bgColor="black"
             color="danger.surface.initial"
             paddingInline="md"
@@ -45,8 +45,8 @@ export function CustomDemo() {
               w: 'full',
             })}
           >
-            <SelectParts.ValueText placeholder="Choose a custom option" />
-            <SelectParts.Indicator
+            <Select.ValueText placeholder="Choose a custom option" />
+            <Select.Indicator
               transitionProperty="transform"
               transitionDuration="fast"
               _open={{
@@ -54,27 +54,27 @@ export function CustomDemo() {
               }}
             >
               <ChevronDownOutline />
-            </SelectParts.Indicator>
-          </SelectParts.Trigger>
-          <SelectParts.ClearTrigger>Clear</SelectParts.ClearTrigger>
-        </SelectParts.Control>
+            </Select.Indicator>
+          </Select.Trigger>
+          <Select.ClearTrigger>Clear</Select.ClearTrigger>
+        </Select.Control>
 
         <Portal>
-          <SelectParts.Positioner w="var(--reference-width)">
-            <SelectParts.Content bgColor="danger.surface.initial" p="md">
-              <SelectParts.ItemGroup>
-                <SelectParts.ItemGroupLabel
+          <Select.Positioner w="var(--reference-width)">
+            <Select.Content bgColor="danger.surface.initial" p="md">
+              <Select.ItemGroup>
+                <Select.ItemGroupLabel
                   fontWeight="bold"
                   textStyle="label-sm"
                   textTransform="uppercase"
                 >
                   The fam
-                </SelectParts.ItemGroupLabel>
+                </Select.ItemGroupLabel>
 
                 <For each={collection.items}>
                   {(item, idx) => (
-                    <SelectParts.Item key={item.value} item={item}>
-                      <SelectParts.ItemText
+                    <Select.Item key={item.value} item={item}>
+                      <Select.ItemText
                         color="white"
                         display="inline-block"
                         style={{
@@ -82,16 +82,16 @@ export function CustomDemo() {
                         }}
                       >
                         {item.label}
-                      </SelectParts.ItemText>
-                      <SelectParts.ItemIndicator>✓</SelectParts.ItemIndicator>
-                    </SelectParts.Item>
+                      </Select.ItemText>
+                      <Select.ItemIndicator>✓</Select.ItemIndicator>
+                    </Select.Item>
                   )}
                 </For>
-              </SelectParts.ItemGroup>
-            </SelectParts.Content>
-          </SelectParts.Positioner>
+              </Select.ItemGroup>
+            </Select.Content>
+          </Select.Positioner>
         </Portal>
-      </SelectParts.Root>
+      </Select.Root>
     </Box>
   )
 }

@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'bun:test'
 import { render, screen } from '@testing-library/react'
-import { CerberusProvider, Switch, SwitchParts } from '@cerberus-design/react'
+import { CerberusProvider, Switch } from '@cerberus-design/react'
 import { makeConfig } from '@/utils'
 
 describe('Switch', () => {
@@ -18,15 +18,15 @@ describe('Switch', () => {
   test('should render the parts', () => {
     render(
       <CerberusProvider config={config}>
-        <SwitchParts.Root>
-          <SwitchParts.Control>
-            <SwitchParts.Thumb />
-          </SwitchParts.Control>
+        <Switch.Root>
+          <Switch.Control>
+            <Switch.Thumb />
+          </Switch.Control>
 
-          <SwitchParts.Label>it works</SwitchParts.Label>
+          <Switch.Label>it works</Switch.Label>
 
-          <SwitchParts.HiddenInput />
-        </SwitchParts.Root>
+          <Switch.HiddenInput />
+        </Switch.Root>
       </CerberusProvider>,
     )
     expect(screen.getByText(/it works/i)).toBeInTheDocument()

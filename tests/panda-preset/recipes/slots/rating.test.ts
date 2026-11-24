@@ -10,11 +10,11 @@ describe('ratingGroup recipe', () => {
 
   test('should support all the JSX elements', () => {
     expect(ratingGroup.jsx).toEqual([
-      'RatingRoot',
-      'RatingLabel',
-      'RatingControl',
-      'RatingItem',
       'Rating',
+      'Rating.Root',
+      'Rating.Label',
+      'Rating.Control',
+      'Rating.Item',
     ])
   })
 

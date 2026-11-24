@@ -16,7 +16,7 @@ export const modalBase = {
     animationTimingFunction: 'ease-in',
     animationFillMode: 'forwards',
   },
-  _reduceMotion: {
+  _motionReduce: {
     opacity: '1',
   },
 }

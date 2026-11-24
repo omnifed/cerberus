@@ -1,34 +1,21 @@
 'use client'
 
 import { Box, Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  cerberus,
-  DialogBackdrop,
-  DialogCloseIconTrigger,
-  DialogCloseTrigger,
-  DialogContent,
-  DialogHeading,
-  DialogPositioner,
-  DialogProvider,
-  DialogTrigger,
-  For,
-  Portal,
-} from '@cerberus-design/react'
+import { Button, cerberus, Dialog, For, Portal } from '@cerberus-design/react'
 import { useRef } from 'react'
 
 export function OutsideScrollDemo() {
   const contentRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <DialogProvider initialFocusEl={() => contentRef.current}>
-      <DialogTrigger asChild>
+    <Dialog.Root initialFocusEl={() => contentRef.current}>
+      <Dialog.Trigger asChild>
         <Button>open dialog</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
       <Portal>
-        <DialogBackdrop />
-        <DialogPositioner
+        <Dialog.Backdrop />
+        <Dialog.Positioner
           display="flex"
           alignItems="flex-start"
           justifyContent="center"
@@ -38,7 +25,7 @@ export function OutsideScrollDemo() {
           overscrollBehaviorY="contain"
           pointerEvents="auto"
         >
-          <DialogContent
+          <Dialog.Content
             ref={contentRef}
             margin="4rem auto"
             maxH="none"
@@ -46,15 +33,17 @@ export function OutsideScrollDemo() {
               '--dialog-content-w': '20rem',
             }}
           >
-            <DialogCloseIconTrigger />
+            <Dialog.CloseIconTrigger />
 
             <Stack gap="md" maxW="" w="full">
-              <DialogHeading>Dialog Title</DialogHeading>
+              <Dialog.Title>Dialog Title</Dialog.Title>
               <Stack gap="md" w="full">
                 <For each={CONTENT_SECTIONS}>
                   {(section) => (
                     <cerberus.section key={section.title} w="full">
-                      <cerberus.h3 textStyle="heading-2xs">{section.title}</cerberus.h3>
+                      <cerberus.h3 textStyle="heading-2xs">
+                        {section.title}
+                      </cerberus.h3>
                       <cerberus.small color="page.text.100" textStyle="body-sm">
                         {section.body}
                       </cerberus.small>
@@ -65,14 +54,14 @@ export function OutsideScrollDemo() {
             </Stack>
 
             <Box mt="md" w="full">
-              <DialogCloseTrigger asChild>
+              <Dialog.CloseTrigger asChild>
                 <Button>Close</Button>
-              </DialogCloseTrigger>
+              </Dialog.CloseTrigger>
             </Box>
-          </DialogContent>
-        </DialogPositioner>
+          </Dialog.Content>
+        </Dialog.Positioner>
       </Portal>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }
 

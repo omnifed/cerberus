@@ -38,6 +38,7 @@ import {
   PinRightFilledIcon,
   PinRightIcon,
 } from './pinned.icons'
+import { RatingHalfIcon, RatingIcon } from './rating.icons'
 import { SortAscIcon, SortDescIcon } from './sort.icons'
 
 /**
@@ -75,6 +76,8 @@ export const defaultIcons: Required<DefinedIcons> = {
   pinRight: PinRightIcon,
   pinRightFilled: PinRightFilledIcon,
   promptModal: Information,
+  rating: RatingIcon,
+  ratingHalf: RatingHalfIcon,
   redo: Restart,
   search: Search,
   selectArrow: ChevronDown,

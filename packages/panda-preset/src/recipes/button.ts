@@ -22,6 +22,7 @@ import {
  */
 export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'button',
+  jsx: ['Button', 'Button.Root'],
   description: 'WCAG Level AAA compliant button styles.',
 
   base: {
@@ -63,9 +64,8 @@ export const button: RecipeConfig<RecipeVariantRecord> = defineRecipe({
       filled: filledUsage,
     },
     shape: {
-      default: {
-        rounded: 'sm',
-      },
+      hard: { rounded: 'none' },
+      squared: { rounded: 'sm' },
       sharp: sharpRadii,
       rounded: {
         px: '8',

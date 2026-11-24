@@ -9,12 +9,7 @@ describe('avatar recipe', () => {
   })
 
   test('should have a JSX property', () => {
-    expect(avatar.jsx).toMatchObject([
-      'AvatarRoot',
-      'AvatarImage',
-      'AvatarFallback',
-      'Avatar',
-    ])
+    expect(avatar.jsx).toBeUndefined()
   })
 
   test('should have a base style', () => {

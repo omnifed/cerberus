@@ -1,8 +1,8 @@
-import { Button, ButtonProps, For } from '@cerberus-design/react'
+import { Button, For, type ButtonRootProps } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
 const palettes = data.recipes.iconButton.variants.palette
-  .values as ButtonProps['palette'][]
+  .values as ButtonRootProps['palette'][]
 
 export function PaletteDemo() {
   return (

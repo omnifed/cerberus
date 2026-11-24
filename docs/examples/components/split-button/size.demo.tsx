@@ -2,7 +2,12 @@
 
 import { sortSizeVariants } from '@/lib/design-system'
 import { Corn } from '@carbon/icons-react'
-import { For, MenuItem, SplitButton, SplitButtonProps } from '@cerberus-design/react'
+import {
+  For,
+  Menu,
+  SplitButton,
+  SplitButtonProps,
+} from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
 const variants = data.recipes.iconButton.variants.size
@@ -14,10 +19,10 @@ export function SizeDemo() {
     <For each={sortedSizes}>
       {(size) => (
         <SplitButton key={String(size)} actionText={`${size} Size`} size={size}>
-          <MenuItem value="corn">
+          <Menu.Item value="corn">
             <Corn />
             Do your job
-          </MenuItem>
+          </Menu.Item>
         </SplitButton>
       )}
     </For>

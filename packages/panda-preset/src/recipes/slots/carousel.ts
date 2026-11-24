@@ -16,19 +16,6 @@ import { focusStates } from '../shared/states'
 export const carousel: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'carousel',
   slots: carouselAnatomy.keys(),
-  jsx: [
-    // primitives
-    'CarouselRoot',
-    'CarouselControl',
-    'CarouselPrevTrigger',
-    'CarouselNextTrigger',
-    'CarouselIndicatorGroup',
-    'CarouselIndicator',
-    'CarouselItemGroup',
-    'CarouselItem',
-    // abstractions
-    'Carousel',
-  ],
 
   base: {
     root: {

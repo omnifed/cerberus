@@ -29,18 +29,10 @@ The `Textarea` component supports secondary helper text, which can be used to di
 
 ## Customizing
 
-You can customize the textarea by passing styles directly into the component. Textarea is a re-export of the `FieldTextarea` primitive.
+You can customize the textarea by passing styles directly into the component. Inside a `Field`, `Textarea` renders `Field.Textarea`.
 
 <Example path="components/textarea" demo="custom" />
 
 ## API
 
-### Props
-
-The `Textarea` accepts the following props in addition to any native `textarea` props:
-
-| Name   | Default | Description                       |
-| ------ | ------- | --------------------------------- |
-| `size` |         | This size variant of the textarea |
-
-The `Textarea` component also shares the same props mentioned in the [Field Textarea API](/docs/components/field#textarea)
+`Textarea` accepts the props of `Field.Textarea`; set the `size` on the `Field`. See the [Field API](/docs/components/field#api) for every part.

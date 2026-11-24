@@ -1,0 +1,1131 @@
+{
+  "name": "Slider",
+  "key": "slider",
+  "description": "The Slider component allows users to make selections from a range of values by dragging one or more thumbs along a track. It is composed of several primitives that enable customization and flexibility in its usage.\n\nRendered on its own, Slider displays the control, track, range and one thumb per value, with optional marks and a dragging indicator. Children such as `Slider.Label` and `Slider.ValueText` render as a header above the control. It supports different sizes, usages, palettes and a vertical orientation to match the design requirements of your application.",
+  "variants": [
+    {
+      "name": "palette",
+      "values": ["action", "info", "success", "warning", "danger"],
+      "defaultValue": "'action'"
+    },
+    {
+      "name": "size",
+      "values": ["sm", "md", "lg"],
+      "defaultValue": "'lg'"
+    },
+    {
+      "name": "usage",
+      "values": ["gradient", "filled", "outlined"],
+      "defaultValue": "'gradient'"
+    },
+    {
+      "name": "direction",
+      "values": ["vertical", "horizontal"],
+      "defaultValue": "'horizontal'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Slider.El",
+      "kind": "abstraction",
+      "description": "An entry abstraction that renders a header from its children, the control, track, range, one thumb per value and optional marks",
+      "inherits": ["Slider.Root"],
+      "props": [
+        {
+          "name": "marks",
+          "type": "SliderMark[]",
+          "required": false,
+          "description": "The marks to render along the track. A number renders as its own label; an object renders `label` (or its `value` when no label is given)."
+        },
+        {
+          "name": "showIndicator",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Shows a dragging indicator with the thumb's value while a thumb is dragged or focused."
+        }
+      ]
+    },
+    {
+      "name": "Thumbs",
+      "exportName": "Slider.Thumbs",
+      "kind": "abstraction",
+      "description": "Renders one thumb per slider value, each with its hidden input and an optional dragging indicator",
+      "props": [
+        {
+          "name": "showIndicator",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Shows a dragging indicator with the thumb's value while it is dragged or focused. A direct `Slider.DraggingIndicator` child also shows it."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": "Direct `Slider.Thumb`, `Slider.DraggingIndicator` and `Slider.HiddenInput` children patch those parts on every thumb (a thumb's `index` is ignored); other children render inside every thumb."
+        }
+      ]
+    },
+    {
+      "name": "Marks",
+      "exportName": "Slider.Marks",
+      "kind": "abstraction",
+      "description": "Renders a marker group with one marker, indicator and label per mark",
+      "inherits": ["Slider.MarkerGroup"],
+      "props": [
+        {
+          "name": "marks",
+          "type": "SliderMark[]",
+          "required": true,
+          "description": "The marks to render along the track. A number renders as its own label; an object renders `label` (or its `value` when no label is given)."
+        }
+      ]
+    },
+    {
+      "name": "MarkerIndicator",
+      "exportName": "Slider.MarkerIndicator",
+      "kind": "abstraction",
+      "description": "The dot rendered inside a marker, styled by the slider recipe's `markerIndicator` slot",
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Slider.Root",
+      "kind": "primitive",
+      "description": "The root container of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the slider."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--slider-thumb-width",
+          "description": "The thumb width of the slider."
+        },
+        {
+          "name": "--slider-thumb-height",
+          "description": "The thumb height of the slider."
+        },
+        {
+          "name": "--slider-thumb-transform",
+          "description": "The thumb transform of the slider."
+        },
+        {
+          "name": "--slider-range-start",
+          "description": "The range start of the slider."
+        },
+        {
+          "name": "--slider-range-end",
+          "description": "The range end of the slider."
+        },
+        {
+          "name": "--translate-x",
+          "description": "The horizontal translation value."
+        },
+        {
+          "name": "--translate-y",
+          "description": "The vertical translation value."
+        }
+      ],
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "usage",
+          "type": "'gradient' | 'filled' | 'outlined'",
+          "required": false,
+          "defaultValue": "'gradient'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "direction",
+          "type": "'vertical' | 'horizontal'",
+          "required": false,
+          "defaultValue": "'horizontal'",
+          "description": "PandaCSS recipe variant for direction."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the slider. Useful for composition."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name associated with each slider thumb (when used in a form)"
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the underlying input element."
+        },
+        {
+          "name": "value",
+          "type": "number[]",
+          "required": false,
+          "description": "The controlled value of the slider"
+        },
+        {
+          "name": "defaultValue",
+          "type": "number[]",
+          "required": false,
+          "description": "The initial value of the slider when rendered. Use when you don't need to control the value of the slider."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the slider is disabled"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the slider is read-only"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the slider is invalid"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the value of the slider changes"
+        },
+        {
+          "name": "onValueChangeEnd",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the slider value change is done"
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((details: FocusChangeDetails) => void)",
+          "required": false,
+          "description": "Function invoked when the slider's focused index changes"
+        },
+        {
+          "name": "getAriaValueText",
+          "type": "((details: ValueTextDetails) => string)",
+          "required": false,
+          "description": "Function that returns a human readable value for the slider thumb"
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The minimum value of the slider"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "100",
+          "description": "The maximum value of the slider"
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "The step value of the slider"
+        },
+        {
+          "name": "largeStep",
+          "type": "number",
+          "required": false,
+          "defaultValue": "10 * step",
+          "description": "The step value of the slider when the `Shift` key is held, or the `PageUp`/`PageDown` keys are used."
+        },
+        {
+          "name": "minStepsBetweenThumbs",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The minimum permitted steps between multiple thumbs. `minStepsBetweenThumbs` * `step` should reflect the gap between the thumbs. - `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10` - `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20`"
+        },
+        {
+          "name": "orientation",
+          "type": "\"vertical\" | \"horizontal\"",
+          "required": false,
+          "defaultValue": "\"horizontal\"",
+          "description": "The orientation of the slider"
+        },
+        {
+          "name": "origin",
+          "type": "\"start\" | \"center\" | \"end\"",
+          "required": false,
+          "defaultValue": "\"start\"",
+          "description": "The origin of the slider range. The track is filled from the origin to the thumb for single values. - \"start\": Useful when the value represents an absolute value - \"center\": Useful when the value represents an offset (relative) - \"end\": Useful when the value represents an offset from the end"
+        },
+        {
+          "name": "thumbAlignment",
+          "type": "\"contain\" | \"center\"",
+          "required": false,
+          "defaultValue": "\"contain\"",
+          "description": "The alignment of the slider thumb relative to the track - `center`: the thumb will extend beyond the bounds of the slider track. - `contain`: the thumb will be contained within the bounds of the track."
+        },
+        {
+          "name": "thumbSize",
+          "type": "{ width: number; height: number; }",
+          "required": false,
+          "description": "The slider thumbs dimensions"
+        },
+        {
+          "name": "thumbCollisionBehavior",
+          "type": "\"none\" | \"push\" | \"swap\"",
+          "required": false,
+          "defaultValue": "\"none\"",
+          "description": "Controls how thumbs behave when they collide during pointer interactions. - `none` (default): Thumbs cannot move past each other; excess movement is ignored. - `push`: Thumbs push each other without restoring their previous positions when dragged back. - `swap`: Thumbs swap places when dragged past each other."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Slider.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the label."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Thumb",
+      "exportName": "Slider.Thumb",
+      "kind": "primitive",
+      "description": "The thumb primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "thumb",
+      "dataAttributes": [
+        {
+          "name": "data-index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-name"
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the thumb."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        }
+      ],
+      "keyboard": [
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End"
+      ],
+      "props": [
+        {
+          "name": "index",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ValueText",
+      "exportName": "Slider.ValueText",
+      "kind": "primitive",
+      "description": "The value text primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "value-text",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the value text."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Track",
+      "exportName": "Slider.Track",
+      "kind": "primitive",
+      "description": "The track primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "track",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the track."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Range",
+      "exportName": "Slider.Range",
+      "kind": "primitive",
+      "description": "The range primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "range",
+      "dataAttributes": [
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the range."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Slider.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the control."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "MarkerGroup",
+      "exportName": "Slider.MarkerGroup",
+      "kind": "primitive",
+      "description": "The marker group primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "marker-group",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the marker group."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Marker",
+      "exportName": "Slider.Marker",
+      "kind": "primitive",
+      "description": "The marker primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "marker",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the marker."
+        },
+        {
+          "name": "data-value",
+          "reflects": "value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-state"
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "DraggingIndicator",
+      "exportName": "Slider.DraggingIndicator",
+      "kind": "primitive",
+      "description": "The dragging indicator primitive part of the Slider component.",
+      "dataScope": "slider",
+      "dataPart": "dragging-indicator",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the dragging indicator."
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Slider.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Slider component, driven by state created with `useSlider()`.",
+      "dataScope": "slider",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the slider."
+        },
+        {
+          "name": "data-dragging",
+          "presence": true,
+          "description": "Present when in the dragging state."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--slider-thumb-width",
+          "description": "The thumb width of the slider."
+        },
+        {
+          "name": "--slider-thumb-height",
+          "description": "The thumb height of the slider."
+        },
+        {
+          "name": "--slider-thumb-transform",
+          "description": "The thumb transform of the slider."
+        },
+        {
+          "name": "--slider-range-start",
+          "description": "The range start of the slider."
+        },
+        {
+          "name": "--slider-range-end",
+          "description": "The range end of the slider."
+        },
+        {
+          "name": "--translate-x",
+          "description": "The horizontal translation value."
+        },
+        {
+          "name": "--translate-y",
+          "description": "The vertical translation value."
+        }
+      ],
+      "props": [
+        {
+          "name": "palette",
+          "type": "'action' | 'info' | 'success' | 'warning' | 'danger'",
+          "required": false,
+          "defaultValue": "'action'",
+          "description": "PandaCSS recipe variant for palette."
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'lg'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "usage",
+          "type": "'gradient' | 'filled' | 'outlined'",
+          "required": false,
+          "defaultValue": "'gradient'",
+          "description": "PandaCSS recipe variant for usage."
+        },
+        {
+          "name": "direction",
+          "type": "'vertical' | 'horizontal'",
+          "required": false,
+          "defaultValue": "'horizontal'",
+          "description": "PandaCSS recipe variant for direction."
+        },
+        {
+          "name": "value",
+          "type": "UseSliderReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HiddenInput",
+      "exportName": "Slider.HiddenInput",
+      "kind": "primitive",
+      "description": "The hidden input primitive part of the Slider component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Slider",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/slider-multithumb/",
+    "keyboard": [
+      {
+        "key": "ArrowRight",
+        "description": "<span>Increments the slider based on defined step</span>."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "<span>Decrements the slider based on defined step</span>."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "<span>Increases the value by the step amount.</span>."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "<span>Decreases the value by the step amount.</span>."
+      },
+      {
+        "key": "PageUp",
+        "description": "<span>Increases the value by the <code>largeStep</code> amount.</span>."
+      },
+      {
+        "key": "PageDown",
+        "description": "<span>Decreases the value by the <code>largeStep</code> amount.</span>."
+      },
+      {
+        "key": "Shift + ArrowUp",
+        "description": "<span>Increases the value by the <code>largeStep</code> amount.</span>."
+      },
+      {
+        "key": "Shift + ArrowDown",
+        "description": "<span>Decreases the value by the <code>largeStep</code> amount.</span>."
+      },
+      {
+        "key": "Home",
+        "description": "Sets the value to its minimum."
+      },
+      {
+        "key": "End",
+        "description": "Sets the value to its maximum."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["useSlider()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "number[]",
+        "description": "The value of the slider."
+      },
+      {
+        "name": "dragging",
+        "type": "boolean",
+        "description": "Whether the slider is being dragged."
+      },
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the slider is focused."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: number[]) => void",
+        "description": "Function to set the value of the slider."
+      },
+      {
+        "name": "getThumbValue",
+        "type": "(index: number) => number",
+        "description": "Returns the value of the thumb at the given index."
+      },
+      {
+        "name": "setThumbValue",
+        "type": "(index: number, value: number) => void",
+        "description": "Sets the value of the thumb at the given index."
+      },
+      {
+        "name": "getValuePercent",
+        "type": "(value: number) => number",
+        "description": "Returns the percent of the thumb at the given index."
+      },
+      {
+        "name": "getPercentValue",
+        "type": "(percent: number) => number",
+        "description": "Returns the value of the thumb at the given percent."
+      },
+      {
+        "name": "getThumbPercent",
+        "type": "(index: number) => number",
+        "description": "Returns the percent of the thumb at the given index."
+      },
+      {
+        "name": "setThumbPercent",
+        "type": "(index: number, percent: number) => void",
+        "description": "Sets the percent of the thumb at the given index."
+      },
+      {
+        "name": "getThumbMin",
+        "type": "(index: number) => number",
+        "description": "Returns the min value of the thumb at the given index."
+      },
+      {
+        "name": "getThumbMax",
+        "type": "(index: number) => number",
+        "description": "Returns the max value of the thumb at the given index."
+      },
+      {
+        "name": "increment",
+        "type": "(index: number) => void",
+        "description": "Function to increment the value of the slider at the given index."
+      },
+      {
+        "name": "decrement",
+        "type": "(index: number) => void",
+        "description": "Function to decrement the value of the slider at the given index."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the slider. This focuses the first thumb."
+      }
+    ]
+  }
+}

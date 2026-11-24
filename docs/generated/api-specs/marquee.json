@@ -1,0 +1,523 @@
+{
+  "name": "Marquee",
+  "key": "marquee",
+  "description": "The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges. It is composed of several primitives that enable customization and flexibility in its usage.\n\nThe Marquee component can be used to showcase logos, announcements, or any repeating content. It supports controlling the spacing, speed, direction, and loop count of the animation, and can pause when users hover or focus on it.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Marquee.El",
+      "kind": "abstraction",
+      "description": "An entry abstraction for rendering all the content-related primitives and optional edges",
+      "inherits": ["Marquee.Root"],
+      "props": [
+        {
+          "name": "edges",
+          "type": "MarqueeEdgeOption[]",
+          "required": false,
+          "description": "The edges to display over the marquee. `both` shows the start and end edges for the current `side`."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Marquee.Root",
+      "kind": "primitive",
+      "description": "The root container of the Marquee component.",
+      "dataScope": "marquee",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["paused", "idle"]
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the marquee."
+        },
+        {
+          "name": "data-paused",
+          "presence": true,
+          "description": "Present when paused."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--marquee-duration",
+          "description": "The marquee duration value for the Root."
+        },
+        {
+          "name": "--marquee-spacing",
+          "description": "The marquee spacing value for the Root."
+        },
+        {
+          "name": "--marquee-delay",
+          "description": "The marquee delay value for the Root."
+        },
+        {
+          "name": "--marquee-loop-count",
+          "description": "The marquee loop count value for the Root."
+        },
+        {
+          "name": "--marquee-translate",
+          "description": "The marquee translate value for the Root."
+        }
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the marquee. Useful for composition."
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "The localized messages to use."
+        },
+        {
+          "name": "side",
+          "type": "Side",
+          "required": false,
+          "defaultValue": "\"start\"",
+          "description": "The side/direction the marquee scrolls towards."
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "required": false,
+          "defaultValue": "50",
+          "description": "The speed of the marquee animation in pixels per second."
+        },
+        {
+          "name": "delay",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The delay before the animation starts (in seconds)."
+        },
+        {
+          "name": "loopCount",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The number of times to loop the animation (0 = infinite)."
+        },
+        {
+          "name": "spacing",
+          "type": "string",
+          "required": false,
+          "defaultValue": "\"1rem\"",
+          "description": "The spacing between marquee items."
+        },
+        {
+          "name": "autoFill",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to automatically duplicate content to fill the container."
+        },
+        {
+          "name": "pauseOnInteraction",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to pause the marquee on user interaction (hover, focus)."
+        },
+        {
+          "name": "reverse",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to reverse the animation direction."
+        },
+        {
+          "name": "paused",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the marquee is paused."
+        },
+        {
+          "name": "defaultPaused",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether the marquee is paused by default."
+        },
+        {
+          "name": "onPauseChange",
+          "type": "((details: PauseStatusDetails) => void)",
+          "required": false,
+          "description": "Function called when the pause status changes."
+        },
+        {
+          "name": "onLoopComplete",
+          "type": "(() => void)",
+          "required": false,
+          "description": "Function called when the marquee completes one loop iteration."
+        },
+        {
+          "name": "onComplete",
+          "type": "(() => void)",
+          "required": false,
+          "description": "Function called when the marquee completes all loops and stops. Only fires for finite loops (loopCount > 0)."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Viewport",
+      "exportName": "Marquee.Viewport",
+      "kind": "primitive",
+      "description": "The viewport primitive part of the Marquee component.",
+      "dataScope": "marquee",
+      "dataPart": "viewport",
+      "dataAttributes": [
+        {
+          "name": "data-part",
+          "values": ["viewport"]
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the viewport."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the viewport is positioned on."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Marquee.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Marquee component.",
+      "dataScope": "marquee",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-part",
+          "values": ["content"]
+        },
+        {
+          "name": "data-index",
+          "description": "The index of the item."
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the content."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the content is positioned on."
+        },
+        {
+          "name": "data-reverse"
+        },
+        {
+          "name": "data-clone",
+          "presence": true
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": true,
+          "description": "Optional in a patch child of a Marquee abstraction, which supplies it."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Edge",
+      "exportName": "Marquee.Edge",
+      "kind": "primitive",
+      "description": "The edge primitive part of the Marquee component.",
+      "dataScope": "marquee",
+      "dataPart": "edge",
+      "dataAttributes": [
+        {
+          "name": "data-part",
+          "values": ["edge"]
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the edge is positioned on."
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the edge."
+        }
+      ],
+      "props": [
+        {
+          "name": "side",
+          "type": "Side",
+          "required": true,
+          "description": "The side where the edge gradient should appear. Optional in a patch child of a Marquee abstraction, which supplies it."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Marquee.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Marquee component.",
+      "dataScope": "marquee",
+      "dataPart": "item",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Marquee.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Marquee component, driven by state created with `useMarquee()`.",
+      "dataScope": "marquee",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["paused", "idle"]
+        },
+        {
+          "name": "data-orientation",
+          "description": "The orientation of the marquee."
+        },
+        {
+          "name": "data-paused",
+          "presence": true,
+          "description": "Present when paused."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--marquee-duration",
+          "description": "The marquee duration value for the Root."
+        },
+        {
+          "name": "--marquee-spacing",
+          "description": "The marquee spacing value for the Root."
+        },
+        {
+          "name": "--marquee-delay",
+          "description": "The marquee delay value for the Root."
+        },
+        {
+          "name": "--marquee-loop-count",
+          "description": "The marquee loop count value for the Root."
+        },
+        {
+          "name": "--marquee-translate",
+          "description": "The marquee translate value for the Root."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "UseMarqueeReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Marquee.Context",
+      "kind": "primitive",
+      "description": "Exposes the Marquee state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseMarqueeContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "contextApi": {
+    "exposedBy": ["Marquee.Context", "useMarquee()"],
+    "members": [
+      {
+        "name": "paused",
+        "type": "boolean",
+        "description": "Whether the marquee is currently paused."
+      },
+      {
+        "name": "orientation",
+        "type": "\"horizontal\" | \"vertical\"",
+        "description": "The current orientation of the marquee."
+      },
+      {
+        "name": "side",
+        "type": "Side",
+        "description": "The current side/direction of the marquee."
+      },
+      {
+        "name": "multiplier",
+        "type": "number",
+        "description": "The multiplier for auto-fill. Indicates how many times to duplicate content.\nWhen autoFill is enabled and content is smaller than container, this returns\nthe number of additional copies needed. Otherwise returns 1."
+      },
+      {
+        "name": "contentCount",
+        "type": "number",
+        "description": "The total number of content elements to render (original + clones).\nUse this value when rendering your content in a loop."
+      },
+      {
+        "name": "pause",
+        "type": "VoidFunction",
+        "description": "Pause the marquee animation."
+      },
+      {
+        "name": "resume",
+        "type": "VoidFunction",
+        "description": "Resume the marquee animation."
+      },
+      {
+        "name": "togglePause",
+        "type": "VoidFunction",
+        "description": "Toggle the pause state."
+      },
+      {
+        "name": "restart",
+        "type": "VoidFunction",
+        "description": "Restart the marquee animation from the beginning."
+      }
+    ]
+  }
+}

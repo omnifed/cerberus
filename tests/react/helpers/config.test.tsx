@@ -19,6 +19,8 @@ describe('config helpers', () => {
     expect(icons.checkbox).toBeDefined()
     expect(icons.fileUploader).toBeDefined()
     expect(icons.indeterminate).toBeDefined()
+    expect(icons.rating).toBeDefined()
+    expect(icons.ratingHalf).toBeDefined()
   })
 
   test('makeSystemConfig', () => {
@@ -33,5 +35,7 @@ describe('config helpers', () => {
     expect(config.icons?.checkbox).toBeDefined()
     expect(config.icons?.fileUploader).toBeDefined()
     expect(config.icons?.indeterminate).toBeDefined()
+    expect(config.icons?.rating).toBeDefined()
+    expect(config.icons?.ratingHalf).toBeDefined()
   })
 })

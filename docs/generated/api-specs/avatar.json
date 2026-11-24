@@ -1,0 +1,294 @@
+{
+  "name": "Avatar",
+  "key": "avatar",
+  "description": "The Avatar component is a versatile UI element that allows users to have a visual representation of their presence within an application. It is composed of several primitives that enable customization and flexibility in its usage.\n\nThe Avatar component can be used in various contexts, such as profiles, App Bars, menus, or any other content that benefits from a user representation. It supports different palettes, gradients, and layout styles to match the design requirements of your application.",
+  "variants": [
+    {
+      "name": "gradient",
+      "values": [
+        "amphiaraus-dark",
+        "amphiaraus-light",
+        "asphodel-light",
+        "asphodel-dark",
+        "charon-light",
+        "charon-dark",
+        "hades-light",
+        "hades-dark",
+        "nyx-light",
+        "nyx-dark",
+        "styx-light",
+        "styx-dark",
+        "thanatos-light",
+        "thanatos-dark",
+        "none"
+      ],
+      "defaultValue": "'none'"
+    },
+    {
+      "name": "size",
+      "values": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"],
+      "defaultValue": "'md'"
+    },
+    {
+      "name": "shape",
+      "values": ["circle", "square"],
+      "defaultValue": "'circle'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Avatar.El",
+      "kind": "abstraction",
+      "description": "Renders the image at `src` with the `fallback`; direct `Avatar.Fallback`/`Avatar.Image` children override that part, other children replace both",
+      "inherits": ["Avatar.Root"],
+      "props": [
+        {
+          "name": "alt",
+          "type": "string",
+          "required": false,
+          "description": "The alternative text for the image. Required when `src` is set."
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "required": false,
+          "description": "The image source URL. When omitted, only the `fallback` is rendered."
+        },
+        {
+          "name": "fallback",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The content shown when there is no image or it fails to load, such as initials or an icon."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Avatar.Root",
+      "kind": "primitive",
+      "description": "The root container of the Avatar component.",
+      "dataScope": "avatar",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "gradient",
+          "type": "'amphiaraus-dark' | 'amphiaraus-light' | 'asphodel-light' | 'asphodel-dark' | 'charon-light' | 'charon-dark' | 'hades-light' | 'hades-dark' | 'nyx-light' | 'nyx-dark' | 'styx-light' | 'styx-dark' | 'thanatos-light' | 'thanatos-dark' | 'none'",
+          "required": false,
+          "defaultValue": "'none'",
+          "description": "PandaCSS recipe variant for gradient."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "shape",
+          "type": "'circle' | 'square'",
+          "required": false,
+          "defaultValue": "'circle'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onStatusChange",
+          "type": "((details: StatusChangeDetails) => void)",
+          "required": false,
+          "description": "Functional called when the image loading status changes."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the avatar. Useful for composition."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Image",
+      "exportName": "Avatar.Image",
+      "kind": "primitive",
+      "description": "The image primitive part of the Avatar component.",
+      "dataScope": "avatar",
+      "dataPart": "image",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["visible", "hidden"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Fallback",
+      "exportName": "Avatar.Fallback",
+      "kind": "primitive",
+      "description": "The fallback primitive part of the Avatar component.",
+      "dataScope": "avatar",
+      "dataPart": "fallback",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["hidden", "visible"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Avatar.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Avatar component, driven by state created with `useAvatar()`.",
+      "dataScope": "avatar",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "gradient",
+          "type": "'amphiaraus-dark' | 'amphiaraus-light' | 'asphodel-light' | 'asphodel-dark' | 'charon-light' | 'charon-dark' | 'hades-light' | 'hades-dark' | 'nyx-light' | 'nyx-dark' | 'styx-light' | 'styx-dark' | 'thanatos-light' | 'thanatos-dark' | 'none'",
+          "required": false,
+          "defaultValue": "'none'",
+          "description": "PandaCSS recipe variant for gradient."
+        },
+        {
+          "name": "size",
+          "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "shape",
+          "type": "'circle' | 'square'",
+          "required": false,
+          "defaultValue": "'circle'",
+          "description": "PandaCSS recipe variant for shape."
+        },
+        {
+          "name": "value",
+          "type": "UseAvatarReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ],
+  "contextApi": {
+    "exposedBy": ["useAvatar()"],
+    "members": [
+      {
+        "name": "loaded",
+        "type": "boolean",
+        "description": "Whether the image is loaded."
+      },
+      {
+        "name": "setSrc",
+        "type": "(src: string) => void",
+        "description": "Function to set new src."
+      },
+      {
+        "name": "setLoaded",
+        "type": "VoidFunction",
+        "description": "Function to set loaded state."
+      },
+      {
+        "name": "setError",
+        "type": "VoidFunction",
+        "description": "Function to set error state."
+      }
+    ]
+  }
+}

@@ -50,6 +50,28 @@ import { td } from './td'
 
 /**
  * Recipe module for the Panda preset
+ *
+ * ## The `jsx` lists
+ *
+ * Panda reads a recipe's `jsx` list to extract variant props from consumer
+ * JSX (`<Button size={{ base: 'sm', md: 'lg' }} />`). The preset's
+ * `staticCss.recipes: '*'` pre-generates every plain variant value, but not
+ * responsive/conditional ones, so the lists still matter for those.
+ *
+ * Verified against Panda 2.5 (cssgen with and without `staticCss.recipes`):
+ *
+ * - With no `jsx` list, Panda matches `<Key>` (capitalized recipe key) and, for
+ *   slot recipes, `<Key.Slot>` and `<KeySlot>`.
+ * - An explicit `jsx` list REPLACES the bare `<Key>` match (so repeat it) but
+ *   `<Key.Slot>`/`<KeySlot>` still match for slot recipes.
+ * - Member expressions match by their exact string: `'Button.IconButton'`.
+ *   Nothing is derived for config (non-slot) recipes.
+ *
+ * So add a `jsx` list only when the public v2.1 name differs from the
+ * capitalized recipe key (`switchRecipe` -> `Switch`, `ratingGroup` ->
+ * `Rating`, `iconButton` -> `Button.IconButton`) or a non-slot member takes
+ * variant props (`Field.InputGroup`). Every entry must be exported from
+ * `@cerberus-design/react`; `tests/panda-preset/recipes/jsx.test.ts` enforces it.
  * @module
  */
 

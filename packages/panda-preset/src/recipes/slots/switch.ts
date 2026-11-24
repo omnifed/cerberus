@@ -16,7 +16,13 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'switch',
   description: 'The styles for the Switch component',
   slots: switchAnatomy.keys(),
-  jsx: ['SwitchRoot', 'SwitchControl', 'SwitchThumb', 'SwitchLabel', 'Switch'],
+  jsx: [
+    'Switch',
+    'Switch.Root',
+    'Switch.Label',
+    'Switch.Control',
+    'Switch.Thumb',
+  ],
 
   base: {
     root: {
@@ -26,7 +32,8 @@ export const switchRecipe: Partial<SlotRecipeConfig> = defineSlotRecipe({
       gap: 'sm',
       position: 'relative',
       verticalAlign: 'middle',
-      '--switch-x': 'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
+      '--switch-x':
+        'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
     },
     label: field.base!.label,
     control: {

@@ -14,17 +14,6 @@ import type { SlotRecipeConfig } from '@pandacss/types'
 export const circularProgress: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'circular-progress',
   slots: [...progressAnatomy.keys(), 'infoGroup'],
-  jsx: [
-    // primitives
-    'CircularProgressRoot',
-    'CircularProgressLabel',
-    'CircularProgressValueText',
-    'CircularProgressCircle',
-    'CircularProgressCircleTrack',
-    'CircularProgressCircleRange',
-    // components
-    'CircularProgress',
-  ],
 
   base: {
     root: {

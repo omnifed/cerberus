@@ -1,0 +1,591 @@
+{
+  "name": "RadioGroup",
+  "key": "radio",
+  "description": "The Radio component allows users to select one option from a set of choices.\n\nWrap `<Radio>` items (also available as `RadioGroup.Radio`) in a `<RadioGroup>` for labeled radios with the Cerberus control, or compose the primitives for full structural control. The group supports a horizontal or vertical orientation and two sizes; a single radio can override the size. To use it within a form, wrap it with the Fieldset or Field component.",
+  "variants": [
+    {
+      "name": "orientation",
+      "values": ["horizontal", "vertical"],
+      "defaultValue": "'horizontal'"
+    },
+    {
+      "name": "size",
+      "values": ["sm", "md"],
+      "defaultValue": "'sm'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "Radio",
+      "exportName": "RadioGroup.Radio",
+      "kind": "abstraction",
+      "description": "An abstraction that renders a single labeled radio item with the Cerberus control and its hidden input",
+      "inherits": ["RadioGroup.Item"],
+      "props": [
+        {
+          "name": "size",
+          "type": "RadioGroupVariantProps['size']",
+          "required": false,
+          "description": "The size of this radio's control and text. Defaults to the `size` of the parent `RadioGroup`."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "RadioGroup.Root",
+      "kind": "primitive",
+      "description": "The root container of the RadioGroup component.",
+      "dataScope": "radio-group",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the radio-group."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "orientation",
+          "type": "\"horizontal\" | \"vertical\"",
+          "required": false,
+          "defaultValue": "'horizontal'",
+          "description": "Orientation of the radio group"
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the radio. Useful for composition."
+        },
+        {
+          "name": "value",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled value of the radio group"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial value of the checked radio when rendered. Use when you don't need to control the value of the radio group."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The name of the input fields in the radio (Useful for form submission)."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the underlying input."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the radio group will be disabled"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the radio group is marked as invalid."
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "If `true`, the radio group is marked as required."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the radio group is read-only"
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function called once a radio is checked"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "RadioGroup.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the RadioGroup component.",
+      "dataScope": "radio-group",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the label."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "RadioGroup.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the RadioGroup component.",
+      "dataScope": "radio-group",
+      "dataPart": "item",
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemText",
+      "exportName": "RadioGroup.ItemText",
+      "kind": "primitive",
+      "description": "The item text primitive part of the RadioGroup component.",
+      "dataScope": "radio-group",
+      "dataPart": "item-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemControl",
+      "exportName": "RadioGroup.ItemControl",
+      "kind": "primitive",
+      "description": "The item control primitive part of the RadioGroup component.",
+      "dataScope": "radio-group",
+      "dataPart": "item-control",
+      "dataAttributes": [
+        {
+          "name": "data-active",
+          "presence": true,
+          "description": "Present when active or pressed."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "RadioGroup.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the RadioGroup component.",
+      "dataScope": "radio-group",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the indicator."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--transition-property",
+          "description": "The transition property value for the Indicator."
+        },
+        {
+          "name": "--left",
+          "description": "The left position value."
+        },
+        {
+          "name": "--top",
+          "description": "The top position value."
+        },
+        {
+          "name": "--width",
+          "description": "The width of the element."
+        },
+        {
+          "name": "--height",
+          "description": "The height of the element."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemHiddenInput",
+      "exportName": "RadioGroup.ItemHiddenInput",
+      "kind": "primitive",
+      "description": "The item hidden input primitive part of the RadioGroup component. It has no recipe slot, so it is unstyled.",
+      "dataAttributes": [
+        {
+          "name": "data-ownedby"
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "RadioGroup.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the RadioGroup component, driven by state created with `useRadioGroup()`.",
+      "dataScope": "radio-group",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-orientation",
+          "reflects": "orientation",
+          "description": "The orientation of the radio-group."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "orientation",
+          "type": "'horizontal' | 'vertical'",
+          "required": false,
+          "defaultValue": "'horizontal'",
+          "description": "PandaCSS recipe variant for orientation. Styles only: pass `orientation` to `useRadioGroup()` for the behavior (it defaults to \"vertical\" there)."
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'md'",
+          "required": false,
+          "defaultValue": "'sm'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseRadioGroupReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "RadioGroup.Context",
+      "kind": "primitive",
+      "description": "Exposes the RadioGroup state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseRadioGroupContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "ItemContext",
+      "exportName": "RadioGroup.ItemContext",
+      "kind": "primitive",
+      "description": "Exposes the RadioGroup item state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseRadioGroupItemContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Radio Group",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/radio/",
+    "keyboard": [
+      {
+        "key": "Tab",
+        "description": "Moves focus to either the checked radio item or the first radio item in the group."
+      },
+      {
+        "key": "Space",
+        "description": "When focus is on an unchecked radio item, checks it."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "Moves focus and checks the next radio item in the group."
+      },
+      {
+        "key": "ArrowRight",
+        "description": "Moves focus and checks the next radio item in the group."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "Moves focus to the previous radio item in the group."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "Moves focus to the previous radio item in the group."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["RadioGroup.Context", "useRadioGroup()"],
+    "members": [
+      {
+        "name": "value",
+        "type": "string | null",
+        "description": "The current value of the radio group."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string) => void",
+        "description": "Function to set the value of the radio group."
+      },
+      {
+        "name": "clearValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the value of the radio group."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus the radio group."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state details of a radio input."
+      }
+    ]
+  }
+}

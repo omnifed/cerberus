@@ -1,6 +1,9 @@
 'use client'
 
-import { DialogCloseTrigger, DialogOpenChangeDetails } from '@ark-ui/react/dialog'
+import {
+  DialogCloseTrigger,
+  DialogOpenChangeDetails,
+} from '@ark-ui/react/dialog'
 import {
   createContext,
   useCallback,
@@ -15,18 +18,12 @@ import {
 import { css } from 'styled-system/css'
 import { HStack, VStack } from 'styled-system/jsx'
 import { hstack } from 'styled-system/patterns'
-import { Avatar } from '../components/avatar/avatar'
-import { Button } from '../components/button/button'
+import { Avatar } from '../components/avatar/api'
+import { Button } from '../components/buttons/index'
 import { Clipboard } from '../components/clipboard/index'
-import {
-  Dialog,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogRootProps,
-} from '../components/dialog/index'
-import { FieldLabel, FieldRoot, Input } from '../components/field/index'
-import { IconButton } from '../components/icon-button/index'
+import { Dialog, type DialogRootProps } from '../components/dialog/index'
+import { Field, Input } from '../components/field/index'
+import { IconButton } from '../components/buttons/index'
 import { Show } from '../components/show/index'
 import { Text } from '../components/text/index'
 import { useCerberusContext } from './cerberus'
@@ -63,7 +60,9 @@ export interface ShowPromptModalOptions {
    */
   cancelText: string
 }
-export type PromptShowResult = ((value: string | PromiseLike<string>) => void) | null
+export type PromptShowResult =
+  | ((value: string | PromiseLike<string>) => void)
+  | null
 
 export interface PromptModalValue {
   /**
@@ -115,7 +114,9 @@ export type PromptModalProviderProps = PropsWithChildren<DialogRootProps>
  * }, [prompt])
  * ```
  */
-export function PromptModal(props: PropsWithChildren<PromptModalProviderProps>) {
+export function PromptModal(
+  props: PropsWithChildren<PromptModalProviderProps>,
+) {
   const { children, ...rootProps } = props
 
   const [open, setOpen] = useState<boolean>(false)
@@ -127,7 +128,10 @@ export function PromptModal(props: PropsWithChildren<PromptModalProviderProps>) 
   const { icons } = useCerberusContext()
   const { promptModal: PromptIcon } = icons
 
-  const isValid = useMemo(() => inputValue === content?.key, [inputValue, content])
+  const isValid = useMemo(
+    () => inputValue === content?.key,
+    [inputValue, content],
+  )
 
   const palette = useMemo(
     () => (content?.kind === 'destructive' ? 'danger' : 'action'),
@@ -171,33 +175,45 @@ export function PromptModal(props: PropsWithChildren<PromptModalProviderProps>) 
     <PromptModalContext.Provider value={value}>
       {children}
 
-      <DialogProvider
+      <Dialog.Root
+        size="sm"
         lazyMount
         open={open}
         onOpenChange={(e: DialogOpenChangeDetails) => setOpen(e.open)}
         unmountOnExit
         {...rootProps}
       >
-        <Dialog
-          size="sm"
-          style={{
-            '--dialog-content-min-h': 'auto',
-          }}
-        >
-          <VStack alignItems="flex-start" h="full" justify="space-between" w="full">
-            <HStack alignSelf="center" justify="center" paddingBlockEnd="md" w="full">
+        <Dialog css={{ '--dialog-content-min-h': 'auto' }}>
+          <VStack
+            alignItems="flex-start"
+            h="full"
+            justify="space-between"
+            w="full"
+          >
+            <HStack
+              alignSelf="center"
+              justify="center"
+              paddingBlockEnd="md"
+              w="full"
+            >
               <Show
                 when={palette === 'danger'}
                 fallback={
-                  <Avatar gradient="charon-light" fallback={<PromptIcon size={24} />} />
+                  <Avatar
+                    gradient="charon-light"
+                    fallback={<PromptIcon size={24} />}
+                  />
                 }
               >
-                <Avatar gradient="hades-dark" fallback={<PromptIcon size={24} />} />
+                <Avatar
+                  gradient="hades-dark"
+                  fallback={<PromptIcon size={24} />}
+                />
               </Show>
             </HStack>
 
-            <DialogHeading>{content?.heading}</DialogHeading>
-            <DialogDescription>{content?.description}</DialogDescription>
+            <Dialog.Title>{content?.heading}</Dialog.Title>
+            <Dialog.Description>{content?.description}</Dialog.Description>
 
             <VStack
               alignItems="flex-start"
@@ -205,8 +221,8 @@ export function PromptModal(props: PropsWithChildren<PromptModalProviderProps>) 
               marginBlockEnd="lg"
               w="full"
             >
-              <FieldRoot invalid={!isValid}>
-                <FieldLabel
+              <Field.Root invalid={!isValid}>
+                <Field.Label
                   className={hstack({
                     gap: 'xs',
                     justify: 'flex-start',
@@ -225,18 +241,23 @@ export function PromptModal(props: PropsWithChildren<PromptModalProviderProps>) 
                           </Text>
                         </Clipboard.Label>
 
-                        <Clipboard.Trigger asChild>
-                          <IconButton clipboard shape="square" size="sm" rounded="xs">
-                            <Clipboard.Indicator />
+                        <Clipboard.TriggerWithTooltip asChild>
+                          <IconButton
+                            clipboard
+                            shape="square"
+                            size="sm"
+                            rounded="xs"
+                          >
+                            <Clipboard.CopyIndicator />
                           </IconButton>
-                        </Clipboard.Trigger>
+                        </Clipboard.TriggerWithTooltip>
                       </HStack>
                     </Clipboard.Control>
                   </Clipboard.Root>
                   to confirm
-                </FieldLabel>
+                </Field.Label>
                 <Input name="confirm" onChange={handleChange} type="text" />
-              </FieldRoot>
+              </Field.Root>
             </VStack>
 
             <HStack gap="md" justify="stretch" w="full">
@@ -270,7 +291,7 @@ export function PromptModal(props: PropsWithChildren<PromptModalProviderProps>) 
             </HStack>
           </VStack>
         </Dialog>
-      </DialogProvider>
+      </Dialog.Root>
     </PromptModalContext.Provider>
   )
 }

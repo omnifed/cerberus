@@ -1,42 +1,34 @@
 'use client'
 
 import { Box, Stack } from '@/styled-system/jsx'
-import {
-  Button,
-  Dialog,
-  DialogCloseIconTrigger,
-  DialogCloseTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogProvider,
-  DialogTrigger,
-} from '@cerberus-design/react'
+import { Button, Dialog } from '@cerberus-design/react'
 
 export function BasicDemo() {
   return (
-    <DialogProvider>
-      <DialogTrigger asChild>
+    <Dialog.Root size="auto">
+      <Dialog.Trigger asChild>
         <Button>open dialog</Button>
-      </DialogTrigger>
+      </Dialog.Trigger>
 
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="xs" w="full">
-          <DialogHeading>Dialog Title</DialogHeading>
-          <DialogDescription maxW="prose">
-            Far far away, behind the word mountains, far from the countries Vokalia and
-            Consonantia, there live the blind texts. Separated they live in
-            Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-          </DialogDescription>
+          <Dialog.Title>Dialog Title</Dialog.Title>
+          <Dialog.Description maxW="prose">
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts. Separated they
+            live in Bookmarksgrove right at the coast of the Semantics, a large
+            language ocean.
+          </Dialog.Description>
         </Stack>
 
         <Box mt="md" w="full">
-          <DialogCloseTrigger asChild>
+          <Dialog.CloseTrigger asChild>
             <Button>Close</Button>
-          </DialogCloseTrigger>
+          </Dialog.CloseTrigger>
         </Box>
       </Dialog>
-    </DialogProvider>
+    </Dialog.Root>
   )
 }

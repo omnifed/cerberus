@@ -15,25 +15,6 @@ import type { SlotRecipeConfig } from '@pandacss/types'
 export const popover: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'popover',
   slots: [...popoverAnatomy.keys(), 'header', 'body', 'footer'],
-  jsx: [
-    // primitives
-    'PopoverTrigger',
-    'PopoverAnchor',
-    'PopoverPositioner',
-    'PopoverArrow',
-    'PopoverArrowTip',
-    'PopoverContent',
-    'PopoverTitle',
-    'PopoverDescription',
-    'PopoverCloseTrigger',
-    'PopoverIndicator',
-    // custom layout helpers
-    'PopoverHeader',
-    'PopoverBody',
-    'PopoverFooter',
-    // abstractions
-    'Popover',
-  ],
 
   base: {
     content: {

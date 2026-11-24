@@ -3,7 +3,7 @@
 import { Box, VStack } from '@/styled-system/jsx'
 import { ChevronDownOutline } from '@carbon/icons-react'
 import {
-  ComboboxParts,
+  Combobox,
   For,
   Portal,
   Text,
@@ -16,26 +16,24 @@ export function CustomDemo() {
 
   return (
     <Box w="1/2">
-      <ComboboxParts.Root
+      <Combobox.Root
         collection={collection}
         onInputValueChange={handleInputChange}
         transform="skewX(-10deg)"
       >
-        <ComboboxParts.Label textTransform="uppercase">
-          Custom label
-        </ComboboxParts.Label>
+        <Combobox.Label textTransform="uppercase">Custom label</Combobox.Label>
 
-        <ComboboxParts.Control>
-          <ComboboxParts.Input />
+        <Combobox.Control>
+          <Combobox.Input />
 
-          <ComboboxParts.Trigger>
+          <Combobox.Trigger>
             <ChevronDownOutline />
-          </ComboboxParts.Trigger>
-        </ComboboxParts.Control>
+          </Combobox.Trigger>
+        </Combobox.Control>
 
         <Portal>
-          <ComboboxParts.Positioner>
-            <ComboboxParts.Content>
+          <Combobox.Positioner>
+            <Combobox.Content>
               <For
                 each={collection.items}
                 fallback={
@@ -47,18 +45,18 @@ export function CustomDemo() {
                 }
               >
                 {(item) => (
-                  <ComboboxParts.Item key={item.value} item={item}>
-                    <ComboboxParts.ItemText fontSize="xl">
+                  <Combobox.Item key={item.value} item={item}>
+                    <Combobox.ItemText fontSize="xl">
                       {item.label}
-                    </ComboboxParts.ItemText>
-                    <ComboboxParts.ItemIndicator>🔥</ComboboxParts.ItemIndicator>
-                  </ComboboxParts.Item>
+                    </Combobox.ItemText>
+                    <Combobox.ItemIndicator>🔥</Combobox.ItemIndicator>
+                  </Combobox.Item>
                 )}
               </For>
-            </ComboboxParts.Content>
-          </ComboboxParts.Positioner>
+            </Combobox.Content>
+          </Combobox.Positioner>
         </Portal>
-      </ComboboxParts.Root>
+      </Combobox.Root>
     </Box>
   )
 }

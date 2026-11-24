@@ -1,0 +1,277 @@
+{
+  "name": "FileStatus",
+  "key": "file-status",
+  "description": "The FileStatus component shows the status of a file during processing: the status icon, the file name, its progress and status text, and an action button that cancels, retries or deletes the file.\n\n`<FileStatus>` renders the whole card from `file`, `now` and `status` (`processStatus.TODO`, `PROCESSING`, `DONE` or `ERROR`) and calls `onClick` with the action for the status. Direct part children override that part, e.g. `<FileStatus.Action aria-describedby=\"…\" />` or `<FileStatus.StatusText>Envoyé</FileStatus.StatusText>`, or compose the primitives for full structural control.",
+  "variants": [],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "FileStatus.El",
+      "kind": "abstraction",
+      "description": "Renders the status icon, file name, progress bar, status text and action button for `status`; direct part children override that part, other children render at the end of the info column",
+      "inherits": ["FileStatus.Root"],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true,
+          "description": "A unique identifier for the file status. Required for accessibility."
+        },
+        {
+          "name": "file",
+          "type": "string",
+          "required": true,
+          "description": "The name of the file."
+        },
+        {
+          "name": "now",
+          "type": "number",
+          "required": true,
+          "description": "The percentage of the file that has been processed."
+        },
+        {
+          "name": "status",
+          "type": "processStatus | FileStatusKey",
+          "required": true,
+          "description": "The status of the file."
+        },
+        {
+          "name": "onClick",
+          "type": "(status: FileStatusActions, e: MouseEvent<HTMLButtonElement>) => void",
+          "required": true,
+          "description": "Called when a user clicks the action button at the end of the card, with the action for the current status: `cancel`, `retry` or `delete`."
+        }
+      ]
+    },
+    {
+      "name": "Progress",
+      "exportName": "FileStatus.Progress",
+      "kind": "abstraction",
+      "description": "A small `ProgressBar` labelled \"File upload status\"; `id`, `label` and `now` are optional",
+      "inheritsExternal": [
+        {
+          "part": "ProgressBar.Root",
+          "spec": "progress",
+          "docsSlug": "progress"
+        }
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "A unique identifier for the progress bar. Generated when omitted."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": "'File upload status'",
+          "description": "The progress bar's accessible label."
+        },
+        {
+          "name": "now",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": "The percentage processed."
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows an indeterminate bar instead of `now`."
+        }
+      ]
+    },
+    {
+      "name": "Action",
+      "exportName": "FileStatus.Action",
+      "kind": "abstraction",
+      "description": "An IconButton that cancels (`todo`, `processing`), retries (`error`) or deletes (`done`), with the matching icon, label and palette",
+      "inheritsExternal": [
+        {
+          "part": "Button.IconButtonRoot",
+          "spec": "buttons",
+          "docsSlug": "button"
+        }
+      ],
+      "props": [
+        {
+          "name": "status",
+          "type": "FileStatusKey",
+          "required": false,
+          "defaultValue": "'todo'",
+          "description": "The status the action applies to: it picks the default icon, label and palette. `<FileStatus>` supplies it to a patch child."
+        },
+        {
+          "name": "ariaLabel",
+          "type": "string",
+          "required": false,
+          "description": "The accessible label. Defaults to \"Cancel\", \"Retry\" or \"Delete\" for the status."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The icon. Defaults to the Cerberus `close`, `redo` or `delete` icon for the status."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "FileStatus.Root",
+      "kind": "primitive",
+      "description": "The card: a row with the status icon, the info column and the action button.",
+      "dataScope": "file-status",
+      "dataPart": "root",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Icon",
+      "exportName": "FileStatus.Icon",
+      "kind": "primitive",
+      "description": "Holds the status icon (an Avatar with a status gradient).",
+      "dataScope": "file-status",
+      "dataPart": "icon",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Info",
+      "exportName": "FileStatus.Info",
+      "kind": "primitive",
+      "description": "The column with the file name, progress bar and status text.",
+      "dataScope": "file-status",
+      "dataPart": "info",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Name",
+      "exportName": "FileStatus.Name",
+      "kind": "primitive",
+      "description": "The file name, as a `<small>`.",
+      "dataScope": "file-status",
+      "dataPart": "name",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "StatusText",
+      "exportName": "FileStatus.StatusText",
+      "kind": "primitive",
+      "description": "The status text, e.g. \"50% Complete\" or \"File uploaded successfully\".",
+      "dataScope": "file-status",
+      "dataPart": "status-text",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    }
+  ]
+}

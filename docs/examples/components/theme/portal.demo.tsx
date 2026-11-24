@@ -1,21 +1,21 @@
 'use client'
 
-import { Button, Theme, TooltipParts } from '@cerberus-design/react'
+import { Button, Theme, Tooltip } from '@cerberus-design/react'
 
 export function PortalDemo() {
   return (
-    <TooltipParts.Root>
-      <TooltipParts.Trigger asChild>
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>
         <Button>Dark</Button>
-      </TooltipParts.Trigger>
+      </Tooltip.Trigger>
 
-      <TooltipParts.Positioner>
+      <Tooltip.Positioner>
         <Theme mode="dark">
-          <TooltipParts.Content color="page.text.200" bgColor="page.bg.200">
+          <Tooltip.Content color="page.text.200" bgColor="page.bg.200">
             This is a dark mode tooltip bubble
-          </TooltipParts.Content>
+          </Tooltip.Content>
         </Theme>
-      </TooltipParts.Positioner>
-    </TooltipParts.Root>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
   )
 }

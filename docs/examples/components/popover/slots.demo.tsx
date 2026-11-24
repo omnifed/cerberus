@@ -2,7 +2,7 @@
 
 import { Box, Circle, Divider, Float, HStack, Stack } from '@/styled-system/jsx'
 import { AiAgent, Chat, Time, UserFollow } from '@carbon/icons-react'
-import { Avatar, Button, ButtonGroup, Popover, Text } from '@cerberus-design/react'
+import { Avatar, Button, Popover, Text } from '@cerberus-design/react'
 
 export function SlotsDemo() {
   return (
@@ -23,7 +23,11 @@ export function SlotsDemo() {
 
           <Stack direction="column" gap="xs">
             <Popover.Title textStyle="heading-xs">Cerby tha Dawg</Popover.Title>
-            <Popover.Description as="small" color="page.text.100" textStyle="body-xs">
+            <Popover.Description
+              as="small"
+              color="page.text.100"
+              textStyle="body-xs"
+            >
               The best boi there is
             </Popover.Description>
           </Stack>
@@ -40,7 +44,7 @@ export function SlotsDemo() {
       </Popover.Body>
 
       <Popover.Footer>
-        <ButtonGroup>
+        <Button.Group>
           <Button size="sm" usage="outlined-subtle">
             <Chat />
             Message
@@ -49,7 +53,7 @@ export function SlotsDemo() {
             <UserFollow />
             Add
           </Button>
-        </ButtonGroup>
+        </Button.Group>
       </Popover.Footer>
     </Popover>
   )

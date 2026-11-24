@@ -1,45 +1,59 @@
-import { describe, test, expect } from 'bun:test'
-import { render, screen } from '@testing-library/react'
-import { Avatar, AvatarRoot, CerberusProvider } from '@cerberus-design/react'
-import { makeConfig } from '@/utils'
+import { afterEach, describe, expect, test } from 'bun:test'
+import { cleanup, screen } from '@testing-library/react'
+import { describeDXContract } from '@/test-utils/dx-harness'
+import { render } from '@/test-utils/render'
+import { Avatar } from '@cerberus-design/react/avatar'
 
-describe('Avatar', () => {
-  const config = makeConfig()
+describeDXContract({
+  name: 'Avatar',
+  Root: Avatar,
+  defaultRootProps: { fallback: <p>FB</p> },
 
-  test('should render an image element', () => {
+  primitiveTestNode: (
+    <Avatar.Root>
+      <Avatar.Fallback>FB</Avatar.Fallback>
+      <Avatar.Image data-testid="primitive-content" />
+    </Avatar.Root>
+  ),
+
+  abstractions: [
+    {
+      name: 'AvatarEl',
+      Component: Avatar.El,
+      defaultProps: { fallback: 'Content body', src: null },
+      children: null,
+      PartToPatch: Avatar.Image,
+      PartToReplace: Avatar.Fallback,
+    },
+  ],
+})
+
+describe('Avatar part overrides', () => {
+  afterEach(cleanup)
+
+  test('Image and Fallback children override props and keep the default structure', () => {
     render(
-      <CerberusProvider config={config}>
-        <Avatar
-          alt="Protector Cerberus"
-          src="https://cerberus.digitalu.design/logo.svg"
-        />
-        ,
-      </CerberusProvider>,
+      <Avatar fallback="unused">
+        <Avatar.Fallback data-testid="fallback">CB</Avatar.Fallback>
+        <Avatar.Image data-testid="image" alt="Cerberus" src="/logo.svg" />
+      </Avatar>,
     )
-    expect(
-      screen.getByRole('img', {
-        hidden: true,
-      }),
-    ).toBeInTheDocument()
+    expect(screen.getByTestId('fallback')).toHaveTextContent('CB')
+    expect(screen.queryByText('unused')).toBeNull()
+    const image = screen.getByTestId('image')
+    expect(image).toHaveAttribute('alt', 'Cerberus')
+    expect(image).toHaveAttribute('src', '/logo.svg')
   })
 
-  test('should render a fallback icon if no src or label', () => {
+  test('non-part children replace the default fallback and image', () => {
     render(
-      <CerberusProvider config={config}>
-        <Avatar fallback={<p>TB</p>} />
-      </CerberusProvider>,
+      <Avatar fallback="unused" data-testid="root">
+        <span>Custom</span>
+      </Avatar>,
     )
-    expect(screen.getByText(/tb/i)).toBeInTheDocument()
-  })
-
-  test('should allow a custom element', () => {
-    render(
-      <CerberusProvider config={config}>
-        <AvatarRoot asChild>
-          <div data-testid="custom-element">Custom Element</div>
-        </AvatarRoot>
-      </CerberusProvider>,
-    )
-    expect(screen.getByTestId('custom-element')).toBeInTheDocument()
+    const root = screen.getByTestId('root')
+    expect(root).toHaveTextContent('Custom')
+    expect(root.querySelector('[data-part="fallback"]')).toBeNull()
+    expect(root.querySelector('[data-part="image"]')).toBeNull()
   })
 })

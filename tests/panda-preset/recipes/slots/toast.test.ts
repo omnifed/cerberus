@@ -9,15 +9,17 @@ describe('toast recipe', () => {
   })
 
   test('should have a jsx slot for each anatomy', () => {
-    expect(toast.jsx).toMatchObject([
-      'Toast',
+    expect(toast.jsx).toEqual([
       'NotificationRoot',
       'NotificationHeading',
       'NotificationDescription',
       'NotificationCloseTrigger',
       'NotificationActionTrigger',
-      'NotificationCenter',
-      'MatchNotificationIcon',
+      'NotificationParts.Root',
+      'NotificationParts.Heading',
+      'NotificationParts.Description',
+      'NotificationParts.CloseTrigger',
+      'NotificationParts.ActionTrigger',
     ])
   })
 

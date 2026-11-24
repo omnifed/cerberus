@@ -2,15 +2,17 @@ import { HStack } from '@/styled-system/jsx'
 import { For, Table, TableRootProps } from '@cerberus-design/react'
 import data from 'styled-system/specs/design-system.json'
 
-const variants = data.slotRecipes.table.variants.decoration
-  .values as TableRootProps['decoration'][]
+const variants = data.slotRecipes.table.variants.decoration.values as Extract<
+  TableRootProps['decoration'],
+  string
+>[]
 
 export function DecorationDemo() {
   return (
     <HStack w="1/2">
       <For each={variants}>
         {(decoration) => (
-          <Table.Root
+          <Table
             key={decoration}
             caption={`Table using the ${decoration} decoration`}
             decoration={decoration}
@@ -32,7 +34,7 @@ export function DecorationDemo() {
                 )}
               </For>
             </Table.Body>
-          </Table.Root>
+          </Table>
         )}
       </For>
     </HStack>

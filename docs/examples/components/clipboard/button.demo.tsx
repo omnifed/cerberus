@@ -7,12 +7,12 @@ export function ButtonDemo() {
   return (
     <Clipboard.Root value="Hello, World!">
       <Clipboard.Control>
-        <Clipboard.Trigger asChild>
+        <Clipboard.TriggerWithTooltip asChild>
           <Button color="action.text.initial">
             <Clipboard.CopyText color="currentColor" />
-            <Clipboard.Indicator />
+            <Clipboard.CopyIndicator />
           </Button>
-        </Clipboard.Trigger>
+        </Clipboard.TriggerWithTooltip>
       </Clipboard.Control>
     </Clipboard.Root>
   )

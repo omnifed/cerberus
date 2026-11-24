@@ -1,6 +1,6 @@
 'use client'
 
-import { MenuItem, Show, useCerberusContext } from '@cerberus-design/react'
+import { Menu, Show, useCerberusContext } from '@cerberus-design/react'
 import { HStack } from 'styled-system/jsx'
 import { FEATURE_VALUES } from '../const'
 import { type Accessor, useRead } from '@cerberus-design/signals'
@@ -15,7 +15,9 @@ export function MatchVisibleItems(props: Props) {
   const visible = useRead(props.isVisible)
   return (
     <>
-      <Show when={visible && !props.isLastVisibleCol}>{() => <HideItem />}</Show>
+      <Show when={visible && !props.isLastVisibleCol}>
+        {() => <HideItem />}
+      </Show>
       <ManageCols />
     </>
   )
@@ -26,12 +28,12 @@ function HideItem() {
   const Icon = icons.viewOff
 
   return (
-    <MenuItem value={FEATURE_VALUES.hide}>
+    <Menu.Item value={FEATURE_VALUES.hide}>
       <HStack gap="sm" w="full">
         <Icon />
         Hide Column
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }
 
@@ -40,11 +42,11 @@ function ManageCols() {
   const Icon = icons.column
 
   return (
-    <MenuItem value={FEATURE_VALUES.manageVisibility}>
+    <Menu.Item value={FEATURE_VALUES.manageVisibility}>
       <HStack gap="sm" w="full">
         <Icon />
         Manage Columns
       </HStack>
-    </MenuItem>
+    </Menu.Item>
   )
 }

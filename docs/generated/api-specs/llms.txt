@@ -1,0 +1,42 @@
+# Cerberus React component API
+
+> Generated API references for @cerberus/react components: parts, props, recipe variants, data attributes and keyboard support. Each component also has a JSON spec (`<key>.json`) matching `component-doc-spec.schema.json`.
+
+## Components
+
+- [Accordion](accordion.md): The Accordion component is a versatile UI element that allows users to expand and collapse sections of content.
+- [Admonition](admonition.md): The Admonition component is a versatile UI element that can be used to display important information, warnings, or notes in a visually distinct manner.
+- [Avatar](avatar.md): The Avatar component is a versatile UI element that allows users to have a visual representation of their presence within an application.
+- [Button](buttons.md): The Button component provides a visual indicator for a user to make an action of sorts, commonly used in forms, menus, and popovers.
+- [Carousel](carousel.md): The Carousel component is a versatile UI element that allows users to navigate through a slideshow style set of "pages" which contain images.
+- [Checkbox](checkbox.md): The Checkbox component allows users to select one or more options from a set.
+- [CircularProgress](circular-progress.md): The CircularProgress component displays a circular progress indicator for a task, with the value text and a label in the center of the circle.
+- [Clipboard](clipboard.md): The Clipboard component provides an accessible way to copy text to the user's clipboard with built-in visual feedback.
+- [Collapsible](collapsible.md): The Collapsible component is used to expand and collapse additional content.
+- [Combobox](combobox.md): The Combobox component is a filterable select: users type into an input to narrow a list of options and pick one or more of them.
+- [DatePicker](date-picker.md): The DatePicker component lets users enter a date, or a range of dates, by typing it in an input or picking it from a calendar.
+- [Dialog](dialog.md): The Dialog component is a modal window that appears on top of the main content.
+- [Field](field.md): The Field component labels a form control and connects it to its helper text and error text, wiring the ids and ARIA attributes for you.
+- [Fieldset](fieldset.md): The Fieldset component groups related form fields together with a shared legend, helper text and error text.
+- [FileStatus](file-status.md): The FileStatus component shows the status of a file during processing: the status icon, the file name, its progress and status text, and an action button that cancels, retries or deletes the file.
+- [FileUpload](file-upload.md): The FileUpload component lets users select files with a dropzone (click, `Enter`/`Space` or drag and drop) and lists the accepted files.
+- [Group](group.md): The Group component lays out its children in a normal, attached, grown or stacked group, horizontally or vertically.
+- [Marquee](marquee.md): The Marquee component displays continuously scrolling content, horizontally or vertically, with optional stylized edges.
+- [Menu](menu.md): The Menu component displays a list of actions or options that the user can choose from, opened from a trigger such as a button.
+- [NumberInput](number-input.md): The NumberInput component is used to manage numeric input fields.
+- [Pagination](pagination.md): The Pagination component lets users navigate between the pages of a data set.
+- [PinInput](pin-input.md): The PinInput component lets users enter and manage fixed-length codes, such as verification codes or PINs, one character at a time.
+- [Popover](popover.md): The Popover component is used to show detailed information inside a pop-up, anchored to a trigger or to another element.
+- [ProgressBar](progress.md): The ProgressBar component displays a linear progress indicator for a task.
+- [RadioGroup](radio.md): The Radio component allows users to select one option from a set of choices.
+- [Rating](rating.md): The Rating component provides a way to select a value from a range of values, typically used for feedback on a scale.
+- [Select](select.md): The Select component is a dropdown list that lets users pick one or more options from a collection.
+- [Slider](slider.md): The Slider component allows users to make selections from a range of values by dragging one or more thumbs along a track.
+- [Spinner](spinner.md): The Spinner component displays an indeterminate loading indicator: an animated `<svg>` that inherits the current text color.
+- [Switch](switch.md): The Switch component is a toggle input that allows users to switch between two states, such as turning a setting on or off.
+- [Table](table.md): The Table component displays tabular data with native table semantics: each part renders the matching HTML table element (`<table>`, `<caption>`, `<thead>`, `<th>`, `<tbody>`, `<tr>`, `<td>`, `<tfoot>`) inside a styled container.
+- [Tabs](tabs.md): The Tabs component is used to create a tabbed interface.
+- [Tag](tag.md): The Tag component is used to display a meta description: a filled, gradient or closable label.
+- [Text](text.md): The Text component renders typography with Panda style props such as `textStyle` and `color`.
+- [Toggle](toggle.md): The Toggle component is a two-state button that allows users to toggle between states via an action, such as pressed and not pressed.
+- [Tooltip](tooltip.md): The Tooltip component is a small pop-up box that appears when a user hovers over or focuses an element, providing additional information about it.

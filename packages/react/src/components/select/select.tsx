@@ -1,110 +1,146 @@
 'use client'
 
+import type { CollectionItem } from '@ark-ui/react/collection'
 import { HStack } from 'styled-system/jsx'
 import { useCerberusContext } from '../../context/cerberus'
-import { splitProps } from '../../utils/index'
-import { Show } from '../show/index'
-import { SelectParts } from './parts'
-import type { SelectRootProps } from './primitives'
+import { extractParts } from '../../internal/extract-parts'
+import { Show } from '../show/show'
+import {
+  SelectClearTrigger,
+  SelectContent,
+  SelectControl,
+  SelectHiddenSelect,
+  SelectIndicator,
+  SelectLabel,
+  SelectPositioner,
+  SelectRoot,
+  SelectTrigger,
+  SelectValueText,
+  type SelectRootProps,
+} from './primitives'
 
 /**
- * This module contains the Select components.
+ * This module contains the default Select abstraction.
  * @module 'react/select'
  */
 
-export interface SelectCollectionItem {
-  /**
-   * What is displayed in the dropdown list.
-   */
-  label: string
-  /**
-   * The value of the selected item used in the form.
-   */
-  value: string
-  /**
-   * If the item is disabled.
-   */
-  disabled?: boolean
+// `use-stateful-collection` (combobox) imports the item type from here
+export type { SelectCollectionItem } from './collection'
+
+const PARTS = {
+  label: SelectLabel,
+  control: SelectControl,
+  trigger: SelectTrigger,
+  valueText: SelectValueText,
+  indicator: SelectIndicator,
+  clearTrigger: SelectClearTrigger,
+  positioner: SelectPositioner,
+  content: SelectContent,
+  hiddenSelect: SelectHiddenSelect,
 }
 
-export interface SelectCollection {
-  /**
-   * The items to be displayed in the dropdown list.
-   */
-  items: SelectCollectionItem[]
-}
-
-export interface SelectProps extends Omit<SelectRootProps, 'container'> {
-  /**
-   * The placeholder text when no option is selected.
-   */
-  placeholder?: string
-}
+export type SelectProps<T extends CollectionItem = CollectionItem> =
+  SelectRootProps<T> & {
+    /**
+     * The placeholder text when no option is selected.
+     */
+    placeholder?: string
+  }
 
 /**
- * The Select component is a dropdown list that allows users to select an
- * option from a list.
- * @definition [Select docs](https://cerberus.digitalu.design/react/select)
- * @definition [ARK docs](https://ark-ui.com/react/docs/components/select)
+ * The Select component is an abstraction of the primitives that renders the
+ * control with the trigger, its value text (with the `placeholder`) and the
+ * Cerberus `selectArrow` indicator (plus the `invalid` icon when `invalid`),
+ * the positioned dropdown content and the hidden native select. It is
+ * generic over the collection item type. Non-part children render inside
+ * the content; direct `Select.Control`, `Select.Trigger`, `Select.ValueText`,
+ * `Select.Indicator`, `Select.Positioner`, `Select.Content` or
+ * `Select.HiddenSelect` children override that part. A part child with
+ * children replaces its default content. `Select.Label` and
+ * `Select.ClearTrigger` children render only when given (the label before
+ * the control, the clear trigger after the trigger).
+ * @description [Cerberus Docs](https://cerberus.digitalu.design/docs/components/select)
+ * @description [Ark Docs](https://ark-ui.com/docs/components/select)
  * @example
  * ```tsx
- * import { Select, Option, createListCollection } from '@cerberus-design/react'
+ * const collection = createSelectCollection([
+ *   { label: 'Hades', value: 'hades' },
+ *   { label: 'Persephone', value: 'persephone' },
+ *   { label: 'Zeus', value: 'zeus', disabled: true },
+ * ])
  *
- * export function SelectBasicPreview() {
- *  const collection = createListCollection({
- *   items: [
- *    { label: 'Hades', value: 'hades' },
- *    { label: 'Persephone', value: 'persephone' },
- *    { label: 'Zeus', value: 'zeus', disabled: true },
- *   ]
- *  })
- *
- *  return (
- *   <Select
- *    collection={collection}
- *    label="Select Relative"
- *    placeholder="Choose option"
- *   >
- *   {collection.items.map((item) => (
- *    <Option key={item.value} item={item} />
- *   ))}
- *  </Select>
- *  )
- * }
+ * <Field label="Select Relative">
+ *   <Select collection={collection} placeholder="Choose option">
+ *     <For each={collection.items}>
+ *       {(item) => <Select.ItemWithIndicator key={item.value} item={item} />}
+ *     </For>
+ *   </Select>
+ * </Field>
+ * ```
  */
-export function Select(props: SelectProps) {
-  const [{ collection, placeholder }, rootProps] = splitProps(props, [
-    'collection',
-    'placeholder',
-  ])
-
+export function SelectEl<T extends CollectionItem = CollectionItem>(
+  props: SelectProps<T>,
+) {
+  const { placeholder, children, ...rootProps } = props
   const { icons } = useCerberusContext()
   const { selectArrow: SelectArrow, invalid: InvalidIcon } = icons
 
+  const { parts, content } = extractParts(children, PARTS)
+
+  const { children: controlChildren, ...controlOverrideProps } =
+    parts.control ?? {}
+  const { children: triggerChildren, ...triggerOverrideProps } =
+    parts.trigger ?? {}
+  const { children: indicatorChildren, ...indicatorOverrideProps } =
+    parts.indicator ?? {}
+  const { children: _positionerChildren, ...positionerOverrideProps } =
+    parts.positioner ?? {}
+  const { children: contentChildren, ...contentOverrideProps } =
+    parts.content ?? {}
+
   return (
-    <SelectParts.Root collection={collection} {...rootProps}>
-      <SelectParts.Control>
-        <SelectParts.Trigger>
-          <SelectParts.ValueText placeholder={placeholder} />
+    <SelectRoot {...rootProps}>
+      <Show when={Boolean(parts.label)}>
+        {() => <SelectLabel {...parts.label} />}
+      </Show>
 
-          <HStack>
-            <Show when={props.invalid}>
-              <InvalidIcon data-part="invalid-icon" />
+      <SelectControl {...controlOverrideProps}>
+        {controlChildren ?? (
+          <>
+            <SelectTrigger {...triggerOverrideProps}>
+              {triggerChildren ?? (
+                <>
+                  <SelectValueText
+                    placeholder={placeholder}
+                    {...parts.valueText}
+                  />
+
+                  <HStack>
+                    <Show when={props.invalid}>
+                      <InvalidIcon data-part="invalid-icon" />
+                    </Show>
+                    <SelectIndicator {...indicatorOverrideProps}>
+                      {indicatorChildren ?? <SelectArrow />}
+                    </SelectIndicator>
+                  </HStack>
+                </>
+              )}
+            </SelectTrigger>
+
+            <Show when={Boolean(parts.clearTrigger)}>
+              {() => <SelectClearTrigger {...parts.clearTrigger} />}
             </Show>
-            <SelectParts.Indicator>
-              <SelectArrow />
-            </SelectParts.Indicator>
-          </HStack>
-        </SelectParts.Trigger>
-      </SelectParts.Control>
+          </>
+        )}
+      </SelectControl>
 
-      <SelectParts.Positioner>
-        <SelectParts.Content size={rootProps.size}>
-          {props.children}
-        </SelectParts.Content>
-      </SelectParts.Positioner>
+      <SelectPositioner {...positionerOverrideProps}>
+        <SelectContent {...contentOverrideProps}>
+          {contentChildren ?? content}
+        </SelectContent>
+      </SelectPositioner>
 
-      <SelectParts.HiddenSelect />
-    </SelectParts.Root>
+      <SelectHiddenSelect {...parts.hiddenSelect} />
+    </SelectRoot>
   )
 }

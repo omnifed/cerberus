@@ -1,0 +1,736 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { join, relative } from 'node:path'
+import { Diagnostics } from '../core/diagnostics'
+import {
+  defaultPropSource,
+  providerSlot,
+  type ComponentEntry,
+} from '../core/manifest'
+import { capitalize, partExportKey, toKebabCase, toWords } from '../core/naming'
+import { REACT_PKG_ROOT } from '../core/paths'
+import type { AbstractionConfig, DefaultPropValue } from '../manifest'
+import { PandaVariants, variantToProp } from './panda'
+import { mergePropLists } from './resolver/prop-utils'
+import { TypeResolver, type UnresolvedRef } from './resolver/type-resolver'
+import type {
+  PartSpecExternal,
+  A11ySpec,
+  ContextApiSpec,
+  ComponentDocSpec,
+  KeyboardMapping,
+  PartSpec,
+  PropSpec,
+} from './types'
+import { extractConnectPart, type ConnectPart } from './zag/connect'
+import { checkKeyboardCoverage, mergeKeyboard } from './zag/keyboard'
+import { extractMachineDefaults } from './zag/machine'
+import {
+  describeDataAttributes,
+  loadZagDocs,
+  ZAG_DOCS_VERSION,
+  type ZagDocs,
+} from './zag/zag-docs'
+import { loadZagSource } from './zag/zag-source'
+
+/** Props every Cerberus primitive accepts on top of its Ark/Zag props. */
+const PRIMITIVE_PROPS: PropSpec[] = [
+  {
+    name: 'asChild',
+    type: 'boolean',
+    required: false,
+    defaultValue: 'false',
+    description:
+      'Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node.',
+  },
+  {
+    name: 'unstyled',
+    type: 'boolean',
+    required: false,
+    defaultValue: 'false',
+    description:
+      'Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes.',
+  },
+  {
+    name: 'css',
+    type: 'SystemStyleObject',
+    required: false,
+    defaultValue: 'undefined',
+    description:
+      'PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted.',
+  },
+]
+
+export interface SpecBuilderContext {
+  resolver: TypeResolver
+  variants: PandaVariants
+  diagnostics: Diagnostics
+  /**
+   * Every component in this run, so an abstraction can inherit another component's
+   * part (`Pagination.ItemList` over `Group.Root`). Set it before building specs.
+   */
+  entries: ComponentEntry[]
+}
+
+export function createSpecBuilderContext(
+  diagnostics = new Diagnostics(),
+  resolver = new TypeResolver(),
+): SpecBuilderContext {
+  return { resolver, variants: new PandaVariants(), diagnostics, entries: [] }
+}
+
+/**
+ * Identifiers of an entry's styled members, mapped to their `exportName`: anatomy
+ * primitives (and the private `<Part>Styled` of `collectionGeneric` parts), element
+ * parts (`Field.StatusIndicator`) and styled Ark members (`Select.HiddenSelect`).
+ * Render props (`*Context`) render nothing to inherit from.
+ */
+function memberIdentifiers(entry: ComponentEntry): [string, string][] {
+  const { name } = entry
+  return [
+    ...entry.primitives.flatMap((part): [string, string][] => {
+      const identifier = `${name}${capitalize(part)}`
+      const exportKey = `${name}.${partExportKey(part)}`
+      return [
+        [identifier, exportKey],
+        [`${identifier}Styled`, exportKey],
+      ]
+    }),
+    ...Object.keys(entry.elementParts).map((slot): [string, string] => [
+      `${name}${capitalize(slot)}`,
+      `${name}.${capitalize(slot)}`,
+    ]),
+    ...entry.arkMembers
+      .filter((member) => !member.endsWith('Context'))
+      .flatMap((member): [string, string][] => [
+        [`${name}${member}`, `${name}.${member}`],
+        [`${name}${member}Styled`, `${name}.${member}`],
+      ]),
+  ]
+}
+
+/**
+ * Builds the doc spec for one component: abstractions first, then one primitive per
+ * anatomy part. Every type that should resolve but doesn't is reported.
+ */
+export function buildComponentDocSpec(
+  entry: ComponentEntry,
+  ctx: SpecBuilderContext = createSpecBuilderContext(),
+): ComponentDocSpec {
+  ctx.resolver.drainUnresolved()
+  const variants = entry.recipe
+    ? ctx.variants.variantsFor(entry.recipe, entry.key, ctx.diagnostics)
+    : []
+  const zag = loadZagFacts(entry, ctx.diagnostics)
+  const inputs: PrimitiveInputs = {
+    variantProps: variants.map(variantToProp),
+    machineDefaults: zag?.defaults ?? new Map(),
+    connect: (part) => zag?.part(part) ?? null,
+    docs: zag?.docs ?? null,
+  }
+
+  const parts: PartSpec[] = [
+    ...entry.abstractions.map((abs) => buildAbstraction(entry, abs, ctx)),
+    ...entry.primitives.map((part) => buildPrimitive(entry, part, inputs, ctx)),
+    ...Object.keys(entry.elementParts).map((slot) =>
+      buildElementPart(entry, slot),
+    ),
+    ...entry.arkMembers.map((member) =>
+      member === 'RootProvider'
+        ? buildPrimitive(entry, 'root', inputs, ctx, member)
+        : entry.providers.includes(member)
+          ? buildPrimitive(entry, providerSlot(member)!, inputs, ctx, member)
+          : entry.memberSlots[member]
+            ? buildPrimitive(
+                entry,
+                entry.memberSlots[member],
+                inputs,
+                ctx,
+                member,
+              )
+            : member.endsWith('Context')
+              ? buildContext(entry, member, ctx)
+              : buildUnslotted(entry, member, inputs, ctx),
+    ),
+  ]
+
+  const a11y = buildA11y(entry, zag, ctx.diagnostics)
+  const contextApi = buildContextApi(entry, zag)
+  return {
+    name: entry.name,
+    key: entry.key,
+    description: entry.description,
+    variants,
+    parts,
+    ...(a11y ? { a11y } : {}),
+    ...(contextApi ? { contextApi } : {}),
+  }
+}
+
+/** Where the package's public hooks are exported from */
+const PACKAGE_ENTRIES = ['index.ts', 'index.client.ts'].map((file) =>
+  join(REACT_PKG_ROOT, 'src', file),
+)
+
+/**
+ * The Zag machine's API from `@zag-js/docs`, when Cerberus exposes it: through the
+ * `Context` render prop, or Ark's `useX()`/`useXContext()` re-exported by the
+ * package or the component module. Omitted when nothing exposes it.
+ */
+function buildContextApi(
+  entry: ComponentEntry,
+  zag: ZagFacts | null,
+): ContextApiSpec | null {
+  const members = zag?.docs?.api ?? []
+  if (members.length === 0) return null
+  const sources = [...PACKAGE_ENTRIES, join(entry.dir, 'api.ts')]
+    .filter((file) => existsSync(file))
+    .map((file) => readFileSync(file, 'utf8'))
+    .join('\n')
+  const exported = (hook: string) => new RegExp(`\\b${hook}\\b`).test(sources)
+  const exposedBy = [
+    ...(entry.arkMembers.includes('Context') ? [`${entry.name}.Context`] : []),
+    ...[`use${entry.arkName}`, `use${entry.arkName}Context`]
+      .filter(exported)
+      .map((hook) => `${hook}()`),
+  ]
+  return exposedBy.length > 0 ? { exposedBy, members } : null
+}
+
+/**
+ * Keyboard rows come from `@zag-js/docs` with the config's overrides applied, and must
+ * cover every key the Zag machine handles. Without Zag (Cerberus-only components) the
+ * config's rows are used as they are. Omitted when there is nothing to say.
+ */
+function buildA11y(
+  entry: ComponentEntry,
+  zag: ZagFacts | null,
+  diagnostics: Diagnostics,
+): A11ySpec | null {
+  const config = entry.a11y ?? {}
+  const overrides: KeyboardMapping[] = config.keyboard ?? []
+  let keyboard = overrides
+  if (zag) {
+    const fromDocs = zag.docs?.keyboard ?? []
+    keyboard = mergeKeyboard(entry.key, fromDocs, overrides, diagnostics)
+    checkKeyboardCoverage(
+      entry.key,
+      keyboard,
+      { fromDocs, overrides },
+      entry.primitives.map((part) => ({
+        exportName: `${entry.name}.${partExportKey(part)}`,
+        keys: zag.part(part)?.keyboard ?? [],
+        isButton: zag.part(part)?.element === 'button',
+      })),
+      diagnostics,
+    )
+  }
+  if (keyboard.length === 0 && !config.pattern && !config.notes?.length) {
+    return null
+  }
+  return {
+    ...(config.pattern ? { pattern: config.pattern } : {}),
+    ...(config.apgUrl ? { apgUrl: config.apgUrl } : {}),
+    keyboard,
+    ...(config.notes ? { notes: config.notes } : {}),
+  }
+}
+
+/**
+ * An abstraction documents its own props. Props it inherits from one of this
+ * component's primitives (`ComponentProps<typeof AccordionItem>`) are recorded in
+ * `inherits` instead of being copied, so `unstyled`/`css`/variants appear exactly where
+ * they are accepted.
+ */
+function buildAbstraction(
+  entry: ComponentEntry,
+  abs: AbstractionConfig,
+  ctx: SpecBuilderContext,
+): PartSpec {
+  const { name, key } = entry
+  const { resolver, diagnostics } = ctx
+  const subject = `${name}.${abs.name}`
+  const file = join(entry.dir, `${abs.file}.tsx`)
+  const candidates = [
+    ...(abs.types ?? []),
+    `${name}${abs.name}Props`,
+    `${name}${abs.name}BaseProps`,
+    // The default export renders as `<Avatar>`, so its props are usually `AvatarProps`
+    ...(abs.isDefaultExport ? [`${name}Props`] : []),
+  ]
+
+  const primitiveByIdentifier = new Map(memberIdentifiers(entry))
+  // Parts of other components, e.g. `ComponentProps<typeof GroupRoot>`
+  const externalByIdentifier = new Map(
+    ctx.entries
+      .filter((other) => other.key !== key)
+      .flatMap((other) =>
+        memberIdentifiers(other).map(
+          ([identifier, part]): [string, PartSpecExternal] => [
+            identifier,
+            { part, spec: other.key, docsSlug: other.docsSlug },
+          ],
+        ),
+      ),
+  )
+
+  let props: PropSpec[] = []
+  const inherits = new Set<string>()
+  const inheritsExternal = new Map<string, PartSpecExternal>()
+  const match = candidates.find((c) => resolver.lookupLocal(file, c))
+  if (match) {
+    props = resolver.resolveExpr(match, file)
+    reportUnresolved(ctx, key, subject, (ref) => {
+      const target = /typeof\s+([A-Za-z0-9_$]+)/.exec(ref.expr)?.[1]
+      if (!target) return false
+      const inherited = primitiveByIdentifier.get(target)
+      if (inherited) {
+        inherits.add(inherited)
+        return true
+      }
+      const external = externalByIdentifier.get(target)
+      if (!external) return false
+      inheritsExternal.set(external.part, external)
+      return true
+    })
+  } else {
+    diagnostics.error(
+      key,
+      `${subject}: none of [${candidates.join(', ')}] found in ${relative(REACT_PKG_ROOT, file)}`,
+    )
+  }
+
+  return {
+    name: abs.name,
+    exportName: subject,
+    kind: 'abstraction',
+    description: abs.description,
+    ...(inherits.size > 0 ? { inherits: [...inherits] } : {}),
+    ...(inheritsExternal.size > 0
+      ? { inheritsExternal: [...inheritsExternal.values()] }
+      : {}),
+    props,
+  }
+}
+
+interface ZagFacts {
+  defaults: Map<string, string>
+  part: (part: string) => ConnectPart | null
+  /** Descriptions from `@zag-js/docs`; null when it doesn't cover the machine */
+  docs: ZagDocs | null
+}
+
+/** What the Zag.js machine behind an Ark component reveals; null for non-Ark ones. */
+function loadZagFacts(
+  entry: ComponentEntry,
+  diagnostics: Diagnostics,
+): ZagFacts | null {
+  if (!entry.arkEntry) return null
+  const source = loadZagSource(entry.arkKey, entry.arkEntry)
+  if (!source?.connect) {
+    diagnostics.warn(
+      entry.key,
+      `No Zag.js connect source found for @zag-js/${entry.arkKey}; data attributes and keys are not documented`,
+    )
+    return null
+  }
+  if (source.version !== ZAG_DOCS_VERSION) {
+    diagnostics.error(
+      entry.key,
+      `@zag-js/docs is ${ZAG_DOCS_VERSION} but ${source.packageName} is ${source.version}; pin @zag-js/docs to ${source.version} in tools/codegen/package.json`,
+    )
+  }
+  const connect = source.connect
+  const cache = new Map<string, ConnectPart | null>()
+  return {
+    docs: loadZagDocs(source.packageName.replace('@zag-js/', '')),
+    defaults: source.machine
+      ? extractMachineDefaults(source.machine)
+      : new Map(),
+    part: (part) => {
+      if (!cache.has(part)) cache.set(part, extractConnectPart(connect, part))
+      return cache.get(part)!
+    },
+  }
+}
+
+interface PrimitiveInputs {
+  variantProps: PropSpec[]
+  machineDefaults: Map<string, string>
+  connect: (part: string) => ConnectPart | null
+  docs: ZagDocs | null
+}
+
+/** Quote style aside, do two default-value source texts say the same thing? */
+const sameDefault = (a: string, b: string) => {
+  // Machine sources escape non-ASCII (`"\\u25CB"`); JSDoc writes the character
+  const norm = (s: string) =>
+    s
+      .replace(/'/g, '"')
+      .replace(/\\u([0-9a-fA-F]{4})/g, (_, hex: string) =>
+        String.fromCharCode(Number.parseInt(hex, 16)),
+      )
+  return norm(a) === norm(b)
+}
+
+/**
+ * Fills Root props that lack a JSDoc `@default`: from the config's `defaultProps` (what
+ * the generated part passes to Ark), else from the machine's defaults.
+ */
+function applyMachineDefaults(
+  props: PropSpec[],
+  defaults: Map<string, string>,
+  configured: Record<string, DefaultPropValue>,
+  subject: string,
+  key: string,
+  diagnostics: Diagnostics,
+): PropSpec[] {
+  return props.map((prop) => {
+    if (Object.hasOwn(configured, prop.name)) {
+      const value = defaultPropSource(configured[prop.name])
+      if (prop.defaultValue === undefined) {
+        return { ...prop, defaultValue: value }
+      }
+      if (!sameDefault(prop.defaultValue, value)) {
+        diagnostics.warn(
+          key,
+          `${subject}.${prop.name}: JSDoc says @default ${prop.defaultValue} but defaultProps sets ${value}`,
+        )
+      }
+      return { ...prop, defaultValue: value }
+    }
+    const machine = defaults.get(prop.name)
+    if (machine === undefined) return prop
+    if (prop.defaultValue === undefined)
+      return { ...prop, defaultValue: machine }
+    if (!sameDefault(prop.defaultValue, machine)) {
+      diagnostics.warn(
+        key,
+        `${subject}.${prop.name}: JSDoc says @default ${prop.defaultValue} but the Zag machine defaults to ${machine}`,
+      )
+    }
+    return prop
+  })
+}
+
+/**
+ * A `RootProvider` variant named like a machine prop styles the part only; the
+ * behavior comes from the hook's own prop, which may default differently.
+ */
+function styleOnly(
+  prop: PropSpec,
+  machineDefaults: Map<string, string>,
+  hook: string,
+): PropSpec {
+  const machine = machineDefaults.get(prop.name)
+  if (machine === undefined) return prop
+  const note = `Styles only: pass \`${prop.name}\` to \`${hook}\` for the behavior (it defaults to ${machine} there).`
+  return {
+    ...prop,
+    description: prop.description ? `${prop.description} ${note}` : note,
+  }
+}
+
+/**
+ * `data-scope`/`data-part`: a config override, else Zag's anatomy when it has
+ * `build()`, else derived from the key and part.
+ */
+function partAttrs(entry: ComponentEntry, part: string) {
+  const override = entry.partOverrides[part]
+  if (override?.dataScope === false) return {}
+  const anatomy = entry.anatomy as {
+    build?: () => Record<string, { attrs?: Record<string, string> }>
+  }
+  const attrs =
+    typeof anatomy.build === 'function'
+      ? anatomy.build()[part]?.attrs
+      : undefined
+  return {
+    dataScope: override?.dataScope ?? attrs?.['data-scope'] ?? entry.key,
+    dataPart: override?.dataPart ?? attrs?.['data-part'] ?? toKebabCase(part),
+  }
+}
+
+/** Props of Ark's `<arkName><member>Props` (or `…BaseProps`), resolved in place. */
+function arkPropsFor(
+  entry: ComponentEntry,
+  member: string,
+  subject: string,
+  ctx: SpecBuilderContext,
+): PropSpec[] {
+  const { arkEntry, arkName, arkKey, key } = entry
+  if (!arkEntry) return []
+  // Ark sometimes names part types with a singular prefix: `Tabs` → `TabListProps`
+  const prefixes = [
+    arkName,
+    ...(arkName.endsWith('s') ? [arkName.slice(0, -1)] : []),
+  ]
+  const candidates = prefixes.flatMap((prefix) => [
+    `${prefix}${member}Props`,
+    `${prefix}${member}BaseProps`,
+  ])
+  const resolved = candidates
+    .map((c) => ctx.resolver.lookupExport(arkEntry, c))
+    .find((r) => r !== null)
+  if (!resolved) {
+    ctx.diagnostics.error(
+      key,
+      `${subject}: none of [${candidates.join(', ')}] exported from @ark-ui/react/${arkKey}`,
+    )
+    return []
+  }
+  // Resolve in the declaring file so its own imports (e.g. `@zag-js/*`) are in scope
+  const props = ctx.resolver.resolveDecl(resolved)
+  reportUnresolved(ctx, key, subject)
+  return props
+}
+
+/** A config `parts.<key>.description`, else the derived one */
+function describe(entry: ComponentEntry, key: string, derived: string): string {
+  return entry.partOverrides[key]?.description?.trim() ?? derived
+}
+
+/** A render-prop context (`Context`, `ItemContext`): Ark's props, nothing styled. */
+function buildContext(
+  entry: ComponentEntry,
+  member: string,
+  ctx: SpecBuilderContext,
+): PartSpec {
+  const subject = `${entry.name}.${member}`
+  const scope =
+    member === 'Context' ? '' : `${toWords(member.replace(/Context$/, ''))} `
+  return {
+    name: member,
+    exportName: subject,
+    kind: 'primitive',
+    description: describe(
+      entry,
+      member,
+      `Exposes the ${entry.name} ${scope}state to a render function. Renders no element.`,
+    ),
+    props: arkPropsFor(entry, member, subject, ctx),
+  }
+}
+
+/** Optional part fields derived from Zag, omitted when empty to keep specs small. */
+function zagPartFields(
+  part: string,
+  info: ConnectPart | null,
+  docs: ZagDocs | null,
+): Partial<PartSpec> {
+  if (!info) return {}
+  const dataAttributes = docs
+    ? describeDataAttributes(info.dataAttributes, docs.dataAttributes(part))
+    : info.dataAttributes
+  const cssVars = docs?.cssVars(part) ?? []
+  return {
+    ...(dataAttributes.length > 0 ? { dataAttributes } : {}),
+    ...(info.keyboard.length > 0 ? { keyboard: info.keyboard } : {}),
+    ...(cssVars.length > 0 ? { cssVars } : {}),
+  }
+}
+
+/** A Cerberus recipe slot outside the Ark anatomy, rendered as a plain element. */
+function buildElementPart(entry: ComponentEntry, slot: string): PartSpec {
+  return {
+    name: capitalize(slot),
+    exportName: `${entry.name}.${capitalize(slot)}`,
+    kind: 'primitive',
+    description: describe(
+      entry,
+      slot,
+      `The ${toWords(slot)} part of the ${entry.name} component: a Cerberus recipe slot outside the Ark anatomy, rendered as a \`<${entry.elementParts[slot]}>\`.`,
+    ),
+    dataScope: entry.arkKey,
+    dataPart: toKebabCase(slot),
+    props: PRIMITIVE_PROPS,
+  }
+}
+
+/** An Ark part outside the anatomy (`HiddenInput`): `styled()`-wrapped, no recipe slot. */
+function buildUnslotted(
+  entry: ComponentEntry,
+  member: string,
+  { connect, docs }: PrimitiveInputs,
+  ctx: SpecBuilderContext,
+): PartSpec {
+  const subject = `${entry.name}.${member}`
+  const part = member[0].toLowerCase() + member.slice(1)
+  return {
+    name: member,
+    exportName: subject,
+    kind: 'primitive',
+    description: describe(
+      entry,
+      member,
+      `The ${toWords(part)} primitive part of the ${entry.name} component. It has no recipe slot, so it is unstyled.`,
+    ),
+    ...zagPartFields(part, connect(part), docs),
+    props: mergePropLists(
+      arkPropsFor(entry, member, subject, ctx),
+      PRIMITIVE_PROPS.filter((p) => p.name !== 'unstyled'),
+    ),
+  }
+}
+
+/**
+ * One anatomy part. `member` builds an Ark member that stands in for `part` instead:
+ * `RootProvider` is a `Root` whose state comes from `useX()`.
+ */
+function buildPrimitive(
+  entry: ComponentEntry,
+  part: string,
+  { variantProps, machineDefaults, connect, docs }: PrimitiveInputs,
+  ctx: SpecBuilderContext,
+  member?: string,
+): PartSpec {
+  const { name, key } = entry
+  const { diagnostics } = ctx
+  const isRoot = part === 'root'
+  const exportKey = member ?? partExportKey(part)
+  const subject = `${name}.${exportKey}`
+  const arkProps = arkPropsFor(entry, member ?? capitalize(part), subject, ctx)
+
+  // Recipe variants go on Root, where they cascade to every slot. The machine's
+  // defaults apply to Root, which is where its props are passed. A part with its own
+  // recipe (Cerberus-only) takes that recipe's variants instead.
+  const partRecipe = entry.partOverrides[part]?.recipe
+  const ownVariants = partRecipe
+    ? ctx.variants
+        .variantsFor(partRecipe, `${key}.${part}`, diagnostics)
+        .map(variantToProp)
+    : isRoot || entry.providers.includes(part)
+      ? variantProps
+      : []
+  // Panda's slot factories split recipe variants off before Ark sees them: a variant
+  // that is also an Ark prop only reaches Ark when the member forwards it
+  const forwarded = new Set(entry.forwardProps[exportKey] ?? [])
+  const arkPropNames = new Set(arkProps.map((p) => p.name))
+  for (const variant of ownVariants) {
+    if (arkPropNames.has(variant.name) && !forwarded.has(variant.name)) {
+      diagnostics.error(
+        key,
+        `${subject}.${variant.name} is a recipe variant and an Ark prop, but Panda keeps variants from Ark: add it to forwardProps.${exportKey}`,
+      )
+    }
+  }
+
+  // The machine's props reach `Root`; a `RootProvider`'s machine is created by
+  // `useX()`, so a variant that shares a machine prop's name only styles it
+  const viaHook = member === 'RootProvider'
+  const ownProps = isRoot
+    ? viaHook
+      ? mergePropLists(
+          ownVariants.map((prop) =>
+            styleOnly(prop, machineDefaults, `use${entry.arkName}()`),
+          ),
+          arkProps,
+        )
+      : applyMachineDefaults(
+          mergePropLists(ownVariants, arkProps),
+          machineDefaults,
+          entry.defaultProps[exportKey] ?? {},
+          subject,
+          key,
+          diagnostics,
+        )
+    : mergePropLists(ownVariants, arkProps)
+
+  const patched = patchableProps(entry, exportKey, ownProps, subject, ctx)
+
+  if (isRoot && entry.rootProvider) {
+    // `withRootProvider` renders no element: no data attributes, `asChild` or `css`
+    return {
+      name: exportKey,
+      exportName: subject,
+      kind: 'primitive',
+      description: describe(
+        entry,
+        member ?? part,
+        `Provides the ${name} context${entry.recipe ? ' and recipe variants' : ''} to its parts${member ? `, from state created with \`use${entry.arkName}()\`` : ''}. Renders no element.`,
+      ),
+      props: patched,
+    }
+  }
+
+  const hook = `use${entry.arkName}${isRoot ? '' : capitalize(part)}()`
+  const description = entry.memberSlots[member ?? '']
+    ? `The ${toWords(member!)} primitive part of the ${name} component, styled with the \`${part}\` slot.`
+    : member
+      ? `The ${isRoot ? 'root container' : `${toWords(part)} part`} of the ${name} component, driven by state created with \`${hook}\`.`
+      : isRoot
+        ? `The root container of the ${name} component.`
+        : `The ${toWords(part)} primitive part of the ${name} component.`
+  // Without a slot recipe there is nothing for `unstyled` to strip
+  const shared = entry.recipe
+    ? PRIMITIVE_PROPS
+    : PRIMITIVE_PROPS.filter((p) => p.name !== 'unstyled')
+
+  return {
+    name: exportKey,
+    exportName: subject,
+    kind: 'primitive',
+    description: describe(entry, member ?? part, description),
+    ...partAttrs(entry, part),
+    ...zagPartFields(part, connect(part), docs),
+    props: mergePropLists(patched, shared),
+  }
+}
+
+/**
+ * Notes the `patchable` props a patch child may omit. Each must be a required prop
+ * of the member: anything else is a config mistake.
+ */
+function patchableProps(
+  entry: ComponentEntry,
+  member: string,
+  props: PropSpec[],
+  subject: string,
+  { diagnostics }: SpecBuilderContext,
+): PropSpec[] {
+  const supplied = entry.patchable[member] ?? []
+  for (const name of supplied) {
+    const prop = props.find((p) => p.name === name)
+    if (!prop?.required) {
+      diagnostics.error(
+        entry.key,
+        `patchable.${member}: \`${name}\` is not a required prop of ${subject}`,
+      )
+    }
+  }
+  if (supplied.length === 0) return props
+  return props.map((prop) =>
+    supplied.includes(prop.name)
+      ? {
+          ...prop,
+          description: `${prop.description ? `${prop.description} ` : ''}Optional in a patch child of a ${entry.name} abstraction, which supplies it.`,
+        }
+      : prop,
+  )
+}
+
+/**
+ * Reports every reference the resolver gave up on while resolving `subject`.
+ * `handleOpaque` may claim an opaque reference (return `true`) so it isn't reported.
+ */
+function reportUnresolved(
+  { resolver, diagnostics }: SpecBuilderContext,
+  key: string,
+  subject: string,
+  handleOpaque: (ref: UnresolvedRef) => boolean = () => false,
+): void {
+  for (const ref of resolver.drainUnresolved()) {
+    const where = relative(REACT_PKG_ROOT, ref.file)
+    if (ref.reason === 'opaque') {
+      if (handleOpaque(ref)) continue
+      diagnostics.warn(
+        key,
+        `${subject}: inherited props from \`${ref.expr}\` (${where}) are not expanded`,
+      )
+    } else {
+      diagnostics.error(
+        key,
+        `${subject}: could not resolve \`${ref.expr}\` (${ref.reason}) from ${where}`,
+      )
+    }
+  }
+}

@@ -76,18 +76,13 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "bun run build.ts",
     "clean": "rm -rf ./dist",
     "lint:ts": "tsc --project tsconfig.lint.json --noEmit"
   },
   "devDependencies": {
     "@types/react": "catalog:jsx",
-    "@typescript/typescript6": "catalog:jsx",
-    "@vitejs/plugin-react": "catalog:jsx",
-    "globby": "catalog:jsx",
-    "react": "catalog:jsx",
-    "vite": "catalog:jsx",
-    "vite-plugin-dts": "catalog:jsx"
+    "react": "catalog:jsx"
   },
   "peerDependencies": {
     "react": "*"

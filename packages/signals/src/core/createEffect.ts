@@ -2,6 +2,7 @@ import {
   activeObserver,
   activeOwner,
   cleanNode,
+  disposeNode,
   endTracking,
   setActiveContext,
 } from './scheduler'
@@ -59,10 +60,8 @@ export function createEffect(fn: () => void | (() => void)): () => void {
   // Immediate first run (outside scheduler — same as v1.3)
   runEffect(effect)
 
-  return () => {
-    cleanNode(effect)
-    endTracking(effect)
-  }
+  // Runs the cleanups and unsubscribes the effect from every signal it read
+  return () => disposeNode(effect)
 }
 
 // Internal — called by the scheduler flush and on first run
@@ -90,5 +89,7 @@ export function runEffect(effect: EffectNode): void {
     setActiveContext(prevObserver, prevOwner)
   }
 
+  // Disposed during its own run: drop every dep it re-linked while running
+  if (effect.flags & NodeFlags.Disposed) effect.depsTail = null
   endTracking(effect)
 }

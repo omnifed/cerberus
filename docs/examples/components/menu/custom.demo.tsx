@@ -1,23 +1,17 @@
 'use client'
 
-import {
-  Button,
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
-} from '@cerberus-design/react'
+import { Button, Menu } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Menu>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <Button color="black" palette="danger">
           Hades R00lz
         </Button>
-      </MenuTrigger>
-      <MenuContent bgColor="black" color="danger.text.initial">
-        <MenuItem
+      </Menu.Trigger>
+      <Menu.ContentGroup bgColor="black" color="danger.text.initial">
+        <Menu.Item
           colorPalette="warning"
           _hover={{
             color: 'black',
@@ -25,8 +19,8 @@ export function CustomDemo() {
           value="item_1"
         >
           Hades am I
-        </MenuItem>
-        <MenuItem
+        </Menu.Item>
+        <Menu.Item
           colorPalette="warning"
           _hover={{
             color: 'black',
@@ -34,8 +28,8 @@ export function CustomDemo() {
           value="item_2"
         >
           Hades is also where I live
-        </MenuItem>
-      </MenuContent>
+        </Menu.Item>
+      </Menu.ContentGroup>
     </Menu>
   )
 }

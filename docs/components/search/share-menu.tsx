@@ -1,14 +1,7 @@
 'use client'
 
 import { Checkmark, Copy, Share } from '@carbon/icons-react'
-import {
-  IconButton,
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
-  Portal,
-} from '@cerberus-design/react'
+import { IconButton, Menu, Portal } from '@cerberus-design/react'
 import { useRead, useStore } from '@cerberus-design/signals'
 import { type MouseEvent } from 'react'
 import { searchStore, SearchStore } from './store'
@@ -32,7 +25,7 @@ export function ShareMenu(props: Props) {
 
   return (
     <Menu lazyMount unmountOnExit>
-      <MenuTrigger>
+      <Menu.Trigger asChild>
         <IconButton clipboard size="sm" shape="circle" usage="ghost">
           {isCopied ? (
             <Checkmark
@@ -42,17 +35,17 @@ export function ShareMenu(props: Props) {
             <Share />
           )}
         </IconButton>
-      </MenuTrigger>
+      </Menu.Trigger>
 
       <Portal>
-        <MenuContent>
-          <MenuItem value="copy" onClick={props.onCopy}>
+        <Menu.ContentGroup>
+          <Menu.Item value="copy" onClick={props.onCopy}>
             <Copy /> Copy Link
-          </MenuItem>
-          <MenuItem value="share" onClick={handleShare}>
+          </Menu.Item>
+          <Menu.Item value="share" onClick={handleShare}>
             <Share /> Share to...
-          </MenuItem>
-        </MenuContent>
+          </Menu.Item>
+        </Menu.ContentGroup>
       </Portal>
     </Menu>
   )

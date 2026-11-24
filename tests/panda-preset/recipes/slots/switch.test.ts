@@ -10,11 +10,11 @@ describe('switchRecipe recipe', () => {
 
   test('should have a jsx property', () => {
     expect(switchRecipe.jsx).toEqual([
-      'SwitchRoot',
-      'SwitchControl',
-      'SwitchThumb',
-      'SwitchLabel',
       'Switch',
+      'Switch.Root',
+      'Switch.Label',
+      'Switch.Control',
+      'Switch.Thumb',
     ])
   })
 
@@ -26,7 +26,8 @@ describe('switchRecipe recipe', () => {
       gap: 'sm',
       position: 'relative',
       verticalAlign: 'middle',
-      '--switch-x': 'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
+      '--switch-x':
+        'calc(var(--switch-width) - calc(var(--switch-height) + 0.20rem))',
     })
   })
 

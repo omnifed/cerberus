@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["dist", "src/**/*.test.ts", "src/**/*.test.tsx"],
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "noCheck": true,
+    "declaration": true,
+    "composite": false,
+    "incremental": false,
+    "allowImportingTsExtensions": false,
+    "rewriteRelativeImportExtensions": false,
+    "rootDir": "src",
+    "outDir": "dist"
+  }
+}

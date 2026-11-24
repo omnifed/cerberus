@@ -7,17 +7,8 @@ describe('dialog recipe', () => {
 
   test('should create JSX aliases', () => {
     expect(dialog.jsx).toEqual([
-      'DialogRoot',
-      'DialogTrigger',
-      'DialogBackdrop',
-      'DialogPositioner',
-      'DialogContent',
-      'DialogHeading',
-      'DialogDescription',
-      'DialogCloseTrigger',
-      'DialogProvider',
       'Dialog',
-      'DialogCloseIconTrigger',
+      'Dialog.CloseIconTrigger',
       'ConfirmModal',
       'PromptModal',
       'CTAModal',
@@ -87,12 +78,7 @@ describe('dialog recipe', () => {
         textOverflow: 'ellipsis',
         w: 'full',
       },
-      closeTrigger: {
-        position: 'absolute',
-        right: 'md',
-        top: 'md',
-        zIndex: 'decorator',
-      },
+      closeTrigger: {},
     })
   })
 

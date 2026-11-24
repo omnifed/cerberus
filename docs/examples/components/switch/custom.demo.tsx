@@ -1,27 +1,27 @@
 'use client'
 
 import { Box } from '@/styled-system/jsx'
-import { SwitchParts } from '@cerberus-design/react'
+import { Switch } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Box w="1/2">
-      <SwitchParts.Root>
-        <SwitchParts.Label textTransform="uppercase">
+      <Switch.Root>
+        <Switch.Label textTransform="uppercase">
           Receive in app notifications
-        </SwitchParts.Label>
-        <SwitchParts.Control
+        </Switch.Label>
+        <Switch.Control
           rounded="sm"
           transform="skewX(-10deg)"
           _checked={{
             bgColor: 'danger.surface.initial',
           }}
         >
-          <SwitchParts.Thumb rounded="sm" />
-        </SwitchParts.Control>
+          <Switch.Thumb rounded="sm" />
+        </Switch.Control>
 
-        <SwitchParts.HiddenInput />
-      </SwitchParts.Root>
+        <Switch.HiddenInput />
+      </Switch.Root>
     </Box>
   )
 }

@@ -15,7 +15,13 @@ import { base, outlined } from './shared/tag.base'
 export const closableTag: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'closable-tag',
   description: 'WCAG Level AAA compliant tag styles.',
-  jsx: ['Tag', 'ClosableTag', 'ClosableTagRoot'],
+  jsx: [
+    'Tag',
+    'Tag.Closable',
+    'Tag.ClosableRoot',
+    'ClosableTag',
+    'ClosableTagRoot',
+  ],
 
   base: {
     ...base,

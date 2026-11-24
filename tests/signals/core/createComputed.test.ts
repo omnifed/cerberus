@@ -1,12 +1,18 @@
 import { describe, test, expect } from 'bun:test'
-import { createComputed, createEffect, createSignal } from '@cerberus-design/signals'
+import {
+  createComputed,
+  createEffect,
+  createSignal,
+} from '@cerberus-design/signals'
 
 describe('createComputed', () => {
   test('should return a computed value', () => {
     const [firstName, setFirstName] = createSignal<string>('John')
     const [lastName, setLastName] = createSignal<string>('Doe')
 
-    const fullName = createComputed<string>(() => `${firstName()} ${lastName()}`)
+    const fullName = createComputed<string>(
+      () => `${firstName()} ${lastName()}`,
+    )
 
     expect(fullName()).toBe('John Doe')
     setFirstName('Jane')
@@ -37,9 +43,17 @@ describe('createComputed', () => {
 
     expect(computed()).toMatchObject({ name: '', value: 0, fullName: ' 0' })
     setName('John')
-    expect(computed()).toMatchObject({ name: 'John', value: 0, fullName: 'John 0' })
+    expect(computed()).toMatchObject({
+      name: 'John',
+      value: 0,
+      fullName: 'John 0',
+    })
     setValue(1)
-    expect(computed()).toMatchObject({ name: 'John', value: 1, fullName: 'John 1' })
+    expect(computed()).toMatchObject({
+      name: 'John',
+      value: 1,
+      fullName: 'John 1',
+    })
   })
 
   test('should subscribe when nested computeds are subscribed to the same signal', () => {
@@ -132,5 +146,38 @@ describe('createComputed', () => {
     // Ensure it actually re-evaluated the sorted pipeline
     expect(sortEvaluations).toBe(2)
     expect(filterEvaluations).toBe(2)
+  })
+
+  test('should not notify subscribers when it returns the same reference (strict equality)', () => {
+    const [order, setOrder] = createSignal<'asc' | 'desc'>('asc')
+    const data = [3, 1, 2]
+    const sortInPlace = createComputed(() =>
+      order() === 'asc'
+        ? data.sort((a, b) => a - b)
+        : data.sort((a, b) => b - a),
+    )
+    const sortCopy = createComputed(() =>
+      order() === 'asc'
+        ? data.toSorted((a, b) => a - b)
+        : data.toSorted((a, b) => b - a),
+    )
+
+    let inPlaceRuns = 0
+    let copyRuns = 0
+    createEffect(() => {
+      sortInPlace()
+      inPlaceRuns++
+    })
+    createEffect(() => {
+      sortCopy()
+      copyRuns++
+    })
+
+    setOrder('desc')
+    // Re-evaluated, but `data` is the same Array: nothing downstream re-runs
+    expect(inPlaceRuns).toBe(1)
+    // A new Array is a change
+    expect(copyRuns).toBe(2)
+    expect(sortCopy()).toEqual([3, 2, 1])
   })
 })

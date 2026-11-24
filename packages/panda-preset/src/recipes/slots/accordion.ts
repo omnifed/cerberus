@@ -16,61 +16,28 @@ import { focusStates } from '../shared/states'
 export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'accordion',
   slots: accordionAnatomy.keys(),
-  jsx: [
-    // primitives
-    'AccordionRoot',
-    'AccordionItem',
-    'AccordionItemTrigger',
-    'AccordionItemIndicator',
-    'AccordionItemContent',
-    // abstractions
-    'Accordion',
-    'AccordionItemGroup',
-  ],
 
   base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
       w: 'full',
-      // we are doing this to avoid setting the size on multiple primitives
-      _smSize: {
-        '& :is([data-part=item-trigger])': {
-          textStyle: 'heading-xs',
-        },
-        '& :is([data-part=item-content])': {
-          textStyle: 'body-sm',
-        },
-        '& :is([data-part=item-indicator] > svg)': {
-          h: '16px',
-          w: '16px',
-        },
-      },
-      _lgSize: {
-        '& :is([data-part=item-trigger])': {
-          textStyle: 'heading-sm',
-        },
-        '& :is([data-part=item-content])': {
-          textStyle: 'body-md',
-        },
-        '& :is([data-part=item-indicator] > svg)': {
-          h: '24px',
-          w: '24px',
-        },
-      },
     },
     item: {
       borderBlockEnd: '2px solid',
       borderColor: 'page.border.initial',
       paddingBlock: 'var(--accordion-item-padding)',
+      _lastOfType: {
+        borderBlockEnd: 'none',
+      },
     },
     itemTrigger: {
       alignItems: 'center',
       cursor: 'pointer',
       color: 'page.text.initial',
       display: 'flex',
-      paddingBlock: 'var(--accordion-item-trigger-padding)',
-      px: 'sm',
+      px: 'var(--accordion-item-trigger-padding)',
+      py: 'sm',
       rounded: 'var(--accordion-item-trigger-radii)',
       transitionProperty: 'background-color',
       transitionDuration: 'fast',
@@ -90,6 +57,7 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
     itemContent: {
       color: 'page.text.initial',
       overflow: 'hidden',
+      px: 'var(--accordion-item-trigger-padding)',
       _motionSafe: {
         animationDuration: 'fast',
         animationFillMode: 'forwards',
@@ -124,6 +92,9 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--accordion-item-padding': '{spacing.xs}',
           '--accordion-item-trigger-padding': '{spacing.sm}',
           '--accordion-item-trigger-radii': '{radii.lg}',
+          '& :is([data-part=item-trigger])': { textStyle: 'heading-xs' },
+          '& :is([data-part=item-content])': { textStyle: 'body-sm' },
+          '& :is([data-part=item-indicator] > svg)': { h: '16px', w: '16px' },
         },
       },
       lg: {
@@ -131,6 +102,12 @@ export const accordion: Partial<SlotRecipeConfig> = defineSlotRecipe({
           '--accordion-item-padding': '{spacing.sm}',
           '--accordion-item-trigger-padding': '{spacing.md}',
           '--accordion-item-trigger-radii': '{radii.md}',
+          '& :is([data-part=item-trigger])': { textStyle: 'heading-sm' },
+          '& :is([data-part=item-content])': { textStyle: 'body-md' },
+          '& :is([data-part=item-indicator] > svg)': {
+            h: '24px',
+            w: '24px',
+          },
         },
       },
     },

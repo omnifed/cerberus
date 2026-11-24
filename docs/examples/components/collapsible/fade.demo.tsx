@@ -6,9 +6,9 @@ import { Collapsible } from '@cerberus-design/react'
 export function FadeDemo() {
   return (
     <HStack h="full" w="17rem">
-      <Collapsible.Root>
+      <Collapsible.Root effect="none">
         <Collapsible.Trigger>Toggle</Collapsible.Trigger>
-        <Collapsible.Content effect="none">
+        <Collapsible.Content>
           <Box
             border="1px solid"
             borderColor="page.border.initial"

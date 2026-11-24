@@ -31,20 +31,7 @@ describe('Slider Recipe', () => {
   })
 
   test('should have a jsx list', () => {
-    expect(slider.jsx).toMatchObject([
-      'SliderRoot',
-      'SliderLabel',
-      'SliderValueText',
-      'SliderControl',
-      'SliderTrack',
-      'SliderRange',
-      'SliderThumb',
-      'SliderMarkerGroup',
-      'SliderMarker',
-      'SliderMarkerIndicator',
-      'SliderDraggingIndicator',
-      'Slider',
-    ])
+    expect(slider.jsx).toBeUndefined()
   })
 
   test('should have root styles', () => {
@@ -109,7 +96,8 @@ describe('Slider Recipe', () => {
     expect(base.markerIndicator).toMatchObject({
       bgColor: 'var(--marker-bg)',
       borderRadius: 'full',
-      height: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
+      height:
+        'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
       width: 'calc(var(--slider-track-size) - (var(--slider-marker-size) * 2))',
     })
   })

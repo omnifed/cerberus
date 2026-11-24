@@ -1,0 +1,677 @@
+{
+  "name": "Dialog",
+  "key": "dialog",
+  "description": "The Dialog component is a modal window that appears on top of the main content. It traps focus while open and returns focus to the trigger when it closes.\n\n`Dialog.Root` provides the dialog state and the `size` variant to its parts without rendering an element. Use the default `<Dialog>` inside it to render the portalled backdrop, positioner and content for you, and `Dialog.CloseIconTrigger` for the default close button, or compose the primitives for full structural control. Use `Dialog.RootProvider` with `useDialog()` to control the dialog from outside.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["auto", "xs", "sm", "md", "lg", "full"],
+      "defaultValue": "'md'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Dialog.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the dialog content inside a Portal with the backdrop and positioner",
+      "inherits": ["Dialog.Content"],
+      "props": []
+    },
+    {
+      "name": "CloseIconTrigger",
+      "exportName": "Dialog.CloseIconTrigger",
+      "kind": "abstraction",
+      "description": "An abstraction of the close trigger that renders a ghost IconButton with the Cerberus close icon",
+      "inherits": ["Dialog.CloseTrigger"],
+      "props": []
+    },
+    {
+      "name": "Root",
+      "exportName": "Dialog.Root",
+      "kind": "primitive",
+      "description": "Provides the Dialog context and recipe variants to its parts. Renders no element.",
+      "props": [
+        {
+          "name": "size",
+          "type": "'auto' | 'xs' | 'sm' | 'md' | 'lg' | 'full'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onPointerDownOutside",
+          "type": "((event: PointerDownOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the pointer is pressed down outside the component"
+        },
+        {
+          "name": "onFocusOutside",
+          "type": "((event: FocusOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the focus is moved outside the component"
+        },
+        {
+          "name": "onInteractOutside",
+          "type": "((event: InteractOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when an interaction happens outside the component"
+        },
+        {
+          "name": "onEscapeKeyDown",
+          "type": "((event: KeyboardEvent) => void)",
+          "required": false,
+          "description": "Function called when the escape key is pressed"
+        },
+        {
+          "name": "onRequestDismiss",
+          "type": "((event: LayerDismissEvent) => void)",
+          "required": false,
+          "description": "Function called when this layer is closed due to a parent layer being closed"
+        },
+        {
+          "name": "persistentElements",
+          "type": "Array<() => Element | null>",
+          "required": false,
+          "description": "Returns the persistent elements that: - should not have pointer-events disabled - should not trigger the dismiss event"
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the dialog. Useful for composition."
+        },
+        {
+          "name": "trapFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to trap focus inside the dialog when it's opened"
+        },
+        {
+          "name": "preventScroll",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to prevent scrolling behind the dialog when it's opened"
+        },
+        {
+          "name": "modal",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
+        },
+        {
+          "name": "initialFocusEl",
+          "type": "(() => MaybeElement | false)",
+          "required": false,
+          "description": "Element to receive focus when the dialog is opened. Return `false` to skip moving focus, or `null` to use the default."
+        },
+        {
+          "name": "finalFocusEl",
+          "type": "(() => MaybeElement)",
+          "required": false,
+          "description": "Element to receive focus when the dialog is closed"
+        },
+        {
+          "name": "restoreFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to restore focus to the element that had focus before the dialog was opened"
+        },
+        {
+          "name": "closeOnInteractOutside",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "`true` for modal dialogs, `false` for non-modal dialogs",
+          "description": "Whether to close the dialog when the outside is clicked"
+        },
+        {
+          "name": "closeOnEscape",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether to close the dialog when the escape key is pressed"
+        },
+        {
+          "name": "role",
+          "type": "\"dialog\" | \"alertdialog\"",
+          "required": false,
+          "defaultValue": "\"dialog\"",
+          "description": "The dialog's role"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "The controlled open state of the dialog"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "The initial open state of the dialog when rendered. Use when you don't need to control the open state of the dialog."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function to call when the dialog's open state changes"
+        },
+        {
+          "name": "triggerValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled active trigger value"
+        },
+        {
+          "name": "defaultTriggerValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial active trigger value when rendered. Use when you don't need to control the active trigger value."
+        },
+        {
+          "name": "onTriggerValueChange",
+          "type": "((details: TriggerValueChangeDetails) => void)",
+          "required": false,
+          "description": "Function to call when the active trigger changes"
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Dialog.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-ownedby"
+        },
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-current",
+          "presence": true,
+          "description": "Present when current."
+        }
+      ],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "The value that identifies this specific trigger"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Backdrop",
+      "exportName": "Dialog.Backdrop",
+      "kind": "primitive",
+      "description": "The backdrop primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "backdrop",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--layer-index",
+          "description": "The index of the dismissable in the layer stack."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Positioner",
+      "exportName": "Dialog.Positioner",
+      "kind": "primitive",
+      "description": "The positioner primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "positioner",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Dialog.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-nested",
+          "description": "dialog."
+        },
+        {
+          "name": "data-has-nested",
+          "description": "dialog."
+        }
+      ],
+      "cssVars": [
+        {
+          "name": "--layer-index",
+          "description": "The index of the dismissable in the layer stack."
+        },
+        {
+          "name": "--nested-layer-count",
+          "description": "The number of nested dialogs."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Title",
+      "exportName": "Dialog.Title",
+      "kind": "primitive",
+      "description": "The title primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "title",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Description",
+      "exportName": "Dialog.Description",
+      "kind": "primitive",
+      "description": "The description primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "description",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "CloseTrigger",
+      "exportName": "Dialog.CloseTrigger",
+      "kind": "primitive",
+      "description": "The close trigger primitive part of the Dialog component.",
+      "dataScope": "dialog",
+      "dataPart": "close-trigger",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Dialog.RootProvider",
+      "kind": "primitive",
+      "description": "Provides the Dialog context and recipe variants to its parts, from state created with `useDialog()`. Renders no element.",
+      "props": [
+        {
+          "name": "size",
+          "type": "'auto' | 'xs' | 'sm' | 'md' | 'lg' | 'full'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseDialogReturn",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Dialog.Context",
+      "kind": "primitive",
+      "description": "Exposes the Dialog state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseDialogContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Dialog (Modal)",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+    "keyboard": [
+      {
+        "key": "Enter",
+        "description": "When focus is on the trigger, opens the dialog."
+      },
+      {
+        "key": "Tab",
+        "description": "Moves focus to the next focusable element within the content. Focus is trapped within the dialog."
+      },
+      {
+        "key": "Shift + Tab",
+        "description": "Moves focus to the previous focusable element. Focus is trapped within the dialog."
+      },
+      {
+        "key": "Escape",
+        "description": "Closes the dialog and moves focus to trigger or the defined final focus element."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["Dialog.Context", "useDialog()"],
+    "members": [
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the dialog is open."
+      },
+      {
+        "name": "modal",
+        "type": "boolean",
+        "description": "Whether the dialog is modal."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the dialog."
+      },
+      {
+        "name": "triggerValue",
+        "type": "string | null",
+        "description": "The active trigger value."
+      },
+      {
+        "name": "setTriggerValue",
+        "type": "(value: string | null) => void",
+        "description": "Function to set the active trigger value."
+      }
+    ]
+  }
+}

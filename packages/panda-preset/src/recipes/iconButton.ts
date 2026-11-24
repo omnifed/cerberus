@@ -21,7 +21,14 @@ import type { RecipeConfig, RecipeVariantRecord } from '@pandacss/types'
 export const iconButton: RecipeConfig<RecipeVariantRecord> = defineRecipe({
   className: 'icon-btn',
   description: 'WCAG Level AAA compliant button styles.',
-  jsx: ['IconButton', 'ClosableTag'],
+  jsx: [
+    'IconButton',
+    'IconButtonRoot',
+    'Button.IconButton',
+    'Button.IconButtonRoot',
+    'Tag.Closable',
+    'ClosableTag',
+  ],
 
   base: {
     ...buttonBase,

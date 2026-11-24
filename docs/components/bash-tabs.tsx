@@ -47,23 +47,23 @@ interface BashTabsProps {
 export function BashTabs(props: BashTabsProps) {
   return (
     <Tabs.Root defaultValue="pnpm">
-      <Tabs.List
+      <Tabs.ListGroup
         className={css({
           borderColor: 'page.border.100',
         })}
       >
-        <Tabs.Tab value="pnpm">PNPM</Tabs.Tab>
-        <Tabs.Tab value="deno">Deno</Tabs.Tab>
-        <Tabs.Tab value="bun">Bun</Tabs.Tab>
-        <Tabs.Tab value="npm">NPM</Tabs.Tab>
-      </Tabs.List>
+        <Tabs.Trigger value="pnpm">PNPM</Tabs.Trigger>
+        <Tabs.Trigger value="deno">Deno</Tabs.Trigger>
+        <Tabs.Trigger value="bun">Bun</Tabs.Trigger>
+        <Tabs.Trigger value="npm">NPM</Tabs.Trigger>
+      </Tabs.ListGroup>
 
       <cerberus.div mb="8" mt="md">
-        <Tabs.Panel value="npm">
+        <Tabs.Content value="npm">
           <Code language="sh">{props.code}</Code>
-        </Tabs.Panel>
+        </Tabs.Content>
 
-        <Tabs.Panel value="pnpm">
+        <Tabs.Content value="pnpm">
           <Code language="sh">
             {formatJSRCmd(
               props.code
@@ -72,9 +72,9 @@ export function BashTabs(props: BashTabsProps) {
                 .replace('npx', 'pnpm dlx'),
             )}
           </Code>
-        </Tabs.Panel>
+        </Tabs.Content>
 
-        <Tabs.Panel value="deno">
+        <Tabs.Content value="deno">
           <Code language="sh">
             {formatDenoCmd(
               props.code
@@ -83,16 +83,16 @@ export function BashTabs(props: BashTabsProps) {
                 .replace('npx', 'deno dlx'),
             )}
           </Code>
-        </Tabs.Panel>
+        </Tabs.Content>
 
-        <Tabs.Panel value="bun">
+        <Tabs.Content value="bun">
           <Code language="sh">
             {props.code
               .replace('npm', 'bun')
               .replace('install', 'add')
               .replace('npx', 'bunx')}
           </Code>
-        </Tabs.Panel>
+        </Tabs.Content>
       </cerberus.div>
     </Tabs.Root>
   )

@@ -2,7 +2,7 @@
 
 import { Corn } from '@carbon/icons-react'
 import { DataGrid } from '@cerberus-design/data-grid'
-import { Button, ButtonGroup, Show, Text } from '@cerberus-design/react'
+import { Button, Show, Text } from '@cerberus-design/react'
 import {
   batch,
   createEffect,
@@ -26,14 +26,14 @@ export function InitialDemo() {
   return (
     <Stack gap="md" w="3/4">
       <HStack justify="space-between" w="full">
-        <ButtonGroup>
+        <Button.Group>
           <Button onClick={() => store.initLoad()} size="sm">
             Load
           </Button>
           <Button onClick={() => store.setPending(true)} size="sm">
             Update
           </Button>
-        </ButtonGroup>
+        </Button.Group>
         <Show when={load}>
           <Button palette="danger" onClick={() => store.reset()} size="sm">
             Reset

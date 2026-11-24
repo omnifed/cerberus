@@ -1,11 +1,11 @@
 import { Box } from '@/styled-system/jsx'
-import { FieldParts } from '@cerberus-design/react'
+import { Field } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <Box w="1/2">
-      <FieldParts.Root ids={{ control: 'customField' }}>
-        <FieldParts.Label
+      <Field.Root ids={{ control: 'customField' }}>
+        <Field.Label
           css={{
             fontSize: 'xl',
             fontWeight: 'black',
@@ -13,20 +13,20 @@ export function CustomDemo() {
           }}
         >
           Custom Label
-        </FieldParts.Label>
-        <FieldParts.Textarea
+        </Field.Label>
+        <Field.Textarea
           css={{
             transform: 'skewX(-10deg)',
           }}
         />
-        <FieldParts.HelperText
+        <Field.HelperText
           css={{
             fontStyle: 'italic',
           }}
         >
           Custom Helper Text
-        </FieldParts.HelperText>
-      </FieldParts.Root>
+        </Field.HelperText>
+      </Field.Root>
     </Box>
   )
 }

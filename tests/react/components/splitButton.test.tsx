@@ -1,7 +1,12 @@
 import { describe, test, expect } from 'bun:test'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { CerberusProvider, MenuItem, SplitButton } from '@cerberus-design/react'
+import {
+  Button,
+  CerberusProvider,
+  Menu,
+  SplitButton,
+} from '@cerberus-design/react'
 import { makeConfig } from '@/utils'
 
 describe('SplitButton', () => {
@@ -11,8 +16,8 @@ describe('SplitButton', () => {
     render(
       <CerberusProvider config={config}>
         <SplitButton actionText="action">
-          <MenuItem value="item_1">Item 1</MenuItem>
-          <MenuItem value="item_2">Item 2</MenuItem>
+          <Menu.Item value="item_1">Item 1</Menu.Item>
+          <Menu.Item value="item_2">Item 2</Menu.Item>
         </SplitButton>
       </CerberusProvider>,
     )
@@ -29,8 +34,8 @@ describe('SplitButton', () => {
     render(
       <CerberusProvider config={config}>
         <SplitButton actionText="action">
-          <MenuItem value="item_1">Item 1</MenuItem>
-          <MenuItem value="item_2">Item 2</MenuItem>
+          <Menu.Item value="item_1">Item 1</Menu.Item>
+          <Menu.Item value="item_2">Item 2</Menu.Item>
         </SplitButton>
       </CerberusProvider>,
     )
@@ -48,12 +53,23 @@ describe('SplitButton', () => {
     render(
       <CerberusProvider config={config}>
         <SplitButton actionText="action" pending>
-          <MenuItem value="item_1">Item 1</MenuItem>
-          <MenuItem value="item_2">Item 2</MenuItem>
+          <Menu.Item value="item_1">Item 1</Menu.Item>
+          <Menu.Item value="item_2">Item 2</Menu.Item>
         </SplitButton>
       </CerberusProvider>,
     )
     expect(screen.getByRole('button', { name: /action/i })).toBeDisabled()
+    // The action is a <Button>, so Button.Icon shows the pending Spinner
+    expect(
+      document.querySelector(
+        '[data-scope="button"][data-part="button-spinner"]',
+      ),
+    ).not.toBeNull()
+    expect(screen.getByRole('button', { name: /more options/i })).toBeDisabled()
+  })
+
+  test('should alias Button.SplitButton', () => {
+    expect(SplitButton).toBe(Button.SplitButton)
   })
 
   test('should accept css prop from factory', () => {
@@ -64,8 +80,8 @@ describe('SplitButton', () => {
           css={{ color: 'blue' }}
           data-testid="css-split-button"
         >
-          <MenuItem value="item_1">Item 1</MenuItem>
-          <MenuItem value="item_2">Item 2</MenuItem>
+          <Menu.Item value="item_1">Item 1</Menu.Item>
+          <Menu.Item value="item_2">Item 2</Menu.Item>
         </SplitButton>
       </CerberusProvider>,
     )
@@ -80,8 +96,8 @@ describe('SplitButton', () => {
           style={{ color: 'red' }}
           data-testid="style-split-button"
         >
-          <MenuItem value="item_1">Item 1</MenuItem>
-          <MenuItem value="item_2">Item 2</MenuItem>
+          <Menu.Item value="item_1">Item 1</Menu.Item>
+          <Menu.Item value="item_2">Item 2</Menu.Item>
         </SplitButton>
       </CerberusProvider>,
     )

@@ -1,0 +1,1618 @@
+{
+  "name": "Select",
+  "key": "select",
+  "description": "The Select component is a dropdown list that lets users pick one or more options from a collection.\n\nUse the default `<Select>` with a `placeholder` to render the trigger with its value text and Cerberus indicator, the positioned dropdown and the hidden native select for you, or compose the primitives for full structural control. Render options with `Select.ItemWithIndicator` (also available as `Option`) and group them with `Select.ItemGroupWithLabel` (also available as `OptionGroup`). Build the collection with `createSelectCollection`, or Ark's `createListCollection` for custom item shapes. It supports sizes from `sm` to `lg`; to use it within a form, wrap it with the Field component.",
+  "variants": [
+    {
+      "name": "size",
+      "values": ["sm", "md", "lg"],
+      "defaultValue": "'md'"
+    }
+  ],
+  "parts": [
+    {
+      "name": "El",
+      "exportName": "Select.El",
+      "kind": "abstraction",
+      "description": "An abstraction that renders the control with the trigger, its value text and Cerberus indicator, the positioned dropdown content and the hidden native select",
+      "inherits": ["Select.Root"],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onPointerDownOutside",
+          "type": "((event: PointerDownOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the pointer is pressed down outside the component"
+        },
+        {
+          "name": "onFocusOutside",
+          "type": "((event: FocusOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the focus is moved outside the component"
+        },
+        {
+          "name": "onInteractOutside",
+          "type": "((event: InteractOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when an interaction happens outside the component"
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the select. Useful for composition."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The `name` attribute of the underlying select."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the underlying select."
+        },
+        {
+          "name": "autoComplete",
+          "type": "string",
+          "required": false,
+          "description": "The autocomplete attribute for the hidden select. Enables browser autofill (e.g. \"address-level1\" for state)."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is disabled"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is invalid"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is read-only"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is required"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the select should close after an item is selected"
+        },
+        {
+          "name": "onSelect",
+          "type": "((details: SelectionDetails) => void)",
+          "required": false,
+          "description": "Function called when an item is selected"
+        },
+        {
+          "name": "onHighlightChange",
+          "type": "((details: HighlightChangeDetails<T>) => void)",
+          "required": false,
+          "description": "The callback fired when the highlighted item changes."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails<T>) => void)",
+          "required": false,
+          "description": "The callback fired when the selected item changes."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the popup is opened"
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "description": "The positioning options of the menu."
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled keys of the selected items"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "description": "The initial default value of the select when rendered. Use when you don't need to control the value of the select."
+        },
+        {
+          "name": "highlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled key of the highlighted item"
+        },
+        {
+          "name": "defaultHighlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial value of the highlighted item when opened. Use when you don't need to control the highlighted value of the select."
+        },
+        {
+          "name": "loopFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to loop the keyboard navigation through the options"
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow multiple selection"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select menu is open"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select's open state is controlled by the user"
+        },
+        {
+          "name": "scrollToIndexFn",
+          "type": "((details: ScrollToIndexDetails) => void)",
+          "required": false,
+          "description": "Function to scroll to a specific index"
+        },
+        {
+          "name": "composite",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the select is a composed with other composite widgets like tabs or combobox"
+        },
+        {
+          "name": "deselectable",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the value can be cleared by clicking the selected item. **Note:** this is only applicable for single selection"
+        },
+        {
+          "name": "collection",
+          "type": "ListCollection<T>",
+          "required": true,
+          "description": "The collection of items"
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "The placeholder text when no option is selected."
+        }
+      ]
+    },
+    {
+      "name": "ItemWithIndicator",
+      "exportName": "Select.ItemWithIndicator",
+      "kind": "abstraction",
+      "description": "An abstraction of the item that renders its text (the item label by default) and the Cerberus check icon in its indicator",
+      "inherits": ["Select.Item"],
+      "props": []
+    },
+    {
+      "name": "ItemGroupWithLabel",
+      "exportName": "Select.ItemGroupWithLabel",
+      "kind": "abstraction",
+      "description": "An abstraction of the item group that renders its `label` as the group label",
+      "inherits": ["Select.ItemGroup"],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "The label that appears for the select item group."
+        }
+      ]
+    },
+    {
+      "name": "Label",
+      "exportName": "Select.Label",
+      "kind": "primitive",
+      "description": "The label primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "label",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-required",
+          "presence": true,
+          "description": "Present when required."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Positioner",
+      "exportName": "Select.Positioner",
+      "kind": "primitive",
+      "description": "The positioner primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "positioner",
+      "cssVars": [
+        {
+          "name": "--reference-width",
+          "description": "The width of the reference element."
+        },
+        {
+          "name": "--reference-height",
+          "description": "The height of the root."
+        },
+        {
+          "name": "--available-width",
+          "description": "The available width in viewport."
+        },
+        {
+          "name": "--available-height",
+          "description": "The available height in viewport."
+        },
+        {
+          "name": "--x",
+          "description": "The x position for transform."
+        },
+        {
+          "name": "--y",
+          "description": "The y position for transform."
+        },
+        {
+          "name": "--z-index",
+          "description": "The z-index value."
+        },
+        {
+          "name": "--transform-origin",
+          "description": "The transform origin for animations."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Trigger",
+      "exportName": "Select.Trigger",
+      "kind": "primitive",
+      "description": "The trigger primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "trigger",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        },
+        {
+          "name": "data-placement",
+          "description": "The placement of the trigger."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the trigger is positioned on."
+        },
+        {
+          "name": "data-placeholder-shown",
+          "presence": true,
+          "description": "Present when placeholder is shown."
+        }
+      ],
+      "keyboard": [
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "Home",
+        "End",
+        "Enter",
+        "Space"
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Indicator",
+      "exportName": "Select.Indicator",
+      "kind": "primitive",
+      "description": "The indicator primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "indicator",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ClearTrigger",
+      "exportName": "Select.ClearTrigger",
+      "kind": "primitive",
+      "description": "The clear trigger primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "clear-trigger",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Item",
+      "exportName": "Select.Item",
+      "kind": "primitive",
+      "description": "The item primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "item",
+      "dataAttributes": [
+        {
+          "name": "data-value",
+          "description": "The value of the item."
+        },
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "item",
+          "type": "T",
+          "required": true,
+          "description": "The item to render"
+        },
+        {
+          "name": "persistFocus",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether hovering outside should clear the highlighted state"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemText",
+      "exportName": "Select.ItemText",
+      "kind": "primitive",
+      "description": "The item text primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "item-text",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-highlighted",
+          "presence": true,
+          "description": "Present when highlighted."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemIndicator",
+      "exportName": "Select.ItemIndicator",
+      "kind": "primitive",
+      "description": "The item indicator primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "item-indicator",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["checked", "unchecked"]
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroup",
+      "exportName": "Select.ItemGroup",
+      "kind": "primitive",
+      "description": "The item group primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "item-group",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ItemGroupLabel",
+      "exportName": "Select.ItemGroupLabel",
+      "kind": "primitive",
+      "description": "The item group label primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "item-group-label",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "List",
+      "exportName": "Select.List",
+      "kind": "primitive",
+      "description": "The list primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "list",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "exportName": "Select.Content",
+      "kind": "primitive",
+      "description": "The content primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "content",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-placement",
+          "description": "The placement of the content."
+        },
+        {
+          "name": "data-side",
+          "description": "The side of the trigger that the content is positioned on."
+        },
+        {
+          "name": "data-activedescendant",
+          "description": "The id the active descendant of the content."
+        },
+        {
+          "name": "data-nested",
+          "description": "listbox."
+        },
+        {
+          "name": "data-has-nested",
+          "description": "listbox."
+        }
+      ],
+      "keyboard": ["ArrowUp", "ArrowDown", "Home", "End", "Enter", "Space"],
+      "cssVars": [
+        {
+          "name": "--layer-index",
+          "description": "The index of the dismissable in the layer stack."
+        },
+        {
+          "name": "--nested-layer-count",
+          "description": "The number of nested selects."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Root",
+      "exportName": "Select.Root",
+      "kind": "primitive",
+      "description": "The root container of the Select component.",
+      "dataScope": "select",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": "The unique identifier of the machine."
+        },
+        {
+          "name": "onPointerDownOutside",
+          "type": "((event: PointerDownOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the pointer is pressed down outside the component"
+        },
+        {
+          "name": "onFocusOutside",
+          "type": "((event: FocusOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when the focus is moved outside the component"
+        },
+        {
+          "name": "onInteractOutside",
+          "type": "((event: InteractOutsideEvent) => void)",
+          "required": false,
+          "description": "Function called when an interaction happens outside the component"
+        },
+        {
+          "name": "translations",
+          "type": "IntlTranslations",
+          "required": false,
+          "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        },
+        {
+          "name": "ids",
+          "type": "ElementIds",
+          "required": false,
+          "description": "The ids of the elements in the select. Useful for composition."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "description": "The `name` attribute of the underlying select."
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "required": false,
+          "description": "The associate form of the underlying select."
+        },
+        {
+          "name": "autoComplete",
+          "type": "string",
+          "required": false,
+          "description": "The autocomplete attribute for the hidden select. Enables browser autofill (e.g. \"address-level1\" for state)."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is disabled"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is invalid"
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is read-only"
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select is required"
+        },
+        {
+          "name": "closeOnSelect",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the select should close after an item is selected"
+        },
+        {
+          "name": "onSelect",
+          "type": "((details: SelectionDetails) => void)",
+          "required": false,
+          "description": "Function called when an item is selected"
+        },
+        {
+          "name": "onHighlightChange",
+          "type": "((details: HighlightChangeDetails<T>) => void)",
+          "required": false,
+          "description": "The callback fired when the highlighted item changes."
+        },
+        {
+          "name": "onValueChange",
+          "type": "((details: ValueChangeDetails<T>) => void)",
+          "required": false,
+          "description": "The callback fired when the selected item changes."
+        },
+        {
+          "name": "onOpenChange",
+          "type": "((details: OpenChangeDetails) => void)",
+          "required": false,
+          "description": "Function called when the popup is opened"
+        },
+        {
+          "name": "positioning",
+          "type": "PositioningOptions",
+          "required": false,
+          "description": "The positioning options of the menu."
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": false,
+          "description": "The controlled keys of the selected items"
+        },
+        {
+          "name": "defaultValue",
+          "type": "string[]",
+          "required": false,
+          "defaultValue": "[]",
+          "description": "The initial default value of the select when rendered. Use when you don't need to control the value of the select."
+        },
+        {
+          "name": "highlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The controlled key of the highlighted item"
+        },
+        {
+          "name": "defaultHighlightedValue",
+          "type": "string | null",
+          "required": false,
+          "description": "The initial value of the highlighted item when opened. Use when you don't need to control the highlighted value of the select."
+        },
+        {
+          "name": "loopFocus",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to loop the keyboard navigation through the options"
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to allow multiple selection"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select menu is open"
+        },
+        {
+          "name": "defaultOpen",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the select's open state is controlled by the user"
+        },
+        {
+          "name": "scrollToIndexFn",
+          "type": "((details: ScrollToIndexDetails) => void)",
+          "required": false,
+          "description": "Function to scroll to a specific index"
+        },
+        {
+          "name": "composite",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Whether the select is a composed with other composite widgets like tabs or combobox"
+        },
+        {
+          "name": "deselectable",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the value can be cleared by clicking the selected item. **Note:** this is only applicable for single selection"
+        },
+        {
+          "name": "collection",
+          "type": "ListCollection<T>",
+          "required": true,
+          "description": "The collection of items"
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Control",
+      "exportName": "Select.Control",
+      "kind": "primitive",
+      "description": "The control primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "control",
+      "dataAttributes": [
+        {
+          "name": "data-state",
+          "values": ["open", "closed"]
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        },
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "ValueText",
+      "exportName": "Select.ValueText",
+      "kind": "primitive",
+      "description": "The value text primitive part of the Select component.",
+      "dataScope": "select",
+      "dataPart": "value-text",
+      "dataAttributes": [
+        {
+          "name": "data-disabled",
+          "presence": true,
+          "description": "Present when disabled."
+        },
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-focus",
+          "presence": true,
+          "description": "Present when focused."
+        }
+      ],
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "Text to display when no value is selected."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "HiddenSelect",
+      "exportName": "Select.HiddenSelect",
+      "kind": "primitive",
+      "description": "The hidden select primitive part of the Select component. It has no recipe slot, so it is unstyled.",
+      "props": [
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "RootProvider",
+      "exportName": "Select.RootProvider",
+      "kind": "primitive",
+      "description": "The root container of the Select component, driven by state created with `useSelect()`.",
+      "dataScope": "select",
+      "dataPart": "root",
+      "dataAttributes": [
+        {
+          "name": "data-invalid",
+          "presence": true,
+          "description": "Present when invalid."
+        },
+        {
+          "name": "data-readonly",
+          "presence": true,
+          "description": "Present when read-only."
+        }
+      ],
+      "props": [
+        {
+          "name": "size",
+          "type": "'sm' | 'md' | 'lg'",
+          "required": false,
+          "defaultValue": "'md'",
+          "description": "PandaCSS recipe variant for size."
+        },
+        {
+          "name": "value",
+          "type": "UseSelectReturn<T>",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "present",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the node is present (controlled by the user)"
+        },
+        {
+          "name": "onExitComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the closed state"
+        },
+        {
+          "name": "onEnterComplete",
+          "type": "VoidFunction",
+          "required": false,
+          "description": "Function called when the animation ends in the open state"
+        },
+        {
+          "name": "immediate",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+        },
+        {
+          "name": "lazyMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to enable lazy mounting"
+        },
+        {
+          "name": "unmountOnExit",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to unmount on exit."
+        },
+        {
+          "name": "hideMode",
+          "type": "HideMode",
+          "required": false,
+          "defaultValue": "'display-none'",
+          "description": "How to hide content when mounted but not present. - `'display-none'`: HTML `hidden` attribute. Effects stay alive. - `'activity'`: React 19 `<Activity mode=\"hidden\">`. Effects pause. Requires React 19+."
+        },
+        {
+          "name": "skipAnimationOnMount",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Whether to allow the initial presence animation."
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Merges props and accessibility attributes onto the immediate child element instead of rendering a wrapper DOM node."
+        },
+        {
+          "name": "unstyled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Strips Cerberus PandaCSS recipe classes while preserving behavior and WAI-ARIA attributes."
+        },
+        {
+          "name": "css",
+          "type": "SystemStyleObject",
+          "required": false,
+          "defaultValue": "undefined",
+          "description": "PandaCSS style object for custom atomic styling. All PandaCSS style props (e.g. p, bg, color) are also accepted."
+        }
+      ]
+    },
+    {
+      "name": "Context",
+      "exportName": "Select.Context",
+      "kind": "primitive",
+      "description": "Exposes the Select state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseSelectContext<T>) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "ItemContext",
+      "exportName": "Select.ItemContext",
+      "kind": "primitive",
+      "description": "Exposes the Select item state to a render function. Renders no element.",
+      "props": [
+        {
+          "name": "children",
+          "type": "(context: UseSelectItemContext) => ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "a11y": {
+    "pattern": "Select-Only Combobox",
+    "apgUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/",
+    "keyboard": [
+      {
+        "key": "Space",
+        "description": "<span>When focus is on trigger, opens the select and focuses the first selected item.<br />When focus is on the content, selects the highlighted item.</span>."
+      },
+      {
+        "key": "Enter",
+        "description": "<span>When focus is on trigger, opens the select and focuses the first selected item.<br />When focus is on content, selects the focused item.</span>."
+      },
+      {
+        "key": "ArrowDown",
+        "description": "<span>When focus is on trigger, opens the select.<br />When focus is on content, moves focus to the next item.</span>."
+      },
+      {
+        "key": "ArrowUp",
+        "description": "<span>When focus is on trigger, opens the select.<br />When focus is on content, moves focus to the previous item.</span>."
+      },
+      {
+        "key": "Escape",
+        "description": "<span>Closes the select and moves focus to trigger.</span>."
+      },
+      {
+        "key": "A-Z",
+        "description": "<span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span>."
+      },
+      {
+        "key": "a-z",
+        "description": "<span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span>."
+      },
+      {
+        "key": "ArrowLeft",
+        "description": "When focus is on the trigger of a single select, selects the previous item without opening the select (the last item when none is selected)."
+      },
+      {
+        "key": "ArrowRight",
+        "description": "When focus is on the trigger of a single select, selects the next item without opening the select (the first item when none is selected)."
+      },
+      {
+        "key": "Home",
+        "description": "When focus is on the trigger of a single select, selects the first item. When focus is on the content, highlights the first item."
+      },
+      {
+        "key": "End",
+        "description": "When focus is on the trigger of a single select, selects the last item. When focus is on the content, highlights the last item."
+      }
+    ]
+  },
+  "contextApi": {
+    "exposedBy": ["Select.Context", "useSelect()"],
+    "members": [
+      {
+        "name": "focused",
+        "type": "boolean",
+        "description": "Whether the select is focused."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Whether the select is open."
+      },
+      {
+        "name": "empty",
+        "type": "boolean",
+        "description": "Whether the select value is empty."
+      },
+      {
+        "name": "highlightedValue",
+        "type": "string | null",
+        "description": "The value of the highlighted item."
+      },
+      {
+        "name": "highlightedItem",
+        "type": "V | null",
+        "description": "The highlighted item."
+      },
+      {
+        "name": "setHighlightValue",
+        "type": "(value: string) => void",
+        "description": "Function to highlight a value."
+      },
+      {
+        "name": "clearHighlightValue",
+        "type": "VoidFunction",
+        "description": "Function to clear the highlighted value."
+      },
+      {
+        "name": "selectedItems",
+        "type": "V[]",
+        "description": "The selected items."
+      },
+      {
+        "name": "hasSelectedItems",
+        "type": "boolean",
+        "description": "Whether there's a selected option."
+      },
+      {
+        "name": "value",
+        "type": "string[]",
+        "description": "The selected item keys."
+      },
+      {
+        "name": "valueAsString",
+        "type": "string",
+        "description": "The string representation of the selected items."
+      },
+      {
+        "name": "selectValue",
+        "type": "(value: string) => void",
+        "description": "Function to select a value."
+      },
+      {
+        "name": "selectAll",
+        "type": "VoidFunction",
+        "description": "Function to select all values."
+      },
+      {
+        "name": "setValue",
+        "type": "(value: string[]) => void",
+        "description": "Function to set the value of the select."
+      },
+      {
+        "name": "clearValue",
+        "type": "(value?: string) => void",
+        "description": "Function to clear the value of the select.\nIf a value is provided, it will only clear that value, otherwise, it will clear all values."
+      },
+      {
+        "name": "focus",
+        "type": "VoidFunction",
+        "description": "Function to focus on the select input."
+      },
+      {
+        "name": "getItemState",
+        "type": "(props: ItemProps) => ItemState",
+        "description": "Returns the state of a select item."
+      },
+      {
+        "name": "setOpen",
+        "type": "(open: boolean) => void",
+        "description": "Function to open or close the select."
+      },
+      {
+        "name": "collection",
+        "type": "ListCollection<V>",
+        "description": "Function to toggle the select."
+      },
+      {
+        "name": "reposition",
+        "type": "(options?: Partial<PositioningOptions>) => void",
+        "description": "Function to set the positioning options of the select."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "description": "Whether the select allows multiple selections."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "description": "Whether the select is disabled."
+      }
+    ]
+  }
+}

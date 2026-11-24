@@ -9,13 +9,7 @@ describe('checkbox recipe', () => {
   })
 
   test('should have a JSX structure', () => {
-    expect(checkbox.jsx).toMatchObject([
-      'CheckboxRoot',
-      'CheckboxLabel',
-      'CheckboxControl',
-      'CheckboxIndicator',
-      'Checkbox',
-    ])
+    expect(checkbox.jsx).toBeUndefined()
   })
 
   test('should have a root style', () => {

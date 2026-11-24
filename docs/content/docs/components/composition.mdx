@@ -5,6 +5,47 @@ group: Concepts
 order: 2
 ---
 
+## JSX Composition
+
+Cerberus components come with extra features that help streamline customization and composition for when you need to build your own enhanced solutions.
+
+## Cerberus Factory
+
+Each layer of a Cerberus component is built using our factory function: `cerberus`. This function allows you to create a component with a set of default styles and behaviors, while also providing the ability to extend or override them as needed.
+
+## Styling Components
+
+To style components, you use inline style props, which are passed directly to the component. Additionally, you can use inline conditions or custom utilities.
+
+<Example path="components/composition" demo="styled" />
+<br />
+
+### Unstyled Components <FeatureBadge since="2.0.0" />
+
+You can remove the underlying recipe styles from a component by using the `unstyled` prop.
+
+This allows you to use the component's functionality without any default styling. This includes any primitive slot for when you only want to remove a single layer of the full component API. To do the reverse, simply add `unstyled={false}` to the layer you want to keep the styles.
+
+Style props, `css`, and `className` still apply.
+
+<Example path="components/composition" demo="unstyled" />
+
+## Part Overrides <FeatureBadge since="2.1.0" />
+
+For any abstraction-based component API (e.g., made of multiple primitive layers), you can render a primitive part (e.g., `Accordion.ItemIndicator`) as a direct child of the abstraction. When the part has `children` (or `asChild`), those replace the default content of that layer. Every other child is rendered as the abstraction's default content.
+
+This feature is only available on multi-layered components. For single layer components, just use [style props](#styling-components)
+
+To whitelist a single layer, use `unstyled={false}` on that layer when there is a root `unstyled` definition.
+
+<Example path="components/composition" demo="slots" />
+
+## Patching Part Props <FeatureBadge since="2.1.0" />
+
+Render a part without `children` to patch its props (e.g., `data-testid`, `className`) while keeping its default content.
+
+<Example path="components/composition" demo="slotProps" />
+
 ## The `asChild` Prop
 
 Used to compose a component's functionality onto its child element. This
@@ -12,52 +53,12 @@ approach, inspired by
 [Radix UI](https://www.radix-ui.com/primitives/docs/utilities/slot), offers
 maximum flexibility.
 
-```tsx
-<Button asChild>
-  <Link href="/some-page">Open</Link>
-</Button>
-```
+<Example path="components/composition" demo="asChild" />
 
-In this example, the `asChild` prop allows the link to be used as the
-button (e.g., a button-styled link).
+## Text Components
 
-## Best Practices
-
-To avoid common pitfalls when using the `as` and `asChild` props, there are a
-few best practices to consider:
-
-- **Forward Refs:** Ensure that the underlying component forwards the ref passed
-  to it properly.
-- **Spread Props:** Ensure that the underlying component spreads the props
-  passed to it.
-
-### Advanced Usage Example
+To render styled typography-related elements, use the `cerberus` component with the text node of your choice. This will render that element and give you the features of style props, `asChild`, and `unstyled`.
 
 ```tsx
-const MyComponent = forwardRef((props, ref) => {
-  return <Box ref={ref} {...props} />
-})
-
-<Button asChild>
-  <MyComponent> Click me </MyComponent>
-</Button>
+<cerberus.h3 textStyle="heading-sm">Hello, world!</cerberus.h3>
 ```
-
-## The Text Component
-
-The `Text` component allows you to change the underlying HTML element that a React component renders via the `as` prop. It provides a straightforward way to change the underlying element while retaining the component's functionality.
-
-This is to help reduce the amount of JSX you need to write for typography driven UI.
-
-```tsx
-<Text as="h3">Hello, world!</Text>
-```
-
-<WarningAdmonition
-  description={
-    <>
-      This is only available for the <code>Text</code> component which is a wrapper
-      around our text-related patterns.
-    </>
-  }
-/>

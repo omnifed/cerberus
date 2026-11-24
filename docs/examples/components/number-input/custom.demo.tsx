@@ -1,26 +1,26 @@
 import { HStack } from '@/styled-system/jsx'
 import { Add, Subtract } from '@carbon/icons-react'
-import { NumberInputParts } from '@cerberus-design/react'
+import { NumberInput } from '@cerberus-design/react'
 
 export function CustomDemo() {
   return (
     <HStack w="1/2">
-      <NumberInputParts.Root display="flex" w="full">
-        <NumberInputParts.Label textStyle="heading-xs">
+      <NumberInput.Root display="flex" w="full">
+        <NumberInput.Label textStyle="heading-xs">
           This is custom
-        </NumberInputParts.Label>
+        </NumberInput.Label>
 
-        <NumberInputParts.Control>
-          <NumberInputParts.Input />
-          <NumberInputParts.IncrementTrigger
+        <NumberInput.Control>
+          <NumberInput.Input />
+          <NumberInput.IncrementTrigger
             color="success.text.initial"
             _hover={{
               bgColor: 'success.bg.initial/30',
             }}
           >
             <Add />
-          </NumberInputParts.IncrementTrigger>
-          <NumberInputParts.DecrementTrigger
+          </NumberInput.IncrementTrigger>
+          <NumberInput.DecrementTrigger
             bgColor="danger.ghost.initial"
             color="danger.text.initial"
             _hover={{
@@ -29,10 +29,10 @@ export function CustomDemo() {
             }}
           >
             <Subtract />
-          </NumberInputParts.DecrementTrigger>
-          <NumberInputParts.Scrubber />
-        </NumberInputParts.Control>
-      </NumberInputParts.Root>
+          </NumberInput.DecrementTrigger>
+          <NumberInput.Scrubber />
+        </NumberInput.Control>
+      </NumberInput.Root>
     </HStack>
   )
 }

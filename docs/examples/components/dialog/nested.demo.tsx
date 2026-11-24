@@ -4,10 +4,6 @@ import { Box, Stack } from '@/styled-system/jsx'
 import {
   Button,
   Dialog,
-  DialogCloseIconTrigger,
-  DialogDescription,
-  DialogHeading,
-  DialogRootProvider,
   DialogRootProviderProps,
   useDialog,
 } from '@cerberus-design/react'
@@ -19,7 +15,10 @@ export function NestedDialog() {
   return (
     <>
       <Button onClick={() => parentDialog.setOpen(true)}>Trigger</Button>
-      <ParentDialog value={parentDialog} onClick={() => childDialog.setOpen(true)} />
+      <ParentDialog
+        value={parentDialog}
+        onClick={() => childDialog.setOpen(true)}
+      />
       <ChildDialog value={childDialog} />
     </>
   )
@@ -31,39 +30,40 @@ interface ParentDialogProps extends DialogRootProviderProps {
 
 function ParentDialog(props: ParentDialogProps) {
   return (
-    <DialogRootProvider {...props}>
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+    <Dialog.RootProvider size="auto" {...props}>
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="xs" w="full">
-          <DialogHeading>Parent Dialog</DialogHeading>
-          <DialogDescription maxW="prose">
-            This is the parent dialog. Open a nested dialog to see automatic z-index
-            management.
-          </DialogDescription>
+          <Dialog.Title>Parent Dialog</Dialog.Title>
+          <Dialog.Description maxW="prose">
+            This is the parent dialog. Open a nested dialog to see automatic
+            z-index management.
+          </Dialog.Description>
         </Stack>
 
         <Box mt="md" w="full">
           <Button onClick={props.onClick}>Open nested dialog</Button>
         </Box>
       </Dialog>
-    </DialogRootProvider>
+    </Dialog.RootProvider>
   )
 }
 
 function ChildDialog(props: DialogRootProviderProps) {
   return (
-    <DialogRootProvider {...props}>
-      <Dialog size="auto">
-        <DialogCloseIconTrigger />
+    <Dialog.RootProvider size="auto" {...props}>
+      <Dialog>
+        <Dialog.CloseIconTrigger />
 
         <Stack gap="xs" w="full">
-          <DialogHeading>Nested Dialog</DialogHeading>
-          <DialogDescription maxW="prose">
-            This dialog is nested within the parent with proper z-index layering.
-          </DialogDescription>
+          <Dialog.Title>Nested Dialog</Dialog.Title>
+          <Dialog.Description maxW="prose">
+            This dialog is nested within the parent with proper z-index
+            layering.
+          </Dialog.Description>
         </Stack>
       </Dialog>
-    </DialogRootProvider>
+    </Dialog.RootProvider>
   )
 }

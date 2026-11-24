@@ -19,25 +19,7 @@ const SELECTED_TEXT = 'action.text.initial'
 export const datePicker: Partial<SlotRecipeConfig> = defineSlotRecipe({
   className: 'date-picker',
   slots: datePickerAnatomy.keys(),
-  jsx: [
-    // primitives
-    'DatePickerLabel',
-    'DatePickerControl',
-    'DatePickerInputEl',
-    'DatePickerTrigger',
-    'DatePickerContent',
-    'DatePickerViewControl',
-    'DatePickerRangeText',
-    'DatePickerTable',
-    'DatePickerTableHeader',
-    'DatePickerTableCell',
-    'DatePickerTableCellTrigger',
-    // abstractions
-    'DatePicker',
-    'DatePickerInput',
-    'RangePickerInput',
-    'DatePickerCalendar',
-  ],
+  jsx: ['DatePicker', 'DatePicker.InputGroup', 'DatePicker.RangeInputGroup'],
 
   base: {
     label: {
