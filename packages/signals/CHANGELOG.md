@@ -1,5 +1,33 @@
 # @cerberus-design/signals
 
+## 2.0.0
+
+### Major Changes
+
+- dfc5ef2: Migrate ecosystem to PandaCSS v2
+
+### Patch Changes
+
+- 97a1eef: Fix the published type declarations under `moduleResolution` `node16`
+  and `nodenext`: relative specifiers in `dist/**/*.d.ts` now end in `.js` (and
+  in `.cjs` for `.d.cts`), so `@cerberus-design/signals` and its `./core` and
+  `./react` subpaths export their types again.
+- 5488e1c: `createEffect`'s dispose function now actually unsubscribes the
+  effect. Before, it was a no-op.
+
+  Silent behavior changes (fixes):
+
+  - A disposed effect no longer runs when a signal it read changes, including
+    when it was already queued in a `batch`.
+  - `useRead` no longer leaks a subscription on unmount, StrictMode double-mount
+    or accessor change.
+  - Effects and computeds created inside an effect or computed are disposed when
+    their owner re-runs; they used to pile up and keep running.
+
+  Docs: signals notify only when a value changes by `!==`. Sorting an array in
+  place and returning it (`data.sort()`) notifies nobody; return a new array
+  (`toSorted`, `map`, `filter`).
+
 ## 1.9.0
 
 No changes in this release.
