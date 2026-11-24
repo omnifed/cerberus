@@ -1,5 +1,5 @@
 import { getGradients, type GradientValue } from '@cerberus/tokens'
-import { defineUtility, type Config } from '@pandacss/dev'
+import { defineUtility, type Config, type PropertyConfig } from '@pandacss/dev'
 import { assignGradientVars, createFocusRing } from './helpers'
 
 /**
@@ -8,7 +8,7 @@ import { assignGradientVars, createFocusRing } from './helpers'
  * we'll have to define the utility config in the same file.
  */
 
-export const size = defineUtility({
+export const size: PropertyConfig = defineUtility({
   className: 'size',
   values: 'sizing',
   transform(value: string) {
@@ -29,7 +29,10 @@ const gradient = defineUtility({
     '--gradient-bg-end': { syntax: '<color>', inherits: false },
     '--graident-fg': { syntax: '<color>', inherits: false },
   },
-  transform(value: GradientValue | 'progress' | 'complete' | 'none', { token }) {
+  transform(
+    value: GradientValue | 'progress' | 'complete' | 'none',
+    { token },
+  ) {
     const vars = assignGradientVars(value, token)
 
     if (value === 'none') {
