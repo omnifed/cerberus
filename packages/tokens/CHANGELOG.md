@@ -1,5 +1,15 @@
 # @cerberus/tokens
 
+## 2.0.0
+
+### Major Changes
+
+- dfc5ef2: Migrate ecosystem to PandaCSS v2
+
+### Patch Changes
+
+- fe66ca6: Patch token sync from Figma
+
 ## 1.9.0
 
 ### Patch Changes

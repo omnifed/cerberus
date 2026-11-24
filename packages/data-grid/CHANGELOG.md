@@ -1,5 +1,40 @@
 # @cerberus-design/data-grid
 
+## 2.0.0
+
+### Major Changes
+
+- dfc5ef2: Migrate ecosystem to PandaCSS v2
+
+### Patch Changes
+
+- ec8e699: Pagination's `defaultPage` is typed `number | undefined` instead of
+  `number | void`, so it can be passed to `Pagination.Root`'s `defaultPage`. No
+  runtime change.
+- Updated dependencies [97a1eef]
+- Updated dependencies [5488e1c]
+- Updated dependencies [dfc5ef2]
+- Updated dependencies [ec3b3f1]
+- Updated dependencies [046853c]
+- Updated dependencies [1933651]
+- Updated dependencies [9ac42f1]
+- Updated dependencies [256e9b6]
+- Updated dependencies [ab3eb24]
+- Updated dependencies [1a39e77]
+- Updated dependencies [cf80fb6]
+- Updated dependencies [745c957]
+- Updated dependencies [a2b059a]
+- Updated dependencies [c655d46]
+- Updated dependencies [987b9e8]
+- Updated dependencies [856b518]
+- Updated dependencies [737d4cb]
+- Updated dependencies [751489c]
+- Updated dependencies [a5552bb]
+- Updated dependencies [a34ff37]
+- Updated dependencies [1e6b73e]
+  - @cerberus-design/signals@2.0.0
+  - @cerberus-design/react@2.0.0
+
 ## 1.9.0
 
 ### Minor Changes
