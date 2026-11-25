@@ -33,7 +33,8 @@ export default defineConfig({
         date: s.isodate(),
         slug: s.string(),
         category: s.string(),
-        version: s.number(),
+        // A quoted release version ('1.10'), so it keeps its trailing zeros
+        version: s.string().regex(/^\d+\.\d+(\.\d+)?$/),
         timeToRead: s.number(),
         tag: s.string(),
         code: s.mdx(),

@@ -1,0 +1,249 @@
+---
+slug: cerberus-v2-release
+date: 2026-11-24
+author: caseyBaggz
+title: Cerberus v2 Release
+description: A new engine, a simpler setup, and more ways to customize
+category: release
+version: '2.0'
+timeToRead: 6
+tag: Release
+---
+
+Cerberus v2 is here! This release includes breaking changes, so this post doubles
+as the migration guide for anyone coming from v1.
+
+## Overview
+
+Here is what we'll cover:
+
+- [PandaCSS v2](#pandacss-v2) - the engine underneath Cerberus has been rewritten
+- [Migration Guide](#migration-guide) - everything you need to change to move from v1 to v2
+- [New Features](#new-features) - new conditions, global CSS vars, and React APIs
+- [Fixes](#fixes) - bugs squashed along the way
+- [Contributing](#contributing) - updates for anyone working on Cerberus itself
+
+## PandaCSS v2
+
+PandaCSS will be upgraded to v2 in Cerberus v2. The Panda engine is rewritten in
+Rust, along with other changes.
+
+This may or may not affect how you need to configure Panda with Cerberus.
+
+## Migration Guide
+
+Work through each step below to move your app from v1 to v2.
+
+### 1. Color modes use class names
+
+Modes are now controlled by class names: `dark`, `light`, `system`.
+
+```tsx
+// v1
+<html data-color-mode="light">
+
+// v2
+<html className="light">
+```
+
+### 2. Theme conditions use the standard syntax
+
+Theme conditions now use the standard syntax: `_theme[Name]`.
+
+```ts
+// v1
+css({ _cerberusTheme: { bgColor: 'page.surface.initial' } })
+
+// v2
+css({ _themeCerberus: { bgColor: 'page.surface.initial' } })
+```
+
+### 3. Update your Next fonts
+
+Update Next fonts to use the `--font-body` and `--font-mono` variables.
+
+```ts
+// v1
+const poppins = Poppins({ /* ... */ variable: '--font-poppins' })
+const recursive = Recursive({ /* ... */ variable: '--font-recursive' })
+
+// v2
+const poppins = Poppins({ /* ... */ variable: '--font-body' })
+const recursive = Recursive({ /* ... */ variable: '--font-mono' })
+```
+
+### 4. Replace `createCerberusPreset` with `designSystem`
+
+Remove `createCerberusPreset` and use `designSystem` for either the react or
+data-grid package.
+
+```ts
+// v1
+import {
+  createCerberusConfig,
+  createCerberusPreset,
+} from '@cerberus/panda-preset'
+
+export default createCerberusConfig({
+  presets: [createCerberusPreset()],
+  // ...
+})
+
+// v2
+import { createCerberusConfig } from '@cerberus/panda-preset'
+
+export default createCerberusConfig({
+  designSystem: '@cerberus-design/react', // or '@cerberus-design/data-grid'
+  // ...
+})
+```
+
+<br />
+> **NOTE**: If you use the DataGrid in your app, you only need to use the `data-grid` design system which internally inherits from the `react` system.
+
+### 5. The style factory is now `styled`
+
+The style factory is now called `styled`, to tell it apart from the Cerberus
+factory: `cerberus` (same as v1).
+
+```tsx
+// v1
+import { cerberus } from '@/styled-system/jsx'
+
+// v2
+import { styled } from '@/styled-system/jsx'
+
+// The Cerberus factory is unchanged
+import { cerberus } from '@cerberus-design/react'
+```
+
+### 6. The style factory accepts `unstyled`
+
+The style factory now accepts `unstyled` to remove all recipe styles from a
+component.
+
+### 7. Button: `default` shape is now `squared`
+
+The Button `default` shape variant is now `squared`.
+
+```tsx
+// v1
+<Button shape="default">Save</Button>
+
+// v2
+<Button shape="squared">Save</Button>
+```
+
+### 8. `Text` is deprecated
+
+`Text` is deprecated in favor of `cerberus.[TEXT_NODE]`, for better typing and
+semantics.
+
+```tsx
+// v1
+<Text as="h1">Hello</Text>
+
+// v2
+<cerberus.h1>Hello</cerberus.h1>
+```
+
+## New Features
+
+### Contrast and OS conditions for semantic tokens
+
+Semantic tokens use the conditions `osDark`, `osLight`, `highContrast`,
+`lessContrast` and `moreContrast`.
+
+### Global CSS vars
+
+These global CSS vars are available via `globalCSS`:
+
+- `--global-font-body`
+- `--global-font-mono`
+- `--global-color-border`
+- `--global-color-placeholder`
+- `--global-color-selection`
+- `--global-color-selection-text`
+- `--global-color-focus-ring`
+
+### `StrictNonNullable`
+
+`StrictNonNullable` is now exposed. It strips `undefined` from unions where
+`NonNullable` fails to do so.
+
+### One import per component
+
+All React APIs are now objects storing primitive slots, so you only need a single
+import.
+
+```tsx
+import { Admonition } from '@cerberus-design/react'
+
+;<Admonition.Root>
+  <Admonition.Indicator />
+  <Admonition.Content>
+    <Admonition.Heading>Heads up</Admonition.Heading>
+    <Admonition.Description>Cerberus v2 is here.</Admonition.Description>
+  </Admonition.Content>
+</Admonition.Root>
+```
+
+### Customize abstractions with children
+
+Abstractions extract primitives provided as children to replace internal layers.
+This adds a new way to customize components.
+
+```tsx
+<Marquee>
+  <Marquee.Edge data-testid="qa" />
+</Marquee>
+```
+
+See [part overrides](/docs/components/composition#part-overrides) for more details.
+
+### Closable Admonitions
+
+Admonitions become closable when an `onClose` prop is provided.
+
+```tsx
+<Admonition heading="Heads up" onClose={handleClose}>
+  Cerberus v2 is here.
+</Admonition>
+```
+
+### New Button shapes
+
+Button adds new shape variants: `hard`, `squared`.
+
+## Fixes
+
+- The global line-height uses `1.5` instead of `150%`, so children inherit properly.
+- `CircularProgress` complete now shows the correct complete color.
+- The `complete` condition accepts an additional `[data-state=complete]`.
+- The `Tag` API is more reliable, with unique recipes and primitives returned based
+  on the props provided:
+  - `FilledTag` is returned if there is no `onClick`
+  - `ClosableTag` if `onClick`
+  - `GradientTag` if `gradient`
+- The Cerberus factory is upgraded to be more flexible.
+
+## Contributing
+
+If you contribute to Cerberus, here's what changed:
+
+1. React components have a generator to bootstrap new Ark APIs.
+2. All abstractions must declare the `use client` directive at the top and use
+   `extractParts` to support part overrides.
+3. Abstraction tests expect to render `'Content body'` for assumptions.
+
+See the [contributing guide](/docs/get-started/contributing) for more details.
+
+## Thanks!
+
+A special thanks to everyone who helped shape and test this release.
+
+## Upgrading
+
+To upgrade to this release, install the latest version of Cerberus React:
+
+<BashTabs code="npm run up:cerberus" />

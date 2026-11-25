@@ -257,9 +257,10 @@ async function main(): Promise<number> {
 
   console.log(`
 Next steps:
-  1. pnpm --filter docs exec panda codegen --spec   (so recipe variants are documented)
-  2. Fill in the TODOs: config description and a11y, abstraction, docs page, demo
-  3. pnpm generate:check
+  1. pnpm codegen:panda                              (so the new recipe reaches every styled-system)
+  2. pnpm --filter docs exec panda codegen --spec   (so recipe variants are documented)
+  3. Fill in the TODOs: config description and a11y, abstraction, tests, docs page, demo
+  4. pnpm generate:check && pnpm test
 `)
   return diagnostics.errorCount > 0 ? 1 : 0
 }

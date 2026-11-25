@@ -1,59 +1,91 @@
-# Create Preset Recipe
+# Create a Preset Recipe (v2)
 
-This document outlines the steps to create a new recipe within the `packages/panda-preset` project.
+Recipes live in `packages/panda-preset` and style the React components. Follow
+the rules in the root [`AGENTS.md`](../AGENTS.md) and the
+[style guide](./style-guide.md).
 
-This process must follow the [style guide](./style-guide.md) conventions.
+**For a new component, don't write the recipe by hand.** `pnpm gen:component`
+creates and registers its slot recipe (see
+[create-react-component](./create-react-component.md)). Use this guide to fill
+in that recipe, or to add a recipe on its own.
 
-## Steps
+## Slot or standard?
 
-1. Navigate to the `packages/panda-preset/src/recipes/slots` directory
-2. Create a new file named `untitledRecipe`
-3. Navigate to the `packages/panda-preset/src/recipes/index.ts` file
-4. Import the new recipe in `index.ts` adding it to the `slots` export in the correct alphabetical order. The import should be organized alphabetically as well in the "slots" import group.
+- **Slot recipe** (`recipes/slots/<recipe>.ts`, `defineSlotRecipe`): the
+  component has more than one styled layer. Every Ark UI component uses a slot
+  recipe.
+- **Standard recipe** (`recipes/<recipe>.ts`, `defineRecipe`): a single layer,
+  like `button` or `tag`.
 
-## `packages/panda-preset/src/recipes`
+Recipe names are camelCase (`hoverCard`). Reserved words get a suffix
+(`switchRecipe`).
 
-This directory is responsible for housing all recipes within the project. There are two types of recipes: `standard` and `slot`. Standard recipes have no style layers and are used for single layered components like a button. Slot recipes are used for components that have multiple style layers, such as menus, modals, inputs, etc. We utilize Ark-UI for our component layer which means that any recipe made for an Ark-UI component should be a slot recipe.
+## Slot recipe template
 
-## `packages/panda-preset/src/recipes/slots/untitledRecipe.ts`
+This is what the generator creates. Fill in `base`, `variants` and
+`defaultVariants` from the Figma design using semantic tokens only.
 
-This file serves as the recipe for the untitled component.
-
-Use this template to provide the contents of the file:
-
-```typescript
+```ts
+import { hoverCardAnatomy } from '@ark-ui/react'
 import { defineSlotRecipe } from '@pandacss/dev'
-import {} from '@ark-ui/react'
+import type { SlotRecipeConfig } from '@pandacss/types'
 
 /**
- * This module contains the untitled recipe.
+ * This module contains the hoverCard recipe.
  * @module
  */
 
 /**
- * Styles for the untitled family components
- * @definition [ARK docs](https://ark-ui.com/react/docs/components/untitled)
+ * Styles for the hoverCard family components
+ * @definition [ARK docs](https://ark-ui.com/react/docs/components/hover-card)
  */
-export const untitled: Partial<SlotRecipeConfig> = defineSlotRecipe({
-  className: 'untitled',
-  slots: untitledAnatomy.keys(),
+export const hoverCard: Partial<SlotRecipeConfig> = defineSlotRecipe({
+  className: 'hoverCard',
+  slots: hoverCardAnatomy.keys(),
   jsx: [
     // primitives
-    'ArkUIComponentAnatomyLayer',
+    'HoverCardRoot',
+    'HoverCardTrigger',
+    'HoverCardContent',
     // abstractions
-    'UntitledComponent',
+    'HoverCard',
   ],
 
-  base: {
-    arkAnatomyLayer: {},
-  },
-
+  base: {},
   variants: {},
-
   defaultVariants: {},
 })
 ```
 
-## `packages/panda-preset/src/recipes/index.ts`
+- For a Cerberus-only component, import the anatomy from `./shared/anatomy`
+  (`import { <name>Anatomy } from '../shared/anatomy'`) instead of
+  `@ark-ui/react`.
+- Keep `jsx` in sync with every primitive and abstraction that uses the recipe,
+  or Panda won't extract their styles.
+- The explicit `Partial<SlotRecipeConfig>` type is required for JSR (no slow
+  types).
+- Reuse the shared bases in `recipes/shared/` (`button.base.ts`,
+  `input.base.ts`, `modal.base.ts`, `palettes.ts`, `states.ts`) before writing
+  new styles.
 
-This file serves as the entry point for all recipes within the `packages/panda-preset` project. It is responsible for exporting all recipes, making them available for use throughout the project.
+## Register it
+
+Skip this if the generator created the recipe. Otherwise, in
+`packages/panda-preset/src/recipes/index.ts`:
+
+1. Import it with the others in its group (`./slots/...` or `./...`).
+2. Add it to `slotRecipes` (slot) or `recipes` (standard).
+
+Then run `pnpm codegen:panda` so the recipe reaches every `styled-system`.
+
+## Test it
+
+Recipe tests live in `tests/panda-preset/recipes/` (`slots/` for slot recipes),
+one file per recipe. Run them with:
+
+```bash
+pnpm --filter tests exec bun test panda-preset/recipes
+```
+
+If the component's docs show variants, also run
+`pnpm --filter docs exec panda codegen --spec` so they're documented.

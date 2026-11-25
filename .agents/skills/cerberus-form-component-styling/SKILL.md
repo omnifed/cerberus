@@ -11,7 +11,7 @@ Style custom React form components using Cerberus Design System's panda-preset c
 
 - Building custom form inputs with Cerberus styling
 - Implementing consistent design tokens across form components
-- Customizing FieldParts primitives with semantic colors
+- Customizing Field primitives with semantic colors
 - Migrating existing forms to use Cerberus design system
 
 ## Critical Rules
@@ -34,16 +34,16 @@ Style custom React form components using Cerberus Design System's panda-preset c
 
 ```tsx
 // WRONG - Using arbitrary color names
-<FieldParts.Input css={{ borderColor: 'red', color: 'darkred' }} />
+<Field.Input css={{ borderColor: 'red', color: 'darkred' }} />
 
 // RIGHT - Using semantic color tokens via inline style props
-<FieldParts.Input
+<Field.Input
   borderColor="danger.border.initial"
   color="danger.text.initial"
 />
 
 // ALTERNATIVE - Using the `css` prop for custom selectors and conditions
-<FieldParts.Input
+<Field.Input
   css={{
     '& :is([my-custom-attr])': {
       borderColor: 'danger.border.initial',
@@ -82,10 +82,11 @@ theme: {
 ### Panda Config Setup
 
 ```typescript
-import { createCerberusConfig, createCerberusPreset } from '@cerberus/panda-preset'
+import { createCerberusConfig } from '@cerberus/panda-preset'
 
 export default createCerberusConfig({
-  presets: [createCerberusPreset()],
+  // '@cerberus-design/data-grid' if the app also uses the Data Grid
+  designSystem: '@cerberus-design/react',
   include: ['./app/**/*.{ts,tsx}'],
   exclude: [],
 
@@ -102,17 +103,17 @@ export default createCerberusConfig({
 })
 ```
 
-### Custom Form Component with FieldParts
+### Custom Form Component with Field primitives
 
 ```tsx
-import { FieldParts, Show } from '@cerberus/react'
+import { Field, Show } from '@cerberus/react'
 import { Box } from 'styled-system/jsx'
 
 export function CustomFormField({ label, error, ...props }) {
   return (
     <Box w="full">
-      <FieldParts.Root invalid={Boolean(error)}>
-        <FieldParts.Label
+      <Field.Root invalid={Boolean(error)}>
+        <Field.Label
           textStyle="body-md"
           color="page.text.100"
           fontWeight="semibold"
@@ -121,9 +122,9 @@ export function CustomFormField({ label, error, ...props }) {
           }}
         >
           {label}
-        </FieldParts.Label>
+        </Field.Label>
 
-        <FieldParts.Input
+        <Field.Input
           css={{
             borderColor: 'page.border.100',
             _invalid: {
@@ -139,12 +140,12 @@ export function CustomFormField({ label, error, ...props }) {
 
         <Show when={error}>
           {() => (
-            <FieldParts.ErrorText color="danger.text.initial" textStyle="body-sm">
+            <Field.ErrorText color="danger.text.initial" textStyle="body-sm">
               {error}
-            </FieldParts.ErrorText>
+            </Field.ErrorText>
           )}
         </Show>
-      </FieldParts.Root>
+      </Field.Root>
     </Box>
   )
 }
@@ -154,34 +155,34 @@ export function CustomFormField({ label, error, ...props }) {
 
 ```tsx
 // Success state
-<FieldParts.Input css={{
+<Field.Input css={{
   borderColor: 'success.border.initial',
   bgColor: 'success.bg.initial/10'
 }} />
 
 // Warning state
-<FieldParts.Input css={{
+<Field.Input css={{
   borderColor: 'warning.border.initial',
   color: 'warning.text.initial'
 }} />
 
-// Danger state with opacity
-<Text bgColor="danger.bg.initial/40" color="danger.text.initial">
+// Danger state with opacity (`Text` is deprecated in v2: use `cerberus.[tag]`)
+<cerberus.p bgColor="danger.bg.initial/40" color="danger.text.initial">
   Error message
-</Text>
+</cerberus.p>
 ```
 
 ### Typography and Spacing Tokens
 
 ```tsx
-<FieldParts.Label
+<Field.Label
   css={{
     textStyle: 'heading-xs', // Predefined text styles
     marginBottom: 'md',     // Predefined spacing values
     color: 'page.text.100'
   }}>
   Field Label
-</FieldParts.Label>
+</Field.Label>
 
 <Box
   p="{spacing.4} {spacing.6}" // Token reference in composite values
@@ -200,7 +201,7 @@ export function CustomFormField({ label, error, ...props }) {
     '--error-bg': '{colors.danger.bg.initial/20}',
   }}
 >
-  <FieldParts.Input
+  <Field.Input
     css={{
       _focus: { borderColor: 'var(--focus-color)' },
     }}
@@ -213,7 +214,7 @@ export function CustomFormField({ label, error, ...props }) {
 
 - **Hardcoded colors**: Use semantic tokens (`danger.text.initial`) not hex values
 - **Missing token syntax**: Use `{colors.primary}` not `colors.primary` in composite CSS
-- **Skipping FieldParts**: Use `FieldParts.Root` for proper accessibility and structure
+- **Skipping the Field primitives**: Use `Field.Root` for proper accessibility and structure
 - **Direct spacing values**: Use spacing tokens (`{spacing.4}`) not pixel values ("16px")
 - **Inconsistent text styles**: Apply `textStyle` prop for typography consistency
 

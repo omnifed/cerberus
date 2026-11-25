@@ -47,18 +47,35 @@ TODO: Describe what the ${name} component is for and when to use it.
 `
 }
 
+/**
+ * Every abstraction is a client module that runs its children through `extractParts`,
+ * so consumers can patch or replace its inner layers by passing primitives as children.
+ */
 export function abstractionTemplate({ name }: ScaffoldNames) {
   return `'use client'
 
+import { extractParts } from '../../internal/extract-parts'
 import { ${name}Root, type ${name}RootProps } from './primitives'
+
+/**
+ * The inner layers a consumer can override by passing them as direct children.
+ * The root is not listed: its props come from the component's own props.
+ * TODO: add every layer this abstraction renders, e.g. \`trigger: ${name}Trigger\`.
+ */
+const PARTS = {}
 
 export type ${name}Props = ${name}RootProps
 
 /**
- * TODO: compose the ${name} primitives into the default experience.
+ * TODO: compose the ${name} primitives into the default experience. Spread
+ * \`parts.<name>\` onto each layer, and let a part's \`children\` replace that
+ * layer's default content.
  */
 export function ${name}El(props: ${name}Props) {
-  return <${name}Root {...props} />
+  const { children, ...rootProps } = props
+  const { content } = extractParts(children, PARTS)
+
+  return <${name}Root {...rootProps}>{content}</${name}Root>
 }
 `
 }
@@ -146,7 +163,18 @@ import { ${name} } from '@cerberus-design/react/${key}'
 describeDXContract({
   name: '${name}',
   Root: ${name},
-${primitive}})
+${primitive}  // TODO: list each abstraction. The contract expects it to render 'Content body':
+  // abstractions: [
+  //   {
+  //     name: '${name}',
+  //     Component: ${name},
+  //     defaultProps: {},
+  //     children: 'Content body',
+  //     PartToPatch: ${name}.Root,
+  //     PartToReplace: ${name}.Root,
+  //   },
+  // ],
+})
 `
 }
 

@@ -175,62 +175,8 @@ Every component created with the Cerberus factory can accept the
 </Button>
 ```
 
-## Slot-based Abstractions <FeatureBadge since="2.0.0" />
+## Customizing Abstractions
 
-You can create your own super powered abstractions using the `createAbstraction` factory in combination with the `cerberus` factory. Note that abstractions built this way take `slots` and `slotProps` props; Cerberus' own abstractions use [part overrides](/docs/components/composition#part-overrides) (direct part children) instead.
-
-The `createAbstraction` takes a Object primitive record for the first argument along with a render function for the second. The render function provides the parts as the second parameter which is a super-powered version of the primitive layer.
-
-The result is a component that accepts style props, `unstyled`, `slots`, and `slotProps` props. All parts will be automagically managed via the abstraction internal context.
-
-```tsx
-import { cerberus, createAbstraction } from '@cerberus/react'
-
-const PARTS = {
-  item: cerberus('div'),
-  itemTrigger: cerberus('button'),
-  itemIndicator: cerberus('span'),
-  itemContent: cerberus('div'),
-}
-
-export interface AccordionItemGroupBaseProps extends AccordionItemProps {
-  heading?: ReactNode
-  indicatorPosition?: 'start' | 'end'
-}
-
-export const AccordionItemGroup = createAbstraction(
-  PARTS,
-  (props: AccordionItemGroupBaseProps, parts) => {
-    const [localProps, itemProps] = splitProps(props, [
-      'heading',
-      'indicatorPosition',
-    ])
-    const indicatorPosition = localProps.indicatorPosition ?? 'end'
-
-    const { icons } = useCerberusContext()
-    const { accordionIndicator: ChevronDown } = icons
-
-    return (
-      <parts.item {...itemProps}>
-        <parts.itemTrigger data-indicator-position={indicatorPosition}>
-          <Show when={indicatorPosition === 'start'}>
-            <parts.itemIndicator asChild>
-              <ChevronDown />
-            </parts.itemIndicator>
-          </Show>
-
-          {localProps.heading}
-
-          <Show when={indicatorPosition === 'end'}>
-            <parts.itemIndicator asChild>
-              <ChevronDown />
-            </parts.itemIndicator>
-          </Show>
-        </parts.itemTrigger>
-
-        <parts.itemContent>{props.children}</parts.itemContent>
-      </parts.item>
-    )
-  },
-)
-```
+To change the layers inside a Cerberus abstraction, pass its primitives as direct
+children instead of building a new component. See
+[part overrides](/docs/components/composition#part-overrides).

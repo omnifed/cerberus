@@ -1,6 +1,6 @@
 'use client'
 
-import { createAbstraction } from '../../internal/factory'
+import { extractParts } from '../../internal/extract-parts'
 import {
   ProgressBarBar,
   ProgressBarRoot,
@@ -13,7 +13,6 @@ import {
  */
 
 const PARTS = {
-  root: ProgressBarRoot,
   bar: ProgressBarBar,
 }
 
@@ -57,35 +56,37 @@ export type ProgressBarProps = ProgressBarRootProps &
   (NonIndeterminateProgressBarProps | IndeterminateProgressBarProps)
 
 /**
- * The ProgressBar component is used to display the progress of a task.
+ * The ProgressBar component is used to display the progress of a task. A
+ * direct `ProgressBar.Bar` child patches the bar (its `style` merges with the
+ * computed width); non-part children render inside the root, after the bar.
  * @see https://cerberus.digitalu.design/docs/components/progress
  * @example
  * ```tsx
  * <ProgressBar id="upload" label="Uploading" now={75} />
  * ```
  */
-export const ProgressBarEl = createAbstraction(
-  PARTS,
-  (props: ProgressBarProps, parts) => {
-    const { indeterminate, now, label, ...rootProps } = props
+export function ProgressBarEl(props: ProgressBarProps) {
+  const { indeterminate, now, label, children, ...rootProps } = props
 
-    const nowClamped = Math.min(100, Math.max(0, now || 0))
-    const width = {
-      width: indeterminate ? '50%' : `${nowClamped}%`,
-    }
+  const { parts, content } = extractParts(children, PARTS)
+  const { style: barStyle, ...barOverrideProps } = parts.bar ?? {}
 
-    return (
-      <parts.root
-        {...rootProps}
-        aria-label={label}
-        aria-valuenow={indeterminate ? 0 : nowClamped}
-      >
-        <parts.bar
-          {...(indeterminate && { 'data-state': 'indeterminate' })}
-          data-complete={nowClamped === 100}
-          style={width}
-        />
-      </parts.root>
-    )
-  },
-)
+  const nowClamped = Math.min(100, Math.max(0, now || 0))
+  const width = indeterminate ? '50%' : `${nowClamped}%`
+
+  return (
+    <ProgressBarRoot
+      {...rootProps}
+      aria-label={label}
+      aria-valuenow={indeterminate ? 0 : nowClamped}
+    >
+      <ProgressBarBar
+        {...(indeterminate && { 'data-state': 'indeterminate' })}
+        data-complete={nowClamped === 100}
+        {...barOverrideProps}
+        style={{ width, ...barStyle }}
+      />
+      {content}
+    </ProgressBarRoot>
+  )
+}
