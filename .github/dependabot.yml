@@ -4,23 +4,31 @@ updates:
     directory: '/'
     schedule:
       interval: weekly
+    groups:
+      actions:
+        patterns: ['*']
 
+  # One entry for the whole pnpm workspace. Dependabot reads
+  # pnpm-workspace.yaml from the root and updates every package plus the root
+  # pnpm-lock.yaml together. Per-folder entries (/docs, /tests, /packages)
+  # bumped package.json without the lockfile, so every PR failed
+  # ERR_PNPM_OUTDATED_LOCKFILE in CI.
+  #
+  # Security updates aren't tied to this schedule: they open as soon as an
+  # advisory is published. The PR autopilot (.github/pr-autopilot.md) merges
+  # the minor and patch groups and escalates majors.
   - package-ecosystem: npm
     directory: '/'
     schedule:
       interval: weekly
-
-  - package-ecosystem: npm
-    directory: '/docs'
-    schedule:
-      interval: weekly
-
-  - package-ecosystem: npm
-    directory: '/tests'
-    schedule:
-      interval: weekly
-
-  - package-ecosystem: npm
-    directory: '/packages'
-    schedule:
-      interval: daily
+    open-pull-requests-limit: 10
+    groups:
+      security:
+        applies-to: security-updates
+        update-types: [minor, patch]
+      production:
+        dependency-type: production
+        update-types: [minor, patch]
+      development:
+        dependency-type: development
+        update-types: [minor, patch]

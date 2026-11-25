@@ -89,6 +89,18 @@ Demos are `*.demo.tsx` files in `docs/examples/<section>/<name>/`, registered in
 that folder's `index.tsx`. Full playbook:
 [`.agents/create-doc-component-page.md`](./.agents/create-doc-component-page.md).
 
+### PR autopilot
+
+`.github/workflows/pr-autopilot.yml` runs on weekdays. Claude reviews open PRs
+against [`.github/pr-autopilot.md`](./.github/pr-autopilot.md) and merges
+dependency, security, lint and bug-fix PRs. Everything else gets a
+`needs-human` label. The hard limits are in
+`scripts/src/pr-autopilot/config.mjs` and its tests are in
+`tests/scripts/pr-autopilot.test.ts`. CI doesn't run on PRs opened with
+`GITHUB_TOKEN`. A workflow that opens PRs must either use the Cerberus bot app
+token (`actions/create-github-app-token`) or start `checks.yml` and
+`linting.yml` with `gh workflow run` (see `release.yml`).
+
 ## Map
 
 | Path                      | What                                                      |

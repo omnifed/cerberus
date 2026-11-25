@@ -1,6 +1,8 @@
 name: 🧾 Code Checks
 
-on: [merge_group, pull_request]
+# workflow_dispatch lets bot workflows start these checks on PRs they open
+# with GITHUB_TOKEN (which never triggers pull_request runs).
+on: [merge_group, pull_request, workflow_dispatch]
 
 permissions:
   contents: read

@@ -1,0 +1,156 @@
+# Daily PR triage. Claude reviews open PRs and decides; a script enforces the
+# hard rules and does the approving and merging. Policy: .github/pr-autopilot.md
+# Rules: scripts/src/pr-autopilot/config.mjs
+#
+# Dry run by default (comments only). To go live, set the repository variable
+# PR_AUTOPILOT_MODE=live (Settings → Secrets and variables → Actions → Variables).
+
+name: 🤖 PR Autopilot
+
+on:
+  schedule:
+    - cron: '0 14 * * 1-5' # 14:00 UTC on weekdays
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Override PR_AUTOPILOT_MODE for this run
+        type: choice
+        default: repository setting
+        options:
+          - repository setting
+          - dry-run
+          - live
+
+concurrency:
+  group: pr-autopilot
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  AUTOPILOT_MODE: ${{ (inputs.mode == 'dry-run' || inputs.mode == 'live') && inputs.mode || vars.PR_AUTOPILOT_MODE || 'dry-run' }}
+
+jobs:
+  # Read-only. Claude never holds a token that can write, and nothing it writes
+  # in this job's workspace is used by the job that acts.
+  review:
+    name: Review open PRs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      pull-requests: read
+      checks: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Apply hard rules
+        id: candidates
+        run: |
+          mkdir -p "$RUNNER_TEMP/autopilot"
+          node scripts/src/pr-autopilot/index.mjs candidates --out "$RUNNER_TEMP/candidates.json"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Claude review
+        if: steps.candidates.outputs.review_count != '0'
+        uses: anthropics/claude-code-action@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          claude_args: >-
+            --model claude-opus-5-5
+            --max-turns 60
+            --allowedTools "Read,Grep,Glob,Write,Bash(gh pr view:*),Bash(gh pr diff:*)"
+          prompt: |
+            You are the PR autopilot for ${{ github.repository }}. Read
+            `.github/pr-autopilot.md` first and follow it exactly. `AGENTS.md`
+            describes the codebase.
+
+            Review these PRs: ${{ steps.candidates.outputs.review_numbers }}
+            Their metadata and changed files are in `${{ runner.temp }}/candidates.json`
+            (entries whose evaluation.action is "review").
+
+            For each one, read the diff with `gh pr diff <number>` (and
+            `gh pr view <number>` for the description) and look at surrounding
+            code in this checkout when you need context. You cannot comment,
+            approve or merge: you only decide.
+
+            When done, write `${{ runner.temp }}/autopilot/decisions.json`:
+
+            {"decisions": [{
+              "number": 123,
+              "sha": "<headRefOid from candidates.json>",
+              "category": "dependency" | "security" | "lint" | "bugfix" | "feature" | "other",
+              "decision": "merge" | "escalate",
+              "summary": "2-5 sentences posted on the PR",
+              "reasons": ["what a human should check", "..."]
+            }]}
+
+            Include every PR you were asked to review. Leave `reasons` empty
+            for merges.
+
+      - uses: actions/upload-artifact@v4
+        if: steps.candidates.outputs.review_count != '0'
+        with:
+          name: decisions
+          path: ${{ runner.temp }}/autopilot/decisions.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  # Acts on the decisions. Fresh checkout, and the hard rules are evaluated
+  # again from live PR data, so nothing from the review job is trusted except
+  # the decisions file, which is checked against those rules.
+  apply:
+    name: Apply decisions
+    needs: review
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      HAS_AUTOPILOT_TOKEN: ${{ secrets.AUTOPILOT_TOKEN != '' }}
+    permissions:
+      contents: read
+      pull-requests: write # dry-run comments before the bot app exists
+    steps:
+      - uses: actions/checkout@v7
+
+      # Merges must come from the bot app (or the AUTOPILOT_TOKEN stand-in): a
+      # merge made with GITHUB_TOKEN doesn't trigger the release pipeline.
+      - name: Require a merge token for live mode
+        if: env.AUTOPILOT_MODE == 'live' && vars.CERBERUS_BOT_APP_ID == '' && env.HAS_AUTOPILOT_TOKEN != 'true'
+        run: |
+          echo "::error::Live mode needs the bot app (CERBERUS_BOT_APP_ID) or an AUTOPILOT_TOKEN secret."
+          exit 1
+
+      - uses: actions/create-github-app-token@v2
+        id: bot
+        if: vars.CERBERUS_BOT_APP_ID != ''
+        with:
+          app-id: ${{ vars.CERBERUS_BOT_APP_ID }}
+          private-key: ${{ secrets.CERBERUS_BOT_PRIVATE_KEY }}
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true # no artifact when nothing needed review
+        with:
+          name: decisions
+          path: ${{ runner.temp }}/autopilot
+
+      - name: Apply hard rules
+        run: node scripts/src/pr-autopilot/index.mjs candidates --out "$RUNNER_TEMP/candidates.json"
+        env:
+          # Bot app, else the AUTOPILOT_TOKEN stand-in (a fine-grained PAT), else
+          # GITHUB_TOKEN (dry run only).
+          GH_TOKEN: ${{ steps.bot.outputs.token || secrets.AUTOPILOT_TOKEN || github.token }}
+
+      - name: Comment, label, approve and merge
+        run: >-
+          node scripts/src/pr-autopilot/index.mjs apply
+          --candidates "$RUNNER_TEMP/candidates.json"
+          --decisions "$RUNNER_TEMP/autopilot/decisions.json"
+        env:
+          # Bot app, else the AUTOPILOT_TOKEN stand-in (a fine-grained PAT), else
+          # GITHUB_TOKEN (dry run only).
+          GH_TOKEN: ${{ steps.bot.outputs.token || secrets.AUTOPILOT_TOKEN || github.token }}
