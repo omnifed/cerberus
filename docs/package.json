@@ -58,7 +58,7 @@
     "eslint": "^10.15.0",
     "eslint-config-next": "16.4.6",
     "eslint-import-resolver-typescript": "^4.4.5",
-    "hast-util-to-jsx-runtime": "2.3.6",
+    "hast-util-to-jsx-runtime": "2.3.7",
     "pagefind": "1.6.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-expressive-code": "^0.44.3",
