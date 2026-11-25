@@ -1,13 +1,16 @@
-import { VStack } from '@/styled-system/jsx'
+import { Descent } from '@/components/descent'
+import { HomeClose } from '@/components/home-close'
 import { HomeHero } from '@/components/home-hero'
 import { SceneMatcher } from '@/components/scenes/scene-matcher'
+import { SiteFooter } from '@/components/site-footer'
 
 export default function Home() {
   return (
     <>
-      <VStack gap="0" minH="100dvh" h="full" justify="center">
-        <HomeHero />
-      </VStack>
+      <HomeHero />
+      <Descent />
+      <HomeClose />
+      <SiteFooter />
 
       <SceneMatcher />
     </>

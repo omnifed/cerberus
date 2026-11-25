@@ -61,8 +61,11 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
         <Script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
 
-      <AppThemeProvider cachedTheme={defaultTheme} cachedMode={defaultColorMode}>
-        <cerberus.body minW="48rem" h="full" suppressHydrationWarning>
+      <AppThemeProvider
+        cachedTheme={defaultTheme}
+        cachedMode={defaultColorMode}
+      >
+        <cerberus.body h="full" suppressHydrationWarning>
           <CerberusConfig>
             <GlobalNav />
 

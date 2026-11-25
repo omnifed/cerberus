@@ -1,153 +1,140 @@
-import { CheckmarkFilled } from '@carbon/icons-react'
-import { Tag, Text } from '@cerberus-design/react'
+import { ArrowRight, CheckmarkFilled } from '@carbon/icons-react'
+import { Tag } from '@cerberus-design/react'
 import Link from 'next/link'
 import { css, cx } from 'styled-system/css'
-import { HStack, Stack } from 'styled-system/jsx'
-import { animateIn, grid, gridItem, vstack } from 'styled-system/patterns'
+import { HStack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
 import { HomeHeroText } from './home-hero-text'
-import { CerberusLogo } from '../logos/cerberus'
+import { TripShowcase } from './trip-showcase'
+
+const intro = css({
+  _motionSafe: {
+    animationName: 'slideFromBottom, fadeIn',
+    animationDuration: 'slowest',
+    animationFillMode: 'backwards',
+    animationTimingFunction: 'out',
+  },
+})
 
 export function HomeHero() {
   return (
     <div
-      className={grid({
-        columns: 1,
-        gap: 4,
-        w: 'full',
+      className={css({
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1fr)',
         lg: {
-          columns: 2,
-          gap: '3xl',
-          gridTemplateColumns: '1.7fr 1fr',
-          px: '16',
+          gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 3fr)',
+          minH: 'calc(100dvh - var(--nav-height))',
         },
       })}
     >
       <div
-        className={gridItem({
-          bgColor: 'page.surface.100',
-          mx: '2',
-          px: '6',
-          py: 8,
-          rounded: 'lg',
-          zIndex: 'sticky',
-          md: {
-            px: '8',
-            py: 8,
+        className={css({
+          bgColor: 'page.bg.initial',
+          display: 'flex',
+          alignItems: 'center',
+          px: 'md',
+          py: 'xl',
+          md: { px: 'xl', py: '3xl' },
+          lg: {
+            alignItems: 'flex-start',
+            boxShadow: 'lg',
+            px: '2xl',
+            py: '0',
+            zIndex: 'decorator',
           },
         })}
       >
         <div
-          className={vstack({
-            alignItems: 'flex-start',
-            gap: 4,
+          className={css({
+            display: 'flex',
+            flexDir: 'column',
+            gap: 'md',
+            maxW: '33rem',
+            md: { gap: 'lg' },
+            lg: {
+              justifyContent: 'center',
+              minH: 'calc(100dvh - var(--nav-height))',
+              pos: 'sticky',
+              py: '2xl',
+              top: 'var(--nav-height)',
+            },
           })}
         >
-          <HStack mt="3">
-            <Tag gradient="thanatos-light" shape="square">
-              <CheckmarkFilled />
-              ARIA AA Compliant
-            </Tag>
-            <Tag gradient="amphiaraus-light" shape="square">
-              Panda CSS
-            </Tag>
-          </HStack>
-
-          <div
-            className={css({
-              mt: 4,
-            })}
-          >
-            <h1
-              className={css({
-                animationName: 'slideFromBottom, fadeIn',
-                animationDuration: 'slowest',
-                animationDelay: '400ms',
-                animationFillMode: 'forwards',
-                color: 'page.text.100',
-                opacity: 0,
-                textStyle: 'display-sm',
-                textWrap: 'pretty',
-                lg: {
-                  pb: 4,
-                  textStyle: 'display-lg',
-                },
-              })}
-            >
-              Cerberus <HomeHeroText />
-            </h1>
-
-            <Stack direction="column" gap="sm" w="full">
-              <Text
-                as="h2"
-                animationName="slideFromBottom, fadeIn"
-                animationDuration="slowest"
-                animationDelay="600ms"
-                animationFillMode="forwards"
-                maxW="44ch"
-                opacity="0"
-                textStyle="heading-md"
-              >
-                Improving React development for humans and agents.
-              </Text>
-
-              <Text
-                animationName="slideFromBottom, fadeIn"
-                animationDuration="slowest"
-                animationDelay="600ms"
-                animationFillMode="forwards"
-                maxW="60ch"
-                opacity="0"
-                textStyle="body-lg"
-              >
-                An infra-level UI platform to create cohesion and consistency so teams
-                and agents can build faster, together.
-              </Text>
-            </Stack>
+          <div className={intro}>
+            <HStack gap="md" flexWrap="wrap">
+              <Tag palette="success" shape="square" usage="filled">
+                <CheckmarkFilled aria-hidden />
+                ARIA AA Compliant
+              </Tag>
+              <Tag palette="page" shape="square" usage="filled">
+                Panda CSS
+              </Tag>
+            </HStack>
           </div>
 
           <div
-            className={animateIn({
-              delay: '1.2s',
-              pt: 10,
-              lg: {
-                pt: 8,
-              },
-            })}
+            className={css({ display: 'flex', flexDir: 'column', gap: 'xs' })}
           >
+            <h1
+              className={cx(
+                intro,
+                css({
+                  color: 'page.text.initial',
+                  textStyle: 'display-sm',
+                  textWrap: 'balance',
+                  md: { textStyle: 'display-md' },
+                }),
+              )}
+            >
+              Cerberus <HomeHeroText />
+            </h1>
+            <p
+              className={cx(
+                intro,
+                css({
+                  color: 'page.text.initial',
+                  textStyle: 'heading-2xs',
+                  animationDelay: '80ms',
+                }),
+              )}
+            >
+              Improving React development for humans and agents.
+            </p>
+          </div>
+
+          <p
+            className={cx(
+              intro,
+              css({
+                animationDelay: '160ms',
+                color: 'page.text.200',
+                maxW: '46ch',
+                textStyle: 'body-lg',
+                textWrap: 'pretty',
+              }),
+            )}
+          >
+            An infra-level UI platform to create cohesion and consistency so
+            teams and agents can build faster, together.
+          </p>
+
+          <div className={cx(intro, css({ animationDelay: '240ms' }))}>
             <Link
               className={cx(
-                css({
-                  lg: {
-                    w: '13rem',
-                  },
-                }),
-                button(),
+                button({ shape: 'sharp' }),
+                css({ gap: 'sm', minW: '11rem' }),
               )}
               href="/docs/get-started/get-started"
             >
               Get Started
+              <ArrowRight aria-hidden />
             </Link>
           </div>
         </div>
       </div>
 
-      <div
-        className={gridItem({
-          zIndex: 'decorator',
-        })}
-      >
-        <span
-          className={css({
-            display: 'block',
-            mt: 8,
-            mx: 'auto',
-            maxWidth: '25rem',
-          })}
-        >
-          <CerberusLogo />
-        </span>
-      </div>
+      <TripShowcase />
     </div>
   )
 }

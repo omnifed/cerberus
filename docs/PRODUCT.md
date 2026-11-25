@@ -39,6 +39,7 @@ Cerberus is an infrastructure-level UI platform for React 19: components on Ark 
 
 ## Brand Commitments
 
+- Maintained by Omnifederal, LLC. The footer carries the standard copyright line and the tagline "Built by demons of the Underworld".
 - The naming comes from Greek mythology and the underworld (Cerberus, Charon, Hades, Acheron, Styx, Elysium, Oceanus, Thanatos). It runs through themes, gradients and demo content.
 - Hero copy in use: "Cerberus UI Platform", "Improving React development for humans and agents.", "An infra-level UI platform to create cohesion and consistency so teams and agents can build faster, together."
 
@@ -60,4 +61,6 @@ Cerberus is an infrastructure-level UI platform for React 19: components on Ark 
 
 ## Accessibility & Inclusion
 
-The site must meet WCAG 2.x AA, the same standard it advertises. Respect `prefers-reduced-motion`.
+- Cerberus is used mainly for US military software and is Section 508 compliant.
+- Its WCAG AA conformance comes from Ark UI's accessible, WAI-ARIA-patterned primitives.
+- The site itself must meet WCAG 2.x AA and Section 508, the same standards it advertises. Respect `prefers-reduced-motion`.

@@ -1,6 +1,7 @@
 'use client'
 
 import { useThemeContext } from '@cerberus-design/react'
+import { useSyncExternalStore } from 'react'
 import AcheronBackground from './acheron'
 import AcheronDayBackground from './acheron-day'
 import CerberusBackground from './cerberus'
@@ -12,8 +13,11 @@ import OceanusDayBackground from './oceanus-day'
 
 export function SceneMatcher() {
   const { theme, mode } = useThemeContext()
+  // The server can't read the theme cookies, and a WebGL scene can't draw
+  // before hydration anyway, so render nothing until the client takes over.
+  const hydrated = useSyncExternalStore(noopSubscribe, isClient, isServer)
 
-  if (mode === 'system') return null
+  if (!hydrated || mode === 'system') return null
 
   if (mode === 'light') {
     switch (theme) {
@@ -43,3 +47,7 @@ export function SceneMatcher() {
       return null
   }
 }
+
+const noopSubscribe = () => () => {}
+const isClient = () => true
+const isServer = () => false

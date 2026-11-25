@@ -11,6 +11,7 @@ export default async function DocsLayout(props: PropsWithChildren<object>) {
       alignItems="flex-start"
       gap="0"
       h="calc(100dvh - var(--nav-height))"
+      minW="48rem"
       overflow="hidden"
       pt="md"
     >

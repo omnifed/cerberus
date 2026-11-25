@@ -11,11 +11,15 @@ import {
 import { AnimatingMoonIcon } from '../icons/animating-moon'
 import { AnimatingSunIcon } from '../icons/animating-sun'
 import { AnimatingSystemIcon } from '../icons/animating-system'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useSyncExternalStore } from 'react'
 
 export function ModeMenu() {
   const htmlRef = useRef<HTMLElement | null>(null)
-  const { mode, updateMode } = useThemeContext()
+  const { mode: liveMode, updateMode } = useThemeContext()
+  // The server can't read the mode cookie, so the first client render matches
+  // the server's default and the real icon swaps in after hydration.
+  const hydrated = useSyncExternalStore(noopSubscribe, isClient, isServer)
+  const mode: ColorModes = hydrated ? liveMode : 'light'
 
   const modeClasses: ColorModes[] = ['light', 'dark', 'system']
   const ariaLabel = `Switch to ${mode} mode`
@@ -43,15 +47,15 @@ export function ModeMenu() {
 
       <Menu.ContentGroup>
         <Menu.Item cursor="pointer" value="light">
-          <MatchModeContent mode="light" />
+          <MatchModeContent current={mode} mode="light" />
         </Menu.Item>
 
         <Menu.Item cursor="pointer" value="dark">
-          <MatchModeContent mode="dark" />
+          <MatchModeContent current={mode} mode="dark" />
         </Menu.Item>
 
         <Menu.Item cursor="pointer" value="system">
-          <MatchModeContent mode="system" />
+          <MatchModeContent current={mode} mode="system" />
         </Menu.Item>
       </Menu.ContentGroup>
     </Menu>
@@ -71,8 +75,8 @@ function MatchModeIcon(props: { mode: ColorModes }) {
   }
 }
 
-function MatchModeContent(props: { mode: ColorModes }) {
-  const { mode } = useThemeContext()
+function MatchModeContent(props: { mode: ColorModes; current: ColorModes }) {
+  const mode = props.current
   return (
     <>
       <Box
@@ -103,3 +107,7 @@ const modeLabels: Record<ColorModes, string> = {
   dark: 'Night',
   system: 'Preview',
 }
+
+const noopSubscribe = () => () => {}
+const isClient = () => true
+const isServer = () => false

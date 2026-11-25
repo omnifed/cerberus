@@ -9,7 +9,7 @@ import {
   useThemeContext,
 } from '@cerberus-design/react'
 import { RawThemes } from '@cerberus/tokens'
-import { type ElementType } from 'react'
+import { useSyncExternalStore, type ElementType } from 'react'
 import { type ThemeName } from 'styled-system/themes'
 import { DogIcon } from '../icons/dog'
 import { FireIcon } from '../icons/fire'
@@ -30,6 +30,10 @@ const icons: Record<RawThemes, ElementType> = {
 
 export function ThemeMenu() {
   const { theme, updateTheme } = useThemeContext()
+  // The server can't read the theme cookie, so the first client render matches
+  // the server's default and the real theme swaps in after hydration.
+  const hydrated = useSyncExternalStore(noopSubscribe, isClient, isServer)
+  const shownTheme: RawThemes = hydrated ? theme : 'cerberus'
 
   const handleUpdateTheme = async (details: { value: string }) => {
     const newTheme = details.value as ThemeName
@@ -40,20 +44,30 @@ export function ThemeMenu() {
     <Menu onSelect={handleUpdateTheme}>
       <Menu.Trigger asChild>
         <Button
+          aria-label={`Theme: ${shownTheme}`}
           bgColor="page.bg.100"
           border="1px solid"
           borderColor="page.border.initial"
           color="page.text.initial"
           fontWeight={500}
-          h="2.275rem"
+          h="2.5rem"
+          px="sm"
           rounded="sm"
           textStyle="label-sm"
           textTransform="capitalize"
+          css={{
+            '& [data-theme-label]': { display: 'none' },
+          }}
+          sm={{
+            minW: '7.25rem',
+            px: 'md',
+            '& [data-theme-label]': { display: 'inline' },
+          }}
           _hover={{
             bgColor: 'page.bg.200',
           }}
         >
-          <MatchThemeContent theme={theme} />
+          <MatchThemeContent theme={shownTheme} />
         </Button>
       </Menu.Trigger>
 
@@ -78,8 +92,9 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
   const Icon = icons[theme]
   return (
     <>
-      <Icon suppressHydrationWarning />
+      <Icon aria-hidden suppressHydrationWarning />
       <Text
+        data-theme-label
         display="inline"
         ps="sm"
         textStyle="body-sm"
@@ -90,3 +105,7 @@ function MatchThemeContent({ theme }: MatchThemeContentProps) {
     </>
   )
 }
+
+const noopSubscribe = () => () => {}
+const isClient = () => true
+const isServer = () => false

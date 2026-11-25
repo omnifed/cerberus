@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T22:34:27.207762+00:00",
+  "title": "Design System: Cerberus Docs",
+  "extensions": {
+    "colorMeta": {
+      "realm-cerberus-violet": {
+        "role": "primary",
+        "displayName": "Cerberus Violet",
+        "canonical": "Cerberus brand.60 / action.bg.initial",
+        "tonalRamp": [
+          "#130024",
+          "#260048",
+          "#39006d",
+          "#4c0091",
+          "#5f00b5",
+          "#7f33c4",
+          "#bb93e1",
+          "#dfccf0"
+        ]
+      },
+      "realm-acheron-gold": {
+        "role": "primary",
+        "displayName": "Acheron Gold",
+        "canonical": "Acheron brand.60 (scoped via data-panda-theme=acheron)"
+      },
+      "realm-elysium-teal": {
+        "role": "primary",
+        "displayName": "Elysium Teal",
+        "canonical": "Elysium brand.60 (scoped via data-panda-theme=elysium)"
+      },
+      "realm-oceanus-blue": {
+        "role": "primary",
+        "displayName": "Oceanus Blue",
+        "canonical": "Oceanus brand.60 (scoped via data-panda-theme=oceanus)",
+        "tonalRamp": ["#001829", "#002f51", "#00477a", "#005ea2", "#0076cb"]
+      },
+      "action-hover-violet": {
+        "role": "primary",
+        "displayName": "Hover Violet",
+        "canonical": "action.bg.hover"
+      },
+      "action-edge-lilac": {
+        "role": "primary",
+        "displayName": "Lilac Edge",
+        "canonical": "action.border.initial (dark)"
+      },
+      "action-link-hover-lilac": {
+        "role": "primary",
+        "displayName": "Pale Lilac",
+        "canonical": "action.navigation.hover (dark)"
+      },
+      "charon-gradient-start": {
+        "role": "secondary",
+        "displayName": "Charon Gradient Start",
+        "canonical": "gradient.charon-dark.start"
+      },
+      "charon-gradient-end": {
+        "role": "secondary",
+        "displayName": "Charon Gradient End",
+        "canonical": "gradient.charon-dark.end"
+      },
+      "success-green": {
+        "role": "secondary",
+        "displayName": "Success Green",
+        "canonical": "success.bg.initial (dark)"
+      },
+      "underworld-night": {
+        "role": "neutral",
+        "displayName": "Underworld Night",
+        "canonical": "page.bg.initial (dark)"
+      },
+      "underworld-floor": {
+        "role": "neutral",
+        "displayName": "Underworld Floor",
+        "canonical": "page.surface.initial (dark)"
+      },
+      "underworld-surface": {
+        "role": "neutral",
+        "displayName": "Underworld Surface",
+        "canonical": "page.surface.100 (dark)"
+      },
+      "underworld-border": {
+        "role": "neutral",
+        "displayName": "Underworld Border",
+        "canonical": "page.border.initial (dark)"
+      },
+      "underworld-border-strong": {
+        "role": "neutral",
+        "displayName": "Strong Border",
+        "canonical": "page.border.200 (dark)"
+      },
+      "bone-text": {
+        "role": "neutral",
+        "displayName": "Bone Text",
+        "canonical": "page.text.initial (dark)"
+      },
+      "bone-text-secondary": {
+        "role": "neutral",
+        "displayName": "Bone Secondary",
+        "canonical": "page.text.200 (dark)"
+      },
+      "bone-text-muted": {
+        "role": "neutral",
+        "displayName": "Bone Muted",
+        "canonical": "page.text.100 (dark)"
+      },
+      "daylight-bg": {
+        "role": "neutral",
+        "displayName": "Daylight",
+        "canonical": "page.bg.initial (light)"
+      },
+      "daylight-text": {
+        "role": "neutral",
+        "displayName": "Daylight Text",
+        "canonical": "page.text.initial (light)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "display-md: the H1 at md and up."
+      },
+      "display-sm": {
+        "displayName": "Display Small",
+        "purpose": "display-sm: phone H1, Descent headline, close band, page titles."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "heading-2xl: realm headings and far shore at md+."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "heading-xl: realm headings on phones."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "heading-xs: plane titles, gauge names, numeric readouts in mono."
+      },
+      "card-title": {
+        "displayName": "Card Title",
+        "purpose": "heading-2xs: showcase card titles, hero sub-line, captions."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "body-lg: all narrative paragraphs, 46-60ch."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "body-sm: definition answers, footer links, code."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "label-sm: nav, version, captions, gauge depth and packages."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "fontFamily mono over body-sm/label-sm: code, packages, install commands, depth numbers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sm",
+        "value": "0px 2px 16px 0px hsla(274, 95%, 8%, 0.1)",
+        "purpose": "Nav bar and resting showcase cards."
+      },
+      {
+        "name": "md",
+        "value": "0px 0px 20px 4px hsla(274, 95%, 8%, 0.1)",
+        "purpose": "The live showcase card."
+      },
+      {
+        "name": "lg",
+        "value": "0px 0px 20px 8px hsla(274, 95%, 8%, 0.25)",
+        "purpose": "Sticky hero copy column and receding realm planes."
+      },
+      {
+        "name": "xl",
+        "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "purpose": "The front realm plane."
+      }
+    ],
+    "motion": [
+      {
+        "name": "normal",
+        "value": "200ms",
+        "purpose": "Gauge color and node transitions."
+      },
+      {
+        "name": "slow + out",
+        "value": "300ms cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Showcase card live-state border and shadow."
+      },
+      {
+        "name": "slowest + out",
+        "value": "500ms cubic-bezier(0, 0, 0.2, 1)",
+        "purpose": "Hero intro slideFromBottom + fadeIn, staggered 80ms, motion-safe only."
+      },
+      {
+        "name": "descend",
+        "value": "from opacity 0.4, perspective(1600px) rotateX(32deg) translateY(3rem) scale(0.94) to none; animation-timeline view(), range entry 0% cover 30%",
+        "purpose": "Front realm plane rises from depth on scroll where supported and motion-safe."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "md",
+        "value": "48rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      },
+      {
+        "name": "xl",
+        "value": "80rem"
+      },
+      {
+        "name": "2xl",
+        "value": "96rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (sharp)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled action-palette button with the sharp Cerberus silhouette; marketing calls to action.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get Started <svg aria-hidden=\"true\" width=\"20\" height=\"20\" viewBox=\"0 0 32 32\" fill=\"currentColor\"><path d=\"M18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z\"/></svg></a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-width:11rem;height:2.75rem;padding:0 1.25rem;background:var(--cerberus-colors-action-bg-initial);color:var(--cerberus-colors-action-text-initial);font-family:Poppins,sans-serif;font-weight:600;text-decoration:none;border:1px solid transparent;border-radius:0 .5rem 0 .5rem;transition:background-color 150ms ease-in-out}.ds-btn-primary:hover{background:var(--cerberus-colors-action-bg-hover)}.ds-btn-primary:focus-visible{outline:3px solid var(--cerberus-colors-action-border-focus);outline-offset:2px}"
+    },
+    {
+      "name": "Showcase Card",
+      "kind": "card",
+      "refersTo": "showcase-card",
+      "description": "Hairline card in the living showcase; the live card gains the action edge and md shadow.",
+      "html": "<div class=\"ds-card\" data-live=\"true\"><p class=\"ds-card-title\">Charon’s ferry pickup dates</p><p class=\"ds-card-desc\">Add your info here and experience the capability of the underworld.</p></div>",
+      "css": ".ds-card{display:flex;flex-direction:column;gap:.125rem;padding:1.5rem;background:var(--cerberus-colors-page-surface-100);border:1px solid var(--cerberus-colors-page-border-initial);border-radius:.375rem;box-shadow:0px 2px 16px 0px hsla(274,95%,8%,.1);transition:border-color 300ms cubic-bezier(0,0,.2,1),box-shadow 300ms cubic-bezier(0,0,.2,1)}.ds-card[data-live=true],.ds-card:hover{border-color:var(--cerberus-colors-action-border-initial);box-shadow:0px 0px 20px 4px hsla(274,95%,8%,.1)}.ds-card-title{margin:0;color:var(--cerberus-colors-page-text-initial);font:600 .875rem/1.25 Poppins,sans-serif}.ds-card-desc{margin:0;color:var(--cerberus-colors-page-text-200);font:400 .75rem/1.2 Poppins,sans-serif;letter-spacing:.02rem}"
+    },
+    {
+      "name": "Realm Plane Stack",
+      "kind": "custom",
+      "refersTo": "realm-plane-front",
+      "description": "Front plane with the bright action edge over translucent planes receding in perspective.",
+      "html": "<div class=\"ds-planes\"><div class=\"ds-plane-back\" style=\"transform:perspective(1400px) translateY(2.25rem) rotateX(18deg) scale(.94);opacity:.9\"></div><div class=\"ds-plane-front\"><p class=\"ds-plane-title\">Elysium · Design <span>Figma library · @cerberus/figma</span></p></div></div>",
+      "css": ".ds-planes{position:relative;isolation:isolate;margin-bottom:5rem}.ds-plane-back{position:absolute;inset-inline:0;bottom:0;height:70%;z-index:-1;border-radius:.75rem;border:1.5px solid var(--cerberus-colors-action-border-initial);background:color-mix(in srgb,var(--cerberus-colors-action-bg-initial) 12%,transparent);transform-origin:center top}.ds-plane-front{position:relative;padding:2rem;border-radius:.75rem;background:var(--cerberus-colors-page-surface-100);border:1.5px solid var(--cerberus-colors-action-border-initial);box-shadow:0 20px 25px -5px rgb(0 0 0/.1),0 8px 10px -6px rgb(0 0 0/.1)}.ds-plane-title{margin:0;color:var(--cerberus-colors-action-text-200);font:600 1rem/1.25 Poppins,sans-serif}.ds-plane-title span{margin-left:.5rem;color:var(--cerberus-colors-page-text-100);font:400 .75rem/1.2 Recursive,monospace}"
+    },
+    {
+      "name": "Depth Gauge",
+      "kind": "nav",
+      "refersTo": "depth-gauge-node",
+      "description": "Vertical realm map: ringed nodes on a rail, current stop filled with a halo.",
+      "html": "<ol class=\"ds-gauge\"><li><a href=\"#\" aria-current=\"location\"><span class=\"ds-node\" data-current=\"true\"></span><span><span class=\"ds-depth\">Depth 01</span><b>Elysium</b></span></a></li><li><a href=\"#\"><span class=\"ds-node\"></span><span><span class=\"ds-depth\">Depth 02</span><b>Oceanus</b></span></a></li></ol>",
+      "css": ".ds-gauge{list-style:none;margin:0;padding:0}.ds-gauge li{position:relative}.ds-gauge li:not(:last-child)::before{content:\"\";position:absolute;left:.4375rem;top:1.25rem;bottom:-.25rem;width:2px;background:var(--cerberus-colors-action-bg-initial)}.ds-gauge a{display:flex;gap:1rem;padding-bottom:2rem;color:var(--cerberus-colors-page-text-100);text-decoration:none;font-family:Poppins,sans-serif;transition:color 200ms}.ds-gauge a:hover,.ds-gauge a[aria-current=location]{color:var(--cerberus-colors-page-text-initial)}.ds-gauge a:focus-visible{outline:3px solid var(--cerberus-colors-action-border-focus);outline-offset:2px;border-radius:.25rem}.ds-gauge b{display:block;font-weight:600}.ds-node{position:relative;z-index:1;flex-shrink:0;width:1rem;height:1rem;margin-top:.125rem;border-radius:9999px;border:2px solid var(--cerberus-colors-action-bg-initial);background:var(--cerberus-colors-page-bg-initial);transition:background-color 200ms,box-shadow 200ms}.ds-node[data-current=true]{background:var(--cerberus-colors-action-bg-initial);box-shadow:0 0 0 4px var(--cerberus-colors-action-ghost-hover)}.ds-depth{display:block;font:400 .75rem/1.2 Recursive,monospace;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Install Line",
+      "kind": "input",
+      "refersTo": "install-line",
+      "description": "Copyable install command in a night well.",
+      "html": "<div class=\"ds-install\"><code>npm install @cerberus-design/react</code><button aria-label=\"Copy\" class=\"ds-copy\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 32 32\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M28 10v18H10V10h18m0-2H10a2 2 0 0 0-2 2v18a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Z\"/><path d=\"M4 18H2V4a2 2 0 0 1 2-2h14v2H4Z\"/></svg></button></div>",
+      "css": ".ds-install{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.25rem .25rem .25rem 1rem;background:var(--cerberus-colors-page-bg-initial);border:1px solid var(--cerberus-colors-page-border-initial);border-radius:.375rem}.ds-install code{color:var(--cerberus-colors-page-text-initial);font:400 .8125rem/1.25 Recursive,monospace;white-space:nowrap;overflow-x:auto}.ds-copy{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border:0;border-radius:.25rem;background:transparent;color:var(--cerberus-colors-action-text-200);cursor:pointer}.ds-copy:hover{background:var(--cerberus-colors-action-ghost-hover)}.ds-copy:focus-visible{outline:3px solid var(--cerberus-colors-action-border-focus);outline-offset:2px}"
+    },
+    {
+      "name": "Global Nav",
+      "kind": "nav",
+      "refersTo": "global-nav",
+      "description": "Sticky surface bar with label-sm links; hover and current use navigation tokens.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Docs</a><a href=\"#\">Blog</a><span class=\"ds-ver\">v2.0.0</span></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.5rem;height:4.75rem;padding:0 1.5rem;background:var(--cerberus-colors-page-surface-100);box-shadow:0px 2px 16px 0px hsla(274,95%,8%,.1);font:400 .75rem/1.2 Poppins,sans-serif;letter-spacing:.02rem}.ds-nav a{color:var(--cerberus-colors-page-text-initial);text-decoration:none;border-radius:.125rem;transition:color 150ms ease-in-out}.ds-nav a:hover{color:var(--cerberus-colors-action-navigation-hover)}.ds-nav a[aria-current=page]{color:var(--cerberus-colors-action-navigation-visited)}.ds-nav a:focus-visible{outline:3px solid var(--cerberus-colors-action-border-focus);outline-offset:2px}.ds-ver{margin-left:auto;color:var(--cerberus-colors-page-text-200);font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Proof Tag",
+      "kind": "chip",
+      "description": "Square filled Tag; success palette only for the accessibility claim.",
+      "html": "<span class=\"ds-tag\">ARIA AA Compliant</span>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;gap:.25rem;padding:.25rem .5rem;border-radius:.375rem;background:var(--cerberus-colors-success-bg-initial);color:var(--cerberus-colors-success-text-inverse);font:600 .75rem/1.2 Poppins,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Descent",
+    "overview": "The docs site is the Cerberus design system wearing its own clothes. Every color, type style, radius and shadow is a Panda semantic token from `@cerberus/panda-preset`, so the site has no palette of its own: it has four. Cerberus, Acheron, Elysium and Oceanus each ship light and dark modes, and the visitor's active theme paints the whole page on near-black (or white) surfaces. The site's own contribution is how those themes are staged: as realms stacked in depth, read top to bottom from design down to the agents at the gate.\n\nDensity is editorial, not dashboard. Wide 90rem frames, generous 4xl section rhythm, one idea per realm. Proof is the real thing: the hero is a living showcase of real Cerberus components running one scripted ferry trip, and each realm's front plane holds a working artifact (a token table, a live Data Grid, an install line). Depth is literal: translucent planes recede in perspective behind the front plane, and a vertical gauge tracks how far down the visitor has gone.\n\nThe hex values below are the **Cerberus theme** reference values (dark mode unless named \"daylight\"). They are what the tokens resolve to in the base theme, recorded so tools can render swatches. Code never uses them: it uses the semantic token names given with each color, which resolve per theme and mode.",
+    "keyCharacteristics": [
+      "Four themes, one token vocabulary: `page.*`, `action.*`, status palettes and `gradient.*` tokens resolve per theme under `data-panda-theme` and the `dark` / `light` / `system` classes.",
+      "Realms are theme-scoped subtrees: a section sets `data-panda-theme=\"<realm>\"` and its `action.*` tokens become that realm's brand hue.",
+      "Depth over grids: receding planes and a ringed gauge replace rows of equal cards.",
+      "Living showcase: real, controlled components on a pausable timeline, never screenshots.",
+      "Poppins for everything people read; Recursive mono only for code, package names and numeric readouts."
+    ],
+    "rules": [
+      {
+        "name": "The Token-Only Rule",
+        "body": "Color is written as a semantic token name, never a hex, in every component. The hexes here are swatch references for the Cerberus theme; the same token is gold, teal or blue in another theme.",
+        "section": "colors"
+      },
+      {
+        "name": "The Realm Scope Rule",
+        "body": "A realm hue appears by scoping, not by naming. To color something Acheron gold, wrap it in `data-panda-theme=\"acheron\"` and use `action.*`; never reach for another theme's hue directly. Cerberus needs `staticCss.themes: ['cerberus']` to be scopable inside another active theme.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Actor Rule",
+        "body": "Within any one theme scope, `action.*` is the only hue that acts. Status palettes signal status; they never decorate.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-for-Code Rule",
+        "body": "Recursive is set with `fontFamily: 'mono'` on top of a Poppins text style (`label-sm`, `body-sm`, `heading-xs`) for package names, install commands, inline code, depth numbers and percentages. The `mono-*` text styles are reserved for numbers in data visualization and are not used for UI copy.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Readout Rule",
+        "body": "Any number that changes or aligns (version, depth, progress percent) gets `fontVariantNumeric: 'tabular-nums'`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Balanced Heading Rule",
+        "body": "Headings use `textWrap: 'balance'`; paragraphs use `textWrap: 'pretty'`.",
+        "section": "typography"
+      },
+      {
+        "name": "The Bright Front Edge Rule",
+        "body": "Only the plane in front gets the bright `action.border.initial` edge at full opacity; everything behind it is translucent. On cards the same edge marks the one live element.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "Showcase cards are hairline-bordered and `shadow.sm` at rest; elevation rises only to mark state (the live card) or depth (the front plane).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** write color as semantic tokens (`page.text.initial`, `action.border.initial`) and type as text styles (`textStyle: 'body-lg'`); the hexes in this file are Cerberus-theme references only.",
+      "**Do** color a realm by scoping a subtree with `data-panda-theme=\"<realm>\"` and using `action.*` inside it.",
+      "**Do** check every surface in all four themes and in light, dark and system modes.",
+      "**Do** show real, controlled Cerberus components, with a pause control on anything that moves on its own and nothing autoplaying under `prefers-reduced-motion`.",
+      "**Do** put motion behind `_motionSafe` and Panda duration and easing tokens (`normal` for color, `slow` with `out` for card state, `slowest` for the hero intro).",
+      "**Do** set code, package names and numeric readouts in Recursive with `fontFamily: 'mono'` over a Poppins text style, numbers with tabular figures.",
+      "**Do** separate bands with a 1px `page.border.initial` hairline and keep content inside the 90rem frame."
+    ],
+    "donts": [
+      "**Don't** hard-code a hex, rgb or pixel value in component styles; use the token, or add one to the preset.",
+      "**Don't** use the `mono-*` text styles for UI copy; they are reserved for numbers in data visualization.",
+      "**Don't** use a status palette (`success`, `warning`, `info`, `danger`) for decoration.",
+      "**Don't** reach for another theme's brand hue by value; scope the subtree instead.",
+      "**Don't** replace a working component with a picture of it.",
+      "**Don't** use v1 forms: `--font-poppins`/`--font-recursive`, `data-color-mode`, `_cerberusTheme`, `shape=\"default\"`."
+    ]
+  }
+}

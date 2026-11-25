@@ -44,6 +44,20 @@ export default createCerberusConfig({
 
   theme: {
     extend: {
+      keyframes: {
+        // The home page's Descent: a realm plane rises from depth to the front.
+        descend: {
+          // Transform only: the plane stays opaque so the realms below it never
+          // show through its content.
+          from: {
+            transform:
+              'perspective(1600px) rotateX(32deg) translateY(3rem) scale(0.94)',
+          },
+          to: {
+            transform: 'none',
+          },
+        },
+      },
       recipes: {
         button: {
           defaultVariants: {
@@ -55,6 +69,9 @@ export default createCerberusConfig({
   },
 
   staticCss: {
+    // Cerberus is the base theme, so it needs its own scoped variant for the
+    // home page's realms to render it inside another active theme.
+    themes: ['cerberus'],
     css: [
       {
         properties: {
