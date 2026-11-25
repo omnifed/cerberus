@@ -11,7 +11,7 @@ packages:
 
 catalogs:
   oxc:
-    oxfmt: ^0.75.0
+    oxfmt: ^0.79.0
   ark:
     '@ark-ui/react': ^5.40.0
   pandacss:
@@ -22,7 +22,7 @@ catalogs:
     '@pandacss/types': ^2.6.0
     '@pandacss/eslint-plugin': ^2.6.0
   jsx:
-    '@carbon/icons-react': ^11.91.0
+    '@carbon/icons-react': ^11.92.0
     react: ^19.3.1
     react-dom: ^19.3.1
     '@types/react': ^19.3.0
@@ -31,7 +31,7 @@ catalogs:
     typescript: ^7.0.2
   types:
     '@types/bun': ^1.4.5
-    '@types/node': ^26.6.3
+    '@types/node': ^26.6.6
 
 allowBuilds:
   '@carbon/icon-helpers': true

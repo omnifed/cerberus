@@ -25,11 +25,11 @@
     "@cerberus-design/react": "workspace:*",
     "@cerberus-design/signals": "workspace:*",
     "@cerberus/tokens": "workspace:*",
-    "gsap": "3.13.0",
+    "gsap": "3.15.1",
     "next": "16.4.6",
     "react": "catalog:jsx",
     "react-dom": "catalog:jsx",
-    "semver": "^7.8.5"
+    "semver": "^7.8.6"
   },
   "devDependencies": {
     "@cerberus/figma": "workspace:*",
