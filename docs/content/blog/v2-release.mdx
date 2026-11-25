@@ -5,7 +5,7 @@ author: caseyBaggz
 title: Cerberus v2 Release
 description: A new engine, a simpler setup, and more ways to customize
 category: release
-version: 2.0
+version: '2.0'
 timeToRead: 6
 tag: Release
 ---
@@ -199,10 +199,7 @@ This adds a new way to customize components.
 </Marquee>
 ```
 
-### `createAbstraction`
-
-React exposes a new `createAbstraction` factory for creating super-powered
-abstractions.
+See [part overrides](/docs/components/composition#part-overrides) for more details.
 
 ### Closable Admonitions
 
@@ -235,8 +232,8 @@ Button adds new shape variants: `hard`, `squared`.
 If you contribute to Cerberus, here's what changed:
 
 1. React components have a generator to bootstrap new Ark APIs.
-2. All abstractions must declare the `use client` directive at the top and use the
-   `createAbstraction` wrapper.
+2. All abstractions must declare the `use client` directive at the top and use
+   `extractParts` to support part overrides.
 3. Abstraction tests expect to render `'Content body'` for assumptions.
 
 See the [contributing guide](/docs/get-started/contributing) for more details.

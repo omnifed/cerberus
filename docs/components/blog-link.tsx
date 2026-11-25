@@ -1,7 +1,9 @@
+'use client'
+
 import { type Post } from '@/.velite'
 import { Box, EmphasizedSlideIn, HStack, VStack } from '@/styled-system/jsx'
 import { ArrowRight } from '@carbon/icons-react'
-import { Show, Tag, Text } from '@cerberus-design/react'
+import { Format, Show, Tag, Text } from '@cerberus-design/react'
 import Link, { LinkProps } from 'next/link'
 import { CerberusLogo } from './logos/cerberus'
 
@@ -9,7 +11,7 @@ interface Props extends Post {
   idx: number
 }
 
-export async function BlogLink(props: Props) {
+export function BlogLink(props: Props) {
   const { idx, slug } = props
 
   const featTitle = {
@@ -42,7 +44,12 @@ export async function BlogLink(props: Props) {
             animationDelay: `${200 * idx}ms`,
           }}
         >
-          <VStack gradient="charon-dark" h="11.187rem" justify="center" w="full">
+          <VStack
+            gradient="charon-dark"
+            h="11.187rem"
+            justify="center"
+            w="full"
+          >
             <HStack>
               <Box w="4rem">
                 <CerberusLogo />
@@ -62,7 +69,7 @@ export async function BlogLink(props: Props) {
           <VStack alignItems="flexStart" paddingBlock="lg" px="md" w="full">
             <HStack justify="space-between">
               <Text color="page.text.100" textStyle="label-sm">
-                {props.date}
+                <Format.RelativeTime value={new Date(props.date)} />
               </Text>
               <Text textStyle="label-sm">{props.timeToRead} min read</Text>
             </HStack>

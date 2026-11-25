@@ -1,127 +1,124 @@
-# Create Doc Component Page
+# Create a Component Docs Page (v2)
 
-This document outlines the steps to create a new component page on the docs website within the `docs` project.
+Every component has one MDX page on the docs site. Follow the rules in the root
+[`AGENTS.md`](../AGENTS.md) and the docs structure in [docs.md](./docs.md).
 
-- This process must follow the [style guide](./style-guide.md) conventions.
-- This process must understand the structure of the docs website by following the [docs](./docs.md) document.
+**For a new component, the generator already created the page and a basic
+demo** (`pnpm gen:component`). Use this guide to finish them.
 
-## Steps
+## Files
 
-1. Navigate to the `docs/app/docs/components/[slug]/content` directory
-2. Create a new file named `untitled.mdx`
-3. Navigate to the `docs/app/docs/components/[slug]/content/items/components.ts` file
-4. Import the new mdx component and frontmatter
-5. Create a new meta object and include it in the `items` export in alphabetical order.
+| File                                              | Purpose                                  |
+| ------------------------------------------------- | ---------------------------------------- |
+| `docs/content/docs/components/<name>.mdx`         | The page                                 |
+| `docs/examples/components/<name>/<demo>.demo.tsx` | One file per example                     |
+| `docs/examples/components/<name>/index.tsx`       | Registers every demo in `DEMOS`          |
+| `docs/generated/api-specs/<name>.*`               | The API table. **Generated, don't edit** |
 
-## `docs/app/docs/components/[slug]/content/untitled.mdx`
+Pages are added to the site and its navigation automatically from the file and
+its frontmatter. There is no list to update.
 
-This file contains the documentation for the Untitled component. It contains the frontmatter, examples, and API details.
+## Frontmatter
 
-Use this template to provide the contents of the file. Fill in the missing parts as needed:
+```yaml
+---
+title: Accordion
+description: A way to show and hide information by sections.
+npm: '@cerberus-design/react'
+source: 'components/accordion' # path under packages/react/src
+recipe: 'slots/accordion.ts' # path under packages/panda-preset/src/recipes
+ark: 'accordion' # Ark UI slug, only for Ark-based components
+group: Components # nav group: Components, Layout, Utilities or Concepts
+order: 1 # optional: position in its group
+since: '2.0.0' # optional: marks the whole page as new
+---
+```
+
+`title` and `group` are required. The full schema is the `docs` collection in
+`docs/velite.config.ts`.
+
+## Page flow
+
+Use these sections, in this order:
+
+1. **Import**: the single object import.
+2. **Usage**: what the component is for, and the `basic` demo.
+3. **Variant examples**: one `##` section per variant or feature, each with a
+   short description and a demo.
+4. **Customizing**: style props, child part overrides, and `unstyled`.
+5. **API**: `<ComponentApi spec="<name>" />`. It renders the generated spec, so
+   improve the API text in `tools/codegen/configs/<name>.ts`, not here.
 
 ````mdx
----
-title: Untitled Component
-description: A short description describing the Untitled component.
-npm: '@cerberus-design/react'
-source: 'components/untitled'
-recipe: 'slots/untitled.ts'
-ark: 'untitled-ark-component-slug'
----
+## Import
 
-import CodePreview from '@/app/components/CodePreview'
-import { NoteAdmonition } from '@/app/components/Admonition'
-import { StaticPreview } from '../components/untitled/static'
-
-```ts
-import { UntitledComponent } from '@cerberus/react'
+```tsx
+import { Accordion } from '@cerberus/react'
 ```
 ````
 
 ## Usage
 
-A long description of the Untitled component.
+Use `Accordion` with `Accordion.ItemGroup` for an accessible, collapsible list out of the box.
 
-<CodePreview preview={<StaticPreview />}>
+<Example path="components/accordion" demo="basic" />
 
-```tsx
-...the example code used in the static.tsx file
-```
+## Customizing
 
-</CodePreview>
+Customize `Accordion` using style props, direct JSX child part overrides inside `Accordion.ItemGroup`, or low-level primitives.
 
-## TODO: Different Variant Examples Go here
+<Example path="components/accordion" demo="custom" />
 
-## Primitives
+### Unstyled <FeatureBadge since="2.0.0" />
 
-You can utilize the primitive components or the `css` prop to customize the untitled component.
+Add `unstyled` to `Accordion` to strip Cerberus recipe classes across the entire tree, or pass `unstyled` to a single primitive part.
 
-| Component           | Description                                   |
-| ------------------- | --------------------------------------------- |
-| ThePrimitiveElement | A short description of the primitive element. |
-
-<CodePreview preview={<CustomPreview />}>
-
-```tsx
-...the custom example code used in static.tsx
-```
-
-</CodePreview>
+<Example path="components/accordion" demo="unstyled" />
 
 ## API
 
-### Untitled
+<ComponentApi spec="accordion" />
+```
 
-The `Untitled` component is an abstraction of the primitives and accepts the following props:
+Mark anything new with `<FeatureBadge since="<version>" />` next to its heading.
 
-| Name | Default | Description                    |
-| ---- | ------- | ------------------------------ |
-| size | `lg`    | The size of the untitled item. |
+## Demos
 
-The Untitled is an abstraction of the [Root component](https://ark-ui.com/react/docs/components/accordion#api-reference).
+Each demo is a named export in its own `*.demo.tsx` file:
 
-### Add other exposed non-primitive APIs here
+```tsx
+import { Accordion } from '@cerberus-design/react'
 
-### Parts
+export function BasicDemo() {
+  return (
+    <Accordion defaultValue={['one']}>
+      <Accordion.ItemGroup heading="What is Cerberus?" value="one">
+        A design system.
+      </Accordion.ItemGroup>
+    </Accordion>
+  )
+}
+```
 
-The `UntitledParts` API is an Object containing the full family of components.
+Then register it in the folder's `index.tsx`. The key is the `demo` name used in
+the MDX:
 
-<NoteAdmonition description="It is best to only use the UntitledParts if you are building a custom solution. Importing Object based components will ship every property it includes into your bundle, regardless if you use it or not." />
+```tsx
+import { BasicDemo } from './basic.demo'
 
-| Name | Description                                                        |
-| ---- | ------------------------------------------------------------------ |
-| Root | The `UntitledRoot` component which is the Provider for the family. |
+export const DEMOS = {
+  basic: { preview: <BasicDemo /> },
+}
+```
 
-````
+- Import components from `@cerberus-design/react`, and Panda helpers from
+  `styled-system/*` (e.g. `import { Box } from 'styled-system/jsx'`).
+- A demo that passes primitives as children to an abstraction must start with
+  `'use client'`, or the part overrides may not be picked up.
+- Keep demo data in a `data.json` next to the demos.
 
-## `docs/components/[slug]/content/items/components.ts`
+## Verify
 
-This file exports the metadata used to render the page in the docs. Each object should be listed in alphabetical order.
-
-Use this template to provide the contents of the file:
-
-```ts
-import UntitledComponent, { frontmatter as untitledComponentFrontmatter } from ../untitled.mdx'
-
-export const items = [
-  {
-    id: 'UUID-1',
-    label: 'Untitled',
-    slug: 'untitled',
-    href: '/docs/components/untitled',
-    frontmatter: untitledComponentFrontmatter,
-    meta: {
-      title: 'Untitled Component in Cerberus Design System',
-      description:
-        'Discover how to use the Untitled component in the Cerberus Design System.',
-    },
-    Content: UntitledComponent,
-  },
-]
-````
-
-## `docs/app/docs/components/[slug]/components/untitled/static.tsx`
-
-This file contains all the examples used in the `untitled.mdx` file. Each example should should be created with the intent to showcase the component's usage.
-
-The examples should follow the project [style-guide](./style-guide.md) and be written in TypeScript.
+Run `pnpm start:docs` and open `/docs/components/<name>`. Very large API pages
+can hang a browser in dev mode. If that happens, check the server-rendered HTML
+with `curl` instead.

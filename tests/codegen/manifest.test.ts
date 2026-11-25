@@ -647,6 +647,21 @@ describe('scaffold', () => {
     expect(config?.content).toContain("from '@ark-ui/react/anatomy'")
   })
 
+  test('starts the abstraction as an extractParts client module', async () => {
+    const plan = await planScaffold('HoverCard')
+    const abstraction = plan.files.find((f) =>
+      f.path.endsWith('components/hover-card/hover-card.tsx'),
+    )
+    expect(abstraction?.content.startsWith("'use client'")).toBe(true)
+    expect(abstraction?.content).toContain(
+      "import { extractParts } from '../../internal/extract-parts'",
+    )
+    expect(abstraction?.content).toContain(
+      'export function HoverCardEl(props: HoverCardProps)',
+    )
+    expect(abstraction?.content).toContain('extractParts(children, PARTS)')
+  })
+
   test('refuses existing components and configs', async () => {
     await expect(planScaffold('accordion')).rejects.toThrow('already exists')
     await expect(planScaffold('DatePicker')).rejects.toThrow('already exists')

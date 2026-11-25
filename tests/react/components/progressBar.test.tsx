@@ -61,4 +61,30 @@ describe('ProgressBar', () => {
     expect(root).toHaveAttribute('aria-valuenow', '25')
     expect(root.querySelector('[data-part="bar"]')).toBeInTheDocument()
   })
+
+  test('should patch the bar from a ProgressBar.Bar child', () => {
+    render(
+      <ProgressBar id="test" label="test label" now={40}>
+        <ProgressBar.Bar data-testid="qa-bar" style={{ opacity: 0.5 }} />
+      </ProgressBar>,
+    )
+    const root = screen.getByRole('progressbar')
+    const bars = root.querySelectorAll('[data-part="bar"]')
+    expect(bars).toHaveLength(1)
+
+    const bar = screen.getByTestId('qa-bar')
+    expect(bar).toBe(bars[0] as HTMLElement)
+    expect(bar.style.width).toBe('40%')
+    expect(bar.style.opacity).toBe('0.5')
+  })
+
+  test('should render non-part children after the bar', () => {
+    render(
+      <ProgressBar id="test" label="test label" now={40}>
+        <span>Content body</span>
+      </ProgressBar>,
+    )
+    const root = screen.getByRole('progressbar')
+    expect(root.lastElementChild).toHaveTextContent('Content body')
+  })
 })

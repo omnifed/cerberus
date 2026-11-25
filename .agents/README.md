@@ -1,54 +1,57 @@
-## LLMS Resources
+# Agent Resources
 
-This directory is a resource of directions to reference locally for your LLMS. Each file is devoted to a specific topic that can be combined with a prompt.
+Task playbooks for AI agents working in Cerberus. Start with the root
+[`AGENTS.md`](../AGENTS.md): it has the rules, commands and v2 conventions every
+task needs. Then load the playbook for your task.
 
-## Example Prompts
+## Playbooks
 
-### Creating a new Preset Recipe
+| File                                                             | Use it to                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------- |
+| [`create-react-component.md`](./create-react-component.md)       | Add a component with the generator, end to end |
+| [`create-preset-recipe.md`](./create-preset-recipe.md)           | Write or register a Panda recipe               |
+| [`create-doc-component-page.md`](./create-doc-component-page.md) | Finish a component's docs page and demos       |
+| [`docs.md`](./docs.md)                                           | Understand the docs site                       |
+| [`style-guide.md`](./style-guide.md)                             | Follow the code conventions                    |
 
-This prompt will bootstrap a new slot recipe API and set some initial styles and variants that will need to be replaced to match the Cerberus Figma design. **This is just a starting point. Do not ship this code as-is.**
+Reference files: [`ark-ui.txt`](./ark-ui.txt) (Ark UI docs) and
+[`next.txt`](./next.txt) (Next.js docs).
 
-- This prompt does _not_ setup the component API which relies on a recipe existing.
-- This prompt might not expose the API. Depending on the LLM you are using, it may skip this step.
+## Skills
 
-#### Running the prompt
+[`skills/`](./skills) holds agent skills. Agents that support skills load them
+automatically when a task matches.
 
-> First, add the `.llms/create-preset-recipe.md` file to your conversation context.
+| Skill                             | Use it for                                |
+| --------------------------------- | ----------------------------------------- |
+| `panda-css`                       | Writing styles with Panda CSS v2          |
+| `panda-css-theming`               | Tokens, themes and recipe architecture    |
+| `panda-css-migrate`               | Panda v1 → v2 issues                      |
+| `cerberus-form-component-styling` | Styling custom form components            |
+| `cerberus-realtime-data-grid`     | Real-time Data Grid tables with Signals   |
+| `token-hound`                     | Replacing raw values with Cerberus tokens |
+| `charons-ferry`                   | Standardizing a Figma file to Cerberus    |
 
-```bash
-Using the `create-preset-recipe` guide, create a new slot recipe named `<arkComponent>`
+## Example prompts
+
+### New component
+
+```text
+Using .agents/create-react-component.md, add a HoverCard component.
 ```
 
----
+The generator creates the recipe, tests, docs page and demo, so one prompt
+covers the whole component. **Review the result against the Figma design before
+shipping.**
 
-### Creating a new React component API
+### Recipe styles
 
-This prompt will bootstrap a new component API directory and setup most of your primitives and parts. **This is just a starting point. Do not ship this code as-is.**
-
-- This prompt does _not_ setup the recipe and assumes you have already created and exposed it.
-- This prompt does _not_ expose the API. You are expected to include that manually when it is ready.
-
-#### Running the prompt
-
-> First, add the `.llms/create-react-component.md` file to your conversation context.
-
-```bash
-Using the `create-react-component` guide, create a new component named `ark-ui-api-name`
+```text
+Using .agents/create-preset-recipe.md, style the hoverCard recipe to match this Figma frame: <link>
 ```
 
----
+### Docs page
 
-### Creating a new component API doc page
-
-This prompt will bootstrap a new component API docs page and setup the route meta. **This is just a starting point. Do not ship this code as-is.**
-
-- This prompt does _not_ create examples or low-level API content.
-- This assumes the API already exists.
-
-#### Running the prompt
-
-> First, add the `.llms/create-doc-component-page.md` file to your conversation context.
-
-```bash
-Using the `create-doc-component-page` guide, create a new component page named `component-name` to showcase our React ComponentName component
+```text
+Using .agents/create-doc-component-page.md, finish the HoverCard docs page with examples for each variant.
 ```
