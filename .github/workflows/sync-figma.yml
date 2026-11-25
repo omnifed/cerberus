@@ -18,8 +18,20 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write # Start CI on the PR when it's opened with GITHUB_TOKEN
 
     steps:
+      # GitHub doesn't start pull_request workflows for PRs opened with
+      # GITHUB_TOKEN. With the bot app set up (CERBERUS_BOT_APP_ID), the PR is
+      # opened with its token and CI runs normally. Without it, the last step
+      # starts CI by dispatch instead.
+      - uses: actions/create-github-app-token@v2
+        id: bot
+        if: vars.CERBERUS_BOT_APP_ID != ''
+        with:
+          app-id: ${{ vars.CERBERUS_BOT_APP_ID }}
+          private-key: ${{ secrets.CERBERUS_BOT_PRIVATE_KEY }}
+
       - uses: actions/checkout@v7
       - uses: oven-sh/setup-bun@v2
       - uses: pnpm/action-setup@v6
@@ -36,9 +48,20 @@ jobs:
         working-directory: ./packages/figma
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v8
         with:
+          token: ${{ steps.bot.outputs.token || github.token }}
           commit-message: 'chore: update tokens from Figma'
           title: '[chore]: update tokens from Figma'
           body: 'This PR updates the latest tokens from Figma.'
           branch: chore/update-tokens
+
+      - name: Run required checks on the PR
+        if: steps.bot.outputs.token == '' && (steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated')
+        run: |
+          for workflow in checks.yml linting.yml; do
+            gh workflow run "$workflow" --ref chore/update-tokens
+          done
+        env:
+          GH_TOKEN: ${{ github.token }}

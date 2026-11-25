@@ -19,6 +19,7 @@ env:
 permissions:
   contents: write # Required to push tags and commits
   pull-requests: write # Required for Changesets to open the PR
+  actions: write # Start CI on the Version PR when it's opened with GITHUB_TOKEN
   id-token: write # STRICTLY REQUIRED for NPM OIDC & JSR
 
 jobs:
@@ -31,9 +32,21 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'chore(release): version packages') && github.event_name != 'workflow_dispatch'"
     runs-on: ubuntu-latest
     steps:
+      # GitHub doesn't start pull_request workflows for PRs or pushes made with
+      # GITHUB_TOKEN. With the bot app set up (CERBERUS_BOT_APP_ID), the Version
+      # PR is opened with its token and CI runs normally. Without it, the
+      # "Run required checks" step below starts CI by dispatch instead.
+      - uses: actions/create-github-app-token@v2
+        id: bot
+        if: vars.CERBERUS_BOT_APP_ID != ''
+        with:
+          app-id: ${{ vars.CERBERUS_BOT_APP_ID }}
+          private-key: ${{ secrets.CERBERUS_BOT_PRIVATE_KEY }}
+
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          token: ${{ steps.bot.outputs.token || github.token }}
 
       - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v7
@@ -51,13 +64,23 @@ jobs:
         run: pnpm install --no-frozen-lockfile && pnpm --filter styled-system run prepare && deno install
 
       - name: Create Version PR
+        id: changesets
         uses: changesets/action@v2
         with:
           version-script: pnpm ci:version
           commit-message: 'chore(release): version packages'
           pr-title: 'chore(release): version packages'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.bot.outputs.token || github.token }}
+
+      - name: Run required checks on the Version PR
+        if: steps.bot.outputs.token == '' && steps.changesets.outputs.pullRequestNumber != ''
+        run: |
+          for workflow in checks.yml linting.yml; do
+            gh workflow run "$workflow" --ref changeset-release/main
+          done
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Generate Canary Versions
         run: |

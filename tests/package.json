@@ -32,6 +32,7 @@
     "@types/react": "catalog:jsx",
     "codegen": "workspace:*",
     "react": "catalog:jsx",
-    "react-dom": "catalog:jsx"
+    "react-dom": "catalog:jsx",
+    "scripts": "workspace:*"
   }
 }

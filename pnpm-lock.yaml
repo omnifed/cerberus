@@ -778,6 +778,9 @@ importers:
       react-dom:
         specifier: catalog:jsx
         version: 19.3.1(react@19.3.1)
+      scripts:
+        specifier: workspace:*
+        version: link:../scripts
 
   tools/codegen:
     devDependencies:
