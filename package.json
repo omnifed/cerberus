@@ -34,9 +34,9 @@
     "@types/bun": "catalog:types",
     "@types/mdx": "^2.0.14",
     "husky": "^9.1.7",
-    "lint-staged": "^17.6.0",
+    "lint-staged": "^17.6.2",
     "oxfmt": "catalog:oxc",
-    "oxlint": "^1.90.0"
+    "oxlint": "^1.95.0"
   },
   "lint-staged": {
     "**/*": "oxfmt --write --no-error-on-unmatched-pattern",
