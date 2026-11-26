@@ -1,6 +1,20 @@
 import { defineGlobalStyles } from '@pandacss/dev'
 
 export const globalCss = defineGlobalStyles({
+  // Lenis, the home page's smooth-scroll engine.
+  'html.lenis, html.lenis body': {
+    height: 'auto',
+  },
+  '.lenis:not(.lenis-autoToggle).lenis-stopped': {
+    overflow: 'clip',
+  },
+  '.lenis.lenis-smooth [data-lenis-prevent]': {
+    overscrollBehavior: 'contain',
+  },
+  '.lenis.lenis-smooth iframe': {
+    pointerEvents: 'none',
+  },
+
   '.living-canvas': {
     bgColor: 'page.surface.initial',
     bottom: 0,

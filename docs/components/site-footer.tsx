@@ -1,7 +1,10 @@
+import { ArrowRight, ArrowUpRight } from '@carbon/icons-react'
 import { version } from '@cerberus-design/react/package.json'
 import type { Route } from 'next'
 import Link from 'next/link'
-import { css } from 'styled-system/css'
+import { css, cx } from 'styled-system/css'
+import { button } from 'styled-system/recipes'
+import { FooterWordmark } from './footer-wordmark'
 import { CerberusLogo } from './logos/cerberus'
 
 interface FooterLink {
@@ -71,51 +74,165 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
   },
 ]
 
-const linkStyles = css({
-  color: 'page.text.200',
-  rounded: 'xs',
-  textStyle: 'body-sm',
-  textDecoration: 'none',
-  _hover: {
-    color: 'page.text.initial',
-    textDecoration: 'underline',
-    textUnderlineOffset: '0.2em',
-  },
-  _focusVisible: { focusVisibleRing: 'outside' },
-})
-
-/** The site footer: navigation, ownership, and the fine print. */
 // The site is statically generated, so the year is set when it is built.
 const YEAR = new Date().getFullYear()
 
+const mono = css({
+  fontFamily: 'mono',
+  letterSpacing: '0.04em',
+  textStyle: 'label-sm',
+  textTransform: 'uppercase',
+})
+
+// An underline that draws in from the left on hover and focus.
+const linkStyles = css({
+  backgroundImage: 'linear-gradient(currentColor, currentColor)',
+  backgroundPosition: '0 100%',
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: '0% 1px',
+  color: 'page.text.200',
+  pb: '0.5',
+  rounded: 'xs',
+  textDecoration: 'none',
+  textStyle: 'body-md',
+  transitionDuration: 'normal',
+  transitionProperty: 'background-size, color',
+  transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+  _hover: { backgroundSize: '100% 1px', color: 'page.text.initial' },
+  _focusVisible: {
+    backgroundSize: '100% 1px',
+    color: 'page.text.initial',
+    focusVisibleRing: 'outside',
+  },
+})
+
+const hairline = css({
+  borderColor: 'page.border.initial',
+  borderTop: '1px solid',
+})
+
+/**
+ * The site footer: a last word and a way in, the whole map, the fine print,
+ * and the name at the scale of the page.
+ */
 export function SiteFooter() {
   return (
     <footer
+      data-world-cover
       className={css({
         bgColor: 'page.surface.initial',
-        borderTop: '1px solid',
-        borderColor: 'page.border.initial',
+        color: 'page.text.initial',
+        overflow: 'hidden',
+        pos: 'relative',
       })}
     >
+      {/* Three minds, converged: a hairline in the three stream colors. */}
+      <span
+        aria-hidden
+        className={css({
+          bgGradient: 'to-r',
+          display: 'block',
+          gradientFrom: 'dataViz.qualitative.100',
+          gradientTo: 'dataViz.qualitative.500',
+          gradientVia: 'dataViz.qualitative.300',
+          h: '1px',
+          opacity: 0.8,
+        })}
+      />
+
       <div
         className={css({
           mx: 'auto',
           maxW: '90rem',
           px: 'md',
-          pt: '3xl',
           md: { px: 'xl' },
-          lg: { px: '2xl' },
+          lg: { px: '4xl' },
         })}
       >
         <div
           className={css({
+            alignItems: 'end',
             display: 'grid',
             gap: '2xl',
-            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            py: '4xl',
             lg: {
-              gridTemplateColumns: 'minmax(0, 1.6fr) repeat(4, minmax(0, 1fr))',
+              gridTemplateColumns: 'minmax(0, 7fr) minmax(0, 5fr)',
+              py: '32',
             },
           })}
+        >
+          <p
+            className={css({
+              fontSize: 'clamp(2rem, 1rem + 3vw, 4rem)',
+              fontWeight: 'semibold',
+              letterSpacing: '-0.035em',
+              lineHeight: '1.02',
+              maxW: '18ch',
+              textWrap: 'balance',
+            })}
+          >
+            Built in the open, for every mind on the team.
+          </p>
+          <div
+            className={css({ display: 'flex', flexDir: 'column', gap: 'lg' })}
+          >
+            <p
+              className={css({
+                color: 'page.text.200',
+                maxW: '34ch',
+                textStyle: 'body-md',
+              })}
+            >
+              Designers, developers and agents, on one workflow. Start with the
+              React package, or point your agent at{' '}
+              <a className={linkStyles} href="/llms.txt">
+                /llms.txt
+              </a>
+              .
+            </p>
+            <div
+              className={css({ display: 'flex', flexWrap: 'wrap', gap: 'md' })}
+            >
+              <Link
+                className={cx(
+                  button({ shape: 'sharp', size: 'lg' }),
+                  css({ gap: 'sm' }),
+                )}
+                href="/docs/get-started/installation"
+              >
+                Get started
+                <ArrowRight aria-hidden />
+              </Link>
+              <a
+                className={cx(
+                  button({ shape: 'sharp', size: 'lg', usage: 'outlined' }),
+                  css({ gap: 'sm' }),
+                )}
+                href="https://github.com/omnifed/cerberus"
+                rel="noreferrer"
+                target="_blank"
+              >
+                GitHub
+                <ArrowUpRight aria-hidden />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={cx(
+            hairline,
+            css({
+              display: 'grid',
+              gap: '2xl',
+              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+              py: '3xl',
+              lg: {
+                gridTemplateColumns: 'minmax(0, 4fr) repeat(4, minmax(0, 2fr))',
+              },
+            }),
+          )}
         >
           <div
             className={css({
@@ -140,20 +257,12 @@ export function SiteFooter() {
             </Link>
             <p
               className={css({
-                color: 'page.text.initial',
-                textStyle: 'heading-xs',
-              })}
-            >
-              Cerberus UI Platform
-            </p>
-            <p
-              className={css({
                 color: 'page.text.200',
-                maxW: '32ch',
+                maxW: '30ch',
                 textStyle: 'body-sm',
               })}
             >
-              Improving React development for humans and agents.
+              One workflow for designers, developers and agents to ship product.
             </p>
             <a
               href="https://omnifederal.com"
@@ -164,7 +273,7 @@ export function SiteFooter() {
                 color: 'page.text.100',
                 display: 'inline-flex',
                 gap: 'sm',
-                mt: 'sm',
+                mt: 'auto',
                 rounded: 'xs',
                 textStyle: 'label-sm',
                 w: 'fit',
@@ -202,17 +311,23 @@ export function SiteFooter() {
             </a>
           </div>
 
-          {COLUMNS.map((column) => (
+          {COLUMNS.map((column, index) => (
             <nav key={column.title} aria-labelledby={`footer-${column.title}`}>
               <h2
                 id={`footer-${column.title}`}
-                className={css({
-                  color: 'page.text.initial',
-                  mb: 'md',
-                  textStyle: 'label-md',
-                  fontWeight: 'semibold',
-                })}
+                className={cx(
+                  mono,
+                  css({
+                    color: 'page.text.100',
+                    display: 'flex',
+                    gap: 'sm',
+                    mb: 'lg',
+                  }),
+                )}
               >
+                <span aria-hidden className={css({ color: 'page.text.200' })}>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
                 {column.title}
               </h2>
               <ul
@@ -246,30 +361,32 @@ export function SiteFooter() {
         </div>
 
         <div
-          className={css({
-            borderTop: '1px solid',
-            borderColor: 'page.border.initial',
-            color: 'page.text.100',
-            display: 'flex',
-            flexDir: 'column',
-            gap: 'sm',
-            mt: '3xl',
-            py: 'lg',
-            textStyle: 'label-sm',
-            md: {
-              alignItems: 'center',
-              flexDir: 'row',
-              justifyContent: 'space-between',
-            },
-          })}
+          className={cx(
+            hairline,
+            mono,
+            css({
+              color: 'page.text.100',
+              display: 'flex',
+              flexDir: 'column',
+              gap: 'sm',
+              py: 'lg',
+              md: {
+                alignItems: 'center',
+                flexDir: 'row',
+                justifyContent: 'space-between',
+              },
+            }),
+          )}
         >
           <p>© {YEAR} Omnifederal, LLC. All rights reserved.</p>
           <p>Built by demons of the Underworld</p>
           <p className={css({ fontVariantNumeric: 'tabular-nums' })}>
-            v{version}
+            v{version} · Section 508
           </p>
         </div>
       </div>
+
+      <FooterWordmark />
     </footer>
   )
 }

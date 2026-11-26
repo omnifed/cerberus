@@ -45,17 +45,28 @@ export default createCerberusConfig({
   theme: {
     extend: {
       keyframes: {
-        // The home page's Descent: a realm plane rises from depth to the front.
-        descend: {
-          // Transform only: the plane stays opaque so the realms below it never
-          // show through its content.
+        // The hero's scroll cue: a line that keeps flowing downstream.
+        cueFlow: {
+          from: { transform: 'scaleY(0)', transformOrigin: 'top' },
+          '50%': { transform: 'scaleY(1)', transformOrigin: 'top' },
+          '50.01%': { transform: 'scaleY(1)', transformOrigin: 'bottom' },
+          to: { transform: 'scaleY(0)', transformOrigin: 'bottom' },
+        },
+        // A Signals value that just changed.
+        signalFlash: {
           from: {
-            transform:
-              'perspective(1600px) rotateX(32deg) translateY(3rem) scale(0.94)',
+            backgroundColor: 'token(colors.action.ghost.hover)',
+            color: 'token(colors.page.text.initial)',
           },
           to: {
-            transform: 'none',
+            backgroundColor: 'transparent',
+            color: 'token(colors.page.text.200)',
           },
+        },
+        // A live indicator: something on the page is updating right now.
+        livePulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.35' },
         },
       },
       recipes: {

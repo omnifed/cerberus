@@ -8,7 +8,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 import { Poppins, Recursive } from 'next/font/google'
 import Script from 'next/script'
-import { Suspense, type PropsWithChildren } from 'react'
+import { type PropsWithChildren } from 'react'
 import './globals.css'
 
 const poppins = Poppins({
@@ -70,7 +70,7 @@ export default async function RootLayout(props: PropsWithChildren<RootProps>) {
             <GlobalNav />
 
             <cerberus.main role="main" css={{ h: 'full', w: 'full' }}>
-              <Suspense>{props.children}</Suspense>
+              {props.children}
             </cerberus.main>
 
             <NotificationCenter />

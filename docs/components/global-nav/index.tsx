@@ -3,6 +3,8 @@
 import { Tooltip } from '@cerberus-design/react'
 import { version } from '@cerberus-design/react/package.json'
 import { type LinkProps } from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
 import { grid, hstack } from 'styled-system/patterns'
@@ -17,7 +19,28 @@ const GET_STARTED_PATH = APP_BAR_LINKS.find(
   (link) => link.group === 'get-started',
 )?.href as LinkProps<string>['href']
 
+/**
+ * Over the home page's painting the bar starts clear, then becomes a surface
+ * as soon as the page scrolls.
+ */
+function useOverlay() {
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+  // Solid until script confirms the page is at the top, so without
+  // JavaScript the bar never sits clear over scrolled content.
+  const [atTop, setAtTop] = useState(false)
+  useEffect(() => {
+    if (!isHome) return
+    const update = () => setAtTop(window.scrollY < 24)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    return () => window.removeEventListener('scroll', update)
+  }, [isHome])
+  return isHome && atTop
+}
+
 export function GlobalNav() {
+  const overlay = useOverlay()
   return (
     <header
       className={css({
@@ -29,6 +52,7 @@ export function GlobalNav() {
     >
       <nav
         aria-label="Main"
+        data-overlay={overlay}
         className={grid({
           alignItems: 'center',
           backdropFilter: 'blur(2px)',
@@ -38,7 +62,14 @@ export function GlobalNav() {
           gridTemplateColumns: 'auto minmax(0, 1fr) auto',
           h: 'var(--nav-height)',
           px: 'md',
+          transitionDuration: 'slow',
+          transitionProperty: 'background-color, box-shadow, backdrop-filter',
           w: 'full',
+          '&[data-overlay=true]': {
+            backdropFilter: 'none',
+            bgColor: 'transparent',
+            boxShadow: 'none',
+          },
           _motionSafe: {
             animationStyle: 'slide-fade-in',
             animationDuration: 'slow',
