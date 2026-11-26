@@ -10,11 +10,13 @@ import type { Tokens } from '@pandacss/types'
 const fonts: Tokens['fonts'] = {
   display: {
     description: 'Primary font reserved for display headings',
-    value: 'var(--font-display, var(--font-poppins, sans-serif))',
+    value:
+      'var(--font-display, var(--font-body, var(--font-poppins, sans-serif)))',
   },
   sans: {
     description: 'Primary font used for body and headings',
-    value: 'var(--font-sans, var(--font-poppins, sans-serif))',
+    value:
+      'var(--font-sans, var(--font-body, var(--font-poppins, sans-serif)))',
   },
   mono: {
     description: 'Code font used for any code related scenarios',
@@ -68,7 +70,8 @@ const zIndex: Tokens['zIndex'] = {
 
   // elements
   dropdown: {
-    description: 'Used for positioning any dropdown like elements in the layer stack',
+    description:
+      'Used for positioning any dropdown like elements in the layer stack',
     value: 1000,
   },
   sticky: {

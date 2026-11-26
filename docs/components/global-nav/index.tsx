@@ -3,9 +3,11 @@
 import { Tooltip } from '@cerberus-design/react'
 import { version } from '@cerberus-design/react/package.json'
 import { type LinkProps } from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { css } from 'styled-system/css'
-import { Box, Center, GridItem, HStack } from 'styled-system/jsx'
-import { grid, gridItem, hstack } from 'styled-system/patterns'
+import { HStack } from 'styled-system/jsx'
+import { grid, hstack } from 'styled-system/patterns'
 import { APP_BAR_LINKS } from '../app-bar/links'
 import { Search } from '../search'
 import { FeatureLink } from './feature-link'
@@ -13,109 +15,131 @@ import { NavGHLogoContent, NavLogoContent } from './icon-items'
 import { ModeMenu } from './mode-menu'
 import { ThemeMenu } from './theme-menu'
 
-const GET_STARTED_PATH = APP_BAR_LINKS.find((link) => link.group === 'get-started')
-  ?.href as LinkProps<string>['href']
+const GET_STARTED_PATH = APP_BAR_LINKS.find(
+  (link) => link.group === 'get-started',
+)?.href as LinkProps<string>['href']
+
+/**
+ * Over the home page's painting the bar starts clear, then becomes a surface
+ * as soon as the page scrolls.
+ */
+function useOverlay() {
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+  // Solid until script confirms the page is at the top, so without
+  // JavaScript the bar never sits clear over scrolled content.
+  const [atTop, setAtTop] = useState(false)
+  useEffect(() => {
+    if (!isHome) return
+    const update = () => setAtTop(window.scrollY < 24)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    return () => window.removeEventListener('scroll', update)
+  }, [isHome])
+  return isHome && atTop
+}
 
 export function GlobalNav() {
+  const overlay = useOverlay()
   return (
-    <Box px="md" pt="md" pos="sticky" top="0" w="full" zIndex="sticky">
+    <header
+      className={css({
+        pos: 'sticky',
+        top: '0',
+        w: 'full',
+        zIndex: 'sticky',
+      })}
+    >
       <nav
-        data-placement="bottom"
+        aria-label="Main"
+        data-overlay={overlay}
         className={grid({
-          bgColor: 'page.surface.100',
-          border: '1px solid',
-          borderColor: 'page.border.initial',
           alignItems: 'center',
-          columns: 3,
-          gridTemplateColumns: '1fr',
-          gridTemplateRows: '1fr',
-          gap: '0',
-          opacity: 0,
-          rounded: 'lg',
+          backdropFilter: 'blur(2px)',
+          bgColor: 'page.surface.100',
+          boxShadow: 'sm',
+          columnGap: 'md',
+          gridTemplateColumns: 'auto minmax(0, 1fr) auto',
+          h: 'var(--nav-height)',
+          px: 'md',
+          transitionDuration: 'slow',
+          transitionProperty: 'background-color, box-shadow, backdrop-filter',
           w: 'full',
+          '&[data-overlay=true]': {
+            backdropFilter: 'none',
+            bgColor: 'transparent',
+            boxShadow: 'none',
+          },
           _motionSafe: {
             animationStyle: 'slide-fade-in',
-            animationDuration: 'slowest',
-            animationDelay: '800ms',
-            animationFillMode: 'forwards',
+            animationDuration: 'slow',
           },
-          _motionReduce: {
-            animation: 'none',
-            opacity: 1,
+          md: {
+            columnGap: 'lg',
+            px: 'lg',
           },
           lg: {
-            gridTemplateColumns: '20rem 1fr 20rem',
-            gridTemplateRows: 'initial',
-            h: '3.75rem',
-            gap: 'lg',
-            justifyContent: 'space-between',
-            left: 'md',
-            px: '6',
+            columnGap: '2xl',
+            gridTemplateColumns:
+              'minmax(0, 1fr) minmax(0, 27.3rem) minmax(0, 1fr)',
+            px: '2xl',
           },
         })}
       >
-        <GridItem gridColumnStart="1" gridColumnEnd="2">
-          <HStack gap="lg">
-            <NavLogoContent />
-            <FeatureLink href={GET_STARTED_PATH}>Docs</FeatureLink>
-            <FeatureLink href="/blog">Blog</FeatureLink>
-          </HStack>
-        </GridItem>
-
-        <GridItem gridColumnStart="2" gridColumnEnd="3">
-          <Center>
-            <Search />
-          </Center>
-        </GridItem>
-
-        <section
-          className={gridItem({
-            gridColumnStart: 3,
-            gridColumnEnd: 4,
-            gridRowStart: 1,
-            gridRowEnd: 2,
-            paddingInlineEnd: '2',
-            justifySelf: 'end',
-            md: {
-              gridColumnStart: 3,
-              gridColumnEnd: 4,
-              gridRowStart: 1,
-              gridRowEnd: 2,
-            },
-          })}
-        >
+        <HStack gap="md">
+          <NavLogoContent />
           <ul
             className={hstack({
-              gap: '6',
+              gap: 'lg',
+              px: 'xs',
+              md: { px: 'md' },
             })}
           >
             <li>
-              <p
-                className={css({
-                  color: 'page.text.100',
-                  fontSize: 'sm',
-                  h: '1.5rem',
-                  pt: '1px',
-                })}
-              >
-                {version}
-              </p>
+              <FeatureLink href={GET_STARTED_PATH}>Docs</FeatureLink>
             </li>
-
-            <NavGHLogoContent />
-
             <li>
-              <Tooltip content="Switch mode">
-                <ModeMenu />
-              </Tooltip>
-            </li>
-
-            <li>
-              <ThemeMenu />
+              <FeatureLink href="/blog">Blog</FeatureLink>
             </li>
           </ul>
-        </section>
+        </HStack>
+
+        <HStack justify="center" minW="0">
+          <Search />
+        </HStack>
+
+        <ul
+          className={hstack({
+            gap: 'sm',
+            justifySelf: 'end',
+          })}
+        >
+          <li
+            className={css({
+              color: 'page.text.200',
+              display: 'none',
+              fontVariantNumeric: 'tabular-nums',
+              textStyle: 'label-sm',
+              md: { display: 'block', pe: 'xs' },
+            })}
+          >
+            <span className={css({ srOnly: true })}>Current version </span>v
+            {version}
+          </li>
+
+          <NavGHLogoContent />
+
+          <li>
+            <Tooltip content="Switch mode">
+              <ModeMenu />
+            </Tooltip>
+          </li>
+
+          <li>
+            <ThemeMenu />
+          </li>
+        </ul>
       </nav>
-    </Box>
+    </header>
   )
 }

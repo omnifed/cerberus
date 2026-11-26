@@ -18,7 +18,10 @@ export function FeatureLink(props: PropsWithChildren<LinkProps<RouteType>>) {
       className={css({
         display: 'flex',
         h: 'full',
-        textStyle: 'body-sm',
+        color: 'page.text.initial',
+        rounded: 'xs',
+        textStyle: 'label-sm',
+        _focusVisible: { focusVisibleRing: 'outside' },
         transitionProperty: 'color',
         transitionDuration: 'fast',
         transitionTimingFunction: 'ease-in-out',

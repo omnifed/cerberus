@@ -18,6 +18,20 @@ describe('tokens', () => {
     expect(tokens.fonts?.mono).toBeDefined()
   })
 
+  test('should fall back to the v2 --font-body variable for display and sans', () => {
+    // v2 apps set next/font to `--font-body`, so it must resolve before the
+    // v1 `--font-poppins` name.
+    const fonts = tokens.fonts as Record<'display' | 'sans', { value: string }>
+    const display = String(fonts.display.value)
+    const sans = String(fonts.sans.value)
+    for (const value of [display, sans]) {
+      expect(value).toContain('var(--font-body')
+      expect(value.indexOf('--font-body')).toBeLessThan(
+        value.indexOf('--font-poppins'),
+      )
+    }
+  })
+
   test('should have a shadows key', () => {
     expect(tokens.shadows).toBeDefined()
   })
