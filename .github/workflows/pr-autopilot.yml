@@ -93,7 +93,7 @@ jobs:
             Include every PR you were asked to review. Leave `reasons` empty
             for merges.
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: steps.candidates.outputs.review_count != '0'
         with:
           name: decisions
@@ -125,14 +125,14 @@ jobs:
           echo "::error::Live mode needs the bot app (CERBERUS_BOT_APP_ID) or an AUTOPILOT_TOKEN secret."
           exit 1
 
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: bot
         if: vars.CERBERUS_BOT_APP_ID != ''
         with:
           app-id: ${{ vars.CERBERUS_BOT_APP_ID }}
           private-key: ${{ secrets.CERBERUS_BOT_PRIVATE_KEY }}
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         continue-on-error: true # no artifact when nothing needed review
         with:
           name: decisions

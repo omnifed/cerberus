@@ -25,7 +25,7 @@ jobs:
       # GITHUB_TOKEN. With the bot app set up (CERBERUS_BOT_APP_ID), the PR is
       # opened with its token and CI runs normally. Without it, the last step
       # starts CI by dispatch instead.
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: bot
         if: vars.CERBERUS_BOT_APP_ID != ''
         with:
