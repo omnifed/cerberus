@@ -71,7 +71,7 @@ const ENTRIES: Entry[] = [
 ]
 
 /**
- * What you install, plainly. The organism steps back here: an opaque page of
+ * What you install, plainly. The world steps back here: an opaque page of
  * packages, each with its registry and a command to copy.
  */
 export function Ledger() {

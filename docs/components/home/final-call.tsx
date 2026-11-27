@@ -8,7 +8,7 @@ import { RevealHeading } from './reveal-heading'
 import { container, fine, lead, textLink } from './styles'
 
 /**
- * The close. The three streams have converged into one beam behind the
+ * The close. The seam has opened into one gate of light behind the
  * words, and there is one thing to do.
  */
 export function FinalCall() {
@@ -24,7 +24,7 @@ export function FinalCall() {
         minH: '100svh',
         pos: 'relative',
         '& > *': { pos: 'relative', zIndex: '1' },
-        // Feather the ribbons into the footer's surface instead of cutting them off.
+        // Feather the world into the footer's surface instead of cutting them off.
         _after: {
           bgGradient: 'to-b',
           bottom: '0',

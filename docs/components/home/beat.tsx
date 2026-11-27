@@ -6,7 +6,7 @@ import { container, displayStatement, lead } from './styles'
 
 /**
  * A pool of page color centered inside its own box and fading to nothing
- * before any edge, so copy reads over the organism without a visible seam.
+ * before any edge, so copy reads over the world without a visible seam.
  */
 export const pool = css({
   backgroundImage:
@@ -69,7 +69,7 @@ const layouts: Record<Layout, string> = {
 
 /**
  * One beat of the story: a claim, the copy that earns it, and a live plate
- * made from real Cerberus components. The organism behind it takes the pose
+ * made from real Cerberus components. The world behind it takes the pose
  * named here.
  */
 export function Beat(props: BeatProps) {

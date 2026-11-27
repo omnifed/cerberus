@@ -28,7 +28,7 @@ Cerberus is an infrastructure-level UI platform for React 19: components on Ark 
 ## Operating Context
 
 - Docs site: a Next.js app in `docs/` with MDX content (get-started, components, data-grid, signals, styling, theming), a blog with release posts (v2 shipped 2026-11-24), and pagefind search.
-- Four themes, each with light and dark modes: Cerberus, Acheron, Elysium, Oceanus. Each theme/mode pair has its own WebGL scene background (`docs/components/scenes/`). In `system` mode, no scene renders. The home page uses its own living organism instead of these scenes.
+- Four themes, each with light and dark modes: Cerberus, Acheron, Elysium, Oceanus. Each theme/mode pair has its own WebGL scene background (`docs/components/scenes/`). In `system` mode, no scene renders. The home page uses its own underworld scene (the Styx: smoke, a molten seam and rising embers) instead of these scenes.
 - Design source of truth: the Cerberus Figma library and the "Cerberus Docs Site" Figma file.
 
 ## Capabilities and Constraints
@@ -43,7 +43,7 @@ Cerberus is an infrastructure-level UI platform for React 19: components on Ark 
 - The naming comes from Greek mythology and the underworld (Cerberus, Charon, Hades, Acheron, Styx, Elysium, Oceanus, Thanatos). It runs through themes, gradients and demo content. Theme and gradient names are reserved: never use them to name page sections or features.
 - Positioning: Cerberus is not "a component library" or "a design system". It is the ecosystem for one workflow, where designers prototype, developers ship production code and agents work alongside both. Internal teams have mistaken it for a design system before, so lead with the workflow.
 - Brand line: "One workflow for designers, developers and agents to ship product."
-- Home page hero (approved 2026-11-26): "One workflow for humans and agents to ship product." The world is a living organism of three streams of light (designer, developer, agent) that tangle while the problem is told, braid as Cerberus answers it, and converge into one beam at the close.
+- Home page hero (approved 2026-11-26): "One workflow for humans and agents to ship product." The world is the Styx at night: smoke rising off a molten seam, with embers in the three minds' colors (designer, developer, agent). The seam breaks apart while the problem is told, seals as Cerberus answers it, and opens into a gate of light at the close.
 - Agents come first: they often touch the work before a person does, so the home page proves agent-readiness before anything else.
 - Vision (label it "in development"): one workspace where designers and developers work side by side without third-party tools, with Git, a design canvas and a code editor built in, agents working in all of them, designs that open their own pull requests, and prototypes that move from demo to production.
 

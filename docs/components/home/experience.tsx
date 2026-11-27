@@ -15,7 +15,7 @@ import {
 } from 'react'
 import { css } from 'styled-system/css'
 import { useMotionAllowed } from './use-motion'
-import type { OrganismState, Rgb, World } from './world/organism'
+import type { Rgb, World, WorldState } from './world/styx'
 import { mixPose, POSES, smoothstep, type PoseName } from './world/poses'
 
 // Registered once, before any section asks for a scroll trigger.
@@ -28,7 +28,7 @@ const STREAMS = ['100', '300', '500'] as const
 interface ExperienceApi {
   /** False on the server, under reduced motion, and before hydration. */
   motion: boolean
-  /** Lets the tokens section recolor the organism with any theme. */
+  /** Lets the tokens section recolor the world with any theme. */
   setThemeOverride: (theme: ThemeId | null) => void
 }
 
@@ -63,7 +63,7 @@ function readRgb(el: Element | null): Rgb {
 
 const luminance = ([r, g, b]: Rgb) => 0.2126 * r + 0.7152 * g + 0.0722 * b
 
-/** The theme-colored probes the organism reads its three streams from. */
+/** The theme-colored probes the world reads its three minds' colors from. */
 const streamProbe = {
   '100': css({ color: 'dataViz.qualitative.100' }),
   '300': css({ color: 'dataViz.qualitative.300' }),
@@ -72,10 +72,11 @@ const streamProbe = {
 
 /**
  * The home page's stage. It owns the one smooth-scroll engine (Lenis, tied to
- * GSAP's ticker and ScrollTrigger), the living organism behind the page, and
- * the director that turns scroll position into the organism's pose. Under
- * reduced motion there is no smooth scroll and no canvas: a still frame of
- * the organism stands in, and every section renders as final.
+ * GSAP's ticker and ScrollTrigger), the world behind the page (the Styx at
+ * night: smoke, a molten seam and rising embers), and the director that turns
+ * scroll position into the world's pose. Under reduced motion there is no
+ * smooth scroll and no canvas: a still frame of the world stands in, and
+ * every section renders as final.
  */
 export function HomeExperience(props: PropsWithChildren) {
   const motion = useMotionAllowed()
@@ -110,7 +111,7 @@ export function HomeExperience(props: PropsWithChildren) {
     gsap.ticker.add(raf)
     gsap.ticker.lagSmoothing(0)
 
-    // --- Colors: the three streams come from the theme's own data-viz tokens. ---
+    // --- Colors: the three minds come from the theme's own data-viz tokens. ---
     const stage = stageRef.current
     let palettes: Record<string, [Rgb, Rgb, Rgb]> = {}
     let background: Rgb = [0, 0, 0]
@@ -159,7 +160,7 @@ export function HomeExperience(props: PropsWithChildren) {
     measure()
     document.fonts?.ready.then(() => ScrollTrigger.refresh())
 
-    // --- The organism: Three.js, loaded after first paint. ---
+    // --- The world: Three.js, loaded after first paint. ---
     let world: World | null = null
     let disposed = false
     let cancelIdle = () => {}
@@ -174,7 +175,7 @@ export function HomeExperience(props: PropsWithChildren) {
     })()
     if (canvas && supportsWebGL) {
       const load = async () => {
-        const { createWorld } = await import('./world/organism')
+        const { createWorld } = await import('./world/styx')
         // StrictMode and fast route changes can unmount before this lands.
         if (disposed) return
         world = createWorld({
@@ -195,7 +196,7 @@ export function HomeExperience(props: PropsWithChildren) {
       }
     }
 
-    // --- Pointer: the streams lean toward the cursor; taps send a ring. ---
+    // --- Pointer: the cursor warms the seam; a tap sends a heat wave along it. ---
     const onPointerMove = (e: PointerEvent) => {
       if (e.pointerType === 'mouse') world?.setPointer(e.clientX, e.clientY)
     }
@@ -211,7 +212,7 @@ export function HomeExperience(props: PropsWithChildren) {
     document.addEventListener('pointerout', onPointerOut)
     window.addEventListener('blur', onBlur)
 
-    // --- The intro: the streams gather into one body as the page arrives. ---
+    // --- The intro: the seam arrives broken and cold, then seals and heats. ---
     const intro = { t: 0 }
     const introTween = gsap.to(intro, {
       t: 1,
@@ -224,7 +225,7 @@ export function HomeExperience(props: PropsWithChildren) {
     const tick = () => {
       const vh = window.innerHeight
       const focusLine = window.scrollY + vh / 2
-      let pose: OrganismState = POSES.hero
+      let pose: WorldState = POSES.hero
       let palette = palettes.current
       if (anchors.length) {
         let i = anchors.findIndex((a) => a.center > focusLine)
@@ -239,9 +240,9 @@ export function HomeExperience(props: PropsWithChildren) {
           palette = palettes[overrideRef.current] ?? palette
         }
       }
-      // Arrive tangled, then braid.
+      // Arrive broken and cold, then seal.
       pose = mixPose(
-        { ...pose, braid: 0, energy: pose.energy * 0.4 },
+        { ...pose, unity: 0, heat: pose.heat * 0.25 },
         pose,
         intro.t,
       )
@@ -300,18 +301,18 @@ export function HomeExperience(props: PropsWithChildren) {
           zIndex: '-1',
         })}
       >
-        {/* A still frame of the organism, for first paint, reduced motion and no WebGL. */}
+        {/* A still frame of the world, for first paint, reduced motion and no WebGL. */}
         <div
           className={css({
-            backgroundImage: 'url(/home/organism/still-dark.webp)',
+            backgroundImage: 'url(/home/world/still-dark.webp)',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             inset: '0',
             pos: 'absolute',
-            _light: { backgroundImage: 'url(/home/organism/still-light.webp)' },
+            _light: { backgroundImage: 'url(/home/world/still-light.webp)' },
             _system: {
               _osLight: {
-                backgroundImage: 'url(/home/organism/still-light.webp)',
+                backgroundImage: 'url(/home/world/still-light.webp)',
               },
             },
           })}

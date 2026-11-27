@@ -4,7 +4,7 @@ import type { Route } from 'next'
 import Link from 'next/link'
 import { css, cx } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
-import { FooterWordmark } from './footer-wordmark'
+import { FooterHorizon } from './footer-horizon'
 import { CerberusLogo } from './logos/cerberus'
 
 interface FooterLink {
@@ -77,13 +77,6 @@ const COLUMNS: { title: string; links: FooterLink[] }[] = [
 // The site is statically generated, so the year is set when it is built.
 const YEAR = new Date().getFullYear()
 
-const mono = css({
-  fontFamily: 'mono',
-  letterSpacing: '0.04em',
-  textStyle: 'label-sm',
-  textTransform: 'uppercase',
-})
-
 // An underline that draws in from the left on hover and focus.
 const linkStyles = css({
   backgroundImage: 'linear-gradient(currentColor, currentColor)',
@@ -106,14 +99,20 @@ const linkStyles = css({
   },
 })
 
-const hairline = css({
-  borderColor: 'page.border.initial',
-  borderTop: '1px solid',
+/** A rule that fades out at both ends instead of stopping hard at the frame. */
+const softRule = css({
+  backgroundImage:
+    'linear-gradient(to right, transparent, token(colors.page.border.initial) 14%, token(colors.page.border.initial) 86%, transparent)',
+  h: '1px',
+  opacity: 0.8,
 })
 
+const fine = css({ color: 'page.text.100', textStyle: 'label-sm' })
+
 /**
- * The site footer: a last word and a way in, the whole map, the fine print,
- * and the name at the scale of the page.
+ * The site footer. The page ends on a horizon: the three-color seam and the
+ * light it casts. Under it, a last word and a way in, the whole map, and the
+ * fine print, set quietly.
  */
 export function SiteFooter() {
   return (
@@ -122,28 +121,18 @@ export function SiteFooter() {
       className={css({
         bgColor: 'page.surface.initial',
         color: 'page.text.initial',
+        isolation: 'isolate',
         overflow: 'hidden',
         pos: 'relative',
       })}
     >
-      {/* Three minds, converged: a hairline in the three stream colors. */}
-      <span
-        aria-hidden
-        className={css({
-          bgGradient: 'to-r',
-          display: 'block',
-          gradientFrom: 'dataViz.qualitative.100',
-          gradientTo: 'dataViz.qualitative.500',
-          gradientVia: 'dataViz.qualitative.300',
-          h: '1px',
-          opacity: 0.8,
-        })}
-      />
+      <FooterHorizon />
 
       <div
         className={css({
           mx: 'auto',
           maxW: '90rem',
+          pos: 'relative',
           px: 'md',
           md: { px: 'xl' },
           lg: { px: '4xl' },
@@ -155,20 +144,22 @@ export function SiteFooter() {
             display: 'grid',
             gap: '2xl',
             gridTemplateColumns: 'minmax(0, 1fr)',
-            py: '4xl',
+            pb: '3xl',
+            pt: '4xl',
             lg: {
               gridTemplateColumns: 'minmax(0, 7fr) minmax(0, 5fr)',
-              py: '32',
+              pb: '4xl',
+              pt: '32',
             },
           })}
         >
           <p
             className={css({
-              fontSize: 'clamp(2rem, 1rem + 3vw, 4rem)',
+              fontSize: 'clamp(2.25rem, 1rem + 3.4vw, 4.5rem)',
               fontWeight: 'semibold',
               letterSpacing: '-0.035em',
               lineHeight: '1.02',
-              maxW: '18ch',
+              maxW: '16ch',
               textWrap: 'balance',
             })}
           >
@@ -180,8 +171,9 @@ export function SiteFooter() {
             <p
               className={css({
                 color: 'page.text.200',
-                maxW: '34ch',
+                maxW: '36ch',
                 textStyle: 'body-md',
+                textWrap: 'pretty',
               })}
             >
               Designers, developers and agents, on one workflow. Start with the
@@ -206,33 +198,34 @@ export function SiteFooter() {
               </Link>
               <a
                 className={cx(
-                  button({ shape: 'sharp', size: 'lg', usage: 'outlined' }),
+                  button({ shape: 'sharp', size: 'lg', usage: 'ghost' }),
                   css({ gap: 'sm' }),
                 )}
                 href="https://github.com/omnifed/cerberus"
                 rel="noreferrer"
                 target="_blank"
               >
-                GitHub
+                Star on GitHub
                 <ArrowUpRight aria-hidden />
               </a>
             </div>
           </div>
         </div>
 
+        <div aria-hidden className={softRule} />
+
         <div
-          className={cx(
-            hairline,
-            css({
-              display: 'grid',
-              gap: '2xl',
-              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-              py: '3xl',
-              lg: {
-                gridTemplateColumns: 'minmax(0, 4fr) repeat(4, minmax(0, 2fr))',
-              },
-            }),
-          )}
+          className={css({
+            display: 'grid',
+            gap: '2xl',
+            gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+            py: '3xl',
+            md: { gridTemplateColumns: 'repeat(4, minmax(0, 1fr))' },
+            lg: {
+              gridTemplateColumns: 'minmax(0, 4fr) repeat(4, minmax(0, 2fr))',
+              py: '4xl',
+            },
+          })}
         >
           <div
             className={css({
@@ -249,7 +242,7 @@ export function SiteFooter() {
               className={css({
                 display: 'inline-flex',
                 rounded: 'sm',
-                w: '12',
+                w: '10',
                 _focusVisible: { focusVisibleRing: 'outside' },
               })}
             >
@@ -264,70 +257,18 @@ export function SiteFooter() {
             >
               One workflow for designers, developers and agents to ship product.
             </p>
-            <a
-              href="https://omnifederal.com"
-              rel="noreferrer"
-              target="_blank"
-              className={css({
-                alignItems: 'center',
-                color: 'page.text.100',
-                display: 'inline-flex',
-                gap: 'sm',
-                mt: 'auto',
-                rounded: 'xs',
-                textStyle: 'label-sm',
-                w: 'fit',
-                _focusVisible: { focusVisibleRing: 'outside' },
-              })}
-            >
-              Maintained by
-              <img
-                alt="Omnifederal"
-                className={css({
-                  h: '6',
-                  w: 'auto',
-                  _dark: { display: 'none' },
-                  _system: { _osDark: { display: 'none' } },
-                })}
-                decoding="async"
-                height={190}
-                src="/brand/omnifederal-logo-dark.webp"
-                width={768}
-              />
-              <img
-                alt="Omnifederal"
-                className={css({
-                  display: 'none',
-                  h: '6',
-                  w: 'auto',
-                  _dark: { display: 'block' },
-                  _system: { _osDark: { display: 'block' } },
-                })}
-                decoding="async"
-                height={220}
-                src="/brand/omnifederal-logo-light.webp"
-                width={768}
-              />
-            </a>
           </div>
 
-          {COLUMNS.map((column, index) => (
+          {COLUMNS.map((column) => (
             <nav key={column.title} aria-labelledby={`footer-${column.title}`}>
               <h2
                 id={`footer-${column.title}`}
-                className={cx(
-                  mono,
-                  css({
-                    color: 'page.text.100',
-                    display: 'flex',
-                    gap: 'sm',
-                    mb: 'lg',
-                  }),
-                )}
+                className={css({
+                  color: 'page.text.100',
+                  mb: 'md',
+                  textStyle: 'label-sm',
+                })}
               >
-                <span aria-hidden className={css({ color: 'page.text.200' })}>
-                  {String(index + 1).padStart(2, '0')}
-                </span>
                 {column.title}
               </h2>
               <ul
@@ -360,33 +301,91 @@ export function SiteFooter() {
           ))}
         </div>
 
+        <div aria-hidden className={softRule} />
+
         <div
-          className={cx(
-            hairline,
-            mono,
-            css({
-              color: 'page.text.100',
-              display: 'flex',
-              flexDir: 'column',
-              gap: 'sm',
-              py: 'lg',
-              md: {
-                alignItems: 'center',
-                flexDir: 'row',
-                justifyContent: 'space-between',
-              },
-            }),
-          )}
+          className={css({
+            alignItems: 'center',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'md',
+            justifyContent: 'space-between',
+            py: 'xl',
+          })}
         >
-          <p>© {YEAR} Omnifederal, LLC. All rights reserved.</p>
-          <p>Built by demons of the Underworld</p>
-          <p className={css({ fontVariantNumeric: 'tabular-nums' })}>
-            v{version} · Section 508
+          <a
+            href="https://omnifederal.com"
+            rel="noreferrer"
+            target="_blank"
+            className={cx(
+              fine,
+              css({
+                alignItems: 'center',
+                display: 'inline-flex',
+                gap: 'sm',
+                rounded: 'xs',
+                _focusVisible: { focusVisibleRing: 'outside' },
+              }),
+            )}
+          >
+            <span>© {YEAR} Omnifederal, LLC</span>
+            <img
+              alt=""
+              className={css({
+                h: '5',
+                w: 'auto',
+                _dark: { display: 'none' },
+                _system: { _osDark: { display: 'none' } },
+              })}
+              decoding="async"
+              height={190}
+              loading="lazy"
+              src="/brand/omnifederal-logo-dark.webp"
+              width={768}
+            />
+            <img
+              alt=""
+              className={css({
+                display: 'none',
+                h: '5',
+                w: 'auto',
+                _dark: { display: 'block' },
+                _system: { _osDark: { display: 'block' } },
+              })}
+              decoding="async"
+              height={220}
+              loading="lazy"
+              src="/brand/omnifederal-logo-light.webp"
+              width={768}
+            />
+          </a>
+          <p className={cx(fine, css({ fontStyle: 'italic' }))}>
+            Built by demons of the Underworld
+          </p>
+          <p
+            className={cx(
+              fine,
+              css({
+                alignItems: 'center',
+                display: 'inline-flex',
+                fontVariantNumeric: 'tabular-nums',
+                gap: 'sm',
+              }),
+            )}
+          >
+            <span
+              aria-hidden
+              className={css({
+                bgColor: 'success.bg.initial',
+                h: '1.5',
+                rounded: 'full',
+                w: '1.5',
+              })}
+            />
+            v{version} · Section 508 compliant
           </p>
         </div>
       </div>
-
-      <FooterWordmark />
     </footer>
   )
 }

@@ -68,6 +68,20 @@ export default createCerberusConfig({
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.35' },
         },
+        // A text caret while someone is typing a prompt.
+        caretBlink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        // A comment pin landing on the canvas.
+        pinDrop: {
+          from: { opacity: '0', transform: 'translateY(-6px) scale(0.6)' },
+          to: { opacity: '1', transform: 'none' },
+        },
+        // Work in progress in the hero's product window.
+        stageSpin: {
+          to: { transform: 'rotate(1turn)' },
+        },
       },
       recipes: {
         button: {

@@ -55,47 +55,90 @@ const ROLE_DOT: Record<Role, string> = {
   Agent: css({ bgColor: 'dataViz.qualitative.500' }),
 }
 
-const SEED: [string, string, Role][] = [
-  ['Booking form: prototype to production', 'Priya N.', 'Designer'],
-  ['Add a seats field to the booking form', 'form-agent', 'Agent'],
-  ['Raise contrast on danger tokens', 'Sam O.', 'Designer'],
-  ['Move the reports table to the Data Grid', 'Jordan L.', 'Developer'],
-  ['Swap hex values for semantic tokens', 'token-agent', 'Agent'],
-  ['Tighten the focus ring on menus', 'Alex M.', 'Developer'],
-  ['Write the release notes', 'docs-agent', 'Agent'],
-  ['New empty state for search', 'Rae T.', 'Designer'],
-  ['Stream live status into the dashboard', 'Kai W.', 'Developer'],
-  ['Add keyboard support to the date range', 'a11y-agent', 'Agent'],
-  ['Dark mode pass on settings', 'Mina P.', 'Designer'],
-  ['Pin the ID column on every grid', 'Lee S.', 'Developer'],
-  ['Regenerate the API docs', 'docs-agent', 'Agent'],
-  ['Onboarding checklist prototype', 'Priya N.', 'Designer'],
-  ['Retry failed uploads automatically', 'Jordan L.', 'Developer'],
-  ['Audit every form for labels', 'a11y-agent', 'Agent'],
-  ['Compact density for admin tables', 'Sam O.', 'Designer'],
-  ['Cache the theme on first paint', 'Alex M.', 'Developer'],
-  ['Migrate v1 imports to v2', 'migrate-agent', 'Agent'],
-  ['Status colors for the release feed', 'Rae T.', 'Designer'],
-  ['Virtualize the audit log', 'Kai W.', 'Developer'],
-  ['Find raw pixel values and replace them', 'token-agent', 'Agent'],
-  ['New pricing card prototype', 'Mina P.', 'Designer'],
-  ['Ship the export button', 'Lee S.', 'Developer'],
+/** Who opens pull requests on an agent-scale team. */
+const AUTHORS: [string, Role][] = [
+  ['form-agent', 'Agent'],
+  ['Priya N.', 'Designer'],
+  ['token-agent', 'Agent'],
+  ['Jordan L.', 'Developer'],
+  ['docs-agent', 'Agent'],
+  ['Sam O.', 'Designer'],
+  ['a11y-agent', 'Agent'],
+  ['Alex M.', 'Developer'],
+  ['migrate-agent', 'Agent'],
+  ['Rae T.', 'Designer'],
+  ['test-agent', 'Agent'],
+  ['Kai W.', 'Developer'],
 ]
 
+const VERBS = [
+  'Add',
+  'Fix',
+  'Tighten',
+  'Migrate',
+  'Prototype',
+  'Stream',
+  'Audit',
+  'Virtualize',
+  'Theme',
+  'Document',
+  'Refactor',
+  'Pin',
+]
+
+const THINGS = [
+  'the booking form',
+  'the date range picker',
+  'danger tokens',
+  'the reports table',
+  'focus rings on menus',
+  'the release notes',
+  'the empty state for search',
+  'live status on the dashboard',
+  'keyboard support in dialogs',
+  'dark mode in settings',
+  'the audit log',
+  'upload retries',
+  'v1 imports',
+  'the pricing card',
+  'the export button',
+  'form labels',
+  'compact density',
+  'the onboarding checklist',
+]
+
+/** How many pull requests the feed starts with. */
+const TOTAL = 30_000
+
 // Synthetic, deterministic data so the server and the client agree.
-const INITIAL: Change[] = SEED.map(([title, author, role], i) => {
-  const stage = STAGES[(i * 3) % STAGES.length]
+function makeChange(n: number, i: number): Change {
+  const [author, role] = AUTHORS[(i * 7 + (i >> 3)) % AUTHORS.length]
+  const stage = STAGES[(i * 3 + (i >> 5)) % STAGES.length]
   const stageIndex = STAGES.indexOf(stage)
   return {
-    id: 2840 - i,
-    title,
+    id: n,
+    title: `${VERBS[(i * 5) % VERBS.length]} ${THINGS[(i * 11 + (i >> 4)) % THINGS.length]}`,
     author,
     role,
     stage,
     checks: stageIndex >= 3 ? TOTAL_CHECKS : stageIndex === 2 ? 5 + (i % 6) : 0,
-    updated: 1 + ((i * 7) % 58),
+    updated: 1 + Math.floor(i / 6),
   }
-})
+}
+
+function makeFeed(): Change[] {
+  return Array.from({ length: TOTAL }, (_, i) =>
+    makeChange(TOTAL + 2840 - i, i),
+  )
+}
+
+/** Minutes since a change, as a person would say it. */
+function ago(minutes: number) {
+  if (minutes <= 0) return 'just now'
+  if (minutes < 60) return `${minutes} min ago`
+  if (minutes < 60 * 24) return `${Math.floor(minutes / 60)} h ago`
+  return `${Math.floor(minutes / (60 * 24))} d ago`
+}
 
 const col = createColumnHelper<Change>()
 
@@ -218,38 +261,48 @@ const columns = [
           fontVariantNumeric: 'tabular-nums',
         })}
       >
-        {Number(value) <= 0 ? 'just now' : `${value} min ago`}
+        {ago(Number(value))}
       </span>
     ),
   }),
 ]
 
-/** Moves one change one step along the workflow. */
+/**
+ * One beat of the feed: a new pull request opens at the top and a few recent
+ * ones move a step toward production. Only the changed rows are new objects.
+ */
 function advance(prev: Change[], tick: number): Change[] {
-  const target = (tick * 5) % prev.length
-  return prev.map((change, i) => {
-    if (i !== target)
-      return { ...change, updated: change.updated + (tick % 4 === 0 ? 1 : 0) }
+  const next = prev.slice()
+  for (let k = 0; k < 3; k++) {
+    const i = (tick * 7 + k * 5) % 24
+    const change = next[i]
+    if (!change) continue
     if (change.stage === 'Checks running' && change.checks < TOTAL_CHECKS) {
-      return {
+      next[i] = {
         ...change,
         checks: Math.min(TOTAL_CHECKS, change.checks + 4),
         updated: 0,
       }
+      continue
     }
-    const next = STAGES[(STAGES.indexOf(change.stage) + 1) % STAGES.length]
-    return {
+    const stage =
+      STAGES[Math.min(STAGES.length - 1, STAGES.indexOf(change.stage) + 1)]
+    next[i] = {
       ...change,
-      stage: next,
-      checks: next === 'Prototype' || next === 'In review' ? 0 : change.checks,
+      stage,
+      checks: stage === 'Checks running' ? 2 : change.checks,
       updated: 0,
     }
-  })
+  }
+  const top = next[0]
+  const fresh = makeChange((top?.id ?? TOTAL) + 1, tick * 13)
+  next.unshift({ ...fresh, stage: 'Prototype', checks: 0, updated: 0 })
+  return next
 }
 
 /**
- * 04 · Ship. The workflow's output, in the Data Grid: every change from every
- * kind of author, moving toward production while you watch.
+ * Ship. The workflow's output at agent scale: thirty thousand pull requests
+ * from every kind of author in one virtualized Data Grid, streaming live.
  */
 export function Ship() {
   return (
@@ -257,15 +310,19 @@ export function Ship() {
       id="ship"
       pose="ship"
       label="Ship"
-      heading="Every change, from every mind, moving to production."
+      heading="Thirty thousand pull requests. One calm grid."
       layout="stacked"
       plate={<ReleaseFeed />}
     >
       <p>
-        Designers, developers and agents all open pull requests against the same
-        system, so their work lands in one place. This is the Cerberus Data
-        Grid: sorting, column filters, pinning, search and pagination, fed live
-        by Cerberus Signals.
+        When agents open pull requests, teams ship them by the tens of
+        thousands. The Cerberus Data Grid is virtualized: it keeps only the rows
+        on screen in the DOM, so a 30,000-row release feed sorts, filters,
+        searches and scrolls like a short one.
+      </p>
+      <p>
+        Cerberus Signals streams the changes in, and only the cells that change
+        update. Scroll it, sort it, search it: this one is live.
       </p>
     </Beat>
   )
@@ -273,10 +330,35 @@ export function Ship() {
 
 function ReleaseFeed() {
   const { motion } = useExperience()
-  const [rows, setRows] = useSignal<Change[]>(INITIAL)
+  // Built once per mount: useSignal keys its signal on this value.
+  const [initial] = useState(makeFeed)
+  const [rows, setRows] = useSignal<Change[]>(initial)
   const [live, setLive] = useState(true)
+  const [domRows, setDomRows] = useState<number | null>(null)
   const tick = useRef(0)
   const rootRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  // Measure, never claim: how many grid rows exist in the DOM right now.
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+    let raf = 0
+    const count = () => {
+      raf = 0
+      setDomRows(grid.querySelectorAll('[role="row"]').length)
+    }
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(count)
+    }
+    count()
+    const observer = new MutationObserver(schedule)
+    observer.observe(grid, { childList: true, subtree: true })
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [])
 
   useEffect(() => {
     const el = rootRef.current
@@ -287,7 +369,7 @@ function ReleaseFeed() {
       timer = window.setInterval(() => {
         tick.current += 1
         setRows((prev) => advance(prev, tick.current))
-      }, 1800)
+      }, 1400)
     }
     const stop = () => {
       window.clearInterval(timer)
@@ -313,7 +395,26 @@ function ReleaseFeed() {
         w: 'full',
       })}
     >
+      <dl
+        className={css({
+          display: 'grid',
+          gap: 'md',
+          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+          md: { gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' },
+        })}
+      >
+        <FeedStat label="Pull requests in the feed">
+          {rows.length.toLocaleString('en-US')}
+        </FeedStat>
+        <FeedStat label="Rows in the DOM right now">
+          {domRows === null ? '…' : domRows.toLocaleString('en-US')}
+        </FeedStat>
+        <FeedStat label="Opened by agents" className={css({ hideBelow: 'md' })}>
+          {`${Math.round((rows.filter((r) => r.role === 'Agent').length / rows.length) * 100)}%`}
+        </FeedStat>
+      </dl>
       <div
+        ref={gridRef}
         data-lenis-prevent
         className={css({
           bgColor: 'page.surface.100',
@@ -330,7 +431,6 @@ function ReleaseFeed() {
         <DataGrid
           columns={columns}
           data={rows}
-          pagination
           toolbar={
             <FeedToolbar
               live={live}
@@ -341,9 +441,46 @@ function ReleaseFeed() {
         />
       </div>
       <p className={plateCaption}>
-        Synthetic data. Sort any column, filter from a column’s menu, or search
-        everything.
+        Synthetic data: 30,000 generated pull requests, with a new one every few
+        seconds. The DOM row count is measured live. Sort any column, filter
+        from a column’s menu, or search everything.
       </p>
+    </div>
+  )
+}
+
+function FeedStat(props: {
+  label: string
+  children: string
+  className?: string
+}) {
+  return (
+    <div
+      className={cx(
+        css({
+          borderTop: '1px solid',
+          borderColor: 'page.border.200',
+          display: 'flex',
+          flexDir: 'column-reverse',
+          gap: 'xs',
+          pt: 'sm',
+        }),
+        props.className,
+      )}
+    >
+      <dt className={plateCaption}>{props.label}</dt>
+      <dd
+        className={css({
+          color: 'page.text.initial',
+          fontSize: 'clamp(2rem, 1.2rem + 2.4vw, 3.5rem)',
+          fontVariantNumeric: 'tabular-nums',
+          fontWeight: 'semibold',
+          letterSpacing: '-0.03em',
+          lineHeight: '1',
+        })}
+      >
+        {props.children}
+      </dd>
     </div>
   )
 }
