@@ -1,5 +1,9 @@
 # @cerberus/preset-cerberus-theme
 
+## 2.0.1
+
+No changes in this release.
+
 ## 2.0.0
 
 ### Major Changes

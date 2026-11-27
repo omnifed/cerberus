@@ -1,6 +1,6 @@
 {
   "name": "@cerberus/preset-elysium-theme",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The official Elysium theme preset for the Cerberus design system",
   "keywords": [
     "css",

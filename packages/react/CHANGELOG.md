@@ -1,5 +1,11 @@
 # @cerberus-design/react
 
+## 2.0.1
+
+### Patch Changes
+
+- 9702038: fix: update ProgressBar and Spinner to use `extractParts` helper
+
 ## 2.0.0
 
 ### Major Changes
