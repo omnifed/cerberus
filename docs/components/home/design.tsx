@@ -1,11 +1,12 @@
 'use client'
 
-import { ArrowRight, ChevronRight } from '@carbon/icons-react'
+import { ArrowRight } from '@carbon/icons-react'
 import { Button, DatePicker, Field, NumberInput } from '@cerberus-design/react'
 import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { Beat, plateCaption, plateSurface } from './beat'
+import { ClaudeByline, ClaudeSession } from './claude-prompt'
 import { useExperience } from './experience'
 import { InstallLine } from './install-line'
 import { codeBlock } from './styles'
@@ -84,46 +85,14 @@ function DesignTools() {
     if (!motion || !el) return
     if (el.getBoundingClientRect().top < window.innerHeight * 0.85) return
     const ctx = gsap.context(() => {
-      const prompt = el.querySelector<HTMLElement>('[data-prompt]')
-      const full = prompt?.textContent ?? ''
-      const typed = { n: 0 }
-      const tl = gsap
-        .timeline({
-          scrollTrigger: { trigger: el, start: 'top 72%', once: true },
-          defaults: { ease: 'power3.out' },
-        })
-        .to(typed, {
-          n: full.length,
-          duration: 1.6,
-          ease: 'none',
-          onUpdate: () => {
-            if (prompt) prompt.textContent = full.slice(0, Math.round(typed.n))
-          },
-          onComplete: () => {
-            if (prompt) prompt.textContent = full
-          },
-        })
-        .from(
-          '[data-proto]',
-          { opacity: 0, y: 14, stagger: 0.18, duration: 0.6 },
-          '+=0.2',
-        )
-        .from(
-          '[data-figma-line]',
-          { opacity: 0, x: -8, stagger: 0.12, duration: 0.45 },
-          '<0.2',
-        )
-      el.addEventListener(
-        'focusin',
-        () => {
-          tl.progress(1)
-          if (prompt) prompt.textContent = full
-        },
-        { once: true },
-      )
-      return () => {
-        if (prompt) prompt.textContent = full
-      }
+      gsap.from('[data-figma-line]', {
+        opacity: 0,
+        x: -8,
+        stagger: 0.12,
+        duration: 0.45,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 70%', once: true },
+      })
     }, el)
     return () => ctx.revert()
   }, [motion])
@@ -142,79 +111,67 @@ function DesignTools() {
         <figcaption className={plateCaption}>
           In Claude, with the Cerberus design system
         </figcaption>
-        <p
-          className={css({
-            alignItems: 'flex-start',
-            bgColor: 'action.ghost.hover',
-            color: 'page.text.initial',
-            display: 'flex',
-            gap: 'sm',
-            minH: '3lh',
-            px: 'md',
-            py: 'sm',
-            rounded: 'md',
-            textStyle: 'body-sm',
-          })}
-        >
-          <ChevronRight
-            aria-hidden
-            className={css({ flexShrink: 0, mt: '1' })}
-          />
-          <span data-prompt>{PROMPT}</span>
-        </p>
-        <div
-          className={css({
-            border: '1px dashed',
-            borderColor: 'page.border.200',
-            display: 'flex',
-            flexDir: 'column',
-            gap: 'md',
-            p: 'md',
-            rounded: 'md',
-          })}
-        >
-          <p className={plateCaption}>
-            The prototype: live Cerberus components
-          </p>
+        <ClaudeSession prompt={PROMPT}>
+          <div data-step>
+            <ClaudeByline>
+              prototyped it with the Cerberus design system
+            </ClaudeByline>
+          </div>
           <div
+            data-step
             className={css({
-              display: 'grid',
+              border: '1px dashed',
+              borderColor: 'page.border.200',
+              display: 'flex',
+              flexDir: 'column',
               gap: 'md',
-              gridTemplateColumns: 'minmax(0, 1fr)',
-              sm: { gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)' },
+              p: 'md',
+              rounded: 'md',
             })}
           >
-            <div data-proto>
-              <Field>
-                <DatePicker name="design-travel-date">
-                  <DatePicker.Label>Travel date</DatePicker.Label>
-                  <DatePicker.InputGroup />
-                  <DatePicker.Calendar />
-                </DatePicker>
-              </Field>
+            <p className={plateCaption}>
+              The prototype: live Cerberus components
+            </p>
+            <div
+              className={css({
+                display: 'grid',
+                gap: 'md',
+                gridTemplateColumns: 'minmax(0, 1fr)',
+                sm: { gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)' },
+              })}
+            >
+              <div>
+                <Field>
+                  <DatePicker name="design-travel-date">
+                    <DatePicker.Label>Travel date</DatePicker.Label>
+                    <DatePicker.InputGroup />
+                    <DatePicker.Calendar />
+                  </DatePicker>
+                </Field>
+              </div>
+              <div>
+                <Field label="Party size">
+                  <NumberInput
+                    name="design-party-size"
+                    defaultValue="2"
+                    max={9}
+                    min={1}
+                  />
+                </Field>
+              </div>
             </div>
-            <div data-proto>
-              <Field label="Party size">
-                <NumberInput
-                  name="design-party-size"
-                  defaultValue="2"
-                  max={9}
-                  min={1}
-                />
-              </Field>
+            <div>
+              <Button shape="sharp">
+                Confirm booking
+                <Button.Icon>
+                  <ArrowRight />
+                </Button.Icon>
+              </Button>
             </div>
           </div>
-          <div data-proto>
-            <Button shape="sharp">
-              Confirm booking
-              <Button.Icon>
-                <ArrowRight />
-              </Button.Icon>
-            </Button>
-          </div>
-        </div>
+        </ClaudeSession>
         <p className={plateCaption}>
-          An illustrative prompt. The prototype is real.
+          An illustrative Claude session. The prototype is live Cerberus.
         </p>
       </figure>
 

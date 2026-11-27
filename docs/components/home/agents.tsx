@@ -1,12 +1,14 @@
 'use client'
 
-import { CheckmarkFilled, ChevronRight } from '@carbon/icons-react'
-import { Field, NumberInput } from '@cerberus-design/react'
+import { CheckmarkFilled } from '@carbon/icons-react'
+import { Button, Field, NumberInput } from '@cerberus-design/react'
 import { version } from '@cerberus-design/react/package.json'
 import { gsap } from 'gsap'
-import { useEffect, useRef } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef, useState } from 'react'
 import { css, cx } from 'styled-system/css'
 import { Beat, plateCaption, plateSurface } from './beat'
+import { ClaudeByline, ClaudeSession } from './claude-prompt'
 import { useExperience } from './experience'
 import { codeBlock, textLink } from './styles'
 
@@ -45,8 +47,9 @@ const LINKS = [
 ]
 
 /**
- * 01 · Agents first. On most teams an agent is the first to touch the code,
- * so this is the first thing the page proves.
+ * Agents first. On most teams an agent touches the code before a person
+ * does, so Cerberus is built for that first pass, and for the people who
+ * review it and decide what ships.
  */
 export function Agents() {
   return (
@@ -54,7 +57,7 @@ export function Agents() {
       id="agents"
       pose="agents"
       label="Agents first"
-      heading="Agents come first. So we built for them first."
+      heading="Agents start the work. People make the call."
       layout="split"
       plate={<AgentSession />}
       aside={
@@ -78,14 +81,17 @@ export function Agents() {
       }
     >
       <p>
-        Agents now do much of the work, often before a person sees it. Cerberus
-        gives them what you would give a new teammate: plain-text docs,
-        component APIs that are hard to misuse, and skills for the hard parts.
+        On most teams an agent now writes the first draft, often before anyone
+        opens the file. So we build Cerberus for that first pass: plain-text
+        docs, component APIs that are hard to misuse, and skills for the hard
+        parts.
       </p>
       <p>
-        Every component is one object with its parts. Every docs page has a
-        plain-text twin. The React package is agent-ready from source to docs
-        today, and the rest of the ecosystem is next.
+        The draft you review already speaks your system, so your time goes to
+        what only people can do: taste, judgment and the call to ship. Every
+        component is one object with its parts, and every docs page has a
+        plain-text twin. Our ecosystem is agent-ready from source to docs today,
+        and we improve it with each release.
       </p>
     </Beat>
   )
@@ -98,14 +104,24 @@ const pane = css({
   minW: '0',
 })
 
+const stepLine = css({
+  alignItems: 'center',
+  color: 'page.text.200',
+  display: 'flex',
+  fontFamily: 'mono',
+  gap: 'sm',
+  textStyle: 'label-sm',
+})
+
 /**
- * An illustrative agent session: what the agent reads on the left, what it
- * writes and ships on the right. The result at the bottom is that code,
- * running.
+ * An illustrative session: what the agent reads on the left; on the right,
+ * the prompt in Claude, what the agent writes, and the person who reviews it
+ * before it ships. The result is that code, running.
  */
 function AgentSession() {
   const { motion } = useExperience()
   const ref = useRef<HTMLDivElement>(null)
+  const [approved, setApproved] = useState(false)
 
   useEffect(() => {
     const el = ref.current
@@ -130,39 +146,12 @@ function AgentSession() {
         undefined,
         lines.length * 0.22,
       )
-
-      const startsBelow =
-        el.getBoundingClientRect().top > window.innerHeight * 0.85
-      const tl = gsap.timeline({
-        paused: true,
-        defaults: { duration: 0.5, ease: 'power3.out' },
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 75%',
+        end: 'bottom top',
+        onToggle: (self) => (self.isActive ? scan.play() : scan.pause()),
       })
-      if (startsBelow) {
-        tl.from('[data-step]', { opacity: 0, y: 8, stagger: 0.32 })
-          .from(
-            '[data-code-line]',
-            { opacity: 0, y: 8, stagger: 0.14 },
-            '+=0.1',
-          )
-          .from('[data-result]', { opacity: 0, y: 8, duration: 0.6 }, '+=0.15')
-      }
-
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 75%',
-          end: 'bottom top',
-          onEnter: () => {
-            tl.play()
-            scan.play()
-          },
-          onEnterBack: () => scan.play(),
-          onLeave: () => scan.pause(),
-          onLeaveBack: () => scan.pause(),
-        },
-      })
-      // Keyboard focus never lands on something still invisible.
-      el.addEventListener('focusin', () => tl.progress(1), { once: true })
     }, el)
     return () => ctx.revert()
   }, [motion])
@@ -176,7 +165,7 @@ function AgentSession() {
           display: 'grid',
           gap: 'xl',
           gridTemplateColumns: 'minmax(0, 1fr)',
-          md: { gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)' },
+          md: { gridTemplateColumns: 'minmax(0, 5fr) minmax(0, 7fr)' },
         }),
       )}
     >
@@ -213,81 +202,105 @@ function AgentSession() {
       </div>
 
       <div className={pane}>
-        <p className={plateCaption}>What it ships</p>
-        <p
-          className={css({
-            alignItems: 'center',
-            bgColor: 'action.ghost.hover',
-            color: 'page.text.initial',
-            display: 'flex',
-            gap: 'sm',
-            px: 'md',
-            py: 'sm',
-            rounded: 'md',
-            textStyle: 'body-sm',
-          })}
-        >
-          <ChevronRight aria-hidden className={css({ flexShrink: 0 })} />
-          Add a seats field to the booking form.
-        </p>
-        <ol className={css({ display: 'flex', flexDir: 'column', gap: 'xs' })}>
-          {STEPS.map((step) => (
-            <li
-              key={step}
-              data-step
+        <p className={plateCaption}>What it writes, and who decides</p>
+        <ClaudeSession prompt="Add a seats field to the booking form.">
+          <div data-step>
+            <ClaudeByline>read the docs first</ClaudeByline>
+          </div>
+          <ol
+            data-step
+            className={css({ display: 'flex', flexDir: 'column', gap: 'xs' })}
+          >
+            {STEPS.map((step) => (
+              <li key={step} className={stepLine}>
+                <CheckmarkFilled
+                  aria-hidden
+                  className={css({ color: 'success.text.100', flexShrink: 0 })}
+                />
+                {step}
+              </li>
+            ))}
+          </ol>
+          <pre
+            data-step
+            className={cx(codeBlock, css({ textStyle: 'label-sm' }))}
+          >
+            <code>{CODE}</code>
+          </pre>
+          <div
+            data-step
+            className={css({
+              alignItems: 'flex-end',
+              border: '1px solid',
+              borderColor: 'page.border.initial',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 'md',
+              justifyContent: 'space-between',
+              p: 'md',
+              rounded: 'lg',
+            })}
+          >
+            <div
               className={css({
-                alignItems: 'center',
-                color: 'page.text.200',
                 display: 'flex',
-                fontFamily: 'mono',
-                gap: 'sm',
-                textStyle: 'label-sm',
+                flexDir: 'column',
+                gap: 'xs',
+                minW: '10rem',
               })}
             >
-              <CheckmarkFilled
-                aria-hidden
-                className={css({ color: 'success.text.100', flexShrink: 0 })}
-              />
-              {step}
-            </li>
-          ))}
-        </ol>
-        <pre className={codeBlock}>
-          <code>
-            {CODE.split('\n').map((line, i) => (
-              <span
-                key={i}
-                data-code-line
-                className={css({ display: 'block' })}
+              <p className={plateCaption}>That code, running</p>
+              <Field label="Seats needed">
+                <NumberInput defaultValue="2" max={12} min={0} />
+              </Field>
+            </div>
+            <div
+              className={css({
+                display: 'flex',
+                flexDir: 'column',
+                gap: 'xs',
+                alignItems: 'flex-end',
+              })}
+            >
+              <p
+                aria-live="polite"
+                className={css({
+                  alignItems: 'center',
+                  color: 'page.text.200',
+                  display: 'flex',
+                  gap: 'xs',
+                  textStyle: 'label-sm',
+                })}
               >
-                {line}
-              </span>
-            ))}
-          </code>
-        </pre>
-        <div
-          data-result
-          className={css({
-            border: '1px dashed',
-            borderColor: 'page.border.200',
-            display: 'flex',
-            flexDir: 'column',
-            gap: 'sm',
-            p: 'md',
-            rounded: 'md',
-          })}
-        >
-          <p className={plateCaption}>That code, running</p>
-          <div className={css({ maxW: '12rem' })}>
-            <Field label="Seats needed">
-              <NumberInput defaultValue="2" max={12} min={0} />
-            </Field>
+                <span
+                  aria-hidden
+                  className={css({
+                    bgColor: 'dataViz.qualitative.300',
+                    h: '2',
+                    rounded: 'full',
+                    w: '2',
+                  })}
+                />
+                {approved
+                  ? 'You approved #2841. It ships.'
+                  : 'PR #2841 is waiting on you'}
+              </p>
+              <Button
+                shape="sharp"
+                size="sm"
+                usage={approved ? 'outlined' : 'filled'}
+                aria-pressed={approved}
+                onClick={() => setApproved((a) => !a)}
+              >
+                {approved ? 'Approved' : 'Approve'}
+              </Button>
+            </div>
           </div>
-        </div>
+        </ClaudeSession>
       </div>
       <p className={cx(plateCaption, css({ md: { gridColumn: '1 / -1' } }))}>
-        An illustrative session. The docs excerpt is the real file; the result
-        is live Cerberus.
+        An illustrative Claude session. The docs excerpt is the real file; the
+        field and the review button are live Cerberus.
       </p>
     </div>
   )

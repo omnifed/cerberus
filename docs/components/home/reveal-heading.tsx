@@ -17,12 +17,21 @@ interface RevealHeadingProps {
 }
 
 const srOnly = css({ srOnly: true })
-const wordClip = css({
+/**
+ * Each word rises inside its own clip. Display type is set tighter than the
+ * glyphs are tall (line height 0.86 to 1.02), so the clip reaches past the
+ * line box for ascenders and descenders, and negative margins give the space
+ * back so the lines keep their rhythm.
+ */
+export const wordClip = css({
   display: 'inline-block',
-  overflow: 'clip',
-  // Room for descenders inside the clip.
-  pb: '0.12em',
-  mb: '-0.12em',
+  mb: '-0.28em',
+  mt: '-0.18em',
+  // Clip only vertically, so tight tracking never shaves a letter's side.
+  overflowX: 'visible',
+  overflowY: 'clip',
+  pb: '0.28em',
+  pt: '0.18em',
   verticalAlign: 'top',
 })
 

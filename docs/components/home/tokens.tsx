@@ -66,7 +66,7 @@ export default createCerberusConfig({
 
 /**
  * 03 · Tokens. One semantic token feeds the prototype, the product and the
- * agent's code. Choosing a theme here repaints the preview and the organism.
+ * agent's code. Choosing a theme here repaints the preview and the world.
  */
 export function Tokens() {
   const [themeId, setThemeId] = useState<ThemeId>('acheron')
@@ -102,7 +102,7 @@ interface ThemePreviewProps {
   onThemeChange: (theme: ThemeId) => void
 }
 
-/** The switch repaints this whole section, the preview and the organism behind it. */
+/** The switch repaints this whole section, the preview and the world behind it. */
 function ThemePreview(props: ThemePreviewProps) {
   const { themeId, onThemeChange: setThemeId } = props
   const [ready, setReady] = useState(true)
@@ -217,9 +217,31 @@ function ThemePreview(props: ThemePreviewProps) {
             ? `Add ${theme.label} to your project`
             : 'The default theme'}
         </p>
-        <pre className={cx(codeBlock, css({ textStyle: 'label-sm' }))}>
-          <code>{setupFor(theme)}</code>
-        </pre>
+        {/*
+          Every theme's setup is laid into the same cell, so the block is
+          always as tall as the longest one and switching never moves the
+          page. Only the current one is shown or read.
+        */}
+        <div className={css({ display: 'grid' })}>
+          {THEMES.map((t) => (
+            <pre
+              key={t.id}
+              aria-hidden={t.id !== theme.id}
+              data-current={t.id === theme.id}
+              className={cx(
+                codeBlock,
+                css({
+                  gridArea: '1 / 1',
+                  textStyle: 'label-sm',
+                  visibility: 'hidden',
+                  '&[data-current=true]': { visibility: 'visible' },
+                }),
+              )}
+            >
+              <code>{setupFor(t)}</code>
+            </pre>
+          ))}
+        </div>
       </div>
     </div>
   )

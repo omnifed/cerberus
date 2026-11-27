@@ -1,12 +1,20 @@
+'use client'
+
 import { ArrowRight } from '@carbon/icons-react'
 import { version } from '@cerberus-design/react/package.json'
+import { gsap } from 'gsap'
 import Link from 'next/link'
+import { Fragment, useEffect, useRef, type RefObject } from 'react'
 import { css, cx } from 'styled-system/css'
 import { button } from 'styled-system/recipes'
 import { pool } from './beat'
+import { useExperience } from './experience'
 import { InstallLine } from './install-line'
-import { WorkflowLoop } from './workflow-loop'
+import { wordClip } from './reveal-heading'
+import { WorkflowStage } from './workflow-stage'
 import { container, displayHero, fine, lead, textLink } from './styles'
+
+const HEADLINE = 'One workflow for humans and agents to ship product.'
 
 const MINDS = [
   {
@@ -34,13 +42,51 @@ const FACTS = [
 ]
 
 /**
+ * The page's arrival: the headline rises word by word, the supporting rows
+ * follow, then the product window. It is short, plays once at the top of the
+ * page, and every element is already in place without it.
+ */
+function useHeroIntro(ref: RefObject<HTMLElement | null>) {
+  const { motion } = useExperience()
+  useEffect(() => {
+    const el = ref.current
+    if (!motion || !el) return
+    // Arriving mid-page (a restored scroll, an anchor): nothing to stage.
+    if (window.scrollY > window.innerHeight * 0.4) return
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
+      tl.from('[data-hero-word]', {
+        yPercent: 118,
+        duration: 1.05,
+        stagger: 0.055,
+      })
+        .from(
+          '[data-hero-rise]',
+          { y: 18, opacity: 0, duration: 0.9, stagger: 0.07 },
+          0.35,
+        )
+        .from(
+          '[data-hero-stage]',
+          { y: 28, opacity: 0, duration: 1.2, ease: 'power3.out' },
+          0.5,
+        )
+      // Focus arriving early finishes the intro at once.
+      el.addEventListener('focusin', () => tl.progress(1), { once: true })
+    }, el)
+    return () => ctx.revert()
+  }, [motion, ref])
+}
+
+/**
  * The first viewport: the message on the left, and on the right the product
- * itself, a feature looping from idea to production. The organism's three
- * ribbons are named in the legend, so the picture explains itself.
+ * itself, one feature moving from idea to production.
  */
 export function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  useHeroIntro(ref)
   return (
     <section
+      ref={ref}
       aria-labelledby="hero-heading"
       data-pose="hero"
       className={css({
@@ -97,11 +143,27 @@ export function Hero() {
                 }),
               )}
             >
-              One workflow for humans and agents to ship product.
+              <span className={css({ srOnly: true })}>{HEADLINE}</span>
+              <span aria-hidden="true">
+                {HEADLINE.split(' ').map((word, i, words) => (
+                  <Fragment key={`${word}-${i}`}>
+                    <span className={wordClip}>
+                      <span
+                        data-hero-word
+                        className={css({ display: 'inline-block' })}
+                      >
+                        {word}
+                      </span>
+                    </span>
+                    {i < words.length - 1 ? ' ' : null}
+                  </Fragment>
+                ))}
+              </span>
             </h1>
           </div>
 
           <ul
+            data-hero-rise
             aria-label="Who Cerberus is for"
             className={css({
               columnGap: 'lg',
@@ -149,6 +211,7 @@ export function Hero() {
           </ul>
 
           <div
+            data-hero-rise
             className={css({
               isolation: 'isolate',
               maxW: '40rem',
@@ -167,6 +230,7 @@ export function Hero() {
           </div>
 
           <div
+            data-hero-rise
             className={css({
               alignItems: 'stretch',
               display: 'flex',
@@ -190,7 +254,10 @@ export function Hero() {
               <InstallLine command="npm install @cerberus-design/react" />
             </div>
           </div>
-          <p className={cx(fine, css({ color: 'page.text.initial' }))}>
+          <p
+            data-hero-rise
+            className={cx(fine, css({ color: 'page.text.initial' }))}
+          >
             Are you an agent? Start at{' '}
             <a className={textLink} href="/llms.txt">
               /llms.txt
@@ -198,7 +265,7 @@ export function Hero() {
             .
           </p>
         </div>
-        <WorkflowLoop />
+        <WorkflowStage />
       </div>
 
       <div
